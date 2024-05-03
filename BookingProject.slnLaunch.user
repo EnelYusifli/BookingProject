@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Name": "src\\Presentation\\BookingProject.API\\BookingProject.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Name": "src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
