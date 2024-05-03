@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "HeFCwV/PczJ+9xZ+KyBTrt20jocXBz116Tv5sKskWIU=",
+  "Hash": "9LRYy+MjAiP914J7JT3Swas+LjCb+BqKZ5Jz7ppGIf4=",
   "Source": "BookingProject.MVC",
   "BasePath": "_content/BookingProject.MVC",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\BookingProject.API.csproj",
+      "Version": 2,
+      "Source": "BookingProject.API",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [
     {
       "Name": "BookingProject.MVC\\wwwroot",

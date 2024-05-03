@@ -12,7 +12,10 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infastructure\BookingProject.Infastructure\BookingProject.Infastructure.csproj" />
   </ItemGroup>
 
 </Project>

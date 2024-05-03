@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\persistenceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\persistenceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|solutionrelative:src\\presentation\\bookingproject.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\applicationregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\applicationregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +35,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PersistenceRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T16:45:16.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T16:45:01.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Program.cs",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T15:47:32.307Z",
+              "EditorCaption": ""
             }
           ]
         }

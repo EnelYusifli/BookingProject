@@ -4,14 +4,78 @@
     "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj": {
+    "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
-        "projectName": "BookingProject.Persistence",
-        "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
+        "projectName": "BookingProject.Application",
+        "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
         "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\obj\\",
+        "outputPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
+                "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+        "projectName": "BookingProject.Domain",
+        "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+        "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +108,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -56,6 +126,93 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
+        "projectName": "BookingProject.Persistence",
+        "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj": {
+                "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
