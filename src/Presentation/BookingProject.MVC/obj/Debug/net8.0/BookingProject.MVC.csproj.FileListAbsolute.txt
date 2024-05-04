@@ -89,3 +89,9 @@ C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\ob
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\obj\Debug\net8.0\ref\BookingProject.MVC.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\obj\Debug\net8.0\BookingProject.MVC.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\MediatR.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\MediatR.Contracts.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\AutoMapper.dll

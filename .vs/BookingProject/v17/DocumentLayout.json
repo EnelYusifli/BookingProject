@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.domain\\entities\\hotel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|solutionrelative:src\\core\\bookingproject.domain\\entities\\hotel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\configurations\\hotelconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\configurations\\hotelconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.domain\\entities\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|solutionrelative:src\\core\\bookingproject.domain\\entities\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|solutionrelative:src\\presentation\\bookingproject.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|solutionrelative:src\\core\\bookingproject.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\contexts\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\contexts\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -34,73 +9,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HotelConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Configurations\\HotelConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\Configurations\\HotelConfiguration.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Configurations\\HotelConfiguration.cs",
-              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\Configurations\\HotelConfiguration.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAAwA4AAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T11:01:25.828Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Program.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\Program.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Program.cs",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T10:50:39.638Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Room.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\Entities\\Room.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Domain\\Entities\\Room.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\Entities\\Room.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Domain\\Entities\\Room.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAkAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T10:41:19.352Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\Entities\\AppUser.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Domain\\Entities\\AppUser.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\Entities\\AppUser.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Domain\\Entities\\AppUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T09:16:25.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Hotel.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\Entities\\Hotel.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Domain\\Entities\\Hotel.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\Entities\\Hotel.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Domain\\Entities\\Hotel.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAAA0AAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T06:52:46.659Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
@@ -112,19 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
-              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAAACkAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T07:10:27.775Z",
-              "EditorCaption": ""
             }
           ]
         }

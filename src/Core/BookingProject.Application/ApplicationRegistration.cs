@@ -1,17 +1,22 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
+﻿using BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands;
+using BookingProject.Application.Mappings;
+using BookingProject.Application.Validations;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.Extensions.DependencyInjection;
 namespace BookingProject.Application;
 
 public static class ApplicationRegistration
 {
     public static void AddApplicationServices(this IServiceCollection services)
     {
-        //services.AddAutoMapper(typeof(BlogMappingProfile).Assembly);
-        //services.AddMediatR(opt =>
-        //{
-        //    opt.RegisterServicesFromAssemblies(typeof(BlogGetAllQueryRequest).Assembly);
-        //});
-        //services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<BlogCreateCommandRequestValidator>());
-
+        services.AddMediatR(opt =>
+        {
+            opt.RegisterServicesFromAssemblies(typeof(AuthLoginCommandRequest).Assembly);
+        });
+        services.AddValidatorsFromAssemblyContaining<AuthRegisterCommandRequestValidator>();
+        services.AddFluentValidationAutoValidation();
+        services.AddFluentValidationClientsideAdapters();
+        services.AddAutoMapper(typeof(AuthMappingProfile).Assembly);
     }
 }
