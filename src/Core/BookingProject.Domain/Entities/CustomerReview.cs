@@ -13,4 +13,5 @@ public class CustomerReview : BaseEntity, IBaseAuditable
     public string UserId { get; set; }
     public int StarPoint {  get; set; }
     public string ReviewMessage { get; set; }
+    public List<ReviewImage> ReviewImages { get; set; }
 }

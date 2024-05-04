@@ -197,6 +197,34 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("HotelAdvantages");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.HotelImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelImages");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelPaymentMethod", b =>
                 {
                     b.Property<int>("Id")
@@ -308,6 +336,34 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("PaymentMethods");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.ReviewImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("ReviewImages");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.Room", b =>
                 {
                     b.Property<int>("Id")
@@ -359,6 +415,34 @@ namespace BookingProject.Persistence.Migrations
                     b.HasIndex("HotelId");
 
                     b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.RoomImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomImages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Service", b =>
@@ -687,6 +771,10 @@ namespace BookingProject.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("ProfilePhotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RecoveryEmail")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -754,6 +842,17 @@ namespace BookingProject.Persistence.Migrations
                     b.Navigation("Hotel");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.HotelImage", b =>
+                {
+                    b.HasOne("BookingProject.Domain.Entities.Hotel", "Hotel")
+                        .WithMany("HotelImages")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelPaymentMethod", b =>
                 {
                     b.HasOne("BookingProject.Domain.Entities.Hotel", "Hotel")
@@ -811,6 +910,17 @@ namespace BookingProject.Persistence.Migrations
                     b.Navigation("StaffLanguage");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.ReviewImage", b =>
+                {
+                    b.HasOne("BookingProject.Domain.Entities.CustomerReview", "Review")
+                        .WithMany("ReviewImages")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Review");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.Room", b =>
                 {
                     b.HasOne("BookingProject.Domain.Entities.Hotel", "Hotel")
@@ -820,6 +930,17 @@ namespace BookingProject.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.RoomImage", b =>
+                {
+                    b.HasOne("BookingProject.Domain.Entities.Room", "Room")
+                        .WithMany("RoomImages")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.UserWishlistHotel", b =>
@@ -897,6 +1018,11 @@ namespace BookingProject.Persistence.Migrations
                     b.Navigation("HotelActivities");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>
+                {
+                    b.Navigation("ReviewImages");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.Hotel", b =>
                 {
                     b.Navigation("CustomerReviews");
@@ -904,6 +1030,8 @@ namespace BookingProject.Persistence.Migrations
                     b.Navigation("HotelActivities");
 
                     b.Navigation("HotelAdvantages");
+
+                    b.Navigation("HotelImages");
 
                     b.Navigation("HotelPaymentMethods");
 
@@ -919,6 +1047,11 @@ namespace BookingProject.Persistence.Migrations
             modelBuilder.Entity("BookingProject.Domain.Entities.PaymentMethod", b =>
                 {
                     b.Navigation("HotelPaymentMethods");
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.Room", b =>
+                {
+                    b.Navigation("RoomImages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Service", b =>

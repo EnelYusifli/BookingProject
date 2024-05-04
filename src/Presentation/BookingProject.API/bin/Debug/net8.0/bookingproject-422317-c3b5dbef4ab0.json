@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "bookingproject-422317",
+  "private_key_id": "c3b5dbef4ab00f2e63bc1bb2d55621ce3bfd2dd8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDszRX2VRcLqKbb\nGYvbTrfoPTi2IKdQynJ0SjnJY+mkfwIp2DHquGLrHzZGkrgpSerwcgpGL2aULstZ\nvPz71+YtW6cOy+kmlpv5uYGQwNCu5NamDfOVlp1WWr4De3V/e/RF6cUuZo5DQ6ym\nHMknRDS5Wzb31wXKyxwea913cZnl1VI811r8N0WVXfwDauv2GMD1tSw8BkR36ZtH\nOcRP94U5OP4ZNmhEr4IteZeg5W4fGCxqKnHGpvOj+X/3qNDLzi1/4H6VTW7wIAs8\nYFhHf/llET/LAuRy2peqvJqR/XErpwc3PqqnZsAfA4am3B3UR3ZsoUxDTRkWvd93\nMH663n7nAgMBAAECggEAL/p7pS3nXfLdX84kwpoH9BOXbnteOyXRm9NAMxg9yhj7\nuLu3nW2fiTEJP7JRgvgZlH8eqsrG12ZFyFhcz7AWUIFd70cMZcelMatO36PZhF4U\nSY/RFzFtjoYTMsRscZiNTS8IxxZ7Y5COJhf1/7E3l4iuMfgMkeKmP1muhRlsy56R\n5agz0PtC1TPwEH2WhpJyn4MDfhshuy3pd6OLh5+z/VaPQs0AHVQ+tuFw4NCPnDmn\nCNJm07NeM6hITudd8m9MzFSCrw29tPsYTMV35bmJURaj5Fj1l59bVQbbJb5Dk2kZ\nBJMj+G6vwgy4z3E7o2PTQxehFWu2hjnE+od4Poi9DQKBgQD265RfUm/eQvT5p+XJ\nSjeXLu2TXL5uKLJ/+NuWR2YE3vsYuafapu4a2lu5toUN/h82zVVJkyiApFMo0Z5X\nO93p5NHWwUW76KEFsjCIYoaLcjFu0neZKpv8j5DASCDaoWxppTJPTEREQsJuz094\n2K3t0mVM5aCfP2+vCWYpdBBNnQKBgQD1gj+XJagPHrAz1FwUcykPwA7myYCUSBHM\nZSB5JG6dAqewbOcYThifTLaD5776+/EKTzcpERYXojQQKJ73f5W+S+tiRHB8o10G\n32VizvpapdNQZcYWYNYViCdKLv9o8OqvWjFwj9JsRL0elimxJUq6AdpdI6+A/DW/\nrYdXirUZUwKBgQDLr73vfCOIJ5fKMnRdvflpn26ft0vnt264HmOV7kP8FKzx0oTi\n2/1i7WnpIuVTi6PYIz4NuXUZ2XQ4IeMKdvoyrW1kSH7r6ZSbDEj42L3AXmzkzH2Y\nPgv7Jbr0wwtHDw5Nf9amj3VpEeEuY5ldSPEBVCP4cRw1AbFxpME/xNyGCQKBgQCZ\n7m92kmq8CC7MYHLXc5kkQfRV6bOPxVw7fpCMxDYChf6kFLQUviqb/tpU/AH3le38\n28wnGIp0iQQBuaZqYfl+llVgiK7Kxxb1zy3fdQzttxk2SImZ0F+KopKX5b3Ii31q\nMq/a9qIltjeprNc5NbuTwsOqMEzDH9+HbgL09Yg09wKBgQDuaHrG8dPFpiVJ02V6\nYsgy3Y0D50yL1F20wUc+shsyvG5tNnaMYeatC2mSFw9iT0vz7/ZbFcpmDX3fQrUQ\nhzf1shAZRNnRaZX9uiIDgAR9AMBFId1a/u5LwGSL5nnqc82PcA1E9bkeeO50B12B\nZDOB0rvivAuD7B3TRl5cY241Vw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "bookingprojectgoogleclouduploa@bookingproject-422317.iam.gserviceaccount.com",
+  "client_id": "103387223072678476658",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bookingprojectgoogleclouduploa%40bookingproject-422317.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

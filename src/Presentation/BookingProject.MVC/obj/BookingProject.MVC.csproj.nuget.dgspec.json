@@ -61,6 +61,10 @@
               "target": "Package",
               "version": "[11.3.0, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.2.0, )"
@@ -76,6 +80,10 @@
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
               "version": "[7.0.3, )"
+            },
+            "SmtpServer": {
+              "target": "Package",
+              "version": "[10.0.1, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

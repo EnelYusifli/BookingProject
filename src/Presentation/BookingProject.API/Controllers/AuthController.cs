@@ -1,5 +1,6 @@
 ﻿using BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands;
 using BookingProject.Application.Features.Commands.AuthCommands.AuthRegisterCommands;
+using BookingProject.Application.Features.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,11 @@ public class AuthController : ControllerBase
     }
     [HttpPost]
     public async Task<IActionResult> Login(AuthLoginCommandRequest request)
+    {
+        return Ok(await _mediator.Send(request));
+    }
+    [HttpPost]
+    public async Task<IActionResult> ForgetPassword(ForgotPasswordQueryRequest request)
     {
         return Ok(await _mediator.Send(request));
     }

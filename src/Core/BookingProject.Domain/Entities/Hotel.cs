@@ -15,6 +15,7 @@ public class Hotel : BaseEntity, IBaseAuditable
     public int? ViewerCount { get; set; } = 0;
     public decimal? StarPoint { get; set; } = 0;
     public List<HotelAdvantage> HotelAdvantages { get; set; }
+    public List<HotelImage> HotelImages { get; set; }
     public List<HotelStaffLanguage> HotelStaffLanguages { get; set; }
     public List<HotelService> HotelServices { get; set; } 
     public List<HotelPaymentMethod> HotelPaymentMethods { get; set; } 

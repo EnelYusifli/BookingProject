@@ -34,6 +34,9 @@ public class AppDbContext : IdentityDbContext
     public DbSet<StaffLanguage> StaffLanguages { get; set; }    
     public DbSet<HotelPaymentMethod> HotelPaymentMethods { get; set; }    
     public DbSet<HotelActivity> HotelActivities { get; set; }    
+    public DbSet<HotelImage> HotelImages { get; set; }    
+    public DbSet<RoomImage> RoomImages { get; set; }    
+    public DbSet<ReviewImage> ReviewImages { get; set; }    
     public DbSet<HotelService> HotelServices { get; set; }    
     public DbSet<HotelAdvantage> HotelAdvantages { get; set; }
     public DbSet<BookingProject.Domain.Entities.Type> Types { get; set; }

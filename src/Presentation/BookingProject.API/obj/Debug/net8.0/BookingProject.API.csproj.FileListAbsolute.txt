@@ -151,3 +151,9 @@ C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bi
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\bookingproject-422317-c3b5dbef4ab0.json
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\BookingProject.API.staticwebassets.runtime.json
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\MailKit.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\MimeKit.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\SmtpServer.dll

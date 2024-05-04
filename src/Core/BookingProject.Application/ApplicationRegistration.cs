@@ -1,5 +1,7 @@
 ﻿using BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands;
 using BookingProject.Application.Mappings;
+using BookingProject.Application.Services.Implementations;
+using BookingProject.Application.Services.Interfaces;
 using BookingProject.Application.Validations;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -10,6 +12,8 @@ public static class ApplicationRegistration
 {
     public static void AddApplicationServices(this IServiceCollection services)
     {
+        services.AddScoped<IEmailService, EmailService>();
+
         services.AddMediatR(opt =>
         {
             opt.RegisterServicesFromAssemblies(typeof(AuthLoginCommandRequest).Assembly);

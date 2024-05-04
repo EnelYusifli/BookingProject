@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "oltZ8j2wwtTTmYtyop7d7Gcmev811FNlgi5EzyWvG1Y=",
+  "Hash": "tWgGOBMZgx/OY5fMuTUt2Jkg1JCJ6tRaAi0uLKIuxRM=",
   "Source": "BookingProject.API",
   "BasePath": "_content/BookingProject.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "BookingProject.API\\wwwroot",
+      "Source": "BookingProject.API",
+      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "BasePath": "_content/BookingProject.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
+      "SourceId": "BookingProject.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "BasePath": "_content/BookingProject.API",
+      "RelativePath": "email/forgotpassword.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\email\\forgotpassword.html"
+    }
+  ]
 }
