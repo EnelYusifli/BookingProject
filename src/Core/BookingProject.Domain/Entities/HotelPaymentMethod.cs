@@ -9,7 +9,7 @@ public class HotelPaymentMethod : BaseEntity, IBaseAuditable
     public Hotel Hotel { get; set; }
     public PaymentMethod PaymentMethod { get; set; }
 
-    public DateTime CreatedDate { get; } = DateTime.Now;
+       public DateTime CreatedDate { get; set;} = DateTime.Now;
 
     public DateTime ModifiedDate { get; set; } = DateTime.Now;
 }

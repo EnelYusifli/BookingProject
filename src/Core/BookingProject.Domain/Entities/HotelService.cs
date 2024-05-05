@@ -9,7 +9,7 @@ public class HotelService : BaseEntity, IBaseAuditable
     public Hotel Hotel { get; set; }
     public Service Service { get; set; }
 
-    public DateTime CreatedDate { get; } = DateTime.Now;
+       public DateTime CreatedDate { get; set;} = DateTime.Now;
 
     public DateTime ModifiedDate { get; set; } = DateTime.Now;
 }

@@ -1,5 +1,7 @@
-﻿using BookingProject.Domain.Entities;
+﻿using BookingProject.Application.Repositories;
+using BookingProject.Domain.Entities;
 using BookingProject.Persistence.Contexts;
+using BookingProject.Persistence.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +16,7 @@ public static class PersistenceRegistration
 {
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        //services.AddScoped<IBlogRepository, BlogRepository>()
+        services.AddScoped<IActivityRepository, ActivityRepository>();
         services.AddIdentity<AppUser, IdentityRole>(opt =>
         {
              opt.Password.RequireNonAlphanumeric = true;

@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "BookingProject.API.Controllers.AuthController",
+    "ContainingType": "BookingProject.API.Controllers.AccController",
     "Method": "ForgetPassword",
-    "RelativePath": "api/Auth/ForgetPassword",
+    "RelativePath": "api/Acc/ForgetPassword",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -16,9 +16,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BookingProject.API.Controllers.AuthController",
+    "ContainingType": "BookingProject.API.Controllers.AccController",
     "Method": "Login",
-    "RelativePath": "api/Auth/Login",
+    "RelativePath": "api/Acc/Login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -32,9 +32,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BookingProject.API.Controllers.AuthController",
+    "ContainingType": "BookingProject.API.Controllers.AccController",
     "Method": "Register",
-    "RelativePath": "api/Auth/Register",
+    "RelativePath": "api/Acc/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -42,6 +42,22 @@
       {
         "Name": "request",
         "Type": "BookingProject.Application.Features.Commands.AuthCommands.AuthRegisterCommands.AuthRegisterCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.AuthController",
+    "Method": "CreateActivity",
+    "RelativePath": "api/Auth/CreateActivity",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.ActivityCommands.ActivityCreateCommands.ActivityCreateCommandRequest",
         "IsRequired": true
       }
     ],

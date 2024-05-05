@@ -4,7 +4,7 @@ namespace BookingProject.Domain.Entities;
 
 public class Room : BaseEntity, IBaseAuditable
 {
-    public DateTime CreatedDate { get;  }= DateTime.Now;
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
 
     public DateTime ModifiedDate { get ; set; }= DateTime.Now;
     public string RoomName { get; set; }

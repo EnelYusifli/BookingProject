@@ -46,10 +46,28 @@ public class AuthRegisterCommandHandler : IRequestHandler<AuthRegisterCommandReq
                 throw new BadRequestException($"Password must be at least {passwordRequirements.RequiredLength} characters long");
             }
 
-            if (passwordRequirements.RequireNonAlphanumeric && !request.Password.Any(char.IsSymbol))
+            //if (passwordRequirements.RequireNonAlphanumeric && !request.Password.Any(char.IsSymbol))
+            //{
+            //    throw new BadRequestException("Password must contain at least one non-alphanumeric character");
+            //}
+            if (passwordRequirements.RequireNonAlphanumeric)
             {
-                throw new BadRequestException("Password must contain at least one non-alphanumeric character");
+                bool hasNonAlphanumeric = false;
+                foreach (char c in request.Password)
+                {
+                    if (!char.IsLetterOrDigit(c))
+                    {
+                        hasNonAlphanumeric = true;
+                        break;
+                    }
+                }
+
+                if (!hasNonAlphanumeric)
+                {
+                    throw new BadRequestException("Password must contain at least one non-alphanumeric character");
+                }
             }
+
 
             if (passwordRequirements.RequireDigit && !request.Password.Any(char.IsDigit))
             {
