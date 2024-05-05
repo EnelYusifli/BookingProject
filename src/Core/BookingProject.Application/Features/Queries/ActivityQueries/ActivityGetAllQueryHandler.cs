@@ -18,9 +18,9 @@ public class ActivityGetAllQueryHandler : IRequestHandler<ActivityGetAllQueryReq
     }
     public async Task<ICollection<ActivityGetAllQueryResponse>> Handle(ActivityGetAllQueryRequest request, CancellationToken cancellationToken)
     {
-        ICollection<Activity> blogs = await _repository.GetAllAsync();
-        if (blogs is null) throw new Exception("Blog not found");
-        ICollection<ActivityGetAllQueryResponse> dtos = _mapper.Map<ICollection<ActivityGetAllQueryResponse>>(blogs);
+        ICollection<Activity> act = await _repository.GetAllAsync();
+        if (act is null) throw new Exception("Activity not found");
+        ICollection<ActivityGetAllQueryResponse> dtos = _mapper.Map<ICollection<ActivityGetAllQueryResponse>>(act);
         return dtos;
     }
 }

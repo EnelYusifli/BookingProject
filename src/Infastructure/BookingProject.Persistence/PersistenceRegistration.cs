@@ -17,6 +17,11 @@ public static class PersistenceRegistration
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IActivityRepository, ActivityRepository>();
+        services.AddScoped<ITypeRepository, TypeRepository>();
+        services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+        services.AddScoped<IStaffLanguageRepository, StaffLanguageRepository>();
+        services.AddScoped<IAdvantageRepository, AdvantageRepository>();
+        services.AddScoped<IServiceRepository, ServiceRepository>();
         services.AddIdentity<AppUser, IdentityRole>(opt =>
         {
              opt.Password.RequireNonAlphanumeric = true;

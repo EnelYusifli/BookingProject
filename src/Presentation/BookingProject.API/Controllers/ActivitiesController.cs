@@ -12,10 +12,10 @@ namespace BookingProject.API.Controllers;
 [Route("api/[controller]/[action]")]
 [ApiController]
 //[Authorize(Roles ="Admin")]
-public class ActivityController : ControllerBase
+public class ActivitiesController : ControllerBase
 {
     private readonly IMediator _mediator;
-    public ActivityController(IMediator mediator)
+    public ActivitiesController(IMediator mediator)
     {
         _mediator = mediator;
     }
@@ -30,19 +30,28 @@ public class ActivityController : ControllerBase
     {
         return Ok(await _mediator.Send(request));
     }
-    [HttpPut]
-    public async Task<IActionResult> Update(ActivityUpdateCommandRequest request)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(ActivityUpdateCommandRequest request,int id)
     {
+        request.Id=id;
         return Ok(await _mediator.Send(request));
     }
-    [HttpDelete]
-    public async Task<IActionResult> Delete(ActivityDeleteCommandRequest request)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
     {
+        ActivityDeleteCommandRequest request = new()
+        {
+            Id = id
+        };
         return Ok(await _mediator.Send(request));
     }
-    [HttpPut]
-    public async Task<IActionResult> SoftDelete(ActivitySoftDeleteCommandRequest request)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> SoftDelete(int id)
     {
+        ActivitySoftDeleteCommandRequest request = new()
+        {
+            Id = id
+        };
         return Ok(await _mediator.Send(request));
     }
 }
