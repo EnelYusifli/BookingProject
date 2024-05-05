@@ -36,7 +36,7 @@ public class GenericRepository<T> : IGenericRepository<T>
         return expression is not null ? await query.Where(expression).ToListAsync() : await query.ToListAsync();
     }
 
-    public async Task<T> GetById(int id)
+    public async Task<T> GetByIdAsync(int id)
    => await Table.FindAsync(id);
     public async Task CommitAsync() => await _context.SaveChangesAsync();
 }

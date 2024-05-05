@@ -3,6 +3,7 @@ using BookingProject.Application.CustomExceptions;
 using BookingProject.Application.Repositories;
 using BookingProject.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BookingProject.Application.Features.Commands.ActivityCommands.ActivityCreateCommands;
@@ -27,6 +28,8 @@ public class ActivityCreateCommandHandler : IRequestHandler<ActivityCreateComman
         {
             throw new BadRequestException("Name cannot be null");
         }
+        if (await _repository.Table.AnyAsync(x => x.ActivityName.ToLower() == request.ActivityName.ToLower()))
+            throw new BadRequestException("Activity Name is already exist");
         Activity activity=_mapper.Map<Activity>(request);
         await _repository.CreateAsync(activity);
         await _repository.CommitAsync();

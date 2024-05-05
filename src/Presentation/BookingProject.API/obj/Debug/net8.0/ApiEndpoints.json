@@ -48,9 +48,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BookingProject.API.Controllers.AuthController",
-    "Method": "CreateActivity",
-    "RelativePath": "api/Auth/CreateActivity",
+    "ContainingType": "BookingProject.API.Controllers.ActivityController",
+    "Method": "Create",
+    "RelativePath": "api/Activity/Create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -58,6 +58,64 @@
       {
         "Name": "request",
         "Type": "BookingProject.Application.Features.Commands.ActivityCommands.ActivityCreateCommands.ActivityCreateCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ActivityController",
+    "Method": "Delete",
+    "RelativePath": "api/Activity/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.ActivityCommands.ActivityDeleteCommands.ActivityDeleteCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ActivityController",
+    "Method": "GetAll",
+    "RelativePath": "api/Activity/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ActivityController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Activity/SoftDelete",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.ActivityCommands.ActivitySoftDeleteCommands.ActivitySoftDeleteCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ActivityController",
+    "Method": "Update",
+    "RelativePath": "api/Activity/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.ActivityCommands.ActivityUpdateCommands.ActivityUpdateCommandRequest",
         "IsRequired": true
       }
     ],
