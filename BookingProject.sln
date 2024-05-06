@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infastructure", "Infastruct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{1AD92A96-C3E7-4CBD-B81E-9C7ECD87C009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingProject.Domain", "src\Core\BookingProject.Domain\BookingProject.Domain.csproj", "{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingProject.Domain", "src\Core\BookingProject.Domain\BookingProject.Domain.csproj", "{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingProject.Application", "src\Core\BookingProject.Application\BookingProject.Application.csproj", "{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingProject.Application", "src\Core\BookingProject.Application\BookingProject.Application.csproj", "{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingProject.Infastructure", "src\Infastructure\BookingProject.Infastructure\BookingProject.Infastructure.csproj", "{93FD7B37-AE53-427C-A4A8-D3E62AAB9BD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingProject.Infastructure", "src\Infastructure\BookingProject.Infastructure\BookingProject.Infastructure.csproj", "{93FD7B37-AE53-427C-A4A8-D3E62AAB9BD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingProject.Persistence", "src\Infastructure\BookingProject.Persistence\BookingProject.Persistence.csproj", "{54189845-717E-44B0-98C0-8C0A04969C3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingProject.Persistence", "src\Infastructure\BookingProject.Persistence\BookingProject.Persistence.csproj", "{54189845-717E-44B0-98C0-8C0A04969C3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingProject.API", "src\Presentation\BookingProject.API\BookingProject.API.csproj", "{4DF22BC7-EB53-4799-A78F-17B051C90CE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingProject.API", "src\Presentation\BookingProject.API\BookingProject.API.csproj", "{4DF22BC7-EB53-4799-A78F-17B051C90CE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingProject.MVC", "src\Presentation\BookingProject.MVC\BookingProject.MVC.csproj", "{1FB2484A-68DF-4070-81F0-B4B792AD6980}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingProject.MVC", "src\Presentation\BookingProject.MVC\BookingProject.MVC.csproj", "{1FB2484A-68DF-4070-81F0-B4B792AD6980}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

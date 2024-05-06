@@ -8,5 +8,6 @@ public class AdvantageCreateCommandRequest:IRequest<AdvantageCreateCommandRespon
 {
     [DataType(DataType.Text)]
     public string AdvantageName { get; set; }
+    public required int HotelId { get; set; }
     public bool IsDeactive { get; set; } = false;
 }

@@ -2,6 +2,8 @@
 using BookingProject.Domain.Entities;
 using BookingProject.Persistence.Contexts;
 using BookingProject.Persistence.Repositories;
+using Google.Apis.Auth.OAuth2;
+using Google.Cloud.Storage.V1;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,11 +19,17 @@ public static class PersistenceRegistration
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IActivityRepository, ActivityRepository>();
+        services.AddScoped<IHotelImageRepository, HotelImageRepository>();
+        services.AddScoped<IHotelActivityRepository, HotelActivityRepository>();
         services.AddScoped<ITypeRepository, TypeRepository>();
+        services.AddScoped<IHotelRepository, HotelRepository>();
         services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+        services.AddScoped<IHotelPaymentMethodRepository, HotelPaymentMethodRepository>();
         services.AddScoped<IStaffLanguageRepository, StaffLanguageRepository>();
+        services.AddScoped<IHotelStaffLanguageRepository, HotelStaffLanguageRepository>();
         services.AddScoped<IAdvantageRepository, AdvantageRepository>();
         services.AddScoped<IServiceRepository, ServiceRepository>();
+        services.AddScoped<IHotelServiceRepository, HotelServiceRepository>();
         services.AddIdentity<AppUser, IdentityRole>(opt =>
         {
              opt.Password.RequireNonAlphanumeric = true;
@@ -55,6 +63,6 @@ public static class PersistenceRegistration
                 ClockSkew = TimeSpan.Zero,
             };
         });
-
+       
     }
 }

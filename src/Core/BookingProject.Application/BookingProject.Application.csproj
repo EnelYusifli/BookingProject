@@ -7,19 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\HotelCommands\" />
     <Folder Include="Features\Commands\ReviewCommands\" />
     <Folder Include="Features\Commands\RoomCommands\" />
     <Folder Include="Features\Queries\HotelQueries\" />
     <Folder Include="Features\Queries\ReviewQueries\" />
     <Folder Include="Features\Queries\RoomQueries\" />
-    <Folder Include="Helpers\Extensions\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation" Version="11.9.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="4.10.0" />
     <PackageReference Include="MailKit" Version="4.5.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />

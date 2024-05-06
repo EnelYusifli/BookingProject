@@ -12,6 +12,7 @@ namespace BookingProject.Application.Features.Commands.AdvantageCommands.Advanta
 public class AdvantageCreateCommandHandler : IRequestHandler<AdvantageCreateCommandRequest, AdvantageCreateCommandResponse>
 {
     private readonly IAdvantageRepository _repository;
+    private readonly IHotelRepository _hotelRepository;
     private readonly IMapper _mapper;
 
     public AdvantageCreateCommandHandler(IAdvantageRepository repository,IMapper mapper)
@@ -29,7 +30,9 @@ public class AdvantageCreateCommandHandler : IRequestHandler<AdvantageCreateComm
         {
             throw new BadRequestException("Name cannot be null");
         }
-        if (await _repository.Table.AnyAsync(x => x.AdvantageName.ToLower() == request.AdvantageName.ToLower()))
+        if (!await _hotelRepository.Table.AnyAsync(x => x.Id == request.HotelId))
+            throw new NotFoundException("Hotel not found");
+        if (await _repository.Table.AnyAsync(x => x.AdvantageName.ToLower() == request.AdvantageName.ToLower() && x.HotelId==request.HotelId))
             throw new BadRequestException("Advantage Name is already exist");
         HotelAdvantage advantage=_mapper.Map<HotelAdvantage>(request);
         await _repository.CreateAsync(advantage);

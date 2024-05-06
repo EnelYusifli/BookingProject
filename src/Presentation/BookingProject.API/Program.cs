@@ -3,6 +3,8 @@ using BookingProject.Application;
 using BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands;
 using BookingProject.Domain.Entities;
 using BookingProject.Persistence;
+using Google.Apis.Auth.OAuth2;
+using Google.Cloud.Storage.V1;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,11 @@ builder.Services.AddControllers();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplicationServices();
+builder.Services.AddSingleton(sp => {
+    string credentialsPath = builder.Configuration["GoogleCloud:ApiKey"];
+    var credential = GoogleCredential.FromFile(credentialsPath);
+    return StorageClient.Create(credential);
+});
 builder.Services.AddSwaggerGen();
 // Configure the HTTP request pipeline.
 var app = builder.Build();

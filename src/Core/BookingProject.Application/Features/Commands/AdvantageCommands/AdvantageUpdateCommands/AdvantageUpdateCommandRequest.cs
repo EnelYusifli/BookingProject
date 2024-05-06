@@ -6,5 +6,6 @@ public class AdvantageUpdateCommandRequest:IRequest<AdvantageUpdateCommandRespon
 {
     public int Id { get; set; }
     public string AdvantageName { get; set; }
+    public int HotelId { get; set; }
     public bool IsDeactive { get; set; }
 }

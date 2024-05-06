@@ -61,6 +61,14 @@
               "target": "Package",
               "version": "[11.3.0, )"
             },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.68.0, )"
+            },
+            "Google.Cloud.Storage.V1": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.5.0, )"
