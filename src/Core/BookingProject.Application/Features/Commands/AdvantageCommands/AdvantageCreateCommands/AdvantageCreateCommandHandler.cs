@@ -30,7 +30,10 @@ public class AdvantageCreateCommandHandler : IRequestHandler<AdvantageCreateComm
         {
             throw new BadRequestException("Name cannot be null");
         }
-        if (!await _hotelRepository.Table.AnyAsync(x => x.Id == request.HotelId))
+        Hotel hotel = await _hotelRepository.Table.FirstOrDefaultAsync(x => x.Id == request.HotelId);
+        if (hotel is null)
+            throw new NotFoundException("Hotel not found");
+        if (hotel.IsDeactive == true)
             throw new NotFoundException("Hotel not found");
         if (await _repository.Table.AnyAsync(x => x.AdvantageName.ToLower() == request.AdvantageName.ToLower() && x.HotelId==request.HotelId))
             throw new BadRequestException("Advantage Name is already exist");

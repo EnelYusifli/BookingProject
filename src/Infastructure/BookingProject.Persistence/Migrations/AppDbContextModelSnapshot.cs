@@ -138,6 +138,10 @@ namespace BookingProject.Persistence.Migrations
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("ViewerCount")
                         .HasColumnType("int");
 

@@ -7,16 +7,17 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
 public class HotelCreateCommandRequest:IRequest<HotelCreateCommandResponse>
 {
     public int TypeId { get; set; }
+    public string UserId { get; set; }
     public string Name { get; set; }
     public string Desc { get; set; }
     public bool IsDeactive { get; set; }
     public string Address { get; set; }
     public string Country { get; set; }
     public string City { get; set; }
-    public List<string> HotelAdvantageNames { get; set; }
+    public List<string>? HotelAdvantageNames { get; set; }
     public List<IFormFile> ImageFiles { get; set; }
-    public List<int> StaffLanguageIds { get; set; }
-    public List<int> ServiceIds { get; set; }
-    public List<int> PaymentMethodIds { get; set; }
-    public List<int> ActivityIds { get; set; }
+    public List<int>? StaffLanguageIds { get; set; }
+    public List<int>? ServiceIds { get; set; }
+    public List<int>? PaymentMethodIds { get; set; }
+    public List<int>? ActivityIds { get; set; }
 }

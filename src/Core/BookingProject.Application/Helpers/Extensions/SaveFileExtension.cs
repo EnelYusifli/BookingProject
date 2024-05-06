@@ -22,7 +22,8 @@ namespace BookingProject.Application.Helpers.Extensions
         {
             if (image == null || image.Length == 0)
                 throw new BadRequestException("File is empty.");
-
+            if (image.ContentType != "image/jpeg" && image.ContentType != "image/png")
+                throw new BadRequestException("Image content should be jpg or png");
             if (image.Length > 2097152)
                 throw new BadRequestException("File size exceeds the maximum allowed size.");
 
@@ -38,7 +39,7 @@ namespace BookingProject.Application.Helpers.Extensions
 
             var credential = GoogleCredential.FromFile(apiKey);
             var client = StorageClient.Create(credential);
-
+            string filename = image.FileName.Substring(image.FileName.Length - 6);
             using (var memoryStream = new MemoryStream())
             {
                 await image.CopyToAsync(memoryStream);
@@ -48,8 +49,26 @@ namespace BookingProject.Application.Helpers.Extensions
                 var bucketName = "bookingproject";
 
                 await client.UploadObjectAsync(bucketName, objectName, null, memoryStream);
-                return $"https://storage.googleapis.com/{bucketName}/{folderName}/{objectName}";
+                return $"https://storage.googleapis.com/{bucketName}/{objectName}";
             }
         }
+        public static async Task DeleteFileAsync(string imageUrl)
+        {
+            if (string.IsNullOrEmpty(imageUrl))
+                throw new ArgumentException("Url cannot be null or empty.", nameof(imageUrl));
+            if (_configuration == null)
+                throw new InvalidOperationException("Configuration has not been initialized. Call Initialize before using SaveFile.");
+            var bucketName = "bookingproject";
+            string baseUrl = $"https://storage.googleapis.com/{bucketName}/";
+            string apiKey = _configuration["GoogleCloud:ApiKey"];
+            if (string.IsNullOrEmpty(apiKey))
+                throw new NotFoundException("Google Cloud API key is missing or invalid.");
+
+            var credential = GoogleCredential.FromFile(apiKey);
+            var client = StorageClient.Create(credential);
+            imageUrl = imageUrl.Remove(0, baseUrl.Length);
+            await client.DeleteObjectAsync(bucketName, imageUrl);
+        }
+
     }
 }

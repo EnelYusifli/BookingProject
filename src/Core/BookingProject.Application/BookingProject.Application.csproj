@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Features\Commands\ReviewCommands\" />
     <Folder Include="Features\Commands\RoomCommands\" />
-    <Folder Include="Features\Queries\HotelQueries\" />
     <Folder Include="Features\Queries\ReviewQueries\" />
     <Folder Include="Features\Queries\RoomQueries\" />
   </ItemGroup>

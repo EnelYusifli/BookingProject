@@ -7,6 +7,7 @@ public class Hotel : BaseEntity, IBaseAuditable
     public int TypeId { get; set; }
     public DateTime CreatedDate { get; set;} = DateTime.Now;
     public DateTime ModifiedDate { get; set; }=DateTime.Now;
+    public string UserId { get; set; }
     public string Name { get; set; }
     public string Desc { get; set; }
     public string Address { get; set; }
