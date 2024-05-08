@@ -19,6 +19,10 @@ public static class PersistenceRegistration
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IActivityRepository, ActivityRepository>();
+        services.AddScoped<IReviewRepository, ReviewRepository>();
+        services.AddScoped<IReviewImageRepository, ReviewImageRepository>();
+        services.AddScoped<IRoomImageRepository, RoomImageRepository>();
+        services.AddScoped<IRoomRepository, RoomRepository>();
         services.AddScoped<IHotelImageRepository, HotelImageRepository>();
         services.AddScoped<IHotelActivityRepository, HotelActivityRepository>();
         services.AddScoped<ITypeRepository, TypeRepository>();

@@ -65,20 +65,20 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecurityKey"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var tokenDescriptor = new SecurityTokenDescriptor
+			var date = DateTime.UtcNow;
+			var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddHours(Convert.ToDouble(_configuration["JWT:ExpirationHours"])),
                 SigningCredentials = credentials,
                 Issuer = _configuration["JWT:Issuer"],
-                Audience = _configuration["JWT:Audience"]
-            };
-
-            var tokenHandler = new JwtSecurityTokenHandler();
+                Audience = _configuration["JWT:Audience"],
+				NotBefore = date
+			};
+			tokenDescriptor.Expires = date.AddMinutes(10);
+			var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            return tokenHandler.WriteToken(token);
+			return tokenHandler.WriteToken(token);
         }
     }
 }

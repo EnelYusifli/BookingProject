@@ -28,6 +28,10 @@ public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteComm
             .Include(x => x.HotelPaymentMethods)
             .Include(x => x.HotelServices)
             .Include(x => x.HotelStaffLanguages)
+            .Include(x=>x.Rooms)
+            .ThenInclude(x=>x.RoomImages)
+            .Include(x=>x.CustomerReviews)
+            .ThenInclude(x=>x.ReviewImages)
             .FirstOrDefaultAsync(x=>x.Id==request.Id);
         if (hotel is null) throw new NotFoundException("Hotel not found");
         if (hotel.IsDeactive == true)
@@ -39,7 +43,27 @@ public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteComm
                 if (item.StaffLanguage.IsDeactive == false)
                     item.IsDeactive = false;
             }
-            foreach (var item in hotel.HotelImages)
+            foreach (var item in hotel.Rooms)
+            {
+                    item.IsDeactive = false;
+                foreach (var img in item.RoomImages)
+                {
+                    img.IsDeactive = false;
+                }
+            }
+			foreach (var item in hotel.CustomerReviews)
+			{
+				item.IsDeactive = false;
+                if(item.ReviewImages is not null)
+                {
+				foreach (var img in item.ReviewImages)
+				{
+					img.IsDeactive = false;
+				}
+
+                }
+			}
+			foreach (var item in hotel.HotelImages)
             {
                     item.IsDeactive = false;
             }
@@ -72,7 +96,26 @@ public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteComm
             {
                     item.IsDeactive = true;
             }
-            foreach (var item in hotel.HotelImages)
+            foreach (var item in hotel.Rooms)
+            {
+                item.IsDeactive = true;
+                foreach (var img in item.RoomImages)
+                {
+                    img.IsDeactive = true;
+                }
+            }
+			foreach (var item in hotel.CustomerReviews)
+			{
+				item.IsDeactive = true;
+                if (item.ReviewImages is not null)
+                {
+                    foreach (var img in item.ReviewImages)
+                    {
+                        img.IsDeactive = true;
+                    }
+                }
+			}
+			foreach (var item in hotel.HotelImages)
             {
                     item.IsDeactive = true;
             }

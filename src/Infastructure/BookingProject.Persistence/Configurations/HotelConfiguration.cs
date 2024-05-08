@@ -9,7 +9,7 @@ public class HotelConfiguration : IEntityTypeConfiguration<Hotel>
     public void Configure(EntityTypeBuilder<Hotel> builder)
     {
         builder.Property(x=>x.Name).IsRequired().HasMaxLength(50);
-        builder.Property(x=>x.UserId).IsRequired();
+        builder.Property(x=>x.AppUserId).IsRequired();
         builder.Property(x=>x.TypeId).IsRequired();
         builder.Property(x=>x.Desc).IsRequired().HasMaxLength(1000);
         builder.Property(x=>x.Address).IsRequired().HasMaxLength(500);

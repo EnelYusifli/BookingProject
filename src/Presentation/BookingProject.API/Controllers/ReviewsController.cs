@@ -1,0 +1,41 @@
+﻿using BookingProject.Application.Features.Commands.ReviewCommands.ReviewCreateCommands;
+using BookingProject.Application.Features.Commands.ReviewCommands.ReviewDeleteCommands;
+using BookingProject.Application.Features.Queries.ReviewQueries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace BookingProject.API.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ReviewsController : ControllerBase
+{
+	private readonly IMediator _mediator;
+	public ReviewsController(IMediator mediator)
+	{
+		_mediator = mediator;
+	}
+	[HttpGet("{hotelId}")]
+	public async Task<IActionResult> GetAll(int hotelId)
+	{
+		ReviewGetAllQueryRequest request = new()
+		{
+			HotelId = hotelId
+		};
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPost]
+	public async Task<IActionResult> Create(ReviewCreateCommandRequest request)
+	{
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpDelete("{id}")]
+	public async Task<IActionResult> Delete(int id)
+	{
+		ReviewDeleteCommandRequest request = new()
+		{
+			Id = id
+		};
+		return Ok(await _mediator.Send(request));
+	}
+}

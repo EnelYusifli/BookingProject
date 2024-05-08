@@ -103,6 +103,10 @@ namespace BookingProject.Persistence.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -121,6 +125,9 @@ namespace BookingProject.Persistence.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeactive")
                         .HasColumnType("bit");
 
@@ -138,14 +145,12 @@ namespace BookingProject.Persistence.Migrations
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("ViewerCount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("TypeId");
 
@@ -858,11 +863,19 @@ namespace BookingProject.Persistence.Migrations
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Hotel", b =>
                 {
+                    b.HasOne("BookingProject.Domain.Entities.AppUser", "AppUser")
+                        .WithMany("Hotels")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("BookingProject.Domain.Entities.Type", "Type")
                         .WithMany("Hotels")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Type");
                 });
@@ -1127,6 +1140,8 @@ namespace BookingProject.Persistence.Migrations
             modelBuilder.Entity("BookingProject.Domain.Entities.AppUser", b =>
                 {
                     b.Navigation("CustomerReviews");
+
+                    b.Navigation("Hotels");
 
                     b.Navigation("UserWishlistHotel");
                 });

@@ -26,7 +26,7 @@ public class AccController : ControllerBase
         return Ok(await _mediator.Send(request));
     }
     [HttpPost]
-    public async Task<IActionResult> ForgetPassword(ForgotPasswordQueryRequest request)
+    public async Task<IActionResult> ForgotPassword(ForgotPasswordQueryRequest request)
     {
         return Ok(await _mediator.Send(request));
     }

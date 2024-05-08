@@ -8,7 +8,7 @@ public class AdvantageUpdateCommandRequestValidator : AbstractValidator<Advantag
 {
     public AdvantageUpdateCommandRequestValidator()
     {
-        RuleFor(x=>x.Id).NotNull().NotEmpty();
+        RuleFor(x=>x.Id).NotNull().NotEmpty().GreaterThanOrEqualTo(1);
         RuleFor(x => x.IsDeactive).NotNull();
         RuleFor(x => x.AdvantageName).NotEmpty().NotNull().MaximumLength(200);
     }

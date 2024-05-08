@@ -23,7 +23,13 @@ public class HotelsController : ControllerBase
         HotelGetAllQueryRequest request = new();
         return Ok(await _mediator.Send(request));
     }
-    [HttpPost]
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetById(int id)
+	{
+		HotelGetByIdQueryRequest request = new() { Id=id };
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPost]
     public async Task<IActionResult> Create(HotelCreateCommandRequest request)
     {
         return Ok(await _mediator.Send(request));

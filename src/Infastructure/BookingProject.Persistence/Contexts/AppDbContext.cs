@@ -11,7 +11,12 @@ public class AppDbContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+		modelBuilder.Entity<Hotel>()
+		.HasOne(h => h.AppUser)
+		.WithMany(u => u.Hotels)
+		.HasForeignKey(h => h.AppUserId)
+		.OnDelete(DeleteBehavior.NoAction);
+		base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppUserConfiguration).Assembly);
         modelBuilder.Entity<Hotel>()
         .Property(h => h.StarPoint)

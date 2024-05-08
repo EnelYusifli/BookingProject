@@ -1,12 +1,52 @@
+using BookingProject.MVC.ViewModels.HomeViewModels;
+using BookingProject.MVC.ViewModels.HotelViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace BookingProject.MVC.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
-    {
-        return View();
-    }
+
+	Uri baseAddress = new Uri("https://localhost:7197/api");
+	private readonly HttpClient _httpClient;
+
+	public HomeController(HttpClient httpClient)
+	{
+		_httpClient = httpClient;
+		_httpClient.BaseAddress = baseAddress;
+	}
+	public async Task<IActionResult> Index()
+	{
+		HomeViewModel vm = new HomeViewModel();
+		if (!ModelState.IsValid) return View();
+
+		var response = await _httpClient.GetAsync(baseAddress + "/hotels/getall");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
+			vm.Hotels = hotels;
+			return View(vm);
+		}
+		return View();
+	}
+	[HttpGet]
+	public async Task<IActionResult> HotelDetail([FromRoute]int id)
+	{
+		HotelDetailViewModel vm = new();
+		if (!ModelState.IsValid) return View();
+
+		var response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(responseData);
+			vm.Hotel = hotel;
+			return View(vm);
+		}
+		return RedirectToAction("Index");
+	}
 }

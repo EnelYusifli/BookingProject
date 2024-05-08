@@ -13,6 +13,7 @@ public static class ApplicationRegistration
     public static void AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IRoomService, RoomService>();
 
         services.AddMediatR(opt =>
         {

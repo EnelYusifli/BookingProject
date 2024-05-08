@@ -8,7 +8,8 @@ public class HotelGetAllQueryResponse
     public string Address { get; set; }
     public string Country { get; set; }
     public string City { get; set; }
-    public string UserId { get; set; }
+    public bool IsDeactive { get; set; }
+    public string AppUserId { get; set; }
     public int ViewerCount { get; set; }
     public decimal StarPoint { get; set; }
     public string TypeName { get; set; }

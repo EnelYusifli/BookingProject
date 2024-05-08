@@ -2,6 +2,7 @@
 using BookingProject.Application.CustomExceptions;
 using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
+using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands
 {
-    public class HotelCreateCommandHandler : IRequestHandler<HotelCreateCommandRequest, HotelCreateCommandResponse>
+	public class HotelCreateCommandHandler : IRequestHandler<HotelCreateCommandRequest, HotelCreateCommandResponse>
     {
         private readonly IHotelRepository _repository;
         private readonly IMapper _mapper;
@@ -27,8 +28,9 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
         private readonly IHotelImageRepository _hotelImageRepository;
         private readonly IConfiguration _configuration;
         private readonly UserManager<AppUser> _userManager;
+		private readonly IRoomService _roomService;
 
-        public HotelCreateCommandHandler(IHotelRepository repository,
+		public HotelCreateCommandHandler(IHotelRepository repository,
             IMapper mapper,
             IAdvantageRepository advantageRepository,
             IStaffLanguageRepository staffLanguageRepository,
@@ -41,7 +43,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             IActivityRepository activityRepository,
             IHotelActivityRepository hotelActivityRepository,
             IConfiguration configuration,
-            UserManager<AppUser> userManager )
+            UserManager<AppUser> userManager,
+            IRoomService roomService)
         {
             _repository = repository;
             _mapper = mapper;
@@ -57,7 +60,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             _hotelActivityRepository = hotelActivityRepository;
             _configuration = configuration;
             _userManager = userManager;
-        }
+			_roomService = roomService;
+		}
 
         public async Task<HotelCreateCommandResponse> Handle(HotelCreateCommandRequest request, CancellationToken cancellationToken)
         {
@@ -69,9 +73,11 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
 
             if (await _repository.Table.AnyAsync(x => x.Name.ToLower() == request.Name.ToLower()))
                 throw new BadRequestException("Hotel Name is already exist");
-            if (await _userManager.FindByIdAsync(request.UserId) is null)
+            if (await _userManager.FindByIdAsync(request.AppUserId) is null)
                 throw new NotFoundException("User not found");
             var hotel = _mapper.Map<Hotel>(request);
+            hotel.IsDeactive = true;
+            hotel.IsApproved = false;
             SaveFileExtension.Initialize(_configuration);
             foreach (var image in request.ImageFiles)
             {
@@ -82,14 +88,14 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
                 {
                     Hotel = hotel,
                     Url = url,
-                    IsDeactive=request.IsDeactive
+                    IsDeactive=true
                 };
                 await _hotelImageRepository.CreateAsync(hotelImg);
             }
 
             foreach (var languageId in request.StaffLanguageIds)
             {
-                var language = await _staffLanguageRepository.GetByIdAsync(languageId);
+                var language = await _staffLanguageRepository.Table.Where(x=>x.IsDeactive==false).FirstOrDefaultAsync(x=>x.Id==languageId);
                 if (language == null)
                     throw new NotFoundException($"Staff Language with id {languageId} not found");
                 if (language.IsDeactive == true) 
@@ -99,14 +105,15 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
                 {
                     Hotel = hotel,
                     StaffLanguage = language,
-                    IsDeactive = request.IsDeactive
+                    IsDeactive=true
                 };
                 await _hotelStaffLanguageRepository.CreateAsync(newHotelLang);
             }
 
             foreach (var serviceId in request.ServiceIds)
             {
-                var service = await _serviceRepository.GetByIdAsync(serviceId);
+                var service = await _serviceRepository.Table.Where(x => x.IsDeactive == false).FirstOrDefaultAsync(x => x.Id == serviceId);
+
                 if (service == null)
                     throw new NotFoundException($"Service with id {serviceId} not found");
                 if (service.IsDeactive == true)
@@ -116,14 +123,15 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
                 {
                     Hotel=hotel,
                     ServiceId = serviceId,
-                    IsDeactive = request.IsDeactive 
+                    IsDeactive=true 
                 };
                 await _hotelServiceRepository.CreateAsync(hotelServ);
             }
             
             foreach (var paymentMethodId in request.PaymentMethodIds)
             {
-                var paymentMethod = await _paymentMethodRepository.GetByIdAsync(paymentMethodId);
+                var paymentMethod = await _paymentMethodRepository.Table.Where(x => x.IsDeactive == false).FirstOrDefaultAsync(x => x.Id == paymentMethodId);
+
                 if (paymentMethod == null)
                     throw new NotFoundException($"Payment Method with id {paymentMethodId} not found");
                 if (paymentMethod.IsDeactive == true)
@@ -132,14 +140,14 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
                 {
                     Hotel = hotel,
                     PaymentMethodId = paymentMethodId,
-                    IsDeactive = request.IsDeactive
+                    IsDeactive=true
                 };
                 await _hotelPaymentMethodRepository.CreateAsync(paymMethod);
             }
 
             foreach (var activityId in request.ActivityIds)
             {
-                var activity = await _activityRepository.GetByIdAsync(activityId);
+                var activity = await _activityRepository.Table.Where(x => x.IsDeactive == false).FirstOrDefaultAsync(x => x.Id == activityId);
                 if (activity == null)
                     throw new NotFoundException($"Activity with id {activityId} not found");
                 if (activity.IsDeactive == true)
@@ -148,7 +156,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
                 {
                     Hotel = hotel,
                     ActivityId = activityId,
-                    IsDeactive = request.IsDeactive 
+                    IsDeactive=true 
                 };
                 await _hotelActivityRepository.CreateAsync(hotelAct);
             }
@@ -165,13 +173,16 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
                 {
                     Hotel=hotel,
                     AdvantageName = advName,
-                    IsDeactive = request.IsDeactive
+                    IsDeactive=true
                 };
 
                await _advantageRepository.CreateAsync(advantage);
             }
-
-            await _repository.CreateAsync(hotel);
+            foreach (var room in request.RoomCreateDtos)
+            {
+            await _roomService.CreateAsync(room, hotel);
+            }
+			await _repository.CreateAsync(hotel);
             await _repository.CommitAsync();
 
             return new HotelCreateCommandResponse();

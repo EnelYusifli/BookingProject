@@ -17,10 +17,13 @@ public class AdvantagesController : ControllerBase
     {
         _mediator = mediator;
     }
-    [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [HttpGet("{hotelId}")]
+    public async Task<IActionResult> GetAll(int hotelId)
     {
-        AdvantageGetAllQueryRequest request = new();
+        AdvantageGetAllQueryRequest request = new()
+        {
+            HotelId=hotelId
+        };
         return Ok(await _mediator.Send(request));
     }
     [HttpPost]
