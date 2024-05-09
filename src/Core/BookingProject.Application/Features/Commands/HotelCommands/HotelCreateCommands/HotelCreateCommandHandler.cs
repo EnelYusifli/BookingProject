@@ -29,6 +29,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
         private readonly IConfiguration _configuration;
         private readonly UserManager<AppUser> _userManager;
 		private readonly IRoomService _roomService;
+		private readonly ITypeRepository _typeRepository;
 
 		public HotelCreateCommandHandler(IHotelRepository repository,
             IMapper mapper,
@@ -44,7 +45,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             IHotelActivityRepository hotelActivityRepository,
             IConfiguration configuration,
             UserManager<AppUser> userManager,
-            IRoomService roomService)
+            IRoomService roomService,
+            ITypeRepository typeRepository)
         {
             _repository = repository;
             _mapper = mapper;
@@ -61,6 +63,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             _configuration = configuration;
             _userManager = userManager;
 			_roomService = roomService;
+			_typeRepository = typeRepository;
 		}
 
         public async Task<HotelCreateCommandResponse> Handle(HotelCreateCommandRequest request, CancellationToken cancellationToken)
@@ -70,7 +73,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
 
             if (request.Name.IsNullOrEmpty())
                 throw new BadRequestException("Name cannot be null");
-
+            if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId))
+                throw new NotFoundException("Type not found");
             if (await _repository.Table.AnyAsync(x => x.Name.ToLower() == request.Name.ToLower()))
                 throw new BadRequestException("Hotel Name is already exist");
             if (await _userManager.FindByIdAsync(request.AppUserId) is null)

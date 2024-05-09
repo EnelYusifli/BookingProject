@@ -31,8 +31,9 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
         private readonly IHotelActivityRepository _hotelActivityRepository;
         private readonly IConfiguration _configuration;
         private readonly IRoomService _roomService;
+		private readonly ITypeRepository _typeRepository;
 
-        public HotelUpdateCommandHandler(IHotelRepository repository,
+		public HotelUpdateCommandHandler(IHotelRepository repository,
             IMapper mapper,
             IHotelImageRepository hotelImageRepository,
             IStaffLanguageRepository staffLanguageRepository,
@@ -44,7 +45,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
             IActivityRepository activityRepository,
             IHotelActivityRepository hotelActivityRepository,
             IConfiguration configuration,
-            IRoomService roomService)
+            IRoomService roomService,
+			ITypeRepository typeRepository)
         {
             _repository = repository;
             _mapper = mapper;
@@ -59,7 +61,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
             _hotelActivityRepository = hotelActivityRepository;
             _configuration = configuration;
             _roomService = roomService;
-        }
+			_typeRepository = typeRepository;
+		}
 
         public async Task<HotelUpdateCommandResponse> Handle(HotelUpdateCommandRequest request, CancellationToken cancellationToken)
         {
@@ -81,7 +84,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 			 .FirstOrDefaultAsync(x => x.Id == request.Id);
 			if (hotel is null)
                 throw new NotFoundException($"Hotel with ID {request.Id} not found");
-
+			if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId))
+				throw new NotFoundException("Type not found");
 			List<int> newLanguageIds = request.StaffLanguageIds?.Except(hotel.HotelStaffLanguages?.Select(hotelLanguage => hotelLanguage.StaffLanguage.Id) ?? Enumerable.Empty<int>()).ToList() ?? new List<int>();
 
 			List<int> deletedLanguageIds = hotel.HotelStaffLanguages?.Select(hotelLanguage => hotelLanguage.StaffLanguage.Id)?.Except(request.StaffLanguageIds ?? Enumerable.Empty<int>())?.ToList() ?? new List<int>();
@@ -133,7 +137,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					ActivityId = activityId,
-					IsDeactive = hotel.IsDeactive
+					IsDeactive = request.IsDeactive
 				};
 				await _hotelActivityRepository.CreateAsync(hotelAct);
 			}
@@ -149,7 +153,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					PaymentMethodId = paymentMethodId,
-					IsDeactive = hotel.IsDeactive
+					IsDeactive = request.IsDeactive
 				};
 				await _hotelPaymentMethodRepository.CreateAsync(paymMethod);
 			}
@@ -166,7 +170,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					ServiceId = serviceId,
-					IsDeactive = hotel.IsDeactive
+					IsDeactive = request.IsDeactive
 				};
 				await _hotelServiceRepository.CreateAsync(hotelServ);
 			}
@@ -190,7 +194,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					StaffLanguage = language,
-					IsDeactive = hotel.IsDeactive
+					IsDeactive = request.IsDeactive
 				};
 				await _hotelStaffLanguageRepository.CreateAsync(newHotelLang);
 			}
@@ -203,7 +207,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					Url = url,
-					IsDeactive = hotel.IsDeactive
+					IsDeactive = request.IsDeactive
 				};
 				await _hotelImageRepository.CreateAsync(hotelImg);
 			}

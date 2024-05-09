@@ -1,9 +1,11 @@
 ﻿using BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelDeleteCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
+using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
 using BookingProject.Application.Features.Commands.RoomCommands.RoomCreateCommands;
 using BookingProject.Application.Features.Commands.RoomCommands.RoomDeleteCommands;
 using BookingProject.Application.Features.Commands.RoomCommands.RoomSoftDeleteCommands;
+using BookingProject.Application.Features.Commands.RoomCommands.RoomUpdateCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
 using BookingProject.Application.Features.Queries.RoomQueries;
 using MediatR;
@@ -34,7 +36,13 @@ public class RoomsController : ControllerBase
     {
         return Ok(await _mediator.Send(request));
     }
-    [HttpDelete("{id}")]
+	[HttpPut("{id}")]
+	public async Task<IActionResult> Update(RoomUpdateCommandRequest request, int id)
+	{
+		request.Id = id;
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         RoomDeleteCommandRequest request = new()

@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelupdatecommands\\hotelupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelupdatecommands\\hotelupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelcreatecommands\\hotelcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelcreatecommands\\hotelcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hoteldeletecommands\\hoteldeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hoteldeletecommands\\hoteldeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\mappings\\hotelmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\mappings\\hotelmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.api\\controllers\\hotelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|solutionrelative:src\\presentation\\bookingproject.api\\controllers\\hotelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelupdatecommands\\hotelupdatecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelupdatecommands\\hotelupdatecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -34,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,84 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HotelsController.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\HotelsController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\Controllers\\HotelsController.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\HotelsController.cs",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\Controllers\\HotelsController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T15:29:15.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HotelMappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T15:26:09.282Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HotelDeleteCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABgAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T15:22:05.874Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HotelCreateCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAF0AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-08T17:30:43.859Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HotelUpdateCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAANIAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-08T17:23:14.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HotelUpdateCommandRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandRequest.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandRequest.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandRequest.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAAA8AAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-08T17:23:07.602Z",
-              "EditorCaption": ""
             }
           ]
         }
