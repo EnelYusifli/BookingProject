@@ -5,6 +5,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.Application.Features.Commands.PaymentMethodCommands.PaymentMethodUpdateCommands;
+using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
 
 namespace BookingProject.API.Controllers;
 
@@ -27,6 +29,12 @@ public class HotelsController : ControllerBase
 	public async Task<IActionResult> GetById(int id)
 	{
 		HotelGetByIdQueryRequest request = new() { Id=id };
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPut("{id}")]
+	public async Task<IActionResult> Update(HotelUpdateCommandRequest request, int id)
+	{
+		request.Id = id;
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpPost]

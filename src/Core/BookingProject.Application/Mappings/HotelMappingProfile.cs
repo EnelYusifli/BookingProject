@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands;
+using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
 using BookingProject.Domain.Entities;
 
@@ -11,7 +12,8 @@ public class HotelMappingProfile:Profile
     {
         CreateMap<HotelCreateCommandRequest, Hotel>()
 			.ForMember(dest => dest.AppUserId, opt => opt.MapFrom(src => src.AppUserId)).ReverseMap();
-        CreateMap<Hotel, HotelGetAllQueryResponse>()
+		CreateMap<HotelUpdateCommandRequest, Hotel>();
+		CreateMap<Hotel, HotelGetAllQueryResponse>()
            .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src => src.HotelActivities.Select(a => a.Activity.ActivityName)))
            .ForMember(dest => dest.ImageFileUrls, opt => opt.MapFrom(src => src.HotelImages.Select(a => a.Url)))
            .ForMember(dest => dest.AdvantageNames, opt => opt.MapFrom(src => src.HotelAdvantages.Select(a => a.AdvantageName)))

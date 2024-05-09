@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookingProject.MVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa7be9f23008f448bfa2b052c4c42fdc80c9aa57")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bd5f2f3b56b6bae34319543874c87d5cb055be3")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookingProject.MVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookingProject.MVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
