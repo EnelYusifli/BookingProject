@@ -1,6 +1,7 @@
 ﻿using BookingProject.Application.CustomExceptions;
 using BookingProject.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -15,16 +16,19 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IConfiguration _configuration;
+		private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthLoginCommandHandler(
+		public AuthLoginCommandHandler(
                 UserManager<AppUser> userManager,
                 SignInManager<AppUser> signInManager,
-                IConfiguration configuration)
+                IConfiguration configuration,
+				IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
-        }
+			_httpContextAccessor = httpContextAccessor;
+		}
 
         public async Task<AuthLoginCommandResponse> Handle(AuthLoginCommandRequest request, CancellationToken cancellationToken)
         {
@@ -42,7 +46,7 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
                 throw new BadRequestException("Invalid credentials. Please try again.");
             }
 
-            string token = await GenerateToken(user);
+            string token = await GenerateToken(user,_httpContextAccessor.HttpContext);
 
             return new AuthLoginCommandResponse()
             {
@@ -51,7 +55,7 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
             };
         }
 
-        private async Task<string> GenerateToken(AppUser user)
+        private async Task<string> GenerateToken(AppUser user, HttpContext httpContext)
         {
             var userRoles = await _userManager.GetRolesAsync(user);
 
@@ -69,7 +73,7 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
 			var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddHours(Convert.ToDouble(_configuration["JWT:ExpirationHours"])),
+                Expires = DateTime.UtcNow.AddDays(4),
                 SigningCredentials = credentials,
                 Issuer = _configuration["JWT:Issuer"],
                 Audience = _configuration["JWT:Audience"],
@@ -78,7 +82,17 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
 			tokenDescriptor.Expires = date.AddMinutes(10);
 			var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-			return tokenHandler.WriteToken(token);
+			var encrypterToken = tokenHandler.WriteToken(token);
+            httpContext.Response.Cookies.Append("token", encrypterToken,
+                new CookieOptions
+                {
+                    Expires=DateTime.UtcNow.AddDays(4),
+                    HttpOnly=true,
+                    Secure=true,
+                    IsEssential=true,
+                    SameSite=SameSiteMode.None
+				});
+            return encrypterToken;
         }
     }
 }

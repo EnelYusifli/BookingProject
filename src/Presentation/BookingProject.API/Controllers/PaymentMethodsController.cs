@@ -4,12 +4,14 @@ using BookingProject.Application.Features.Commands.PaymentMethodCommands.Payment
 using BookingProject.Application.Features.Commands.PaymentMethodCommands.PaymentMethodUpdateCommands;
 using BookingProject.Application.Features.Queries.PaymentMethodQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingProject.API.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
+[Authorize]
 public class PaymentMethodsController : ControllerBase
 {
     private readonly IMediator _mediator;

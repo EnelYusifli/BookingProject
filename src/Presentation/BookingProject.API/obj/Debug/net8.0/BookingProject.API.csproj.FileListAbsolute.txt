@@ -53,7 +53,10 @@ C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bi
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\MimeKit.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Scrutor.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\SmtpServer.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -167,3 +170,4 @@ C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\ob
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\obj\Debug\net8.0\BookingProject.API.pdb
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\obj\Debug\net8.0\BookingProject.API.genruntimeconfig.cache
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\obj\Debug\net8.0\ref\BookingProject.API.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll

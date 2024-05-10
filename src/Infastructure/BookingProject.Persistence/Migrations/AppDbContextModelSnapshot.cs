@@ -46,7 +46,93 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Activities");
+                    b.ToTable("Activities", (string)null);
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateOnly?>("Birthdate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ProfilePhotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecoveryEmail")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>
@@ -87,7 +173,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CustomerReviews");
+                    b.ToTable("CustomerReviews", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Hotel", b =>
@@ -154,7 +240,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Hotels");
+                    b.ToTable("Hotels", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelActivity", b =>
@@ -186,7 +272,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelActivities");
+                    b.ToTable("HotelActivities", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelAdvantage", b =>
@@ -218,7 +304,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelAdvantages");
+                    b.ToTable("HotelAdvantages", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelImage", b =>
@@ -249,7 +335,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelImages");
+                    b.ToTable("HotelImages", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelPaymentMethod", b =>
@@ -281,7 +367,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("PaymentMethodId");
 
-                    b.ToTable("HotelPaymentMethods");
+                    b.ToTable("HotelPaymentMethods", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelService", b =>
@@ -313,7 +399,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("HotelServices");
+                    b.ToTable("HotelServices", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelStaffLanguage", b =>
@@ -345,7 +431,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("StaffLanguageId");
 
-                    b.ToTable("HotelStaffLanguages");
+                    b.ToTable("HotelStaffLanguages", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.PaymentMethod", b =>
@@ -372,7 +458,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethods");
+                    b.ToTable("PaymentMethods", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.ReviewImage", b =>
@@ -403,7 +489,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("ReviewId");
 
-                    b.ToTable("ReviewImages");
+                    b.ToTable("ReviewImages", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Room", b =>
@@ -459,7 +545,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("Rooms");
+                    b.ToTable("Rooms", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.RoomImage", b =>
@@ -490,7 +576,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomImages");
+                    b.ToTable("RoomImages", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Service", b =>
@@ -517,7 +603,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services");
+                    b.ToTable("Services", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.StaffLanguage", b =>
@@ -544,7 +630,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StaffLanguages");
+                    b.ToTable("StaffLanguages", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Type", b =>
@@ -571,7 +657,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types");
+                    b.ToTable("Types", (string)null);
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.UserWishlistHotel", b =>
@@ -604,7 +690,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserWishlistHotels");
+                    b.ToTable("UserWishlistHotels", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -657,80 +743,6 @@ namespace BookingProject.Persistence.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -812,34 +824,6 @@ namespace BookingProject.Persistence.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("BookingProject.Domain.Entities.AppUser", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<DateOnly?>("Birthdate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ProfilePhotoUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RecoveryEmail")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasDiscriminator().HasValue("AppUser");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>
@@ -1041,7 +1025,7 @@ namespace BookingProject.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BookingProject.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1050,7 +1034,7 @@ namespace BookingProject.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BookingProject.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1065,7 +1049,7 @@ namespace BookingProject.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BookingProject.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1074,7 +1058,7 @@ namespace BookingProject.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("BookingProject.Domain.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1084,6 +1068,15 @@ namespace BookingProject.Persistence.Migrations
             modelBuilder.Entity("BookingProject.Domain.Entities.Activity", b =>
                 {
                     b.Navigation("HotelActivities");
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.AppUser", b =>
+                {
+                    b.Navigation("CustomerReviews");
+
+                    b.Navigation("Hotels");
+
+                    b.Navigation("UserWishlistHotel");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>
@@ -1135,15 +1128,6 @@ namespace BookingProject.Persistence.Migrations
             modelBuilder.Entity("BookingProject.Domain.Entities.Type", b =>
                 {
                     b.Navigation("Hotels");
-                });
-
-            modelBuilder.Entity("BookingProject.Domain.Entities.AppUser", b =>
-                {
-                    b.Navigation("CustomerReviews");
-
-                    b.Navigation("Hotels");
-
-                    b.Navigation("UserWishlistHotel");
                 });
 #pragma warning restore 612, 618
         }

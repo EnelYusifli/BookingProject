@@ -1,5 +1,7 @@
 ﻿using BookingProject.Application.Features.Commands.ReviewCommands.ReviewCreateCommands;
 using BookingProject.Application.Features.Commands.ReviewCommands.ReviewDeleteCommands;
+using BookingProject.Application.Features.Commands.ReviewCommands.ReviewUpdateCommands;
+using BookingProject.Application.Features.Commands.RoomCommands.RoomUpdateCommands;
 using BookingProject.Application.Features.Queries.ReviewQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +29,12 @@ public class ReviewsController : ControllerBase
 	[HttpPost]
 	public async Task<IActionResult> Create(ReviewCreateCommandRequest request)
 	{
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPut("{id}")]
+	public async Task<IActionResult> Update(ReviewUpdateCommandRequest request, int id)
+	{
+		request.Id = id;
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpDelete("{id}")]

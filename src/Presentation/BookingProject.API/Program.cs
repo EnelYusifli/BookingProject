@@ -5,6 +5,8 @@ using BookingProject.Domain.Entities;
 using BookingProject.Persistence;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Storage.V1;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +23,16 @@ builder.Services.AddSingleton(sp => {
     var credential = GoogleCredential.FromFile(credentialsPath);
     return StorageClient.Create(credential);
 });
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(opt =>
+{
+    opt.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        In=ParameterLocation.Header,
+        Name="Authorization",
+        Type=SecuritySchemeType.ApiKey
+    });
+    opt.OperationFilter<SecurityRequirementsOperationFilter>();
+});
 // Configure the HTTP request pipeline.
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -29,7 +40,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+//app.MapIdentityApi<AppUser>();
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthentication();

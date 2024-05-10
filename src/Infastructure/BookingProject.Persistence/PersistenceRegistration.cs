@@ -34,15 +34,19 @@ public static class PersistenceRegistration
         services.AddScoped<IAdvantageRepository, AdvantageRepository>();
         services.AddScoped<IServiceRepository, ServiceRepository>();
         services.AddScoped<IHotelServiceRepository, HotelServiceRepository>();
+        services.AddAuthorization();
+        //     services.AddIdentityApiEndpoints<AppUser>()
+        //.AddRoles<IdentityRole>()
+        //.AddEntityFrameworkStores<AppDbContext>();
         services.AddIdentity<AppUser, IdentityRole>(opt =>
         {
-             opt.Password.RequireNonAlphanumeric = true;
-             opt.Password.RequiredLength = 8;
-             opt.User.RequireUniqueEmail = true;
-             opt.Password.RequireUppercase = true;
-             opt.Password.RequireLowercase = true;
-             opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
-             opt.Lockout.MaxFailedAccessAttempts = 5;
+            opt.Password.RequireNonAlphanumeric = true;
+            opt.Password.RequiredLength = 8;
+            opt.User.RequireUniqueEmail = true;
+            opt.Password.RequireUppercase = true;
+            opt.Password.RequireLowercase = true;
+            opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+            opt.Lockout.MaxFailedAccessAttempts = 5;
         })
         .AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
         services.AddDbContext<AppDbContext>(options =>
@@ -52,21 +56,43 @@ public static class PersistenceRegistration
             opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(opt =>
+        }).AddCookie(x =>
+        {
+            x.Cookie.Name = "token";
+        })
+            .AddJwtBearer(opt =>
         {
             opt.TokenValidationParameters = new TokenValidationParameters()
             {
-                ValidAudience = configuration.GetSection("JWT:audience").Value,
+                //ValidAudience = configuration.GetSection("JWT:audience").Value,
                 ValidIssuer = configuration.GetSection("JWT:issuer").Value,
 
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("JWT:securityKey").Value)),
 
                 ValidateAudience = true,
-                ValidateIssuer = true,
+                //ValidateIssuer = true,
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero,
             };
+            opt.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
+                {
+                    context.Token = context.Request.Cookies["token"];
+                    return Task.CompletedTask;
+                }
+            };
         });
-       
-    }
+		services.AddCors(options =>
+		{
+			options.AddPolicy("AllowAll",
+				builder =>
+				{
+					builder.AllowAnyOrigin()
+						   .AllowAnyMethod()
+						   .AllowAnyHeader();
+				});
+		});
+
+	}
 }

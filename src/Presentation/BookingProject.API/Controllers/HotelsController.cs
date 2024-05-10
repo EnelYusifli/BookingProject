@@ -1,12 +1,10 @@
 ﻿using BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelDeleteCommands;
-using BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands;
+using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
+using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
+using BookingProject.Application.Features.Queries.HotelQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
-using BookingProject.Application.Features.Queries.HotelQueries;
-using BookingProject.Application.Features.Commands.PaymentMethodCommands.PaymentMethodUpdateCommands;
-using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
 
 namespace BookingProject.API.Controllers;
 

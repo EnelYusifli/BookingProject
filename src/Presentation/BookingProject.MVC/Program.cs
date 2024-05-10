@@ -1,8 +1,15 @@
+using BookingProject.Domain.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.AddSession(opt =>
+{
+    opt.Cookie.Name = "token";
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -17,7 +24,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

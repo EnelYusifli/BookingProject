@@ -15,19 +15,16 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 	private readonly IRoomRepository _repository;
 	private readonly IMapper _mapper;
 	private readonly IRoomImageRepository _roomImageRepository;
-	private readonly IHotelRepository _hotelRepository;
 	private readonly IConfiguration _configuration;
 
 	public RoomUpdateCommandHandler(IRoomRepository repository,
 		IMapper mapper,
 		IRoomImageRepository roomImageRepository,
-		IHotelRepository hotelRepository,
 		IConfiguration configuration)
 	{
 		_repository = repository;
 		_mapper = mapper;
 		_roomImageRepository = roomImageRepository;
-		_hotelRepository = hotelRepository;
 		_configuration = configuration;
 	}
 
