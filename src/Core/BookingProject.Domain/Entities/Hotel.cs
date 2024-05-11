@@ -13,7 +13,8 @@ public class Hotel : BaseEntity, IBaseAuditable
     public string Address { get; set; }
     public string Country { get; set; }
     public string City { get; set; }
-    public bool IsApproved { get; set; }
+    public bool IsApproved { get; set; } = false;
+    public bool IsRefused { get; set; } = false;
     public int? ViewerCount { get; set; } = 0;
     public decimal? StarPoint { get; set; } = 0;
     public AppUser AppUser { get; set; }

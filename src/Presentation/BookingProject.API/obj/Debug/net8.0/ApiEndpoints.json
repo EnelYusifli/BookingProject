@@ -213,6 +213,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "ApproveHotel",
+    "RelativePath": "api/Hotels/ApproveHotel/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
     "Method": "Create",
     "RelativePath": "api/Hotels/Create",
     "HttpMethod": "POST",
@@ -323,6 +339,22 @@
     "Method": "GetById",
     "RelativePath": "api/Hotels/GetById/{id}",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "RefuseHotel",
+    "RelativePath": "api/Hotels/RefuseHotel/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [

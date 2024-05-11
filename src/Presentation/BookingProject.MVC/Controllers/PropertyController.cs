@@ -1,12 +1,12 @@
 ﻿using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.PropertyViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
 
 namespace BookingProject.MVC.Controllers;
-
 public class PropertyController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
@@ -21,10 +21,29 @@ public class PropertyController : Controller
 	{
 		return View();
 	}
+	public async Task<IActionResult> ApproveHotel([FromRoute]int id)
+	{
+		ApproveHotelViewModel vm = new()
+		{
+			Id = id
+		};
+		if (!ModelState.IsValid) return View();
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + $"/hotel/approvehotel/{id}", stringContent);
+
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index", "Home");
+		}
+		return View();
+	}
 	public async Task<IActionResult> AddHotel()
 	{
 		AddHotelViewModel viewModel = new AddHotelViewModel();
 		viewModel.PropertyViewModel = new PropertyViewModel();
+		if (!ModelState.IsValid) return View(viewModel);
 
 		var typesResponse = await _httpClient.GetAsync(baseAddress + "/types/getall");
 		if (typesResponse.IsSuccessStatusCode)
@@ -90,7 +109,8 @@ public class PropertyController : Controller
 	[HttpPost]
 	public async Task<IActionResult> AddHotel(AddHotelViewModel vm)
 	{
-		if (!ModelState.IsValid) return View();
+		//PropertyViewModel propertyViewModel = vm.PropertyViewModel;
+		if (!ModelState.IsValid) return View(vm);
 		HotelCreateViewModel hotelCreateViewModel = vm.HotelCreateViewModel;
 		var dataStr = JsonConvert.SerializeObject(hotelCreateViewModel);
 		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");

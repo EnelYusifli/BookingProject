@@ -49,9 +49,10 @@ public static class PersistenceRegistration
             opt.Lockout.MaxFailedAccessAttempts = 5;
         })
         .AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-        services.AddDbContext<AppDbContext>(options =>
+		services.AddScoped<UserManager<AppUser>>();
+		services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(configuration.GetConnectionString("default")));
-        services.AddAuthentication(opt =>
+		services.AddAuthentication(opt =>
         {
             opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -64,13 +65,13 @@ public static class PersistenceRegistration
         {
             opt.TokenValidationParameters = new TokenValidationParameters()
             {
-                //ValidAudience = configuration.GetSection("JWT:audience").Value,
+                ValidAudience = configuration.GetSection("JWT:audience").Value,
                 ValidIssuer = configuration.GetSection("JWT:issuer").Value,
 
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("JWT:securityKey").Value)),
 
                 ValidateAudience = true,
-                //ValidateIssuer = true,
+                ValidateIssuer = true,
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero,
             };

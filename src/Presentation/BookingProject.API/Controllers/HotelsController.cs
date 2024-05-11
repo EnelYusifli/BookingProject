@@ -1,5 +1,7 @@
-﻿using BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands;
+﻿using BookingProject.Application.Features.Commands.HotelCommands.HotelApproveCommands;
+using BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelDeleteCommands;
+using BookingProject.Application.Features.Commands.HotelCommands.HotelRefuseCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
@@ -58,4 +60,22 @@ public class HotelsController : ControllerBase
         };
         return Ok(await _mediator.Send(request));
     }
+	[HttpPut("{id}")]
+	public async Task<IActionResult> ApproveHotel(int id)
+	{
+		HotelApproveCommandRequest request = new()
+		{
+			Id = id
+		};
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPut("{id}")]
+	public async Task<IActionResult> RefuseHotel(int id)
+	{
+		HotelRefuseCommandRequest request = new()
+		{
+			Id = id
+		};
+		return Ok(await _mediator.Send(request));
+	}
 }

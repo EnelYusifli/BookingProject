@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Refusal Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        h2 {
+            text-align: center;
+            color: #dc3545;
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .logo img {
+                width: 150px;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                max-width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="https://cf.bstatic.com/mobile/images/gta/booking-app-logo-128/8c0a29a0f8657ad4d395e725225770a6d2b7904c.png" alt="Booking.com">
+        </div>
+        <h2>Hotel Refusal Notification</h2>
+        <p>Hello <strong>{{username}}</strong>,</p>
+        <p>We regret to inform you that your hotel "<strong>{{hotelname}}</strong>" has been refused for addition to Booking.com.</p>
+        <p>Please review the details and make any necessary updates to reapply.</p>
+        <div class="footer">
+            <p>Best regards,<br>Booking.com Team</p>
+        </div>
+    </div>
+
+</body>
+</html>

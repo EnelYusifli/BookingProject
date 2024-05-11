@@ -3,7 +3,6 @@
 }
 @model AddHotelViewModel
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -654,7 +653,7 @@ Steps START -->
 
 									<!-- Step 1 button -->
 									<div class="text-end">
-										<a class="btn btn-primary next-btn mb-0">Next</a>
+										<button type="button" class="btn btn-primary next-btn mb-0">Next</button>
 									</div>
 								</div>
 							</div>
@@ -841,8 +840,8 @@ Steps START -->
 
 											<!-- Step 2 button -->
 									<div class="hstack gap-2 flex-wrap justify-content-between">
-										<a class="btn btn-secondary prev-btn mb-0">Previous</a>
-										<a class="btn btn-primary next-btn mb-0">Next</a>
+										<button type="button" class="btn btn-secondary prev-btn mb-0">Previous</button>
+												<button type="button" class="btn btn-primary next-btn mb-0">Next</button>
 									</div>
 								</div>	
 							</div>
@@ -930,9 +929,13 @@ Steps START -->
 											<!-- Room options END -->
 									<!-- Step 3 button -->
 									<div class="d-flex justify-content-between">
-										<a class="btn btn-secondary prev-btn mb-0">Previous</a>
+												<button type="button" class="btn btn-secondary prev-btn mb-0">Previous</button>
 												<div class="text-end">
-													<button type="submit" class="btn btn-success">Add Property</button>
+													@using (Html.BeginForm("AddHotel", "Property", FormMethod.Post))
+													{
+														@Html.HiddenFor(model => model.PropertyViewModel)
+														<button type="submit" class="btn btn-success">Add Property</button>
+													}
 												</div>
 									</div>
 								</div>

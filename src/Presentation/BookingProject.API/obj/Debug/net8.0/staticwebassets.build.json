@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tWgGOBMZgx/OY5fMuTUt2Jkg1JCJ6tRaAi0uLKIuxRM=",
+  "Hash": "34PUDXYlRSvmpjIRBDixRUW5kp2lg8EEPsIpiyNU6Vc=",
   "Source": "BookingProject.API",
   "BasePath": "_content/BookingProject.API",
   "Mode": "Default",
@@ -34,6 +34,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\forgotpassword.html"
+    },
+    {
+      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
+      "SourceId": "BookingProject.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "BasePath": "_content/BookingProject.API",
+      "RelativePath": "email/requestapproved.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\email\\requestapproved.html"
+    },
+    {
+      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
+      "SourceId": "BookingProject.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "BasePath": "_content/BookingProject.API",
+      "RelativePath": "email/requestrefused.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\email\\requestrefused.html"
     }
   ]
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BookingProject.Domain.Entities;
 
-public class AppUser:IdentityUser
+public class AppUser:IdentityUser,IUser<string>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

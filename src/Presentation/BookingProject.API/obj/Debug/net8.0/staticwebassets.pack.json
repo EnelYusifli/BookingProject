@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\email\\forgotpassword.html"
     },
     {
+      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
+      "PackagePath": "staticwebassets\\email\\requestapproved.html"
+    },
+    {
+      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
+      "PackagePath": "staticwebassets\\email\\requestrefused.html"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BookingProject.API.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

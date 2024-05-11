@@ -82,6 +82,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             var hotel = _mapper.Map<Hotel>(request);
             hotel.IsDeactive = true;
             hotel.IsApproved = false;
+            hotel.IsRefused = false;
             SaveFileExtension.Initialize(_configuration);
             foreach (var image in request.ImageFiles)
             {

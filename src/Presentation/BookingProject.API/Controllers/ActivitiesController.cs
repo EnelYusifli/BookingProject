@@ -11,7 +11,7 @@ namespace BookingProject.API.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
-//[Authorize(Roles ="Admin")]
+[Authorize]
 public class ActivitiesController : ControllerBase
 {
     private readonly IMediator _mediator;

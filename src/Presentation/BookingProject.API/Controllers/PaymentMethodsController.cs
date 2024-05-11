@@ -11,7 +11,6 @@ namespace BookingProject.API.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
-[Authorize]
 public class PaymentMethodsController : ControllerBase
 {
     private readonly IMediator _mediator;
