@@ -4,164 +4,155 @@ using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDelete
 using BookingProject.Application.Repositories;
 using BookingProject.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
-namespace BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands
+namespace BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
+
+public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteCommandRequest, HotelSoftDeleteCommandResponse>
 {
-	public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteCommandRequest, HotelSoftDeleteCommandResponse>
+	private readonly IHotelRepository _repository;
+
+	public HotelSoftDeleteCommandHandler(IHotelRepository repository)
 	{
-		private readonly IHotelRepository _repository;
-
-		public HotelSoftDeleteCommandHandler(IHotelRepository repository)
+		_repository = repository;
+	}
+	public async Task<HotelSoftDeleteCommandResponse> Handle(HotelSoftDeleteCommandRequest request, CancellationToken cancellationToken)
+	{
+		string text = String.Empty;
+		Hotel hotel = await _repository.Table
+			.Include(x => x.HotelActivities)
+			.ThenInclude(x=>x.Activity)
+			.Include(x => x.HotelAdvantages)
+			.Include(x => x.HotelImages)
+			.Include(x => x.HotelPaymentMethods)
+			.ThenInclude(x=>x.PaymentMethod)
+			.Include(x => x.HotelServices)
+			.ThenInclude(x=>x.Service)
+			.Include(x => x.HotelStaffLanguages)
+			.ThenInclude(x=>x.StaffLanguage)
+			.Include(x => x.Rooms)
+			.ThenInclude(x => x.RoomImages)
+			.Include(x => x.CustomerReviews)
+			.ThenInclude(x => x.ReviewImages)
+			.Include(x=>x.UserWishlistHotel)
+			.FirstOrDefaultAsync(x => x.Id == request.Id);
+		if (hotel is null) throw new NotFoundException("Hotel not found");
+		if (hotel.IsDeactive == true)
 		{
-			_repository = repository;
-		}
-
-		public async Task<HotelSoftDeleteCommandResponse> Handle(HotelSoftDeleteCommandRequest request, CancellationToken cancellationToken)
-		{
-			string text = string.Empty;
-			Hotel hotel = await _repository.Table
-				.Include(x => x.HotelActivities)
-				.Include(x => x.HotelAdvantages)
-				.Include(x => x.HotelImages)
-				.Include(x => x.HotelPaymentMethods)
-				.Include(x => x.HotelServices)
-				.Include(x => x.HotelStaffLanguages)
-				.Include(x => x.Rooms)
-					.ThenInclude(x => x.RoomImages)
-				.Include(x => x.CustomerReviews)
-					.ThenInclude(x => x.ReviewImages)
-				.FirstOrDefaultAsync(x => x.Id == request.Id);
-
-			if (hotel is null)
-				throw new NotFoundException("Hotel not found");
-
-			if (hotel.IsDeactive)
+			hotel.IsDeactive = false;
+			text = "Hotel Activated";
+			foreach (var item in hotel.HotelStaffLanguages)
 			{
-				hotel.IsDeactive = false;
-				text = "Hotel Activated";
-
-				foreach (var staffLanguage in hotel.HotelStaffLanguages)
-				{
-					if (staffLanguage.StaffLanguage?.IsDeactive == false)
-						staffLanguage.IsDeactive = false;
-				}
-
-				foreach (var room in hotel.Rooms)
-				{
-					room.IsDeactive = false;
-					foreach (var img in room.RoomImages)
-					{
-						img.IsDeactive = false;
-					}
-				}
-
-				foreach (var review in hotel.CustomerReviews)
-				{
-					review.IsDeactive = false;
-					foreach (var img in review.ReviewImages ?? Enumerable.Empty<ReviewImage>())
-					{
-						if (img != null)
-						{
-							img.IsDeactive = false;
-						}
-					}
-				}
-
-				foreach (var img in hotel.HotelImages)
+				if (item.StaffLanguage.IsDeactive == false)
+					item.IsDeactive = false;
+			}
+			foreach (var item in hotel.Rooms)
+			{
+				item.IsDeactive = false;
+				foreach (var img in item.RoomImages)
 				{
 					img.IsDeactive = false;
 				}
-
-				foreach (var activity in hotel.HotelActivities)
+			}
+			foreach (var item in hotel.CustomerReviews)
+			{
+				item.IsDeactive = false;
+				if (item.ReviewImages is not null)
 				{
-					if (activity.Activity?.IsDeactive == false)
-						activity.IsDeactive = false;
-				}
+					foreach (var img in item.ReviewImages)
+					{
+						img.IsDeactive = false;
+					}
 
-				foreach (var service in hotel.HotelServices)
-				{
-					if (service.Service?.IsDeactive == false)
-						service.IsDeactive = false;
-				}
-
-				foreach (var advantage in hotel.HotelAdvantages)
-				{
-					advantage.IsDeactive = false;
-				}
-
-				foreach (var paymentMethod in hotel.HotelPaymentMethods)
-				{
-					if (paymentMethod.PaymentMethod?.IsDeactive == false)
-						paymentMethod.IsDeactive = false;
 				}
 			}
-			else
+			foreach (var item in hotel.HotelImages)
 			{
-				hotel.IsDeactive = true;
-				text = "Hotel Deactivated";
+				item.IsDeactive = false;
+			}
+			foreach (var item in hotel.HotelActivities)
+			{
+				if (item.Activity.IsDeactive == false)
+					item.IsDeactive = false;
+			}
+			foreach (var item in hotel.HotelServices)
+			{
+				if (item.Service.IsDeactive == false)
+					item.IsDeactive = false;
+			}
+			foreach (var item in hotel.HotelAdvantages)
+			{
+				item.IsDeactive = false;
+			}
+			foreach (var item in hotel.HotelPaymentMethods)
+			{
+				if (item.PaymentMethod.IsDeactive == false)
+					item.IsDeactive = false;
+			}
+			foreach (var item in hotel.UserWishlistHotel)
+			{
+					item.IsDeactive = false;
+			}
 
-				foreach (var staffLanguage in hotel.HotelStaffLanguages)
+		}
+		else
+		{
+			hotel.IsDeactive = true;
+			text = "Hotel Deactivated";
+			foreach (var item in hotel.HotelStaffLanguages)
+			{
+				item.IsDeactive = true;
+			}
+			foreach (var item in hotel.Rooms)
+			{
+				item.IsDeactive = true;
+				foreach (var img in item.RoomImages)
 				{
-					staffLanguage.IsDeactive = true;
+					img.IsDeactive = true;
 				}
-
-				foreach (var room in hotel.Rooms)
+			}
+			foreach (var item in hotel.CustomerReviews)
+			{
+				item.IsDeactive = true;
+				if (item.ReviewImages is not null)
 				{
-					room.IsDeactive = true;
-					foreach (var img in room.RoomImages)
+					foreach (var img in item.ReviewImages)
 					{
 						img.IsDeactive = true;
 					}
 				}
-
-				foreach (var review in hotel.CustomerReviews)
-				{
-					review.IsDeactive = true;
-					foreach (var img in review.ReviewImages ?? Enumerable.Empty<ReviewImage>())
-					{
-						if (img != null)
-						{
-							img.IsDeactive = true;
-						}
-					}
-				}
-
-				foreach (var img in hotel.HotelImages)
-				{
-					img.IsDeactive = true;
-				}
-
-				foreach (var activity in hotel.HotelActivities)
-				{
-					activity.IsDeactive = true;
-				}
-
-				foreach (var service in hotel.HotelServices)
-				{
-					service.IsDeactive = true;
-				}
-
-				foreach (var advantage in hotel.HotelAdvantages)
-				{
-					advantage.IsDeactive = true;
-				}
-
-				foreach (var paymentMethod in hotel.HotelPaymentMethods)
-				{
-					paymentMethod.IsDeactive = true;
-				}
 			}
-
-			await _repository.CommitAsync();
-
-			return new HotelSoftDeleteCommandResponse()
+			foreach (var item in hotel.HotelImages)
 			{
-				Text = text
-			};
+				item.IsDeactive = true;
+			}
+			foreach (var item in hotel.HotelActivities)
+			{
+				item.IsDeactive = true;
+			}
+			foreach (var item in hotel.HotelServices)
+			{
+				item.IsDeactive = true;
+			}
+			foreach (var item in hotel.HotelAdvantages)
+			{
+				item.IsDeactive = true;
+			}
+			foreach (var item in hotel.HotelPaymentMethods)
+			{
+				item.IsDeactive = true;
+			}
+			foreach (var item in hotel.UserWishlistHotel)
+			{
+				item.IsDeactive = true;
+			}
 		}
+		await _repository.CommitAsync();
+		return new HotelSoftDeleteCommandResponse()
+		{
+			Text = text
+		};
 	}
 }

@@ -4,6 +4,8 @@ using BookingProject.Application.Features.Commands.HotelCommands.HotelDeleteComm
 using BookingProject.Application.Features.Commands.HotelCommands.HotelRefuseCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
+using BookingProject.Application.Features.Commands.WishlistCommands.WishlistAddCommands;
+using BookingProject.Application.Features.Commands.WishlistCommands.WishlistRemoveCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +44,21 @@ public class HotelsController : ControllerBase
     {
         return Ok(await _mediator.Send(request));
     }
-    [HttpDelete("{id}")]
+	[HttpPost]
+	public async Task<IActionResult> AddToWishlist(WishlistAddCommandRequest request)
+	{
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpDelete("{id}")]
+	public async Task<IActionResult> RemoveFromWishlist(int id)
+	{
+		WishlistRemoveCommandRequest request = new()
+		{
+			Id = id
+		};
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         HotelDeleteCommandRequest request = new()
