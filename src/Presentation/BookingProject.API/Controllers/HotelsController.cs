@@ -7,6 +7,7 @@ using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateComm
 using BookingProject.Application.Features.Commands.WishlistCommands.WishlistAddCommands;
 using BookingProject.Application.Features.Commands.WishlistCommands.WishlistRemoveCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.Application.Features.Queries.WishlistQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,21 +17,21 @@ namespace BookingProject.API.Controllers;
 [ApiController]
 public class HotelsController : ControllerBase
 {
-    private readonly IMediator _mediator;
-    public HotelsController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-    [HttpGet]
-    public async Task<IActionResult> GetAll()
-    {
-        HotelGetAllQueryRequest request = new();
-        return Ok(await _mediator.Send(request));
-    }
+	private readonly IMediator _mediator;
+	public HotelsController(IMediator mediator)
+	{
+		_mediator = mediator;
+	}
+	[HttpGet]
+	public async Task<IActionResult> GetAll()
+	{
+		HotelGetAllQueryRequest request = new();
+		return Ok(await _mediator.Send(request));
+	}
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{
-		HotelGetByIdQueryRequest request = new() { Id=id };
+		HotelGetByIdQueryRequest request = new() { Id = id };
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpPut("{id}")]
@@ -40,10 +41,19 @@ public class HotelsController : ControllerBase
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpPost]
-    public async Task<IActionResult> Create(HotelCreateCommandRequest request)
-    {
-        return Ok(await _mediator.Send(request));
-    }
+	public async Task<IActionResult> Create(HotelCreateCommandRequest request)
+	{
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpGet("{userId}")]
+	public async Task<IActionResult> WishlistGetAll(string userId)
+	{
+		WishlistGetAllQueryRequest request = new()
+		{
+			UserId = userId
+		};
+		return Ok(await _mediator.Send(request));
+	}
 	[HttpPost]
 	public async Task<IActionResult> AddToWishlist(WishlistAddCommandRequest request)
 	{

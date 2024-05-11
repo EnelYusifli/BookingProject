@@ -2,6 +2,7 @@
 using BookingProject.Application.Features.Commands.HotelCommands.HotelCreateCommands;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.Application.Features.Queries.WishlistQueries;
 using BookingProject.Domain.Entities;
 
 namespace BookingProject.Application.Mappings;
@@ -29,5 +30,6 @@ public class HotelMappingProfile:Profile
 		 .ForMember(dest => dest.ServiceNames, opt => opt.MapFrom(src => src.HotelServices.Select(s => s.Service.ServiceName)))
 		 .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.Type.TypeName))
 		 .ForMember(dest => dest.StaffLanguageNames, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(l => l.StaffLanguage.StaffLanguageName))).ReverseMap();
+		CreateMap<WishlistGetAllQueryResponse, UserWishlistHotel>().ReverseMap();
 	}
 }

@@ -501,6 +501,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "WishlistGetAll",
+    "RelativePath": "api/Hotels/WishlistGetAll/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BookingProject.API.Controllers.PaymentMethodsController",
     "Method": "Create",
     "RelativePath": "api/PaymentMethods/Create",
