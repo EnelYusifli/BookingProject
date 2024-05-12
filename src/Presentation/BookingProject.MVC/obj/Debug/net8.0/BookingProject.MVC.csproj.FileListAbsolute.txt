@@ -29,6 +29,7 @@ C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bi
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\MediatR.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\MediatR.Contracts.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll

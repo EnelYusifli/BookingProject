@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.Google;
+
 
 namespace BookingProject.Persistence;
 
@@ -19,6 +21,7 @@ public static class PersistenceRegistration
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IActivityRepository, ActivityRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IWishlistRepository, WishlistRepository>();
         services.AddScoped<IReviewRepository, ReviewRepository>();
         services.AddScoped<IReviewImageRepository, ReviewImageRepository>();
@@ -61,7 +64,11 @@ public static class PersistenceRegistration
         }).AddCookie(x =>
         {
             x.Cookie.Name = "token";
-        })
+        }).AddGoogle(googleOptions =>
+		{
+			googleOptions.ClientId = configuration["Authentication:GoogleClientId"];
+			googleOptions.ClientSecret = configuration["Authentication:GoogleClientSecret"];
+		})
             .AddJwtBearer(opt =>
         {
             opt.TokenValidationParameters = new TokenValidationParameters()

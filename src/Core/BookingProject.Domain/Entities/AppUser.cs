@@ -9,6 +9,8 @@ public class AppUser:IdentityUser,IUser<string>
     public string LastName { get; set; }
     public DateOnly? Birthdate { get; set; }
     public string? RecoveryEmail { get; set; }
+    public string? PasswordResetToken { get; set; } = null;
+    public DateTime? ResetTokenExpires { get; set; } = null;
     public string ProfilePhotoUrl { get; set; } = "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2281862025.jpg";
     public List<CustomerReview>? CustomerReviews { get; set; }
     public List<UserWishlistHotel>? UserWishlistHotel { get; set; }

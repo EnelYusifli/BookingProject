@@ -1,7 +1,5 @@
 using BookingProject.API.Middlewares;
 using BookingProject.Application;
-using BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands;
-using BookingProject.Domain.Entities;
 using BookingProject.Persistence;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Storage.V1;
