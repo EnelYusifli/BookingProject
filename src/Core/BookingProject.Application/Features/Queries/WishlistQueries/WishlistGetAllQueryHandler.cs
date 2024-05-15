@@ -31,7 +31,7 @@ public class WishlistGetAllQueryHandler : IRequestHandler<WishlistGetAllQueryReq
 		ICollection<UserWishlistHotel> act = await _repository.Table
 		   .Where(x => x.UserId == request.UserId && x.Hotel.IsDeactive == false && x.IsDeactive == false)
 		   .ToListAsync();
-		if (act is null) throw new Exception("Review not found");
+		//if (act is null) throw new Exception("Item not found");
 		ICollection<WishlistGetAllQueryResponse> dtos = _mapper.Map<ICollection<WishlistGetAllQueryResponse>>(act);
 		return dtos;
 	}

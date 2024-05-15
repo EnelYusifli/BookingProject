@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.AccController",
+    "Method": "GetAuthUser",
+    "RelativePath": "api/Acc/GetAuthUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.AccController",
     "Method": "Login",
     "RelativePath": "api/Acc/Login",
     "HttpMethod": "POST",
@@ -42,6 +52,22 @@
       {
         "Name": "request",
         "Type": "BookingProject.Application.Features.Commands.AuthCommands.AuthRegisterCommands.AuthRegisterCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.AccController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Acc/ResetPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.ResetPasswordCommands.ResetPasswordCommandRequest",
         "IsRequired": true
       }
     ],
@@ -213,6 +239,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "AddToWishlist",
+    "RelativePath": "api/Hotels/AddToWishlist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.WishlistCommands.WishlistAddCommands.WishlistAddCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
     "Method": "ApproveHotel",
     "RelativePath": "api/Hotels/ApproveHotel/{id}",
     "HttpMethod": "PUT",
@@ -368,6 +410,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "RemoveFromWishlist",
+    "RelativePath": "api/Hotels/RemoveFromWishlist/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
     "Method": "SoftDelete",
     "RelativePath": "api/Hotels/SoftDelete/{id}",
     "HttpMethod": "PUT",
@@ -469,6 +527,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "WishlistGetAll",
+    "RelativePath": "api/Hotels/WishlistGetAll/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BookingProject.API.Controllers.PaymentMethodsController",
     "Method": "Create",
     "RelativePath": "api/PaymentMethods/Create",
@@ -542,6 +616,38 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ReservationsController",
+    "Method": "Cancel",
+    "RelativePath": "api/Reservations/Cancel/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ReservationsController",
+    "Method": "Create",
+    "RelativePath": "api/Reservations/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.ReservationCommands.ReservationCreateCommands.ReservationCreateCommandRequest",
         "IsRequired": true
       }
     ],

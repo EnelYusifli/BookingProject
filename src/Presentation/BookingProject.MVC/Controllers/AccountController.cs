@@ -7,7 +7,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNet.Identity;
+using BookingProject.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using BookingProject.Application.Features.Queries.UserQueries;
+using BookingProject.MVC.ViewModels.HomeViewModels;
+using BookingProject.MVC.ViewModels.HotelViewModels;
 
 namespace BookingProject.MVC.Controllers;
 
@@ -15,6 +19,7 @@ public class AccountController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	private readonly HttpClient _httpClient;
+
 
 	public AccountController(HttpClient httpClient)
 	{
@@ -117,4 +122,20 @@ public class AccountController : Controller
 	{
 		return View();
 	}
+	public async Task<IActionResult> Profile()
+	{
+		if (!ModelState.IsValid) return View();
+
+		var response = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+			return View(dto);
+		}
+		return RedirectToAction("Index","Home");
+	}
 }
+
+

@@ -1,6 +1,7 @@
 using BookingProject.Domain.Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 		   options.Cookie.HttpOnly = true;
 		   options.ExpireTimeSpan = TimeSpan.FromDays(4);
 	   });
+//builder.Services.AddScoped<UserManager<AppUser>>();
 builder.Services.AddSession(opt =>
 {
     opt.Cookie.Name = "token";

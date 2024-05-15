@@ -1274,7 +1274,8 @@
       "BookingProject.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNet.Identity.Core": "2.2.4",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0",
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "BookingProject.Domain.dll": {}

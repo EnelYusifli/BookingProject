@@ -32,6 +32,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
         .HasColumnType("decimal(18,1)");
     }
     public DbSet<Hotel> Hotels { get; set; }    
+    public DbSet<Reservation> Reservations { get; set; }    
     public DbSet<Activity> Activities { get; set; }    
     public DbSet<Service> Services { get; set; }    
     public DbSet<PaymentMethod> PaymentMethods { get; set; }    

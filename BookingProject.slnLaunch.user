@@ -4,8 +4,7 @@
     "Projects": [
       {
         "Name": "src\\Presentation\\BookingProject.API\\BookingProject.API.csproj",
-        "Action": "Start",
-        "DebugTarget": ""
+        "Action": "Start"
       },
       {
         "Name": "src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj",
