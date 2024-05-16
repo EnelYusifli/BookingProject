@@ -1255,5 +1255,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "DeleteUserCard",
+    "RelativePath": "api/Users/DeleteUserCard/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

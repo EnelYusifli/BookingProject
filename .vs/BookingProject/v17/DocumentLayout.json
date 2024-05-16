@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\usercardcommands\\usercardcreatecommands\\cardcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\usercardcommands\\usercardcreatecommands\\cardcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|solutionrelative:src\\presentation\\bookingproject.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\usercardcommands\\usercarddeletecommands\\usercarddeletecommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\usercardcommands\\usercarddeletecommands\\usercarddeletecommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\usercardcommands\\usercarddeletecommands\\usercarddeletecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\usercardcommands\\usercarddeletecommands\\usercarddeletecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +39,58 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAABsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T18:55:17.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserCardDeleteCommandResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandResponse.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandResponse.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandResponse.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T18:41:44.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserCardDeleteCommandRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandRequest.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandRequest.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardDeleteCommands\\UserCardDeleteCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T18:41:21.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CardCreateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardCreateCommands\\CardCreateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardCreateCommands\\CardCreateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardCreateCommands\\CardCreateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCardCommands\\UserCardCreateCommands\\CardCreateCommandHandler.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAACAAAAAWAQAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T18:40:32.333Z",
+              "EditorCaption": ""
             }
           ]
         }
