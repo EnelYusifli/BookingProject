@@ -4,5 +4,5 @@ namespace BookingProject.Application.Features.Commands.ReservationCommands.Reser
 
 public class ReservationCancelCommandRequest:IRequest<ReservationCancelCommandResponse>
 {
-    public int ReservationId { get; set; }
+    public required int ReservationId { get; set; }
 }

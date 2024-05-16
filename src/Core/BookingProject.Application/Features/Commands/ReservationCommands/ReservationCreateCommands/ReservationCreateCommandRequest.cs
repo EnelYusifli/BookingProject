@@ -4,8 +4,8 @@ namespace BookingProject.Application.Features.Commands.ReservationCommands.Reser
 
 public class ReservationCreateCommandRequest:IRequest<ReservationCreateCommandResponse>
 {
-	public int RoomId { get; set; }
-	public string AppUserId { get; set; }
-	public DateTime StartTime { get; set; }
-	public DateTime EndTime { get; set; }
+	public required int RoomId { get; set; }
+	public required string AppUserId { get; set; }
+	public required DateTime StartTime { get; set; }
+	public required DateTime EndTime { get; set; }
 }

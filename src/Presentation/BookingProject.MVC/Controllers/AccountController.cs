@@ -1,17 +1,11 @@
 ﻿using BookingProject.MVC.ViewModels.AccountViewModels;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Security.Claims;
 using System.Text;
-using BookingProject.Domain.Entities;
-using Microsoft.AspNetCore.Identity;
-using BookingProject.Application.Features.Queries.UserQueries;
-using BookingProject.MVC.ViewModels.HomeViewModels;
-using BookingProject.MVC.ViewModels.HotelViewModels;
 
 namespace BookingProject.MVC.Controllers;
 

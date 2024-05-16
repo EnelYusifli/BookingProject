@@ -11,9 +11,10 @@ public class AppUser:IdentityUser,IUser<string>
     public string? RecoveryEmail { get; set; }
     public string? PasswordResetToken { get; set; } = null;
     public DateTime? ResetTokenExpires { get; set; } = null;
-    public string ProfilePhotoUrl { get; set; } = "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2281862025.jpg";
+    public string ProfilePhotoUrl { get; set; }
     public List<CustomerReview>? CustomerReviews { get; set; }
 	public List<Reservation>? Reservation { get; set; }
 	public List<UserWishlistHotel>? UserWishlistHotel { get; set; }
     public List<Hotel>? Hotels { get; set; }
+    public List<UserCard>? Cards { get; set; }
 }

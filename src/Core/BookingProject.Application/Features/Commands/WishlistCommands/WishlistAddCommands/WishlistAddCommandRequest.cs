@@ -4,6 +4,6 @@ namespace BookingProject.Application.Features.Commands.WishlistCommands.Wishlist
 
 public class WishlistAddCommandRequest:IRequest<WishlistAddCommandResponse>
 {
-    public string UserId { get; set; }
-    public int HotelId { get; set; }
+    public required string UserId { get; set; }
+    public required int HotelId { get; set; }
 }

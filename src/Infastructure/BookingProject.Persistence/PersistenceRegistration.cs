@@ -21,6 +21,7 @@ public static class PersistenceRegistration
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IActivityRepository, ActivityRepository>();
+        services.AddScoped<ICardRepository, CardRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IWishlistRepository, WishlistRepository>();

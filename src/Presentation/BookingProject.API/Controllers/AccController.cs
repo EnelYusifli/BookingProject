@@ -1,6 +1,7 @@
 ﻿using BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands;
 using BookingProject.Application.Features.Commands.AuthCommands.AuthRegisterCommands;
 using BookingProject.Application.Features.Commands.ResetPasswordCommands;
+using BookingProject.Application.Features.Commands.UserCommands.UserUpdateCommands;
 using BookingProject.Application.Features.Queries;
 using BookingProject.Application.Features.Queries.UserQueries;
 using MediatR;
@@ -38,7 +39,13 @@ public class AccController : ControllerBase
 	{
 		return Ok(await _mediator.Send(request));
 	}
-    [HttpGet]
+	[HttpPut("{id}")]
+	public async Task<IActionResult> UpdateUser(UserUpdateCommandRequest request,string id)
+	{
+        request.Id = id;
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpGet]
     public async Task<IActionResult> GetAuthUser()
 	{
 		ClaimsPrincipal user = HttpContext.User;

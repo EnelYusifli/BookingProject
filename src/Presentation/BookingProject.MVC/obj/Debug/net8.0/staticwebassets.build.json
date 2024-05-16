@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fQanRuL9wDjQ0bSf4249O7+wNSGzG6Zu7SwWFtCCbS4=",
+  "Hash": "uKqwvxf87gljhb2zsCe/6dkBfhpZA9ZzHzNDfiWNG74=",
   "Source": "BookingProject.MVC",
   "BasePath": "_content/BookingProject.MVC",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\requestrefused.html"
+    },
+    {
+      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
+      "SourceId": "BookingProject.API",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "BasePath": "_content/BookingProject.API",
+      "RelativePath": "email/updatedemail.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\email\\updatedemail.html"
     },
     {
       "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BookingProject.MVC.styles.css",

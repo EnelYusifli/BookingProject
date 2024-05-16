@@ -4,5 +4,5 @@ namespace BookingProject.Application.Features.Commands.WishlistCommands.Wishlist
 
 public class WishlistRemoveCommandRequest:IRequest<WishlistRemoveCommandResponse>
 {
-    public int Id { get; set; }
+    public required int Id { get; set; }
 }

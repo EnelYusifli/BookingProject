@@ -15,6 +15,6 @@ public class RoomUpdateCommandRequest:IRequest<RoomUpdateCommandResponse>
 	public decimal Area { get; set; }
 	public bool IsCancellable { get; set; }
 	public int? CancelAfterDay { get; set; }
-	public List<IFormFile> ImageFiles { get; set; }
-	public List<int> DeletedImageFileIds { get; set; }
+	public List<IFormFile>? ImageFiles { get; set; }
+	public List<int>? DeletedImageFileIds { get; set; }
 }

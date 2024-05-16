@@ -14,10 +14,10 @@ public class HotelUpdateCommandRequest:IRequest<HotelUpdateCommandResponse>
 	public string Country { get; set; }
 	public string City { get; set; }
 	public bool IsDeactive{ get; set; }
-	public List<IFormFile> ImageFiles { get; set; }
+	public List<IFormFile>? ImageFiles { get; set; }
 	public List<int>? StaffLanguageIds { get; set; }
 	public List<int>? ServiceIds { get; set; }
 	public List<int>? PaymentMethodIds { get; set; }
 	public List<int>? ActivityIds { get; set; }
-	public List<int> DeletedImageFileIds { get; set; }
+	public List<int>? DeletedImageFileIds { get; set; }
 }

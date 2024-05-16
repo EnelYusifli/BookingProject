@@ -33,8 +33,10 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
         public async Task<AuthLoginCommandResponse> Handle(AuthLoginCommandRequest request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
+            if (user is null) 
+                user = await _userManager.FindByEmailAsync(request.UserName);
 
-            if (user == null)
+			if (user is null)
             {
                 throw new BadRequestException("Invalid credentials. Please try again.");
             }

@@ -106,7 +106,7 @@ Content START -->
 										<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
 											<!-- Avatar place holder -->
 											<span class="avatar avatar-xl">
-												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="@Model.User.ProfilePhotoUrl" alt="">
+												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src='@(string.IsNullOrEmpty(Model.User.ProfilePhotoUrl) ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : Model.User.ProfilePhotoUrl)' alt="">
 											</span>
 										</label>
 										<!-- Upload button -->
@@ -131,8 +131,8 @@ Content START -->
 								<div class="col-md-6">
 									<label class="form-label">Mobile number</label>
 									<input type="text" class="form-control"
-									@(Model.User.PhoneNumber is not null ? $"value='{Model.User.PhoneNumber}'" : "")
-										   placeholder="Enter your mobile number">
+									value=@Model.User.PhoneNumber 
+									placeholder="Enter your mobile number">
 								</div>
 
 
