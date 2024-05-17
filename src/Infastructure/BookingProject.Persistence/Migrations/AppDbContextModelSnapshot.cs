@@ -46,7 +46,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Activities", (string)null);
+                    b.ToTable("Activities");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.AppUser", b =>
@@ -115,6 +115,12 @@ namespace BookingProject.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpires")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime?>("ResetTokenExpires")
                         .HasColumnType("datetime2");
 
@@ -179,7 +185,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CustomerReviews", (string)null);
+                    b.ToTable("CustomerReviews");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Hotel", b =>
@@ -249,7 +255,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Hotels", (string)null);
+                    b.ToTable("Hotels");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelActivity", b =>
@@ -281,7 +287,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelActivities", (string)null);
+                    b.ToTable("HotelActivities");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelAdvantage", b =>
@@ -313,7 +319,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelAdvantages", (string)null);
+                    b.ToTable("HotelAdvantages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelImage", b =>
@@ -344,7 +350,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelImages", (string)null);
+                    b.ToTable("HotelImages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelPaymentMethod", b =>
@@ -376,7 +382,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("PaymentMethodId");
 
-                    b.ToTable("HotelPaymentMethods", (string)null);
+                    b.ToTable("HotelPaymentMethods");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelService", b =>
@@ -408,7 +414,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("HotelServices", (string)null);
+                    b.ToTable("HotelServices");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.HotelStaffLanguage", b =>
@@ -440,7 +446,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("StaffLanguageId");
 
-                    b.ToTable("HotelStaffLanguages", (string)null);
+                    b.ToTable("HotelStaffLanguages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.PaymentMethod", b =>
@@ -467,7 +473,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethods", (string)null);
+                    b.ToTable("PaymentMethods");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Reservation", b =>
@@ -512,7 +518,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.ReviewImage", b =>
@@ -543,7 +549,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("ReviewId");
 
-                    b.ToTable("ReviewImages", (string)null);
+                    b.ToTable("ReviewImages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Room", b =>
@@ -599,7 +605,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("Rooms", (string)null);
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.RoomImage", b =>
@@ -630,7 +636,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomImages", (string)null);
+                    b.ToTable("RoomImages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Service", b =>
@@ -657,7 +663,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.StaffLanguage", b =>
@@ -684,7 +690,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StaffLanguages", (string)null);
+                    b.ToTable("StaffLanguages");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Type", b =>
@@ -711,7 +717,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types", (string)null);
+                    b.ToTable("Types");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.UserWishlistHotel", b =>
@@ -744,7 +750,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserWishlistHotels", (string)null);
+                    b.ToTable("UserWishlistHotels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -919,7 +925,7 @@ namespace BookingProject.Persistence.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Cards", (string)null);
+                    b.ToTable("Cards");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>

@@ -66,7 +66,8 @@ public static class PersistenceRegistration
         }).AddCookie(x =>
         {
             x.Cookie.Name = "token";
-        }).AddGoogle(googleOptions =>
+			x.Cookie.Name = "refreshToken";
+		}).AddGoogle(googleOptions =>
 		{
 			googleOptions.ClientId = configuration["Authentication:GoogleClientId"];
 			googleOptions.ClientSecret = configuration["Authentication:GoogleClientSecret"];

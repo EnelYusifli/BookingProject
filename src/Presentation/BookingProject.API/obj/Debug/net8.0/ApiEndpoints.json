@@ -43,6 +43,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.AccController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Acc/RefreshToken",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.UserCommands.RefreshCommands.RefreshCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.AccController",
     "Method": "Register",
     "RelativePath": "api/Acc/Register",
     "HttpMethod": "POST",

@@ -108,7 +108,7 @@
       },
       {
         "Name": "Birthdate",
-        "Type": "System.DateOnly",
+        "Type": "System.Nullable\u00601[[System.DateOnly, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
@@ -1232,6 +1232,38 @@
         "Type": "BookingProject.Application.Features.Commands.TypeCommands.TypeUpdateCommands.TypeUpdateCommandRequest",
         "IsRequired": true
       },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "AddUserCard",
+    "RelativePath": "api/Users/AddUserCard",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.UserCardCommands.CardCreateCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "DeleteUserCard",
+    "RelativePath": "api/Users/DeleteUserCard/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",

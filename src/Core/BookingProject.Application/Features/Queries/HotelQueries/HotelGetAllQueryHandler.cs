@@ -20,17 +20,17 @@ public class HotelGetAllQueryHandler : IRequestHandler<HotelGetAllQueryRequest, 
     public async Task<ICollection<HotelGetAllQueryResponse>> Handle(HotelGetAllQueryRequest request, CancellationToken cancellationToken)
     {
         ICollection<Hotel> act = await _repository.Table
-            .Include(x=>x.HotelImages)
-            .Include(x=>x.HotelAdvantages)
-            .Include(x=>x.HotelActivities)
-            .ThenInclude(x=>x.Activity)
-            .Include(x=>x.HotelPaymentMethods)
-            .ThenInclude(x=>x.PaymentMethod)
-            .Include(x=>x.HotelServices)
-            .ThenInclude(x=>x.Service)
-            .Include(x=>x.HotelStaffLanguages)
-            .ThenInclude(x=>x.StaffLanguage)
-            .Include(x=>x.Type)
+            .Include(x => x.HotelImages)
+            .Include(x => x.HotelAdvantages)
+            .Include(x => x.HotelActivities)
+            .ThenInclude(x => x.Activity)
+            .Include(x => x.HotelPaymentMethods)
+            .ThenInclude(x => x.PaymentMethod)
+            .Include(x => x.HotelServices)
+            .ThenInclude(x => x.Service)
+            .Include(x => x.HotelStaffLanguages)
+            .ThenInclude(x => x.StaffLanguage)
+            .Include(x => x.Type)
             .ToListAsync();
         if (act is null) throw new Exception("Hotel not found");
         ICollection<HotelGetAllQueryResponse> dtos = _mapper.Map<ICollection<HotelGetAllQueryResponse>>(act);

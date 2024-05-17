@@ -1,7 +1,8 @@
 ﻿@{
 	Layout = null;
+	PropertyViewModel vm = ViewBag.Property;
 }
-@model AddHotelViewModel
+@model HotelCreateViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -561,9 +562,9 @@ Steps START -->
 														<!-- Choose type -->
 														<div class="col-12">
 															<label class="form-label">Choose property type *</label>
-															<select class="form-select js-choice" asp-for="@Model.HotelCreateViewModel.TypeId">
+															<select class="form-select js-choice" asp-for="@Model.TypeId">
 																<option value="">Select type</option>
-																@foreach (var item in Model.PropertyViewModel.Types)
+																@foreach (var item in vm.Types)
 																{
 																<option value="@item.Id">@item.TypeName</option>
 																}
@@ -575,14 +576,14 @@ Steps START -->
 														<!-- Listing Name -->
 														<div class="col-12">
 															<label class="form-label">Listing name *</label>
-															<input class="form-control" type="text" placeholder="Enter property name" asp-for="@Model.HotelCreateViewModel.Name">
+															<input class="form-control" type="text" placeholder="Enter property name" asp-for="@Model.Name">
 															<small>A catchy name usually includes: House name - Room name - A tourist destination</small>
 														</div>
 
 														<!-- UserId -->
 														<div class="col-md-6">
 															<label class="form-label">UserId *</label>
-															<input class="form-control" type="text" placeholder="Enter userid" asp-for="@Model.HotelCreateViewModel.AppUserId">
+															<input class="form-control" type="text" placeholder="Enter userid" asp-for="@Model.AppUserId">
 														</div>
 
 													</div>
@@ -604,17 +605,17 @@ Steps START -->
 														<!-- Country -->
 														<div class="col-md-6">
 															<label class="form-label">Country *</label>
-															<input class="form-control" type="text" placeholder="Enter country" asp-for="@Model.HotelCreateViewModel.Country">
+															<input class="form-control" type="text" placeholder="Enter country" asp-for="@Model.Country">
 														</div>
 														<!-- City -->
 														<div class="col-md-6">
 															<label class="form-label">City *</label>
-															<input class="form-control" type="text" placeholder="Enter city" asp-for="@Model.HotelCreateViewModel.City">
+															<input class="form-control" type="text" placeholder="Enter city" asp-for="@Model.City">
 														</div>
 														<!-- Address -->
 														<div class="col-12">
 															<label class="form-label">Address *</label>
-															<input class="form-control" type="text" placeholder="Enter address" asp-for="@Model.HotelCreateViewModel.Address">
+															<input class="form-control" type="text" placeholder="Enter address" asp-for="@Model.Address">
 														</div>
 														<!-- Detailed address -->
 														<div class="col-12">
@@ -640,7 +641,7 @@ Steps START -->
 														<!-- Images -->
 														<div class="col-12">
 															<label class="form-label">Upload images *</label>
-															<input class="form-control" type="file" name="my-image[]" id="image" accept="image/gif, image/jpeg, image/png" multiple asp-for="@Model.HotelCreateViewModel.ImageFiles">
+															<input class="form-control" id="image" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.ImageFiles">
 															<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. </p>
 															<p class="small mb-0 mt-2"><b>Note:</b> At least 4 images are required.</p>
 														</div>
@@ -678,9 +679,9 @@ Steps START -->
 														<!-- Select Activities -->
 														<div class="col-12">
 															<label class="form-label">Select activities *</label>
-															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.HotelCreateViewModel.ActivityIds">
+															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.ActivityIds">
 																<option value="">Select activities</option>
-																@foreach (var item in Model.PropertyViewModel.Activities)
+																@foreach (var item in vm.Activities)
 																{
 																<option value="@item.Id">@item.ActivityName</option>
 																}
@@ -691,9 +692,9 @@ Steps START -->
 														<!-- Select PaymentMethods -->
 														<div class="col-12">
 															<label class="form-label">Select payment methods *</label>
-															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.HotelCreateViewModel.PaymentMethodIds">
+															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.PaymentMethodIds">
 																<option value="">Select payment methods</option>
-																@foreach (var item in Model.PropertyViewModel.PaymentMethods)
+																@foreach (var item in vm.PaymentMethods)
 																{
 																	<option value="@item.Id">@item.PaymentMethodName</option>
 																}
@@ -704,9 +705,9 @@ Steps START -->
 														<!-- Select StaffLanguages -->
 														<div class="col-12">
 															<label class="form-label">Select staff languages *</label>
-															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.HotelCreateViewModel.StaffLanguageIds">
+															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.StaffLanguageIds">
 																<option value="">Select staff languages</option>
-																@foreach (var item in @Model.PropertyViewModel.StaffLanguages)
+																@foreach (var item in @vm.StaffLanguages)
 																{
 																	<option value="@item.Id">@item.staffLanguageName</option>
 																}
@@ -717,9 +718,9 @@ Steps START -->
 														<!-- Select Services -->
 														<div class="col-12">
 															<label class="form-label">Select services *</label>
-															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.HotelCreateViewModel.ServiceIds">
+															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.ServiceIds">
 																<option value="">Select services</option>
-																@foreach (var item in Model.PropertyViewModel.Services)
+																@foreach (var item in vm.Services)
 																{
 																	<option value="@item.Id">@item.ServiceName</option>
 																}
@@ -727,10 +728,25 @@ Steps START -->
 															<small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing</small>
 														</div>
 
+														<!-- Advantage Names Container -->
+														<div class="col-12">
+															<div id="advantage-names-container" class="col-12"></div>
+															<label class="form-label">Add advantages *</label>
+															<div class="card shadow advantage-card mb-3">
+																<div class="card-body">
+																	<label class="form-label">Advantage Name *</label>
+																	<input class="form-control" type="text" asp-for="@Model.HotelAdvantageNames[0]" placeholder="Enter advantage name">
+																</div>
+															</div>
+														<button type="button" class="btn btn-primary mt-2" id="add-advantage-name">Add New Advantage</button>
+														</div>
+													
+
+														
 														<!-- Descriptions -->
 														<div class="col-12">
 															<label class="form-label">Add description *</label>
-															<textarea class="form-control" rows="8" asp-for="@Model.HotelCreateViewModel.Desc"></textarea>
+															<textarea class="form-control" rows="8" asp-for="@Model.Desc"></textarea>
 															<p class="small mb-0 mt-2"><b>Note:</b> Use this field to add a description.</p>
 														</div>
 
@@ -865,49 +881,49 @@ Steps START -->
 														<!-- Room name -->
 														<div class="col-md-6">
 															<label class="form-label">Room name *</label>
-															<input class="form-control" placeholder="Enter name" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].RoomName">
+															<input class="form-control" placeholder="Enter name" asp-for="@Model.RoomCreateDtos[0].RoomName">
 														</div>
 
 														<!-- Room images -->
 														<div class="col-md-6">
 															<label class="form-label">Room images *</label>
-															<input class="form-control" type="file" name="my-image" accept="image/gif, image/jpeg, image/png" multiple asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].ImageFiles">
+															<input class="form-control"  accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.RoomCreateDtos[0].ImageFiles">
 														</div>
 
 														<!-- Room Price -->
 														<div class="col-md-6">
 															<label class="form-label">Room Price Per Night *</label>
-															<input class="form-control" placeholder="Enter price" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].PricePerNight">
+															<input class="form-control" placeholder="Enter price" asp-for="@Model.RoomCreateDtos[0].PricePerNight">
 														</div>
 
 														<!-- ServiceFee -->
 														<div class="col-md-6">
 															<label class="form-label">Service Fee *</label>
-															<input class="form-control" placeholder="Enter fee" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].ServiceFee">
+															<input class="form-control" placeholder="Enter fee" asp-for="@Model.RoomCreateDtos[0].ServiceFee">
 														</div>
 
 														<!-- Area -->
 														<div class="col-md-6">
 															<label class="form-label">Area *</label>
-															<input class="form-control" placeholder="Enter area" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].Area">
+															<input class="form-control" placeholder="Enter area" asp-for="@Model.RoomCreateDtos[0].Area">
 														</div>
 
 														<!-- AdultCount -->
 														<div class="col-md-6">
 															<label class="form-label">Adult Count *</label>
-															<input class="form-control" placeholder="Enter adult count" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].AdultCount">
+															<input class="form-control" placeholder="Enter adult count" asp-for="@Model.RoomCreateDtos[0].AdultCount">
 														</div>
 
 														<!-- ChildCount -->
 														<div class="col-md-6">
 															<label class="form-label">Child Count *</label>
-															<input class="form-control" placeholder="Enter child count" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].ChildCount">
+															<input class="form-control" placeholder="Enter child count" asp-for="@Model.RoomCreateDtos[0].ChildCount">
 														</div>
 
 														<!-- Cancel info -->
 														<div class="col-md-6">
 															<label class="form-label">Cancellation info *</label>
-															<select class="form-select js-choice border-0 z-index-9 bg-transparent" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].IsCancellable">
+															<select class="form-select js-choice border-0 z-index-9 bg-transparent" asp-for="@Model.RoomCreateDtos[0].IsCancellable">
 																<option value="">Select item</option>
 																<option value="false">Non Refundable</option>
 																<option value="true">Free Cancellation</option>
@@ -915,12 +931,16 @@ Steps START -->
 
 															<div id="cancelAfterDayCard" style="display: none;">
 																<label class="form-label">Cancel after x days *</label>
-																<input class="form-control" placeholder="Enter day count" asp-for="@Model.HotelCreateViewModel.RoomCreateDtos[0].CancelAfterDay">
+																<input class="form-control" placeholder="Enter day count" asp-for="@Model.RoomCreateDtos[0].CancelAfterDay">
 															</div>
 
 														</div>
 													</div>
 												</div>
+												<div class="card-body">
+													<div asp-validation-summary="All" class="text-danger"></div>
+												</div>
+
 												<!-- Card body END -->
 											</div>
 											<div class="col-12">
@@ -933,7 +953,7 @@ Steps START -->
 												<div class="text-end">
 													@using (Html.BeginForm("AddHotel", "Property", FormMethod.Post))
 													{
-														@Html.HiddenFor(model => model.PropertyViewModel)
+														@Html.HiddenFor(model => vm)
 														<button type="submit" class="btn btn-success">Add Property</button>
 													}
 												</div>
@@ -1077,7 +1097,31 @@ Footer END -->
 			}
 		});
 	</script>
+	<script>
+		$(document).ready(function () {
+			// Add event listener to the "Add New Advantage Name" button
+			$("#add-advantage-name").click(function () {
+				// Create a new advantage name input field
+				var newInput = '<div class="card shadow advantage-card mb-3">' +
+					'<div class="card-body">' +
+					'<label class="form-label">Advantage Name *</label>' +
+					'<input class="form-control" type="text" name="HotelCreateViewModel.HotelAdvantageNames" placeholder="Enter advantage name">' +
+					'</div>' +
+					'<div class="card-footer">' +
+					'<button type="button" class="btn btn-danger delete-advantage-btn">Delete</button>' +
+					'</div>' +
+					'</div>';
 
+				// Append the new input field to the container
+				$("#advantage-names-container").append(newInput);
+			});
+			// Add event listener to dynamically created delete buttons
+			$(document).on("click", ".delete-advantage-btn", function () {
+				// Remove the parent card when the delete button is clicked
+				$(this).closest(".advantage-card").remove();
+			});
+		});
+	</script>
 </body>
 
 <!-- Mirrored from booking.webestica.com/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 May 2024 09:25:39 GMT -->

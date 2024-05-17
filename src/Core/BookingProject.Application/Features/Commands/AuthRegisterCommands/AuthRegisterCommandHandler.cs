@@ -84,14 +84,6 @@ public class AuthRegisterCommandHandler : IRequestHandler<AuthRegisterCommandReq
                 throw new BadRequestException("Password must contain at least one uppercase letter");
             }
             var newUser = _mapper.Map<AppUser>(request);
-            //var newUser = new AppUser
-            //{
-            //    UserName = request.UserName,
-            //    Email = request.Email,
-            //    FirstName = request.FirstName,
-            //    LastName = request.LastName,
-            //    Birthdate = request.Birthdate
-            //};
 
             var userResult = await _userManager.CreateAsync(newUser, request.Password);
 

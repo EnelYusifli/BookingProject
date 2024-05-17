@@ -27,7 +27,7 @@ public class HomeController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
-			vm.Hotels = hotels;
+			vm.Hotels = hotels.Where(x=>x.IsDeactive==false).OrderByDescending(h => h.StarPoint).Take(4).ToList();
 			return View(vm);
 		}
 		return View();
