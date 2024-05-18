@@ -1,9 +1,13 @@
 ﻿using BookingProject.MVC.ViewModels.AccountViewModels;
+using BookingProject.MVC.ViewModels.HotelViewModels;
+using BookingProject.MVC.ViewModels.ProfileViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 
@@ -21,9 +25,9 @@ public class AccountController : Controller
 		_httpClient.BaseAddress = baseAddress;
 	}
 	public IActionResult Login()
-    {
-        return View();
-    }
+	{
+		return View();
+	}
 	[HttpPost]
 	public async Task<IActionResult> Login(LoginViewModel vm)
 	{
@@ -44,7 +48,7 @@ public class AccountController : Controller
 			Response.Cookies.Append("token", token,
 				new CookieOptions
 				{
-					Expires = DateTime.UtcNow.AddDays(4),
+					Expires = DateTime.UtcNow.AddMinutes(4),
 					HttpOnly = true,
 					Secure = true,
 					IsEssential = true,
@@ -75,9 +79,9 @@ public class AccountController : Controller
 	}
 
 	public IActionResult Register()
-    {
-        return View();
-    }
+	{
+		return View();
+	}
 	[HttpPost]
 	public async Task<IActionResult> Register(RegisterViewModel vm)
 	{
@@ -94,9 +98,9 @@ public class AccountController : Controller
 		return View();
 	}
 	public IActionResult ForgotPassword()
-    {
-        return View();
-    }
+	{
+		return View();
+	}
 	[HttpPost]
 	public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel vm)
 	{
@@ -108,28 +112,94 @@ public class AccountController : Controller
 
 		if (response.IsSuccessStatusCode)
 		{
-			return RedirectToAction("TwoFactorAuth");
+			return RedirectToAction("ResetPasswordInfo");
 		}
 		return View();
 	}
-	public IActionResult TwoFactorAuth()
+    public IActionResult ResetPasswordInfo()
+    {
+        return View();
+    }
+    public IActionResult ResetPassword(string token)
 	{
+		ResetPasswordViewModel vm = new() {Token=token};
+        return View(vm);
+	}
+	[HttpPost]
+	public async Task<IActionResult> ResetPassword(ResetPasswordViewModel vm)
+	{
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PutAsync(baseAddress + $"/acc/resetpassword", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index","Home");
+		}
 		return View();
 	}
 	public async Task<IActionResult> Profile()
 	{
-		if (!ModelState.IsValid) return View();
-
+		//if (!ModelState.IsValid) return View();
+		ProfileViewModel profileViewModel = new();
+		profileViewModel.PersonalInfo = new();
+		profileViewModel.Password = new();
 		var response = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
 
 		if (response.IsSuccessStatusCode)
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
-			return View(dto);
+			profileViewModel.User = dto;
+			return View(profileViewModel);
 		}
-		return RedirectToAction("Index","Home");
+		return RedirectToAction("Index", "Home");
+	}
+	[HttpPost]
+	public async Task<IActionResult> UpdatePersonalInfo(ProfileViewModel vm)
+	{
+		using (var content = new MultipartFormDataContent())
+		{
+			var personalInfoStr = JsonConvert.SerializeObject(vm.PersonalInfo);
+			var stringContent = new StringContent(personalInfoStr, Encoding.UTF8, "application/json");
+			content.Add(stringContent, "updatePersonalInfoViewModel");
+
+			if (vm.PersonalInfo.ProfilePhoto != null)
+			{
+				var fileContent = new StreamContent(vm.PersonalInfo.ProfilePhoto.OpenReadStream());
+				fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(vm.PersonalInfo.ProfilePhoto.ContentType);
+				content.Add(fileContent, "ProfilePhoto", vm.PersonalInfo.ProfilePhoto.FileName);
+			}
+
+			var response = await _httpClient.PutAsync(baseAddress + "/acc/updateuser", content);
+
+			if (response.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index", "Home");
+			}
+			else
+			{
+				var responseContent = await response.Content.ReadAsStringAsync();
+				Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				Console.WriteLine(responseContent);
+			}
+		}
+
+		return View(vm);
+	}
+	[HttpPost]
+	public async Task<IActionResult> UpdatePassword(ProfileViewModel vm)
+	{
+		var dataStr = JsonConvert.SerializeObject(vm.Password);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PutAsync(baseAddress + "/acc/changepassword", stringContent);
+
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index", "Home");
+		}
+		return RedirectToAction("Profile");
 	}
 }
-
 

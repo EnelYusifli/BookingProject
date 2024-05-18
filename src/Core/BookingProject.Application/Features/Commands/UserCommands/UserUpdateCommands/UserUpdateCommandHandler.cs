@@ -40,7 +40,10 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommandRequest
 		AppUser existUser = await _userManager.FindByEmailAsync(request.Email);
 		if (existUser is not null)
 			throw new ConflictException("Email already exists");
-		if(request.ProfilePhoto is not null)
+		AppUser existUser2 = await _userManager.FindByNameAsync(request.UserName);
+		if (existUser2 is not null)
+			throw new ConflictException("Username already exists");
+		if (request.ProfilePhoto is not null)
 		{
 			SaveFileExtension.Initialize(_configuration);
 			string url = await SaveFileExtension.SaveFile(request.ProfilePhoto, "userpps");

@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\usercommands\\refreshcommands\\refreshcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\usercommands\\refreshcommands\\refreshcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.api\\controllers\\acccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|solutionrelative:src\\presentation\\bookingproject.api\\controllers\\acccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\authlogincommands\\authlogincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\authlogincommands\\authlogincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\resetpasswordcommands\\resetpasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\resetpasswordcommands\\resetpasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\usercommands\\refreshcommands\\refreshcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\usercommands\\refreshcommands\\refreshcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\forgotpasswordqueries\\forgotpasswordqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\forgotpasswordqueries\\forgotpasswordqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\usercommands\\refreshcommands\\refreshcommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\usercommands\\refreshcommands\\refreshcommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\services\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\services\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\services\\implementations\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\services\\implementations\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\viewmodels\\accountviewmodels\\resetpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\viewmodels\\accountviewmodels\\resetpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,73 +38,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RefreshCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandHandler.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAAABMAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T18:08:35.541Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RefreshCommandResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandResponse.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandResponse.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandResponse.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T18:08:17.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RefreshCommandRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandRequest.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandRequest.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\RefreshCommands\\RefreshCommandRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T18:07:52.927Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccController.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAAADwAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T18:03:48.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ITokenService.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Interfaces\\ITokenService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Services\\Interfaces\\ITokenService.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Interfaces\\ITokenService.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Services\\Interfaces\\ITokenService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T17:52:28.534Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
@@ -119,28 +54,93 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthLoginCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\AuthLoginCommands\\AuthLoginCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\AuthLoginCommands\\AuthLoginCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\AuthLoginCommands\\AuthLoginCommandHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\AuthLoginCommands\\AuthLoginCommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA9AAAA",
+              "DocumentIndex": 4,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAuwBcAAABYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T16:58:04.199Z",
+              "WhenOpened": "2024-05-18T19:06:52.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ForgotPasswordQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\ForgotPasswordQueries\\ForgotPasswordQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\ForgotPasswordQueries\\ForgotPasswordQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\ForgotPasswordQueries\\ForgotPasswordQueryHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\ForgotPasswordQueries\\ForgotPasswordQueryHandler.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACMAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T18:57:59.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResetPasswordCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ResetPasswordCommands\\ResetPasswordCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\ResetPasswordCommands\\ResetPasswordCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ResetPasswordCommands\\ResetPasswordCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\ResetPasswordCommands\\ResetPasswordCommandHandler.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAASwFgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T17:36:58.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Account\\ResetPassword.cshtml",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Account\\ResetPassword.cshtml",
+              "ViewState": "AQIAAHcAAAAAAAAAAAAAAIMAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T17:25:18.266Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Implementations\\TokenService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Services\\Implementations\\TokenService.cs",
-              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Implementations\\TokenService.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Services\\Implementations\\TokenService.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAAAFoAAAA6AAAA",
+              "Title": "ResetPasswordViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\AccountViewModels\\ResetPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AccountViewModels\\ResetPasswordViewModel.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\AccountViewModels\\ResetPasswordViewModel.cs",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AccountViewModels\\ResetPasswordViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T16:57:05.167Z",
+              "WhenOpened": "2024-05-18T17:23:19.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccController.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\Controllers\\AccController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T16:54:09.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAAHgAAAAAAAAAAADgv4sAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T12:53:55.099Z",
               "EditorCaption": ""
             }
           ]

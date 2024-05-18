@@ -19,7 +19,7 @@ public class UserRepository : IUserRepository
 		await _context.SaveChangesAsync();
 	}
 
-	public async Task<AppUser?> GetByToken(string token)
+	public async Task<AppUser> GetByToken(string token)
 	{
 		AppUser user=await _context.Users.FirstOrDefaultAsync(x=>x.PasswordResetToken==token);
 		return user;

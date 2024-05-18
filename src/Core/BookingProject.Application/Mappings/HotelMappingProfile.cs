@@ -21,7 +21,8 @@ public class HotelMappingProfile:Profile
            .ForMember(dest => dest.PaymentMethodNames, opt => opt.MapFrom(src => src.HotelPaymentMethods.Select(p => p.PaymentMethod.PaymentMethodName)))
            .ForMember(dest => dest.ServiceNames, opt => opt.MapFrom(src => src.HotelServices.Select(s => s.Service.ServiceName)))
            .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.Type.TypeName))
-           .ForMember(dest => dest.StaffLanguageNames, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(l => l.StaffLanguage.StaffLanguageName))).ReverseMap() ;
+           .ForMember(dest => dest.StaffLanguageNames, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(l => l.StaffLanguage.StaffLanguageName)))
+		   .ForMember(dest => dest.Rooms, opt => opt.MapFrom(src => src.Rooms)).ReverseMap() ;
 		CreateMap<Hotel, HotelGetByIdQueryResponse>()
 		 .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src => src.HotelActivities.Select(a => a.Activity.ActivityName)))
 		 .ForMember(dest => dest.ImageFileUrls, opt => opt.MapFrom(src => src.HotelImages.Select(a => a.Url)))
@@ -29,7 +30,8 @@ public class HotelMappingProfile:Profile
 		 .ForMember(dest => dest.PaymentMethodNames, opt => opt.MapFrom(src => src.HotelPaymentMethods.Select(p => p.PaymentMethod.PaymentMethodName)))
 		 .ForMember(dest => dest.ServiceNames, opt => opt.MapFrom(src => src.HotelServices.Select(s => s.Service.ServiceName)))
 		 .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.Type.TypeName))
-		 .ForMember(dest => dest.StaffLanguageNames, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(l => l.StaffLanguage.StaffLanguageName))).ReverseMap();
+		 .ForMember(dest => dest.StaffLanguageNames, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(l => l.StaffLanguage.StaffLanguageName)))
+		 .ForMember(dest => dest.Rooms, opt => opt.MapFrom(src => src.Rooms)).ReverseMap();
 		CreateMap<WishlistGetAllQueryResponse, UserWishlistHotel>().ReverseMap();
 	}
 }

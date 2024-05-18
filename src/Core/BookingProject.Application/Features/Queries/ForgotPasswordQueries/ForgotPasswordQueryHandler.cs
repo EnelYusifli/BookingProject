@@ -30,9 +30,10 @@ public class ForgotPasswordQueryHandler : IRequestHandler<ForgotPasswordQueryReq
         string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "email", "forgotpassword.html");
         string html = File.ReadAllText(filePath);
         string token =await _userManager.GeneratePasswordResetTokenAsync(user);
-        html = html.Replace("{{token}}", token);
         user.PasswordResetToken = token;
         user.ResetTokenExpires= DateTime.Now.AddMinutes(5);
+        token = $"https://localhost:7183/account/resetpassword?token={token}";
+        html = html.Replace("{{token}}", token);
         await _userRepository.CommitAsync();
         await _emailService.SendEmail(request.Email, subject, html);
         return new ForgotPasswordQueryResponse();

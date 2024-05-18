@@ -1,4 +1,7 @@
-﻿namespace BookingProject.MVC.ViewModels.HotelViewModels;
+﻿using BookingProject.Application.Features.Queries.RoomQueries;
+using BookingProject.MVC.ViewModels.RoomViewModels;
+
+namespace BookingProject.MVC.ViewModels.HotelViewModels;
 
 public class HotelGetViewModel
 {
@@ -19,4 +22,6 @@ public class HotelGetViewModel
 	public List<string> PaymentMethodNames { get; set; }
 	public List<string> ServiceNames { get; set; }
 	public List<string> StaffLanguageNames { get; set; }
+	public List<RoomGetViewModel> Rooms { get; set; }
+
 }

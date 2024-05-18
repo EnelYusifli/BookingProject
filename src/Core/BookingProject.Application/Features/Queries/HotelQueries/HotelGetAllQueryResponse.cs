@@ -1,4 +1,6 @@
-﻿namespace BookingProject.Application.Features.Queries.HotelQueries;
+﻿using BookingProject.Application.Features.Queries.RoomQueries;
+
+namespace BookingProject.Application.Features.Queries.HotelQueries;
 
 public class HotelGetAllQueryResponse
 {
@@ -19,4 +21,5 @@ public class HotelGetAllQueryResponse
     public List<string> PaymentMethodNames { get; set; }
     public List<string> ServiceNames { get; set; }
     public List<string> StaffLanguageNames { get; set; }
+    public List<RoomGetByIdResponse> Rooms { get; set; }
 }

@@ -16,5 +16,19 @@ public class RoomMappingProfile:Profile
         CreateMap<RoomCreateDto,Room>().ReverseMap();
         CreateMap<RoomGetAllQueryResponse, Room>().ReverseMap()
             .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.RoomImages.Select(a => a.Url))).ReverseMap();
-    }
+		CreateMap<Room, RoomGetByIdResponse>()
+		   .ForMember(dest => dest.RoomName, opt => opt.MapFrom(src => src.RoomName))
+		   .ForMember(dest => dest.HotelName, opt => opt.MapFrom(src => src.Hotel.Name))
+		   .ForMember(dest => dest.AdultCount, opt => opt.MapFrom(src => src.AdultCount))
+		   .ForMember(dest => dest.ChildCount, opt => opt.MapFrom(src => src.ChildCount))
+		   .ForMember(dest => dest.ServiceFee, opt => opt.MapFrom(src => src.ServiceFee))
+		   .ForMember(dest => dest.PricePerNight, opt => opt.MapFrom(src => src.PricePerNight))
+		   .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
+		   .ForMember(dest => dest.IsCancellable, opt => opt.MapFrom(src => src.IsCancellable))
+		   .ForMember(dest => dest.CancelAfterDay, opt => opt.MapFrom(src => src.CancelAfterDay))
+		   .ForMember(dest => dest.RoomImageUrls, opt => opt.MapFrom(src => src.RoomImages.Select(ri => ri.Url).ToList()))
+		   .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
+		   .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => src.ModifiedDate));
+	}
 }
+

@@ -3,6 +3,7 @@ using BookingProject.Application.Features.Commands.AuthCommands.AuthRegisterComm
 using BookingProject.Application.Features.Commands.ResetPasswordCommands;
 using BookingProject.Application.Features.Commands.UserCommands.RefreshCommands;
 using BookingProject.Application.Features.Commands.UserCommands.UserUpdateCommands;
+using BookingProject.Application.Features.Commands.UserCommands.UserUpdatePasswordCommands;
 using BookingProject.Application.Features.Queries;
 using BookingProject.Application.Features.Queries.UserQueries;
 using MediatR;
@@ -35,15 +36,14 @@ public class AccController : ControllerBase
     {
         return Ok(await _mediator.Send(request));
     }
-	[HttpPost]
+	[HttpPut]
 	public async Task<IActionResult> ResetPassword(ResetPasswordCommandRequest request)
 	{
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpPut("{id}")]
-	public async Task<IActionResult> UpdateUser(UserUpdateCommandRequest request,string id)
+	[HttpPut]
+	public async Task<IActionResult> UpdateUser(UserUpdateCommandRequest request)
 	{
-        request.Id = id;
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpGet]
@@ -55,6 +55,11 @@ public class AccController : ControllerBase
 	}
     [HttpPut]
 	public async Task<IActionResult> RefreshToken(RefreshCommandRequest request)
+	{
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPut]
+	public async Task<IActionResult> ChangePassword(UserUpdatePasswordCommandRequest request)
 	{
 		return Ok(await _mediator.Send(request));
 	}

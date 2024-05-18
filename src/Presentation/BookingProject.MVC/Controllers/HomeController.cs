@@ -1,5 +1,6 @@
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
+using BookingProject.MVC.ViewModels.RoomViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -45,6 +46,23 @@ public class HomeController : Controller
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(responseData);
 			vm.Hotel = hotel;
+			return View(vm);
+		}
+		return RedirectToAction("Index");
+	}
+	[HttpGet]
+	public async Task<IActionResult> RoomDetail([FromRoute] int id)
+	{
+		RoomGetViewModel vm = new();
+		if (!ModelState.IsValid) return View();
+
+		var response = await _httpClient.GetAsync(baseAddress + $"/rooms/getbyid/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var room = JsonConvert.DeserializeObject<RoomGetViewModel>(responseData);
+			vm = room;
 			return View(vm);
 		}
 		return RedirectToAction("Index");

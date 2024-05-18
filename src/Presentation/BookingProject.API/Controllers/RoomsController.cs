@@ -60,4 +60,13 @@ public class RoomsController : ControllerBase
         };
         return Ok(await _mediator.Send(request));
     }
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetById(int id)
+	{
+		RoomGetByIdRequest request = new()
+		{
+			Id = id
+		};
+		return Ok(await _mediator.Send(request));
+	}
 }

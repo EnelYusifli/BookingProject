@@ -5,6 +5,7 @@ using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using SmtpServer.Text;
 
@@ -68,8 +69,8 @@ public class ResetPasswordCommandHandler : IRequestHandler<ResetPasswordCommandR
 		{
 			throw new BadRequestException("Password must contain at least one uppercase letter");
 		}
-
-		AppUser user=await _userRepository.GetByToken(request.Token);
+		request.Token = request.Token.Replace(' ', '+');
+		AppUser user = await _userManager.Users.Where(x => x.PasswordResetToken == request.Token).FirstOrDefaultAsync();
 		if (user is null)
 			throw new NotFoundException("User not found");
 		if (user.ResetTokenExpires < DateTime.Now)
