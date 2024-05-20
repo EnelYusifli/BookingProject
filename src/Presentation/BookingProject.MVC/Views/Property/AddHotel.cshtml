@@ -1,7 +1,6 @@
 ﻿@{
 	Layout = null;
 	PropertyViewModel vm = ViewBag.Property;
-	string userId = ViewBag.UserId;
 }
 @model HotelCreateViewModel
 
@@ -584,9 +583,6 @@ Steps START -->
 
 															<small>A catchy name usually includes: House name - Room name - A tourist destination</small>
 														</div>
-
-														<!-- UserId -->
-														<input class="form-control" type="hidden" value="@userId" asp-for="@Model.AppUserId">
 
 													</div>
 												</div>

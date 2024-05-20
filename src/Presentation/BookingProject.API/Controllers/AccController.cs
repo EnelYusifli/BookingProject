@@ -49,8 +49,8 @@ public class AccController : ControllerBase
 	[HttpGet]
     public async Task<IActionResult> GetAuthUser()
 	{
-		ClaimsPrincipal user = HttpContext.User;
-		GetUserQueryRequest request = new(user);
+		//ClaimsPrincipal user = HttpContext.User;
+		GetUserQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
     [HttpPut]

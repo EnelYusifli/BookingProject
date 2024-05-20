@@ -17,6 +17,6 @@ public class HotelCreateCommandRequestValidator : AbstractValidator<HotelCreateC
            .Must(images => images != null && images.Count >= 4)
                .WithMessage("At least 4 images are required.");
         RuleFor(x=>x.Desc).NotEmpty().NotNull().MaximumLength(1000).MinimumLength(20);
-        RuleFor(x=>x.AppUserId).NotEmpty().NotNull();
+        //RuleFor(x=>x.AppUserId).NotEmpty().NotNull();
     }
 }

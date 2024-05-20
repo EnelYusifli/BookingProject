@@ -5,11 +5,11 @@ namespace BookingProject.Application.Features.Queries.UserQueries;
 
 public class GetUserQueryRequest : IRequest<GetUserQueryResponse>
 {
-	public ClaimsPrincipal User { get; }
+	//public ClaimsPrincipal User { get; }
 
-	public GetUserQueryRequest(ClaimsPrincipal user)
-	{
-		User = user;
-	}
+	//public GetUserQueryRequest(ClaimsPrincipal user)
+	//{
+	//	User = user;
+	//}
 }
 

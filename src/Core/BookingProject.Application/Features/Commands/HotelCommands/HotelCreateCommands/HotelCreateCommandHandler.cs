@@ -5,6 +5,7 @@ using BookingProject.Application.Repositories;
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,10 +32,12 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
 		private readonly IRoomService _roomService;
 		private readonly ITypeRepository _typeRepository;
 		private readonly ICountryRepository _countryRepository;
+		private readonly IHttpContextAccessor _httpContext;
 
 		public HotelCreateCommandHandler(IHotelRepository repository,
             IMapper mapper,
-            IAdvantageRepository advantageRepository,
+			IHttpContextAccessor httpContext,
+			IAdvantageRepository advantageRepository,
             IStaffLanguageRepository staffLanguageRepository,
             IHotelStaffLanguageRepository hotelStaffLanguageRepository,
             IServiceRepository serviceRepository,
@@ -67,14 +70,21 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             _userManager = userManager;
 			_roomService = roomService;
 			_typeRepository = typeRepository;
+			_httpContext = httpContext;
 		}
 
         public async Task<HotelCreateCommandResponse> Handle(HotelCreateCommandRequest request, CancellationToken cancellationToken)
         {
             if (request is null)
                 throw new NotFoundException("Request not found");
-
-            if (request.Name.IsNullOrEmpty())
+            AppUser appUser = new();
+			if (_httpContext.HttpContext.User.Identity.IsAuthenticated)
+			{
+				 appUser= await _userManager.FindByNameAsync(_httpContext.HttpContext.User.Identity.Name);
+			}
+				if (appUser is null)
+					throw new NotFoundException("User not found");
+			if (request.Name.IsNullOrEmpty())
                 throw new BadRequestException("Name cannot be null");
             if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId && x.IsDeactive==false))
                 throw new NotFoundException("Type not found");
@@ -82,9 +92,10 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
 				throw new NotFoundException("Country not found");
 			if (await _repository.Table.AnyAsync(x => x.Name.ToLower() == request.Name.ToLower()))
                 throw new BadRequestException("Hotel Name is already exist");
-            if (await _userManager.FindByIdAsync(request.AppUserId) is null)
-                throw new NotFoundException("User not found");
+            
             var hotel = _mapper.Map<Hotel>(request);
+            hotel.AppUser = appUser;
+            hotel.AppUserId = appUser.Id;
             hotel.IsDeactive = true;
             hotel.IsApproved = false;
             hotel.IsRefused = false;

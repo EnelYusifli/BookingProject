@@ -450,11 +450,6 @@
         "IsRequired": false
       },
       {
-        "Name": "AppUserId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "Name",
         "Type": "System.String",
         "IsRequired": false

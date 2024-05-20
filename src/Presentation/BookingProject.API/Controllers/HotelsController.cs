@@ -43,6 +43,7 @@ public class HotelsController : ControllerBase
 	[HttpPost]
 	public async Task<IActionResult> Create(HotelCreateCommandRequest request)
 	{
+
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpGet("{userId}")]

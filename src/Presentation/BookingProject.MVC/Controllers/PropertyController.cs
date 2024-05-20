@@ -116,14 +116,14 @@ public class PropertyController : Controller
 	public async Task<IActionResult> AddHotel()
 	{
 		PropertyViewModel viewModel = new PropertyViewModel();
-		var response = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+		//var response = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
 
-		if (response.IsSuccessStatusCode)
-		{
-			var responseData = await response.Content.ReadAsStringAsync();
-			var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
-            ViewBag.UserId=dto.User.Id;
-		}
+		//if (response.IsSuccessStatusCode)
+		//{
+		//	var responseData = await response.Content.ReadAsStringAsync();
+		//	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+  //          ViewBag.UserId=dto.User.Id;
+		//}
 		if (!ModelState.IsValid) return View(viewModel);
 		await PopulatePropertyViewModel(viewModel);
 		ViewBag.Property = viewModel;
@@ -137,14 +137,14 @@ public class PropertyController : Controller
     {
 		if (!ModelState.IsValid)
 		{
-			var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+			//var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
 
-			if (responseId2.IsSuccessStatusCode)
-			{
-				var responseData = await responseId2.Content.ReadAsStringAsync();
-				var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
-				ViewBag.UserId = dto.User.Id;
-			}
+			//if (responseId2.IsSuccessStatusCode)
+			//{
+			//	var responseData = await responseId2.Content.ReadAsStringAsync();
+			//	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+			//	ViewBag.UserId = dto.User.Id;
+			//}
 			PropertyViewModel vm2 = new PropertyViewModel();
 			await PopulatePropertyViewModel(vm2);
 			ViewBag.Property = vm2;
@@ -153,7 +153,6 @@ public class PropertyController : Controller
         using (var content = new MultipartFormDataContent())
         {
             content.Add(new StringContent(hotelCreateViewModel.TypeId.ToString()), nameof(hotelCreateViewModel.TypeId));
-            content.Add(new StringContent(hotelCreateViewModel.AppUserId), nameof(hotelCreateViewModel.AppUserId));
             content.Add(new StringContent(hotelCreateViewModel.Name), nameof(hotelCreateViewModel.Name));
             content.Add(new StringContent(hotelCreateViewModel.Desc), nameof(hotelCreateViewModel.Desc));
             content.Add(new StringContent(hotelCreateViewModel.Address), nameof(hotelCreateViewModel.Address));
@@ -259,22 +258,19 @@ public class PropertyController : Controller
                 Console.WriteLine(responseContent);
             }
         }
-		var responseId = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+		//var responseId = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
 
-		if (responseId.IsSuccessStatusCode)
-		{
-			var responseData = await responseId.Content.ReadAsStringAsync();
-			var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
-			ViewBag.UserId = dto.User.Id;
-		}
+		//if (responseId.IsSuccessStatusCode)
+		//{
+		//	var responseData = await responseId.Content.ReadAsStringAsync();
+		//	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+		//	ViewBag.UserId = dto.User.Id;
+		//}
 		PropertyViewModel vm = new PropertyViewModel();
         await PopulatePropertyViewModel(vm);
         ViewBag.Property = vm;
         return View();
     }
-
-
-
 
     public IActionResult HotelAdded()
 	{

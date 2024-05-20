@@ -1,7 +1,9 @@
-﻿using BookingProject.Domain.Entities;
+﻿using BookingProject.Application.CustomExceptions;
+using BookingProject.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using System.Net.Http;
 
 namespace BookingProject.Application.Features.Queries.UserQueries;
 
@@ -18,8 +20,14 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQueryRequest, GetUserQ
 
 	public async Task<GetUserQueryResponse> Handle(GetUserQueryRequest request, CancellationToken cancellationToken)
 	{
-		var user = await _userManager.GetUserAsync(request.User);
+		AppUser appUser = new();
+		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+		{
+			appUser = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+		}
+		if (appUser is null)
+			throw new NotFoundException("User not found");
 
-		return new GetUserQueryResponse { User = user };
+		return new GetUserQueryResponse { User = appUser };
 	}
 }

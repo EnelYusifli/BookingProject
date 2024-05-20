@@ -7,7 +7,6 @@ public class HotelCreateViewModel
 {
 	public int TypeId { get; set; }
 	public int CountryId { get; set; }
-	public string AppUserId { get; set; }
 	public string Name { get; set; }
 	public string Desc { get; set; }
 	public string Address { get; set; }

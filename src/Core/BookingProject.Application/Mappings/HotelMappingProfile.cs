@@ -11,8 +11,8 @@ public class HotelMappingProfile:Profile
 {
     public HotelMappingProfile()
     {
-        CreateMap<HotelCreateCommandRequest, Hotel>()
-			.ForMember(dest => dest.AppUserId, opt => opt.MapFrom(src => src.AppUserId)).ReverseMap();
+		CreateMap<HotelCreateCommandRequest, Hotel>().ReverseMap();
+			//.ForMember(dest => dest.AppUserId, opt => opt.MapFrom(src => src.AppUserId)).ReverseMap();
 		CreateMap<HotelUpdateCommandRequest, Hotel>();
 		CreateMap<Hotel, HotelGetAllQueryResponse>()
            .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src => src.HotelActivities.Select(a => a.Activity.ActivityName)))
