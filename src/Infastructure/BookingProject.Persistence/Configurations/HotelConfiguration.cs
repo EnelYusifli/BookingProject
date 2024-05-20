@@ -13,7 +13,7 @@ public class HotelConfiguration : IEntityTypeConfiguration<Hotel>
         builder.Property(x=>x.TypeId).IsRequired();
         builder.Property(x=>x.Desc).IsRequired().HasMaxLength(1000);
         builder.Property(x=>x.Address).IsRequired().HasMaxLength(500);
-        builder.Property(x=>x.Country).IsRequired().HasMaxLength(50);
+        builder.Property(x=>x.CountryId).IsRequired();
         builder.Property(x=>x.City).IsRequired().HasMaxLength(50);
         //builder.HasMany(x => x.HotelAdvantages)
         //   .WithOne(x => x.Hotel)

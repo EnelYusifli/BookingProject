@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace BookingProject.Application.Validations.UserValidators;
 
-public class UserUpdateCommandRequestValidator:AbstractValidator<UserUpdateCommandRequest>
+public class UserUpdateCommandRequestValidator : AbstractValidator<UserUpdateCommandRequest>
 {
     public UserUpdateCommandRequestValidator()
     {

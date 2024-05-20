@@ -32,6 +32,8 @@ public class HotelGetByIdQueryHandler : IRequestHandler<HotelGetByIdQueryRequest
 			.Include(x => x.Type)
 			.Include(x => x.Rooms)
 			.ThenInclude(x => x.RoomImages)
+			.Include(x => x.Rooms)
+			.ThenInclude(x => x.Reservation)
 			.FirstOrDefaultAsync(x=>x.Id==request.Id);
 		if (hotel is null) throw new Exception("Hotel not found");
 		HotelGetByIdQueryResponse dto = _mapper.Map<HotelGetByIdQueryResponse>(hotel);

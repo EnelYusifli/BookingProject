@@ -131,6 +131,8 @@
 											<div class="mb-3">
 												<label class="form-label">Enter username or email</label>
 												<input type="text" class="form-control" asp-for="UserName">
+												<span asp-validation-for="@Model.UserName" class="text-danger"></span>
+
 											</div>
 											<!-- Password -->
 											<div class="mb-3 position-relative">
@@ -139,6 +141,8 @@
 												<span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 													<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 												</span>
+												<span asp-validation-for="@Model.Password" class="text-danger"></span>
+
 											</div>
 											<!-- Remember me -->
 											<div class="mb-3 d-sm-flex justify-content-between">
@@ -148,6 +152,8 @@
 												</div>
 												<a asp-action="forgotpassword">Forgot password?</a>
 											</div>
+											<div asp-validation-summary="All" class="text-danger"></div>
+
 											<!-- Button -->
 											<div><button type="submit" class="btn btn-primary w-100 mb-0">Login</button></div>
 

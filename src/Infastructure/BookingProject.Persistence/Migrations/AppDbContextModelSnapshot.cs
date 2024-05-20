@@ -147,6 +147,33 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>
                 {
                     b.Property<int>("Id")
@@ -210,10 +237,8 @@ namespace BookingProject.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -252,6 +277,8 @@ namespace BookingProject.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("CountryId");
 
                     b.HasIndex("TypeId");
 
@@ -955,6 +982,12 @@ namespace BookingProject.Persistence.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("BookingProject.Domain.Entities.Country", "Country")
+                        .WithMany("Hotels")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BookingProject.Domain.Entities.Type", "Type")
                         .WithMany("Hotels")
                         .HasForeignKey("TypeId")
@@ -962,6 +995,8 @@ namespace BookingProject.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
+
+                    b.Navigation("Country");
 
                     b.Navigation("Type");
                 });
@@ -1213,6 +1248,11 @@ namespace BookingProject.Persistence.Migrations
                     b.Navigation("Reservation");
 
                     b.Navigation("UserWishlistHotel");
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.Country", b =>
+                {
+                    b.Navigation("Hotels");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>

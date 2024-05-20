@@ -5,6 +5,7 @@ namespace BookingProject.Application.Features.Queries.RoomQueries;
 public class RoomGetAllQueryResponse
 {
     public string RoomName { get; set; }
+    public int Id { get; set; }
     public required int HotelId { get; set; }
     public bool IsDeactive { get; set; }
     public int AdultCount { get; set; }

@@ -44,7 +44,6 @@ public class AccountController : Controller
 			var tokenObject = JObject.Parse(responseContent);
 			var token = tokenObject["token"].ToString();
 
-			// Save the token in cookie
 			Response.Cookies.Append("token", token,
 				new CookieOptions
 				{
@@ -55,12 +54,10 @@ public class AccountController : Controller
 					SameSite = SameSiteMode.None
 				});
 
-			// Create and sign in the user
 			var claims = new List<Claim>
 		{
 			new Claim(ClaimTypes.Name, vm.UserName)
 
-            // Add more claims as needed
         };
 
 			var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -75,6 +72,7 @@ public class AccountController : Controller
 
 			return RedirectToAction("Index", "Home");
 		}
+		ModelState.AddModelError("", "Invalid credentials");
 		return View();
 	}
 
@@ -158,35 +156,52 @@ public class AccountController : Controller
 	[HttpPost]
 	public async Task<IActionResult> UpdatePersonalInfo(ProfileViewModel vm)
 	{
-		using (var content = new MultipartFormDataContent())
-		{
-			var personalInfoStr = JsonConvert.SerializeObject(vm.PersonalInfo);
-			var stringContent = new StringContent(personalInfoStr, Encoding.UTF8, "application/json");
-			content.Add(stringContent, "updatePersonalInfoViewModel");
+        using (var content = new MultipartFormDataContent())
+        {
+            // Add individual properties as StringContent
+            content.Add(new StringContent(vm.PersonalInfo.Id), nameof(vm.PersonalInfo.Id));
+            content.Add(new StringContent(vm.PersonalInfo.FirstName), nameof(vm.PersonalInfo.FirstName));
+            content.Add(new StringContent(vm.PersonalInfo.LastName), nameof(vm.PersonalInfo.LastName));
+            content.Add(new StringContent(vm.PersonalInfo.Email), nameof(vm.PersonalInfo.Email));
+            content.Add(new StringContent(vm.PersonalInfo.UserName), nameof(vm.PersonalInfo.UserName));
 
-			if (vm.PersonalInfo.ProfilePhoto != null)
-			{
-				var fileContent = new StreamContent(vm.PersonalInfo.ProfilePhoto.OpenReadStream());
-				fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(vm.PersonalInfo.ProfilePhoto.ContentType);
-				content.Add(fileContent, "ProfilePhoto", vm.PersonalInfo.ProfilePhoto.FileName);
-			}
+            if (vm.PersonalInfo.PhoneNumber != null)
+            {
+                content.Add(new StringContent(vm.PersonalInfo.PhoneNumber), nameof(vm.PersonalInfo.PhoneNumber));
+            }
 
-			var response = await _httpClient.PutAsync(baseAddress + "/acc/updateuser", content);
+            if (vm.PersonalInfo.Birthdate.HasValue)
+            {
+                content.Add(new StringContent(vm.PersonalInfo.Birthdate.Value.ToString("yyyy-MM-dd")), nameof(vm.PersonalInfo.Birthdate));
+            }
 
-			if (response.IsSuccessStatusCode)
-			{
-				return RedirectToAction("Index", "Home");
-			}
-			else
-			{
-				var responseContent = await response.Content.ReadAsStringAsync();
-				Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-				Console.WriteLine(responseContent);
-			}
-		}
+            // If there is a profile photo, add it to the multipart form data content
+            if (vm.PersonalInfo.ProfilePhoto != null)
+            {
+                var fileContent = new StreamContent(vm.PersonalInfo.ProfilePhoto.OpenReadStream());
+                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(vm.PersonalInfo.ProfilePhoto.ContentType);
+                content.Add(fileContent, nameof(vm.PersonalInfo.ProfilePhoto), vm.PersonalInfo.ProfilePhoto.FileName);
+            }
 
-		return View(vm);
-	}
+            var response = await _httpClient.PutAsync(baseAddress + "/acc/updateuser", content);
+
+            // Check if the response indicates success
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                // Log the response content for debugging
+                var responseContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                Console.WriteLine(responseContent);
+            }
+        }
+
+        // If the request failed, return the view with the original model to display validation errors
+        return View(vm);
+    }
 	[HttpPost]
 	public async Task<IActionResult> UpdatePassword(ProfileViewModel vm)
 	{

@@ -32,6 +32,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
         private readonly IConfiguration _configuration;
         private readonly IRoomService _roomService;
 		private readonly ITypeRepository _typeRepository;
+		private readonly ICountryRepository _countryRepository;
 
 		public HotelUpdateCommandHandler(IHotelRepository repository,
             IMapper mapper,
@@ -43,6 +44,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
             IPaymentMethodRepository paymentMethodRepository,
             IHotelPaymentMethodRepository hotelPaymentMethodRepository,
             IActivityRepository activityRepository,
+			ICountryRepository countryRepository,
             IHotelActivityRepository hotelActivityRepository,
             IConfiguration configuration,
             IRoomService roomService,
@@ -62,6 +64,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
             _configuration = configuration;
             _roomService = roomService;
 			_typeRepository = typeRepository;
+			_countryRepository = countryRepository;
 		}
 
         public async Task<HotelUpdateCommandResponse> Handle(HotelUpdateCommandRequest request, CancellationToken cancellationToken)
@@ -81,11 +84,14 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 			 .Include(x => x.HotelStaffLanguages)
 			 .ThenInclude(x => x.StaffLanguage)
 			 .Include(x => x.Type)
+			 .Include(x => x.Country)
 			 .FirstOrDefaultAsync(x => x.Id == request.Id);
 			if (hotel is null)
                 throw new NotFoundException($"Hotel with ID {request.Id} not found");
-			if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId))
+			if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId && x.IsDeactive==false))
 				throw new NotFoundException("Type not found");
+			if (!await _countryRepository.Table.AnyAsync(x => x.Id == request.CountryId && x.IsDeactive==false))
+				throw new NotFoundException("Country not found");
 			List<int> newLanguageIds = request.StaffLanguageIds?.Except(hotel.HotelStaffLanguages?.Select(hotelLanguage => hotelLanguage.StaffLanguage.Id) ?? Enumerable.Empty<int>()).ToList() ?? new List<int>();
 
 			List<int> deletedLanguageIds = hotel.HotelStaffLanguages?.Select(hotelLanguage => hotelLanguage.StaffLanguage.Id)?.Except(request.StaffLanguageIds ?? Enumerable.Empty<int>())?.ToList() ?? new List<int>();

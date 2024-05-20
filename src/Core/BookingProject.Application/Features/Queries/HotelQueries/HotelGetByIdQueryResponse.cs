@@ -8,7 +8,7 @@ public class HotelGetByIdQueryResponse
 	public string Name { get; set; }
 	public string Desc { get; set; }
 	public string Address { get; set; }
-	public string Country { get; set; }
+	public string CountryName { get; set; }
 	public string City { get; set; }
 	public bool IsDeactive { get; set; }
 	public string AppUserId { get; set; }

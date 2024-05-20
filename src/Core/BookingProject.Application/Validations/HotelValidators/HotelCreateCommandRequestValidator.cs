@@ -10,7 +10,7 @@ public class HotelCreateCommandRequestValidator : AbstractValidator<HotelCreateC
     {
         RuleFor(x=>x.Name).NotEmpty().NotNull().MaximumLength(50).MinimumLength(2);
         RuleFor(x=>x.Address).NotEmpty().NotNull().MaximumLength(500);
-        RuleFor(x=>x.Country).NotEmpty().NotNull().MaximumLength(50);
+        RuleFor(x=>x.CountryId).NotEmpty().NotNull();
         RuleFor(x=>x.City).NotEmpty().NotNull().MaximumLength(50);
         RuleFor(x=>x.TypeId).NotEmpty().NotNull();
         RuleFor(x => x.ImageFiles).NotNull()

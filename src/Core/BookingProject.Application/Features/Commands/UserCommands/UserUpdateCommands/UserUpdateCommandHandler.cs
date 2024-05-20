@@ -38,10 +38,11 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommandRequest
 		AppUser user = await _userManager.FindByIdAsync(request.Id);
 		if (user is null) throw new NotFoundException("User not found");
 		AppUser existUser = await _userManager.FindByEmailAsync(request.Email);
-		if (existUser is not null)
+		if (existUser is not null && existUser.Email.ToLower() != user.Email.ToLower())
 			throw new ConflictException("Email already exists");
+		string email = user.Email;
 		AppUser existUser2 = await _userManager.FindByNameAsync(request.UserName);
-		if (existUser2 is not null)
+		if (existUser2 is not null && existUser2.UserName.ToLower() != user.UserName.ToLower())
 			throw new ConflictException("Username already exists");
 		if (request.ProfilePhoto is not null)
 		{
@@ -53,11 +54,14 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommandRequest
 		}
 		user = _mapper.Map(request, user);
 		await _userManager.UpdateAsync(user);
-		string subject = "Updated Email Address";
-		string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "email", "updatedemail.html");
-		string html = File.ReadAllText(filePath);
-		html = html.Replace("{{email}}", request.Email);
-		await _emailService.SendEmail(user.Email, subject, html);
+		if (email.ToLower() != user.Email.ToLower())
+		{
+            string subject = "Updated Email Address";
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "email", "updatedemail.html");
+            string html = File.ReadAllText(filePath);
+            html = html.Replace("{{email}}", request.Email);
+            await _emailService.SendEmail(user.Email, subject, html);
+        }
 		return new UserUpdateCommandResponse();
 	}
 }

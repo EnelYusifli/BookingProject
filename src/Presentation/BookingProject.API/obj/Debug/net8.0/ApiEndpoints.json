@@ -321,6 +321,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BookingProject.API.Controllers.CountriesController",
+    "Method": "Create",
+    "RelativePath": "api/Countries/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.CountryCommands.CountryCreateCommands.CountryCreateCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.CountriesController",
+    "Method": "Delete",
+    "RelativePath": "api/Countries/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.CountriesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Countries/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.CountriesController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Countries/SoftDelete/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.CountriesController",
+    "Method": "Update",
+    "RelativePath": "api/Countries/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.CountryCommands.CountryUpdateCommands.CountryUpdateCommandRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BookingProject.API.Controllers.HotelsController",
     "Method": "AddToWishlist",
     "RelativePath": "api/Hotels/AddToWishlist",
@@ -366,6 +445,11 @@
         "IsRequired": false
       },
       {
+        "Name": "CountryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "AppUserId",
         "Type": "System.String",
         "IsRequired": false
@@ -382,11 +466,6 @@
       },
       {
         "Name": "Address",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Country",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -542,6 +621,11 @@
         "IsRequired": false
       },
       {
+        "Name": "CountryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "Name",
         "Type": "System.String",
         "IsRequired": false
@@ -553,11 +637,6 @@
       },
       {
         "Name": "Address",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Country",
         "Type": "System.String",
         "IsRequired": false
       },

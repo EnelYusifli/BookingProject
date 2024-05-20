@@ -29,6 +29,8 @@ public class RoomGetAllQueryHandler : IRequestHandler<RoomGetAllQueryRequest, IC
         ICollection<Room> act = await _repository.Table
            .Where(x=>x.HotelId == request.HotelId)
            .Include(x=>x.RoomImages)
+           .Include(x=>x.Hotel)
+           .ThenInclude(x=>x.Rooms)
            .ToListAsync(); 
         if (act is null) throw new Exception("Room not found");
         ICollection<RoomGetAllQueryResponse> dtos = _mapper.Map<ICollection<RoomGetAllQueryResponse>>(act);

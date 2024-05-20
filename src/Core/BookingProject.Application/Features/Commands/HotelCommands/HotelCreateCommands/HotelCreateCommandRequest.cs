@@ -9,11 +9,11 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
 public class HotelCreateCommandRequest:IRequest<HotelCreateCommandResponse>
 {
     public int TypeId { get; set; }
+    public int CountryId { get; set; }
     public string AppUserId { get; set; }
     public string Name { get; set; }
     public string Desc { get; set; }
     public string Address { get; set; }
-    public string Country { get; set; }
     public string City { get; set; }
     public List<RoomCreateDto> RoomCreateDtos { get; set; }
     public List<string>? HotelAdvantageNames { get; set; }

@@ -1,6 +1,7 @@
 ﻿@{
 	Layout = null;
 	PropertyViewModel vm = ViewBag.Property;
+	string userId = ViewBag.UserId;
 }
 @model HotelCreateViewModel
 
@@ -570,6 +571,8 @@ Steps START -->
 																}
 																
 															</select>
+															<span asp-validation-for="@Model.TypeId" class="text-danger"></span>
+
 															<small>Hotel: Professional hospitality businesses that usually have a unique style or theme defining their brand and decor</small>
 														</div>
 
@@ -577,14 +580,13 @@ Steps START -->
 														<div class="col-12">
 															<label class="form-label">Listing name *</label>
 															<input class="form-control" type="text" placeholder="Enter property name" asp-for="@Model.Name">
+															<span asp-validation-for="@Model.Name" class="text-danger"></span>
+
 															<small>A catchy name usually includes: House name - Room name - A tourist destination</small>
 														</div>
 
 														<!-- UserId -->
-														<div class="col-md-6">
-															<label class="form-label">UserId *</label>
-															<input class="form-control" type="text" placeholder="Enter userid" asp-for="@Model.AppUserId">
-														</div>
+														<input class="form-control" type="hidden" value="@userId" asp-for="@Model.AppUserId">
 
 													</div>
 												</div>
@@ -603,19 +605,31 @@ Steps START -->
 												<div class="card-body">
 													<div class="row g-3">
 														<!-- Country -->
-														<div class="col-md-6">
-															<label class="form-label">Country *</label>
-															<input class="form-control" type="text" placeholder="Enter country" asp-for="@Model.Country">
+														<div class="col-12">
+															<label class="form-label">Choose property country *</label>
+															<select class="form-select js-choice" asp-for="@Model.CountryId">
+																<option value="">Select country</option>
+																@foreach (var item in vm.Countries)
+																{
+																	<option value="@item.Id">@item.CountryName</option>
+																}
+
+															</select>
+															<span asp-validation-for="@Model.CountryId" class="text-danger"></span>
 														</div>
 														<!-- City -->
 														<div class="col-md-6">
 															<label class="form-label">City *</label>
 															<input class="form-control" type="text" placeholder="Enter city" asp-for="@Model.City">
+															<span asp-validation-for="@Model.City" class="text-danger"></span>
+
 														</div>
 														<!-- Address -->
 														<div class="col-12">
 															<label class="form-label">Address *</label>
 															<input class="form-control" type="text" placeholder="Enter address" asp-for="@Model.Address">
+															<span asp-validation-for="@Model.Address" class="text-danger"></span>
+
 														</div>
 														<!-- Detailed address -->
 														<div class="col-12">
@@ -642,6 +656,8 @@ Steps START -->
 														<div class="col-12">
 															<label class="form-label">Upload images *</label>
 															<input class="form-control" id="image" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.ImageFiles">
+															<span asp-validation-for="@Model.ImageFiles" class="text-danger"></span>
+
 															<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. </p>
 															<p class="small mb-0 mt-2"><b>Note:</b> At least 4 images are required.</p>
 														</div>
@@ -686,6 +702,8 @@ Steps START -->
 																<option value="@item.Id">@item.ActivityName</option>
 																}
 															</select>
+															<span asp-validation-for="@Model.ActivityIds" class="text-danger"></span>
+
 															<small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing</small>
 														</div>
 
@@ -698,6 +716,8 @@ Steps START -->
 																{
 																	<option value="@item.Id">@item.PaymentMethodName</option>
 																}
+																<span asp-validation-for="@Model.PaymentMethodIds" class="text-danger"></span>
+
 															</select>
 															<small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing</small>
 														</div>
@@ -712,6 +732,8 @@ Steps START -->
 																	<option value="@item.Id">@item.staffLanguageName</option>
 																}
 															</select>
+															<span asp-validation-for="@Model.StaffLanguageIds" class="text-danger"></span>
+
 															<small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing</small>
 														</div>
 
@@ -725,6 +747,8 @@ Steps START -->
 																	<option value="@item.Id">@item.ServiceName</option>
 																}
 															</select>
+															<span asp-validation-for="@Model.ServiceIds" class="text-danger"></span>
+
 															<small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing</small>
 														</div>
 
@@ -736,6 +760,8 @@ Steps START -->
 																<div class="card-body">
 																	<label class="form-label">Advantage Name *</label>
 																	<input class="form-control" type="text" asp-for="@Model.HotelAdvantageNames[0]" placeholder="Enter advantage name">
+																	<span asp-validation-for="@Model.HotelAdvantageNames" class="text-danger"></span>
+
 																</div>
 															</div>
 														<button type="button" class="btn btn-primary mt-2" id="add-advantage-name">Add New Advantage</button>
@@ -747,6 +773,8 @@ Steps START -->
 														<div class="col-12">
 															<label class="form-label">Add description *</label>
 															<textarea class="form-control" rows="8" asp-for="@Model.Desc"></textarea>
+															<span asp-validation-for="@Model.Desc" class="text-danger"></span>
+
 															<p class="small mb-0 mt-2"><b>Note:</b> Use this field to add a description.</p>
 														</div>
 
@@ -882,6 +910,7 @@ Steps START -->
 														<div class="col-md-6">
 															<label class="form-label">Room name *</label>
 															<input class="form-control" placeholder="Enter name" asp-for="@Model.RoomCreateDtos[0].RoomName">
+
 														</div>
 
 														<!-- Room images -->
@@ -933,6 +962,7 @@ Steps START -->
 																<label class="form-label">Cancel after x days *</label>
 																<input class="form-control" placeholder="Enter day count" asp-for="@Model.RoomCreateDtos[0].CancelAfterDay">
 															</div>
+															<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span>
 
 														</div>
 													</div>

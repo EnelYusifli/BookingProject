@@ -131,31 +131,43 @@
 											<div class="mb-3">
 												<label class="form-label">Enter email</label>
 												<input type="email" class="form-control" asp-for="Email">
+												<span asp-validation-for="@Model.Email" class="text-danger"></span>
+
 											</div>
 											<!-- Username -->
 											<div class="mb-3">
 												<label class="form-label">Enter username</label>
 												<input type="text" class="form-control" asp-for="UserName">
+												<span asp-validation-for="@Model.UserName" class="text-danger"></span>
+
 											</div>
 											<!-- FirstName -->
 											<div class="mb-3">
 												<label class="form-label">Enter first name</label>
 												<input type="text" class="form-control" asp-for="FirstName">
+												<span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+
 											</div>
 											<!-- LastName -->
 											<div class="mb-3">
 												<label class="form-label">Enter last name</label>
 												<input type="text" class="form-control" asp-for="LastName">
+												<span asp-validation-for="@Model.LastName" class="text-danger"></span>
+
 											</div>
 											<!-- Birthdate -->
 											<div class="mb-3">
 												<label class="form-label">Enter birth date</label>
 												<input  class="form-control" asp-for="Birthdate">
+												<span asp-validation-for="@Model.Birthdate" class="text-danger"></span>
+
 											</div>
 											<!-- Password -->
 											<div class="mb-3 position-relative">
 												<label class="form-label">Enter password</label>
 												<input class="form-control fakepassword" type="password" id="psw-input" asp-for="Password">
+												<span asp-validation-for="@Model.Password" class="text-danger"></span>
+
 												<span class="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
 													<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 												</span>
@@ -164,6 +176,8 @@
 											<div class="mb-3">
 												<label class="form-label">Confirm Password</label>
 												<input type="password" class="form-control" asp-for="ConfirmPassword">
+												<span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+
 											</div>
 											<!-- Remember me -->
 											<div class="mb-3">
@@ -172,6 +186,7 @@
 											</div>
 											<!-- Button -->
 											<div><button type="submit" class="btn btn-primary w-100 mb-0">Sign up</button></div>
+											<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 											<!-- Divider -->
 											<div class="position-relative my-4">

@@ -30,6 +30,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
         private readonly UserManager<AppUser> _userManager;
 		private readonly IRoomService _roomService;
 		private readonly ITypeRepository _typeRepository;
+		private readonly ICountryRepository _countryRepository;
 
 		public HotelCreateCommandHandler(IHotelRepository repository,
             IMapper mapper,
@@ -46,11 +47,13 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             IConfiguration configuration,
             UserManager<AppUser> userManager,
             IRoomService roomService,
+            ICountryRepository countryRepository,
             ITypeRepository typeRepository)
         {
             _repository = repository;
             _mapper = mapper;
             _advantageRepository = advantageRepository;
+            _countryRepository = countryRepository;
             _staffLanguageRepository = staffLanguageRepository;
             _hotelStaffLanguageRepository = hotelStaffLanguageRepository;
             _serviceRepository = serviceRepository;
@@ -73,9 +76,11 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
 
             if (request.Name.IsNullOrEmpty())
                 throw new BadRequestException("Name cannot be null");
-            if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId))
+            if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId && x.IsDeactive==false))
                 throw new NotFoundException("Type not found");
-            if (await _repository.Table.AnyAsync(x => x.Name.ToLower() == request.Name.ToLower()))
+			if (!await _countryRepository.Table.AnyAsync(x => x.Id == request.CountryId && x.IsDeactive==false))
+				throw new NotFoundException("Country not found");
+			if (await _repository.Table.AnyAsync(x => x.Name.ToLower() == request.Name.ToLower()))
                 throw new BadRequestException("Hotel Name is already exist");
             if (await _userManager.FindByIdAsync(request.AppUserId) is null)
                 throw new NotFoundException("User not found");
