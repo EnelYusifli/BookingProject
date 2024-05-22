@@ -8,5 +8,4 @@ public class CardCreateCommandRequest:IRequest<CardCreateCommandResponse>
 	public string CVC { get; set; }
 	public int ExpireMonth { get; set; }
 	public int ExpireYear { get; set; }
-	public string AppUserId { get; set; }
 }

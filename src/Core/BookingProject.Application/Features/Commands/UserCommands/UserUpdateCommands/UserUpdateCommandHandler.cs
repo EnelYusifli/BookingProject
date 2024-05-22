@@ -5,6 +5,7 @@ using BookingProject.Application.Repositories;
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using static System.Net.Mime.MediaTypeNames;
@@ -18,25 +19,33 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommandRequest
 	private readonly IMapper _mapper;
 	private readonly IUserRepository _userRepository;
 	private readonly IConfiguration _configuration;
+	private readonly IHttpContextAccessor _httpContextAccessor;
 
 	public UserUpdateCommandHandler(UserManager<AppUser> userManager
 		,IEmailService emailService
 		,IMapper mapper
 		,IUserRepository userRepository
-		,IConfiguration configuration)
+		, IHttpContextAccessor httpContextAccessor
+		, IConfiguration configuration)
     {
 		_userManager = userManager;
 		_emailService = emailService;
 		_mapper = mapper;
 		_userRepository = userRepository;
 		_configuration = configuration;
+		_httpContextAccessor = httpContextAccessor;
 	}
     public async Task<UserUpdateCommandResponse> Handle(UserUpdateCommandRequest request, CancellationToken cancellationToken)
 	{
 		if (request is null)
 			throw new BadRequestException("Request not found");
-		AppUser user = await _userManager.FindByIdAsync(request.Id);
-		if (user is null) throw new NotFoundException("User not found");
+		AppUser user = new();
+		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+		{
+			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+		}
+		if (user is null)
+			throw new NotFoundException("User not found");
 		AppUser existUser = await _userManager.FindByEmailAsync(request.Email);
 		if (existUser is not null && existUser.Email.ToLower() != user.Email.ToLower())
 			throw new ConflictException("Email already exists");

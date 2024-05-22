@@ -59,8 +59,8 @@ namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCom
             return new AuthLoginCommandResponse()
             {
                 UserName = user.UserName,
-                Token = dto.accessToken,
-                RefreshToken = dto.refreshToken,
+                Token = dto.AccessToken,
+                RefreshToken = dto.RefreshToken,
             };
         }
 	}

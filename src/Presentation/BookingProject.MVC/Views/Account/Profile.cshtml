@@ -112,7 +112,6 @@ Content START -->
 										<!-- Upload button -->
 										<label class="btn btn-sm btn-primary-soft mb-0" for="uploadfile-1">Change</label>
 										<input id="uploadfile-1" class="form-control d-none" type="file" asp-for="PersonalInfo.ProfilePhoto">
-										<input type="hidden" class="form-control d-none"  asp-for="PersonalInfo.Id" value="@Model.User.User.Id">
 									</div>
 								</div>
 
@@ -189,7 +188,6 @@ Content START -->
 								<label class="form-label"> Enter new password</label>
 								<div class="input-group">
 									<input class="form-control fakepassword" placeholder="Enter new password" type="password" id="psw-input" asp-for="Password.NewPassword">
-									<input type="hidden" id="psw-input" asp-for="Password.AppUserId" value="@Model.User.User.Id">
 									<span class="input-group-text p-0 bg-transparent">
 										<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 									</span>

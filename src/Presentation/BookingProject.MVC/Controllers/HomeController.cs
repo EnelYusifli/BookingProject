@@ -20,30 +20,15 @@ public class HomeController : Controller
 	}
 	public IActionResult Index()
 	{
-		//HomeViewModel vm = new HomeViewModel();
-		//if (!ModelState.IsValid) return View();
-
-		//var response = await _httpClient.GetAsync(baseAddress + "/hotels/getall");
-
-		//if (response.IsSuccessStatusCode)
-		//{
-		//	var responseData = await response.Content.ReadAsStringAsync();
-		//	var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
-		//	var queryableHotels = hotels.Where(x => x.Rooms.Any(x => x.IsCancellable)).AsQueryable();
-		//	vm.Hotels = hotels.Where(x => x.IsDeactive == false).OrderByDescending(h => h.StarPoint).Take(4).ToList();
-		//	var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, 5, 1);
-
-		//	return View(vm);
-		//}
 		return View();
 	}
 	[HttpGet]
-	public async Task<IActionResult> HotelDetail([FromRoute]int id)
+	public async Task<IActionResult> HotelDetail([FromRoute]int id, string? dateRange)
 	{
 		HotelDetailViewModel vm = new();
 		if (!ModelState.IsValid) return View();
-
-		var response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
+        ViewBag.Dates = dateRange;
+        var response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -55,10 +40,25 @@ public class HomeController : Controller
 		return RedirectToAction("Index");
 	}
 	[HttpGet]
-	public async Task<IActionResult> RoomDetail([FromRoute] int id)
+	public async Task<IActionResult> RoomDetail([FromRoute] int id,string? dateRange)
 	{
 		RoomGetViewModel vm = new();
-		if (!ModelState.IsValid) return View();
+        string? checkInDate = null;
+        string? checkOutDate = null;
+
+        if (!string.IsNullOrEmpty(dateRange))
+        {
+            var dates = dateRange.Split(" to ");
+            if (dates.Length == 2)
+            {
+                checkInDate = dates[0];
+                checkOutDate = dates[1];
+            }
+        }
+
+        ViewBag.CheckInDate = checkInDate;
+        ViewBag.CheckOutDate = checkOutDate;
+        if (!ModelState.IsValid) return View();
 
 		var response = await _httpClient.GetAsync(baseAddress + $"/rooms/getbyid/{id}");
 
@@ -71,8 +71,36 @@ public class HomeController : Controller
 		}
 		return RedirectToAction("Index");
 	}
-	public async Task<IActionResult> HotelGrid(decimal? minPrice, decimal? maxPrice, decimal? starPoint, string? typeName, bool? mostPopular, bool? mostRated, string? searchStr, int page = 1, int itemPerPage = 2)
+
+	public async Task<IActionResult> HotelGrid(
+		string? dateRange,
+		decimal? minPrice,
+		decimal? maxPrice,
+		decimal? starPoint,
+		string? typeName,
+		bool? mostPopular,
+		bool? mostRated,
+		string? searchStr,
+		int? adultCount,
+		int? roomCount,
+		int? childCount,
+		string? countryName,
+		int page = 1,
+		int itemPerPage = 2)
 	{
+		DateTime? checkInDate = null;
+		DateTime? checkOutDate = null;
+
+		if (!string.IsNullOrEmpty(dateRange))
+		{
+			var dates = dateRange.Split(" to ");
+			if (dates.Length == 2)
+			{
+				checkInDate = DateTime.Parse(dates[0]);
+				checkOutDate = DateTime.Parse(dates[1]);
+			}
+		}
+		ViewBag.Dates = dateRange;
 		if (!ModelState.IsValid) return View();
 
 		var response = await _httpClient.GetAsync(baseAddress + "/hotels/getall");
@@ -81,7 +109,7 @@ public class HomeController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
-			var queryableHotels = hotels.Where(x=>x.IsDeactive==false).AsQueryable();
+			var queryableHotels = hotels.Where(x => x.IsDeactive == false).AsQueryable();
 
 			if (!string.IsNullOrEmpty(searchStr))
 			{
@@ -89,7 +117,7 @@ public class HomeController : Controller
 			}
 			if (!string.IsNullOrEmpty(typeName))
 			{
-				queryableHotels = queryableHotels.Where(x => x.Name.ToLower()==typeName.ToLower());
+				queryableHotels = queryableHotels.Where(x => x.Name.ToLower() == typeName.ToLower());
 			}
 
 			if (minPrice.HasValue && maxPrice.HasValue)
@@ -99,32 +127,52 @@ public class HomeController : Controller
 
 			if (starPoint.HasValue)
 			{
-				queryableHotels = queryableHotels.Where(x => x.StarPoint>=starPoint);
+				queryableHotels = queryableHotels.Where(x => x.StarPoint >= starPoint);
 			}
 
-			//if (isFeat.HasValue && isFeat.Value)
+			//if (checkInDate.HasValue && checkOutDate.HasValue)
 			//{
-			//	queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.IsFeatured));
+			//	queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r =>
+			//		!r.Reservations.Any(res =>
+			//			(res.CheckInDate < checkOutDate && res.CheckOutDate > checkInDate))));
 			//}
 
-			//if (isNew.HasValue && isNew.Value)
-			//{
-			//	queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.IsNew));
-			//}
+			if (adultCount.HasValue)
+			{
+				queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.AdultCount >= adultCount));
+			}
 
-			//if (isBest.HasValue && isBest.Value)
-			//{
-			//	queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.IsBestSeller));
-			//}
-			if(mostPopular.HasValue && mostPopular==true)
-			queryableHotels = queryableHotels.Where(x => !x.IsDeactive).OrderByDescending(x => x.ViewerCount);
-			if (mostRated.HasValue && mostRated == true)
-				queryableHotels = queryableHotels.Where(x => !x.IsDeactive).OrderByDescending(x => x.StarPoint);
+			if (childCount.HasValue)
+			{
+				queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.ChildCount >= childCount));
+			}
+
+			if (roomCount.HasValue)
+			{
+				queryableHotels = queryableHotels.Where(x => x.Rooms.Count() >= roomCount);
+			}
+
+			if (!string.IsNullOrEmpty(countryName))
+			{
+				queryableHotels = queryableHotels.Where(x => x.CountryName.ToLower() == countryName.ToLower());
+			}
+
+			if (mostPopular.HasValue && mostPopular.Value)
+			{
+				queryableHotels = queryableHotels.OrderByDescending(x => x.ViewerCount);
+			}
+
+			if (mostRated.HasValue && mostRated.Value)
+			{
+				queryableHotels = queryableHotels.OrderByDescending(x => x.StarPoint);
+			}
+
 			var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, itemPerPage, page);
 
 			return View(paginatedDatas);
 		}
 		return View();
 	}
+
 
 }

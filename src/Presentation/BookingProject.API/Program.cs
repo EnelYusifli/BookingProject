@@ -41,6 +41,7 @@ if (app.Environment.IsDevelopment())
 //app.MapIdentityApi<AppUser>();
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
+app.UseMiddleware<TokenRefreshMiddleware>();
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();

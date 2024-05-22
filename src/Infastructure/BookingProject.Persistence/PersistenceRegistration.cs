@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Google;
+using BookingProject.Application.Services.Implementations;
+using BookingProject.Application.Services.Interfaces;
 
 
 namespace BookingProject.Persistence;
@@ -20,7 +22,8 @@ public static class PersistenceRegistration
 {
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IActivityRepository, ActivityRepository>();
+		services.AddHttpContextAccessor();
+		services.AddScoped<IActivityRepository, ActivityRepository>();
         services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddScoped<ICardRepository, CardRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();

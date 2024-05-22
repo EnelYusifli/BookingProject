@@ -108,7 +108,6 @@ namespace BookingProject.Persistence.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ProfilePhotoUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RecoveryEmail")

@@ -4,6 +4,7 @@ using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
 using BookingProject.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 
@@ -17,13 +18,15 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 	private readonly IHotelRepository _hotelRepository;
 	private readonly UserManager<AppUser> _userManager;
 	private readonly IConfiguration _configuration;
+	private readonly IHttpContextAccessor _httpContextAccessor;
 
 	public ReviewCreateCommandHandler(IReviewRepository repository
 		,IMapper mapper
 		,IReviewImageRepository reviewImageRepository
 		,IHotelRepository hotelRepository
 		,UserManager<AppUser> userManager
-		,IConfiguration configuration)
+		,IConfiguration configuration
+		,IHttpContextAccessor httpContextAccessor)
     {
 		_repository = repository;
 		_mapper = mapper;
@@ -31,10 +34,15 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 		_hotelRepository = hotelRepository;
 		_userManager = userManager;
 		_configuration = configuration;
+		_httpContextAccessor = httpContextAccessor;
 	}
     public async Task<ReviewCreateCommandResponse> Handle(ReviewCreateCommandRequest request, CancellationToken cancellationToken)
 	{
-		AppUser user = await _userManager.FindByIdAsync(request.UserId);
+		AppUser user = new();
+		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+		{
+			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+		}
 		if (user is null)
 			throw new NotFoundException("User not found");
 		Hotel hotel= await _hotelRepository.GetByIdAsync(request.HotelId);
@@ -59,7 +67,8 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 				await _reviewImageRepository.CreateAsync(img);
 			}
 		}
-		
+		review.User = user;
+		review.UserId = user.Id;
 		hotel.StarPoint = 
 			(await _hotelRepository.GetTotalStarPointsAsync(request.HotelId)+request.StarPoint)/(await _hotelRepository.GetNumberOfReviewsAsync(request.HotelId)+1);
 		await _repository.CreateAsync(review);

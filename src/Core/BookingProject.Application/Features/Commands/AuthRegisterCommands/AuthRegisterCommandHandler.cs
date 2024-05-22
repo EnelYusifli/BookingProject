@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
+using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 
 namespace BookingProject.Application.Features.Commands.AuthCommands.AuthRegisterCommands;
 
@@ -65,11 +67,10 @@ public class AuthRegisterCommandHandler : IRequestHandler<AuthRegisterCommandReq
                 if (!hasNonAlphanumeric)
                 {
                     throw new BadRequestException("Password must contain at least one non-alphanumeric character");
-                }
+				}
             }
 
-
-            if (passwordRequirements.RequireDigit && !request.Password.Any(char.IsDigit))
+			if (passwordRequirements.RequireDigit && !request.Password.Any(char.IsDigit))
             {
                 throw new BadRequestException("Password must contain at least one digit");
             }

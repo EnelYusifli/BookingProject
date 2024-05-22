@@ -1,5 +1,7 @@
 ﻿@model HotelDetailViewModel
-
+@{
+	string date = ViewBag.Dates;
+}
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 
@@ -445,8 +447,8 @@ About hotel START -->
 													</div>
 													<!-- Price -->
 													<div class="mt-3 mt-sm-0">
-														<a asp-action="roomdetail" asp-route-id="@room.Id" class="btn btn-sm btn-primary mb-0">Select Room</a>    
-													</div>                  
+																<a asp-action="roomdetail" asp-route-dateRange="@date" asp-route-id="@room.Id" class="btn btn-sm btn-primary mb-0">Select Room</a>
+															</div>                  
 												</div>
 											</div>
 										</div>

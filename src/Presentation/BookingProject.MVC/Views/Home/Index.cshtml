@@ -1,4 +1,4 @@
-﻿@* @model HomeViewModel *@
+﻿@model HotelGridViewModel
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 
@@ -99,7 +99,7 @@
 					<h6 class="d-none d-xl-block mb-3">Check Availability</h6>
 
 					<!-- Booking from START -->
-					<form class="card shadow rounded-3 position-relative p-4 pe-md-5 pb-5 pb-md-4">
+					<form class="card shadow rounded-3 position-relative p-4 pe-md-5 pb-5 pb-md-4" method="get" asp-controller="home" asp-action="HotelGrid">
 						<div class="row g-4 align-items-center">
 							<!-- Location -->
 							<div class="col-lg-4">
@@ -109,7 +109,7 @@
 									<!-- Select input -->
 									<div class="flex-grow-1">
 										<label class="form-label">Location</label>
-										<select class="form-select js-choice" data-search-enabled="true">
+										<select class="form-select js-choice" data-search-enabled="true" name="countryName">
 											<option value="">Select location</option>
 											<option>San Jacinto, USA</option>
 											<option>North Dakota, Canada</option>
@@ -127,7 +127,7 @@
 									<!-- Date input -->
 									<div class="form-control-border form-control-transparent form-fs-md">
 										<label class="form-label">Check in - out</label>
-										<input type="text" class="form-control flatpickr" data-mode="range" placeholder="Select date" value="19 Sep to 28 Sep">
+										<input type="text" class="form-control flatpickr" data-mode="range" placeholder="Select date" name="dateRange">
 									</div>
 								</div>
 							</div>
@@ -142,7 +142,6 @@
 										<label class="form-label">Guests & rooms</label>
 										<div class="dropdown guest-selector me-2">
 											<input type="text" class="form-guest-selector form-control selection-result" value="2 Guests 1 Room" data-bs-auto-close="outside" data-bs-toggle="dropdown">
-
 											<!-- dropdown items -->
 											<ul class="dropdown-menu guest-selector-dropdown">
 												<!-- Adult -->
@@ -151,41 +150,34 @@
 														<h6 class="mb-0">Adults</h6>
 														<small>Ages 13 or above</small>
 													</div>
-
 													<div class="hstack gap-1 align-items-center">
 														<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
 														<h6 class="guest-selector-count mb-0 adults">2</h6>
 														<button type="button" class="btn btn-link adult-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
 													</div>
 												</li>
-
 												<!-- Divider -->
 												<li class="dropdown-divider"></li>
-
 												<!-- Child -->
 												<li class="d-flex justify-content-between">
 													<div>
 														<h6 class="mb-0">Child</h6>
 														<small>Ages 13 below</small>
 													</div>
-
 													<div class="hstack gap-1 align-items-center">
 														<button type="button" class="btn btn-link child-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
 														<h6 class="guest-selector-count mb-0 child">0</h6>
 														<button type="button" class="btn btn-link child-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
 													</div>
 												</li>
-
 												<!-- Divider -->
 												<li class="dropdown-divider"></li>
-
 												<!-- Rooms -->
 												<li class="d-flex justify-content-between">
 													<div>
 														<h6 class="mb-0">Rooms</h6>
 														<small>Max room 8</small>
 													</div>
-
 													<div class="hstack gap-1 align-items-center">
 														<button type="button" class="btn btn-link room-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
 														<h6 class="guest-selector-count mb-0 rooms">1</h6>
@@ -194,15 +186,20 @@
 												</li>
 											</ul>
 										</div>
+										<input type="hidden" name="adultCount" value="2" class="adult-count">
+										<input type="hidden" name="childCount" value="0" class="child-count">
+										<input type="hidden" name="roomCount" value="1" class="room-count">
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- Button -->
 						<div class="btn-position-md-middle">
-							<a class="icon-lg btn btn-round btn-primary mb-0" href="#"><i class="bi bi-search fa-fw"></i></a>
+							<button class="icon-lg btn btn-round btn-primary mb-0" type="submit"><i class="bi bi-search fa-fw"></i></button>
 						</div>
 					</form>
+
+
 					<!-- Booking from END -->
 				</div>
 			</div>
@@ -1046,3 +1043,42 @@
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		function updateCounts() {
+			const adultsCount = document.querySelector('.guest-selector-count.adults').innerText;
+			const childCount = document.querySelector('.guest-selector-count.child').innerText;
+			const roomCount = document.querySelector('.guest-selector-count.rooms').innerText;
+
+			document.querySelector('.adult-count').value = adultsCount;
+			document.querySelector('.child-count').value = childCount;
+			document.querySelector('.room-count').value = roomCount;
+
+			document.querySelector('.form-guest-selector').value = `${adultsCount} Adults, ${childCount} Children, ${roomCount} Room(s)`;
+		}
+
+		function updateCount(buttonClass, countClass, increment) {
+			document.querySelectorAll(buttonClass).forEach(button => {
+				button.addEventListener('click', function () {
+					const countElement = button.closest('.guest-selector').querySelector(countClass);
+					let count = parseInt(countElement.innerText);
+					count += increment;
+					if (count >= 0) {
+						countElement.innerText = count;
+						updateCounts();
+					}
+				});
+			});
+		}
+
+		updateCount('.adult-add', '.guest-selector-count.adults', 1);
+		updateCount('.adult-remove', '.guest-selector-count.adults', -1);
+		updateCount('.child-add', '.guest-selector-count.child', 1);
+		updateCount('.child-remove', '.guest-selector-count.child', -1);
+		updateCount('.room-add', '.guest-selector-count.rooms', 1);
+		updateCount('.room-remove', '.guest-selector-count.rooms', -1);
+
+		updateCounts();
+	});
+
+</script>

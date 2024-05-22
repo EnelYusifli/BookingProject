@@ -11,6 +11,8 @@ public class HotelGetByIdQueryResponse
 	public string CountryName { get; set; }
 	public string City { get; set; }
 	public bool IsDeactive { get; set; }
+	public bool IsApproved { get; set; }
+	public bool IsRefused { get; set; }
 	public string AppUserId { get; set; }
 	public int ViewerCount { get; set; }
 	public decimal StarPoint { get; set; }

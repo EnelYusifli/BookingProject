@@ -114,11 +114,6 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "FirstName",
         "Type": "System.String",
         "IsRequired": false
@@ -821,11 +816,6 @@
       {
         "Name": "HotelId",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserId",
-        "Type": "System.String",
         "IsRequired": false
       },
       {

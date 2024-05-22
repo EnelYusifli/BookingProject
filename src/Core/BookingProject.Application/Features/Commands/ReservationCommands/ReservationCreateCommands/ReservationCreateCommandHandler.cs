@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using BookingProject.Application.CustomExceptions;
 using BookingProject.Application.Repositories;
 using BookingProject.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,16 +15,19 @@ public class ReservationCreateCommandHandler : IRequestHandler<ReservationCreate
 	private readonly IRoomRepository _roomRepository;
 	private readonly UserManager<AppUser> _userManager;
 	private readonly IMapper _mapper;
+	private readonly IHttpContextAccessor _httpContextAccessor;
 
 	public ReservationCreateCommandHandler(IReservationRepository reservationRepository,
 		IRoomRepository roomRepository,
 		UserManager<AppUser> userManager,
-		IMapper mapper)
+		IMapper mapper,
+		IHttpContextAccessor httpContextAccessor)
 	{
 		_reservationRepository = reservationRepository;
 		_roomRepository = roomRepository;
 		_userManager = userManager;
 		_mapper = mapper;
+		_httpContextAccessor = httpContextAccessor;
 	}
 
 	public async Task<ReservationCreateCommandResponse> Handle(ReservationCreateCommandRequest request, CancellationToken cancellationToken)
@@ -32,12 +37,14 @@ public class ReservationCreateCommandHandler : IRequestHandler<ReservationCreate
 		{
 			throw new ArgumentException("Room not found or inactive.");
 		}
-
-		var appUser = await _userManager.FindByIdAsync(request.AppUserId);
-		if (appUser is null)
+		AppUser user = new();
+		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
 		{
-			throw new ArgumentException("App user not found.");
+			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
 		}
+		if (user is null)
+			throw new NotFoundException("User not found");
+
 
 		var existingReservation = await _reservationRepository.Table
 			.Where(r => r.RoomId == request.RoomId && r.IsCancelled==false && r.IsDeactive==false &&
@@ -49,6 +56,8 @@ public class ReservationCreateCommandHandler : IRequestHandler<ReservationCreate
 			throw new ArgumentException("Room already reserved for the specified time.");
 		Reservation reservation=_mapper.Map<Reservation>(request);
 		reservation.IsCancelled = false;
+		reservation.AppUser = user;
+		reservation.AppUserId = user.Id;
 		room.IsReserved = true;
 
 		await _reservationRepository.CreateAsync(reservation);

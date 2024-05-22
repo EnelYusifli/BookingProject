@@ -5,7 +5,6 @@ namespace BookingProject.Application.Features.Commands.UserCommands.UserUpdatePa
 
 public class UserUpdatePasswordCommandRequest:IRequest<UserUpdatePasswordCommandResponse>
 {
-	public required string AppUserId { get; set; }
 	[DataType(DataType.Password)]
 	public required string OldPassword { get; set; }
 	[DataType(DataType.Password)]

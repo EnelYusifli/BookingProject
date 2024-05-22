@@ -4,7 +4,6 @@ namespace BookingProject.MVC.ViewModels.ProfileViewModels;
 
 public class UpdatePasswordViewModel
 {
-	public string? AppUserId { get; set; }
 	[DataType(DataType.Password)]
 	public string? OldPassword { get; set; }
 	[DataType(DataType.Password)]

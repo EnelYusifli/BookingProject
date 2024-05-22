@@ -43,16 +43,29 @@ public class AccountController : Controller
 			var responseContent = await response.Content.ReadAsStringAsync();
 			var tokenObject = JObject.Parse(responseContent);
 			var token = tokenObject["token"].ToString();
+			var refreshToken = tokenObject["refreshToken"].ToString(); // Assuming you receive the refresh token in the response
 
 			Response.Cookies.Append("token", token,
 				new CookieOptions
 				{
-					Expires = DateTime.UtcNow.AddMinutes(4),
+					Expires = DateTime.UtcNow.AddMinutes(10),
 					HttpOnly = true,
 					Secure = true,
 					IsEssential = true,
 					SameSite = SameSiteMode.None
 				});
+
+			// Save the refresh token to a cookie
+			Response.Cookies.Append("refreshToken", refreshToken,
+				new CookieOptions
+				{
+					Expires = DateTime.UtcNow.AddDays(7), // Adjust the expiry as needed
+					HttpOnly = true,
+					Secure = true,
+					IsEssential = true,
+					SameSite = SameSiteMode.None
+				});
+
 
 			var claims = new List<Claim>
 		{
@@ -159,7 +172,6 @@ public class AccountController : Controller
         using (var content = new MultipartFormDataContent())
         {
             // Add individual properties as StringContent
-            content.Add(new StringContent(vm.PersonalInfo.Id), nameof(vm.PersonalInfo.Id));
             content.Add(new StringContent(vm.PersonalInfo.FirstName), nameof(vm.PersonalInfo.FirstName));
             content.Add(new StringContent(vm.PersonalInfo.LastName), nameof(vm.PersonalInfo.LastName));
             content.Add(new StringContent(vm.PersonalInfo.Email), nameof(vm.PersonalInfo.Email));

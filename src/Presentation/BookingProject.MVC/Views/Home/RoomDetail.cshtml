@@ -1,4 +1,9 @@
 ﻿@model RoomGetViewModel
+@{
+	string date = ViewBag.Dates;
+	string checkInDate=ViewBag.CheckInDate;
+	string checkOutDate=ViewBag.CheckOutDate;
+}
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
 
@@ -201,7 +206,7 @@
 									<div class="col-md-6">
 										<div class="bg-light py-3 px-4 rounded-3">
 											<h6 class="fw-light small mb-1">Check-in</h6>
-											<h6 class="mb-0">4 March 2022</h6>
+											<h6 class="mb-0">@checkInDate</h6>
 										</div>
 									</div>
 
@@ -209,7 +214,7 @@
 									<div class="col-md-6">
 										<div class="bg-light py-3 px-4 rounded-3">
 											<h6 class="fw-light small mb-1">Check out</h6>
-											<h6 class="mb-0">8 March 2022</h6>
+                                        <h6 class="mb-0">@checkOutDate</h6>
 										</div>
 									</div>
 								</div>

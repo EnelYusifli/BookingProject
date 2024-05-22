@@ -11,7 +11,7 @@ public class AppUser:IdentityUser,IUser<string>
     public string? RecoveryEmail { get; set; }
     public string? PasswordResetToken { get; set; } = null;
     public DateTime? ResetTokenExpires { get; set; } = null;
-    public string ProfilePhotoUrl { get; set; }
+    public string? ProfilePhotoUrl { get; set; }
     public string? RefreshToken { get; set; }
     public DateTime? RefreshTokenExpires { get; set; }
     public List<CustomerReview>? CustomerReviews { get; set; }
