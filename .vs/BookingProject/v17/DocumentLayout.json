@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\admin\\submittedhotels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\admin\\submittedhotels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\admin\\hoteldetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\admin\\hoteldetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\admin\\submittedhotels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\admin\\submittedhotels.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -41,27 +41,39 @@
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SubmittedHotels.cshtml",
               "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\SubmittedHotels.cshtml",
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\SubmittedHotels.cshtml",
               "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\SubmittedHotels.cshtml",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\SubmittedHotels.cshtml",
-              "ViewState": "AQIAAK8AAAAAAAAAAADwv78AAAAQAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-22T19:25:28.641Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HotelDetail.cshtml",
               "DocumentMoniker": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\HotelDetail.cshtml",
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\HotelDetail.cshtml",
               "ToolTip": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\HotelDetail.cshtml",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\HotelDetail.cshtml",
-              "ViewState": "AQIAAAIAAAAAAAAAAADwvxEAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-22T19:00:55.056Z",
               "EditorCaption": ""
@@ -76,8 +88,7 @@
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Controllers\\AdminController.cs",
               "ViewState": "AQIAADUAAAAAAAAAAAAAADkAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T17:54:44.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T17:54:44.665Z"
             },
             {
               "$type": "Document",
@@ -89,8 +100,7 @@
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Controllers\\HomeController.cs",
               "ViewState": "AQIAABcAAAAAAAAAAAAAACcAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T17:00:26.415Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T17:00:26.415Z"
             }
           ]
         }
