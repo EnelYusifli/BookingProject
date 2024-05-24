@@ -39,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 //app.MapIdentityApi<AppUser>();
-app.UseCors("AllowAll");
+//app.UseCors("AllowSpecificOrigin");
 app.UseHttpsRedirection();
 app.UseMiddleware<TokenRefreshMiddleware>();
 app.UseStaticFiles();

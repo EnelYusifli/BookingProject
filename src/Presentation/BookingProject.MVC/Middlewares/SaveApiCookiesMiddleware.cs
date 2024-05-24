@@ -1,56 +1,53 @@
-﻿// Custom middleware to save API response cookies to MVC application's cookies
-using Microsoft.Net.Http.Headers;
+﻿//using System;
+//using System.Linq;
+//using System.Net.Http;
+//using System.Threading.Tasks;
+//using Microsoft.AspNetCore.Http;
 
-public class SaveApiCookiesMiddleware
-{
-	private readonly RequestDelegate _next;
+//public class SaveApiCookiesMiddleware
+//{
+//	private readonly RequestDelegate _next;
+//	private const string ApiUrl = "https://localhost:7197/"; // URL of your API
 
-	public SaveApiCookiesMiddleware(RequestDelegate next)
-	{
-		_next = next;
-	}
+//	public SaveApiCookiesMiddleware(RequestDelegate next)
+//	{
+//		_next = next;
+//	}
 
-	public async Task Invoke(HttpContext context)
-	{
-		var originalBodyStream = context.Response.Body;
-		using (var responseBody = new MemoryStream())
-		{
-			context.Response.Body = responseBody;
+//	public async Task Invoke(HttpContext context, IHttpClientFactory clientFactory)
+//	{
+//		var response = context.Response;
+//		var client = clientFactory.CreateClient();
 
-			// Continue processing the request
-			await _next(context);
+//		// Process the request
+//		await _next(context);
 
-			// After processing the response, read and save cookies
-			if (context.Response.Headers.TryGetValue("Set-Cookie", out var cookies))
-			{
-				foreach (var cookie in cookies)
-				{
-					var parsedCookie = SetCookieHeaderValue.Parse(cookie);
-					// Save each cookie to MVC application's response
-					context.Response.Cookies.Append("API_" + parsedCookie.Name.ToString(), parsedCookie.Value.ToString(),
-						new CookieOptions
-						{
-							// Adjust options as needed
-							Expires = parsedCookie.Expires ?? DateTimeOffset.MinValue,
-							HttpOnly = parsedCookie.HttpOnly,
-							Secure = parsedCookie.Secure,
-							SameSite = (Microsoft.AspNetCore.Http.SameSiteMode)(int)parsedCookie.SameSite // Explicit conversion
-						});
-				}
-			}
+//		// If the response is from the API and contains cookies, save them to MVC's cookies
+//		if (IsResponseFromApi(context.Request.Headers["Referer"]))
+//		{
+//			if (response.Headers.ContainsKey("Set-Cookie"))
+//			{
+//				var cookies = response.Headers["Set-Cookie"].ToList();
 
-			// Reset the response body to the original stream
-			context.Response.Body.Seek(0, SeekOrigin.Begin);
-			await responseBody.CopyToAsync(originalBodyStream);
-		}
-	}
-}
+//				foreach (var cookie in cookies)
+//				{
+//					// Save API cookies to MVC application's cookies
+//					response.Cookies.Append("api_" + Guid.NewGuid().ToString(), cookie, new CookieOptions
+//					{
+//						HttpOnly = true,
+//						Secure = true,
+//						// Set domain and path if necessary
+//						// Domain = "",
+//						// Path = "/"
+//					});
+//				}
+//			}
+//		}
+//	}
 
-// Extension method used to add the middleware to the HTTP request pipeline
-public static class SaveApiCookiesMiddlewareExtensions
-{
-	public static IApplicationBuilder UseSaveApiCookiesMiddleware(this IApplicationBuilder builder)
-	{
-		return builder.UseMiddleware<SaveApiCookiesMiddleware>();
-	}
-}
+//	private bool IsResponseFromApi(string refererHeader)
+//	{
+//		// Check if the Referer header matches the API URL
+//		return !string.IsNullOrEmpty(refererHeader) && refererHeader.StartsWith(ApiUrl, StringComparison.OrdinalIgnoreCase);
+//	}
+//}

@@ -99,16 +99,17 @@ public static class PersistenceRegistration
                 }
             };
         });
-		services.AddCors(options =>
-		{
-			options.AddPolicy("AllowAll",
-				builder =>
-				{
-					builder.AllowAnyOrigin()
-						   .AllowAnyMethod()
-						   .AllowAnyHeader();
-				});
-		});
+		//services.AddCors(options =>
+		//{
+		//	options.AddPolicy("AllowSpecificOrigin",
+		//		builder =>
+		//		{
+		//			builder.WithOrigins("https://localhost:7183")
+		//				.AllowAnyHeader()
+		//				.AllowAnyMethod()
+		//				.AllowCredentials();
+		//		});
+		//});
 
 	}
 }

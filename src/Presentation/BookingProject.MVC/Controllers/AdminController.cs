@@ -1,4 +1,6 @@
 ﻿using BookingProject.MVC.Models;
+using BookingProject.MVC.ViewModels.AccountViewModels;
+using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -65,6 +67,56 @@ public class AdminController : Controller
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(responseData);
 			return View(hotel);
+		}
+		return RedirectToAction("Index");
+	}
+	public async Task<IActionResult> OwnersList(int itemPerPage = 5, int page = 1)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + "/users/getall");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var users = JsonConvert.DeserializeObject<List<ViewModels.AdminViewModels.UserGetViewModel>>(responseData);
+			var queryableUsers = users.Where(x => x.Roles.Contains("Owner")).AsQueryable();
+			var paginatedDatas = PaginatedList<ViewModels.AdminViewModels.UserGetViewModel>.Create(queryableUsers, itemPerPage, page);
+
+			return View(paginatedDatas);
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return View();
+	}
+	public async Task<IActionResult> OwnerDetail(string id)
+	{
+		UserDetailViewModel vm = new();
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.GetAsync(baseAddress + $"/users/getbyid/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var user = JsonConvert.DeserializeObject<UserDetailViewModel>(responseData);
+			return View(user);
+		}
+		return RedirectToAction("Index");
+	}
+
+	public async Task<IActionResult> UserHotelDetail(int id)
+	{
+		HotelDetailViewModel vm = new();
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(responseData);
+			vm.Hotel = hotel;
+			return View(vm);
 		}
 		return RedirectToAction("Index");
 	}

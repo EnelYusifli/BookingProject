@@ -1,0 +1,201 @@
+﻿@model UserDetailViewModel
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!-- Page main content START -->
+<div class="page-content-wrapper p-xxl-4">
+
+    <div class="row g-4 mb-5">
+        <!-- Agent info START -->
+        <div class="col-md-4 col-xxl-3">
+            <div class="card bg-light">
+                <!-- Dropdown button -->
+                <div class="dropdown position-absolute top-0 end-0 m-3">
+                    <a href="#" class="btn btn-sm btn-white btn-round lh-lg mb-0" role="button" id="dropdownShare1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-three-dots fa-fw"></i>
+                    </a>
+                    <!-- dropdown button -->
+                    <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare1">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-trash fa-fw me-2"></i>Remove</a></li>
+                    </ul>
+                </div>
+                <!-- Card body -->
+                <div class="card-body text-center">
+                    <!-- Avatar Image -->
+                    <div class="avatar avatar-xl flex-shrink-0 mb-3">
+                        <img class="avatar-img rounded-circle" src='@(string.IsNullOrEmpty(Model.ProfilePhotoUrl) ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : Model.ProfilePhotoUrl)' alt="avatar">
+                    </div>
+                    <!-- Title -->
+                    <h5 class="mb-2">@Model.FirstName @Model.LastName</h5>
+                </div>
+                <!-- Card footer -->
+                <div class="card-footer bg-light border-top">
+                    <h6 class="mb-3">Contact Details</h6>
+                    <!-- Email id -->
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-md bg-mode h6 mb-0 rounded-circle flex-shrink-0"><i class="bi bi-envelope-fill"></i></div>
+                        <div class="ms-2">
+                            <small>Email</small>
+                            <h6 class="fw-normal small mb-0"><a href="#">@Model.Email</a></h6>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-md bg-mode h6 mb-0 rounded-circle flex-shrink-0"><i class="bi bi-telephone-fill"></i></div>
+                        <div class="ms-2">
+                            <small>Phone</small>
+                            <h6 class="fw-normal small mb-0"><a href="#">@Model.PhoneNumber</a></h6>
+                        </div>
+                    </div>
+
+                    <!-- Skype -->
+                    <div class="d-flex align-items-center">
+                        <div class="icon-md bg-mode h6 mb-0 rounded-circle flex-shrink-0"><i class="bi bi-skype"></i></div>
+                        <div class="ms-2">
+                            <small>Username</small>
+                            <h6 class="fw-normal small mb-0">@Model.UserName</h6>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Agent info END -->
+
+        <div class="col-md-8 col-xxl-9">
+            <!-- Personal info START -->
+            <div class="card shadow">
+                <!-- Card header -->
+                <div class="card-header border-bottom">
+                    <h5 class="mb-0">Personal Information</h5>
+                </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Information item -->
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-borderless">
+                                <li class="list-group-item mb-3">
+                                    <span>Full Name:</span>
+                                    <span class="h6 fw-normal ms-1 mb-0">@Model.FirstName @Model.LastName</span>
+                                </li>
+
+                                <li class="list-group-item mb-3">
+                                    <span>User Name:</span>
+                                    <span class="h6 fw-normal ms-1 mb-0">@Model.UserName</span>
+                                </li>
+
+                                <li class="list-group-item mb-3">
+                                    <span>Mobile Number:</span>
+                                    <span class="h6 fw-normal ms-1 mb-0">@Model.PhoneNumber</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Information item -->
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-borderless">
+                                <li class="list-group-item mb-3">
+                                    <span>Email:</span>
+                                    <span class="h6 fw-normal ms-1 mb-0">@Model.Email</span>
+                                </li>
+
+                                <li class="list-group-item mb-3">
+                                    <span>Birth Date:</span>
+                                    <span class="h6 fw-normal ms-1 mb-0">@Model.Birthdate</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Personal info END -->
+        </div>
+    </div> <!-- Row END -->
+    <!-- Hotel list START -->
+    <div class="row g-4">
+        <!-- Title -->
+        <div class="col-12">
+            <h4 class="mb-0">Hotel list</h4>
+        </div>
+@if (Model.Hotels != null && Model.Hotels.Any())
+{
+    @foreach (var hotel in Model.Hotels)
+    {
+        <!-- Hotel item -->
+        <div class="col-lg-6">
+            <div class="card shadow p-3">
+                <div class="row g-4">
+                    <!-- Card img -->
+                    <div class="col-sm-3">
+                        @if (hotel.ImageFileUrls != null && hotel.ImageFileUrls.Any())
+                        {
+                            <img src="@hotel.ImageFileUrls.FirstOrDefault()" class="rounded-2" alt="Card image">
+                        }
+                        else
+                        {
+                            <img src="default-image.jpg" class="rounded-2" alt="Default image">
+                        }
+                    </div>
+
+                    <!-- Card body -->
+                    <div class="col-sm-9">
+                        <div class="card-body position-relative d-flex flex-column p-0 h-100">
+                            <!-- Buttons -->
+                            <div class="list-inline-item dropdown position-absolute top-0 end-0">
+                                <!-- Share button -->
+                                <a href="#" class="btn btn-sm btn-round btn-light" role="button" id="dropdownAction1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <!-- dropdown button -->
+                                <ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownAction1">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle me-1"></i>Report</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-slash-circle me-1"></i>Disable</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Title -->
+                            <h5 class="card-title mb-0 me-5">
+                                @if (!string.IsNullOrEmpty(hotel.Name))
+                                {
+                                    <a href="hotel-detail.html">@hotel.Name</a>
+                                }
+                                else
+                                {
+                                    <a href="#">No Name Available</a>
+                                }
+                            </h5>
+                            @if (!string.IsNullOrEmpty(hotel.Address))
+                            {
+                                <small><i class="bi bi-geo-alt me-2"></i>@hotel.Address - @hotel.ViewerCount</small>
+                            }
+                            else
+                            {
+                                <small><i class="bi bi-geo-alt me-2"></i>Unknown Address - @hotel.ViewerCount</small>
+                            }
+
+                            <!-- Price and Button -->
+                            <div class="d-flex justify-content-between align-items-center mt-3 mt-md-auto">
+                                <!-- Button -->
+                                <a asp-action="UserHotelDetail" asp-route-id="@hotel.Id" class="btn btn-sm btn-primary px-2 mb-0"><i class="bi bi-eye fa-fw me-1"></i>View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No hotels available.</p>
+}
+
+    </div>
+    <!-- Hotel list END -->
+</div>
+<!-- Page main content END -->

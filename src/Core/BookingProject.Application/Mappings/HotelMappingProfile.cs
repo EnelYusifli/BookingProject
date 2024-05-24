@@ -34,6 +34,5 @@ public class HotelMappingProfile:Profile
 		 .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.CountryName))
 		 .ForMember(dest => dest.StaffLanguageNames, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(l => l.StaffLanguage.StaffLanguageName)))
 		 .ForMember(dest => dest.Rooms, opt => opt.MapFrom(src => src.Rooms)).ReverseMap();
-		CreateMap<WishlistGetAllQueryResponse, UserWishlistHotel>().ReverseMap();
 	}
 }

@@ -46,29 +46,7 @@ public class HotelsController : ControllerBase
 
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpGet("{userId}")]
-	public async Task<IActionResult> WishlistGetAll(string userId)
-	{
-		WishlistGetAllQueryRequest request = new()
-		{
-			UserId = userId
-		};
-		return Ok(await _mediator.Send(request));
-	}
-	[HttpPost]
-	public async Task<IActionResult> AddToWishlist(WishlistAddCommandRequest request)
-	{
-		return Ok(await _mediator.Send(request));
-	}
-	[HttpDelete("{id}")]
-	public async Task<IActionResult> RemoveFromWishlist(int id)
-	{
-		WishlistRemoveCommandRequest request = new()
-		{
-			Id = id
-		};
-		return Ok(await _mediator.Send(request));
-	}
+	
 	[HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

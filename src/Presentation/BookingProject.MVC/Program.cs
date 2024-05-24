@@ -8,15 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-	   .AddCookie(options =>
-	   {
-		   options.Cookie.Name = ".AspNetCore.Identity.Application"; 
-		   options.Cookie.SameSite = SameSiteMode.None;
-		   options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-		   options.Cookie.HttpOnly = true;
-		   options.ExpireTimeSpan = TimeSpan.FromDays(4);
-	   });
+builder.Services.AddAuthentication(opt =>
+{
+	opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+	opt.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+	opt.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(options =>
+{
+	options.Cookie.Name = ".AspNetCore.Identity.Application";
+	// Additional cookie options/configuration if needed
+});
+
 //builder.Services.AddScoped<UserManager<AppUser>>();
 builder.Services.AddSession(opt =>
 {
@@ -39,7 +41,7 @@ app.UseRouting();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
- app.UseSaveApiCookiesMiddleware();
+ //app.UseMiddleware<SaveApiCookiesMiddleware>();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,4 +1,6 @@
-﻿using BookingProject.MVC.ViewModels.AccountViewModels;
+﻿using BookingProject.Domain.Entities;
+using BookingProject.MVC.Models;
+using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -71,7 +73,7 @@ public class AccountController : Controller
 		{
 			new Claim(ClaimTypes.Name, vm.UserName)
 
-        };
+		};
 
 			var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 			var authProperties = new AuthenticationProperties
@@ -81,7 +83,7 @@ public class AccountController : Controller
 				AllowRefresh = true,
 			};
 
-			await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+			//	await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
 			return RedirectToAction("Index", "Home");
 		}
@@ -228,5 +230,22 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Profile");
 	}
+	public async Task<IActionResult> UserWishlist(int itemPerPage=5,int page=1)
+	{
+		List<WishlistViewModel> vms = new List<WishlistViewModel>();
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.GetAsync(baseAddress + $"/users/WishlistGetAll");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			vms = JsonConvert.DeserializeObject<List<WishlistViewModel>>(responseData);
+			var queryableItems = vms.AsQueryable();
+			var paginatedDatas = PaginatedList<WishlistViewModel>.Create(queryableItems, itemPerPage, page);
+			return View(paginatedDatas);
+		}
+		return RedirectToAction("Index");
+	}
+
 }
 

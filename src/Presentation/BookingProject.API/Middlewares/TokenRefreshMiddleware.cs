@@ -30,7 +30,7 @@ public class TokenRefreshMiddleware
 				var principal = tokenService.GetPrincFromExpToken(accessToken);
 				var user = await userManager.FindByNameAsync(principal.Identity.Name);
 
-				if (user != null && user.RefreshToken == refreshToken && user.RefreshTokenExpires > DateTime.UtcNow)
+				if (user != null && user.RefreshTokenExpires > DateTime.UtcNow)
 				{
 					var newTokens = await tokenService.RefreshToken(user, context);
 
@@ -38,27 +38,32 @@ public class TokenRefreshMiddleware
 					{
 						context.Response.Cookies.Append("token", newTokens.AccessToken, new CookieOptions
 						{
+							Expires = DateTime.UtcNow.AddMinutes(10),
 							HttpOnly = true,
 							Secure = true,
-							Expires = DateTime.UtcNow.AddMinutes(10)
+							IsEssential = true,
+							SameSite = SameSiteMode.None
 						});
 
 						context.Response.Cookies.Append("refreshToken", newTokens.RefreshToken, new CookieOptions
 						{
+							Expires = DateTime.UtcNow.AddDays(7),
 							HttpOnly = true,
 							Secure = true,
-							Expires = DateTime.UtcNow.AddDays(7)
+							IsEssential = true,
+							SameSite = SameSiteMode.None
 						});
 					}
 				}
 			}
-			catch (SecurityTokenException)
+			catch (SecurityTokenException ex)
 			{
-				// Token validation failed, continue with the request without refreshing
+				Console.WriteLine(ex.Message);
+
 			}
 			catch (Exception ex)
 			{
-				// Log the exception
+				Console.WriteLine(ex.Message);
 			}
 		}
 

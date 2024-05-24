@@ -540,7 +540,7 @@ Steps START -->
 
 					<!-- Main content START -->
 					<div class="col-12">
-						<form enctype="multipart/form-data" method="post" asp-action="addhotel" asp-controller="property">
+						<form enctype="multipart/form-data" method="post">
 
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
@@ -749,19 +749,19 @@ Steps START -->
 														</div>
 
 														<!-- Advantage Names Container -->
-														<div class="col-12">
-															<div id="advantage-names-container" class="col-12"></div>
+														<div id="advantage-names-container" class="col-12">
 															<label class="form-label">Add advantages *</label>
+
+															<!-- Initial advantage input field -->
 															<div class="card shadow advantage-card mb-3">
 																<div class="card-body">
 																	<label class="form-label">Advantage Name *</label>
-																	<input class="form-control" type="text" asp-for="@Model.HotelAdvantageNames[0]" placeholder="Enter advantage name">
-																	<span asp-validation-for="@Model.HotelAdvantageNames" class="text-danger"></span>
-
+																	<input class="form-control" type="text" name="HotelAdvantageNames[0]" placeholder="Enter advantage name">
+																	<button type="button" class="btn btn-primary mt-2" id="add-advantage-name">Add New Advantage</button>
 																</div>
 															</div>
-														<button type="button" class="btn btn-primary mt-2" id="add-advantage-name">Add New Advantage</button>
 														</div>
+
 													
 
 														
@@ -977,11 +977,7 @@ Steps START -->
 									<div class="d-flex justify-content-between">
 												<button type="button" class="btn btn-secondary prev-btn mb-0">Previous</button>
 												<div class="text-end">
-													@using (Html.BeginForm("AddHotel", "Property", FormMethod.Post))
-													{
-														@Html.HiddenFor(model => vm)
 														<button type="submit" class="btn btn-success">Add Property</button>
-													}
 												</div>
 									</div>
 								</div>
@@ -1148,6 +1144,7 @@ Footer END -->
 			});
 		});
 	</script>
+
 </body>
 
 <!-- Mirrored from booking.webestica.com/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 May 2024 09:25:39 GMT -->
