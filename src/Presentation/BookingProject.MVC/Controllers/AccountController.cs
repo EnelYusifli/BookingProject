@@ -45,7 +45,7 @@ public class AccountController : Controller
 			var responseContent = await response.Content.ReadAsStringAsync();
 			var tokenObject = JObject.Parse(responseContent);
 			var token = tokenObject["token"].ToString();
-			var refreshToken = tokenObject["refreshToken"].ToString(); // Assuming you receive the refresh token in the response
+			var refreshToken = tokenObject["refreshToken"].ToString(); 
 
 			Response.Cookies.Append("token", token,
 				new CookieOptions
@@ -61,7 +61,7 @@ public class AccountController : Controller
 			Response.Cookies.Append("refreshToken", refreshToken,
 				new CookieOptions
 				{
-					Expires = DateTime.UtcNow.AddDays(7), // Adjust the expiry as needed
+					Expires = DateTime.UtcNow.AddDays(7), 
 					HttpOnly = true,
 					Secure = true,
 					IsEssential = true,
@@ -230,7 +230,7 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Profile");
 	}
-	public async Task<IActionResult> UserWishlist(int itemPerPage=5,int page=1)
+	public async Task<IActionResult> Wishlist(int itemPerPage=5,int page=1)
 	{
 		List<WishlistViewModel> vms = new List<WishlistViewModel>();
 		if (!ModelState.IsValid) return View();
@@ -245,6 +245,44 @@ public class AccountController : Controller
 			return View(paginatedDatas);
 		}
 		return RedirectToAction("Index");
+	}
+	public async Task<IActionResult> AddtoWishlist(int hotelid)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.PostAsync(baseAddress + $"/users/addtowishlist/{hotelid}",null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(responseData);
+			return RedirectToAction("wishlist");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return RedirectToAction("index","home");
+	}
+	public async Task<IActionResult> RemoveFromWishlist(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.DeleteAsync(baseAddress + $"/users/removefromwishlist/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(responseData);
+			return RedirectToAction("wishlist");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return RedirectToAction("index", "home");
 	}
 
 }

@@ -52,9 +52,10 @@ public class UsersController : ControllerBase
 		WishlistGetAllQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpPost]
-	public async Task<IActionResult> AddToWishlist(WishlistAddCommandRequest request)
+	[HttpPost("{hotelid}")]
+	public async Task<IActionResult> AddToWishlist(int hotelid)
 	{
+		WishlistAddCommandRequest request = new() { HotelId=hotelid };
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpDelete("{id}")]
