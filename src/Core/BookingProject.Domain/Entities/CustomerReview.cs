@@ -7,6 +7,7 @@ public class CustomerReview : BaseEntity, IBaseAuditable
     public DateTime CreatedDate { get; set;} = DateTime.Now;
     public DateTime ModifiedDate { get ; set ; }=DateTime.Now;
     public AppUser User { get; set; }
+    public bool? IsReported { get; set; } = false;
     public Hotel Hotel { get; set; }
     public int HotelId { get; set; }
     public string UserId { get; set; }

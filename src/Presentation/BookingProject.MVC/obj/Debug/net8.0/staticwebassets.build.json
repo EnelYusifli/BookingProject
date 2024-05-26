@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uKqwvxf87gljhb2zsCe/6dkBfhpZA9ZzHzNDfiWNG74=",
+  "Hash": "SlIv3RMZCO5wJGaJLdcRJtCH6/O//dlYerA6cl2qr1c=",
   "Source": "BookingProject.MVC",
   "BasePath": "_content/BookingProject.MVC",
   "Mode": "Default",
@@ -6076,6 +6076,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\wwwroot\\js\\main.js",
+      "SourceId": "BookingProject.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\wwwroot\\",
+      "BasePath": "_content/BookingProject.MVC",
+      "RelativePath": "js/main.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\main.js"
     },
     {
       "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\wwwroot\\js\\site.js",

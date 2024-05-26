@@ -1253,6 +1253,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
       "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

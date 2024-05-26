@@ -1,11 +1,14 @@
 ﻿using BookingProject.MVC.Models;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Activity;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Data;
 using System.Net.Http;
+using System.Text;
 
 namespace BookingProject.MVC.Controllers;
 
@@ -120,4 +123,98 @@ public class AdminController : Controller
 		}
 		return RedirectToAction("Index");
 	}
+
+	public async Task<IActionResult> Activities(int itemPerPage = 5, int page = 1)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + "/activities/getall");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var act = JsonConvert.DeserializeObject<List<GetActivityViewModel>>(responseData);
+			var queryableHotels = act.AsQueryable();
+			var paginatedDatas = PaginatedList<GetActivityViewModel>.Create(queryableHotels, itemPerPage, page);
+
+			return View(paginatedDatas);
+		}
+		return View();
+	}
+	public async Task<IActionResult> CreateActivity()
+	{
+		return View();
+	}
+	[HttpPost]
+	public async Task<IActionResult> CreateActivity(CreateActivityViewModel vm)
+	{
+		if (!ModelState.IsValid) return View();
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + "/activities/create", stringContent);
+
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("activities");
+		}
+		return View();
+	}
+    [HttpGet]
+    public async Task<IActionResult> UpdateActivity(int id)
+    {
+        var response = await _httpClient.GetAsync($"{baseAddress}/activities/getbyid/{id}");
+        if (!response.IsSuccessStatusCode)
+        {
+            return NotFound();
+        }
+
+        var dataStr = await response.Content.ReadAsStringAsync();
+        var vm = JsonConvert.DeserializeObject<UpdateActivityViewModel>(dataStr);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateActivity(int id, UpdateActivityViewModel vm)
+    {
+        if (!ModelState.IsValid) return View(vm);
+		vm.Id = id;
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PutAsync($"{baseAddress}/activities/update/{id}", stringContent);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("activities");
+        }
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return View(vm);
+    }
+
+    public async Task<IActionResult> DeleteActivity(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.DeleteAsync(baseAddress + $"/activities/delete/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("activities");
+		}
+		return View();
+	}
+	public async Task<IActionResult> SoftDeleteActivity(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.PutAsync(baseAddress + $"/activities/softdelete/{id}", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("activities");
+		}
+		return View();
+	}
+
 }

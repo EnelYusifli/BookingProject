@@ -190,6 +190,9 @@ namespace BookingProject.Persistence.Migrations
                     b.Property<bool>("IsDeactive")
                         .HasColumnType("bit");
 
+                    b.Property<bool?>("IsReported")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 

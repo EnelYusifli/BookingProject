@@ -3,6 +3,7 @@ using BookingProject.Application.Features.Commands.ActivityCommands.ActivityDele
 using BookingProject.Application.Features.Commands.ActivityCommands.ActivitySoftDeleteCommands;
 using BookingProject.Application.Features.Commands.ActivityCommands.ActivityUpdateCommands;
 using BookingProject.Application.Features.Queries.ActivityQueries;
+using BookingProject.Application.Features.Queries.HotelQueries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,12 @@ public class ActivitiesController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         ActivityGetAllQueryRequest request = new();
+        return Ok(await _mediator.Send(request));
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        ActivityGetByIdQueryRequest request = new() { Id = id };
         return Ok(await _mediator.Send(request));
     }
     [HttpPost]

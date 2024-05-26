@@ -1,0 +1,110 @@
+﻿@{
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model PaginatedList<GetActivityViewModel>
+
+			<!-- Page main content START -->
+			<div class="page-content-wrapper p-xxl-4">
+
+				<!-- Title -->
+				<div class="row">
+					<div class="col-12 mb-4 mb-sm-5">
+						<div class="d-sm-flex justify-content-between align-items-center">
+							<h1 class="h3 mb-3 mb-sm-0">Activities List</h1>
+							<a class="btn btn-success-soft" asp-action="CreateActivity">Create</a>
+						</div>
+					</div>
+				</div>
+				<!-- Guest list START -->
+				<div class="card shadow mt-5">
+					<!-- Card body START -->
+					<div class="card-body">
+						<!-- Table head -->
+						<div class="bg-light rounded p-3 d-none d-lg-block">
+							<div class="row row-cols-7 g-4">
+								<div class="col"><h6 class="mb-0">Id</h6></div>
+								<div class="col"><h6 class="mb-0">Deactive</h6></div>
+								<div class="col"><h6 class="mb-0">Name</h6></div>
+								<div class="col"><h6 class="mb-0">Action</h6></div>
+							</div>
+						</div>
+						@foreach (var item in Model)
+			{
+						<!-- Table data -->
+						<div class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
+				
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-lg-none">Id:</small>
+								<div class="d-flex align-items-center">
+									<!-- Info -->
+									<div class="ms-2">
+										<h6 class="mb-0 fw-light">@item.Id</h6>
+									</div>
+								</div>
+							</div>
+
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-lg-none">Deactive:</small>
+								<h6 class="mb-0 fw-normal">@item.IsDeactive</h6>
+							</div>
+
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-lg-none">Name</small>
+								<h6 class="mb-0 fw-normal">@item.ActivityName</h6>
+							</div>
+
+							<!-- Data item -->
+					<div class="col">
+						<div class="d-flex flex-column gap-2">
+							<a asp-action="UpdateActivity" asp-route-id="@item.Id" class="btn btn-sm btn-orange-soft mb-0">Update</a>
+							<a asp-action="SoftDeleteActivity" asp-route-id="@item.Id" class="btn btn-sm btn-warning-soft mb-0">Soft Delete</a>
+							<a asp-action="DeleteActivity" asp-route-id="@item.Id" class="btn btn-sm delete-btn btn-danger-soft mb-0">Delete</a>
+						</div>
+					</div>
+
+
+						</div>
+			}
+					</div>
+					<!-- Card body END -->
+					<!-- Card footer START -->
+					<div class="card-footer pt-0">
+						<!-- Pagination and content -->
+			<div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4">
+				<!-- Pagination -->
+				<div class="row">
+					<div class="col-12">
+						<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+							<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+								<li class="page-item @(Model.HasPrev ? "" : "disabled") mb-0">
+									<a class="page-link" asp-action="activities" asp-route-page="@(Model.CurrentPage - 1)" tabindex="-1">
+										<i class="fa-solid fa-angle-left"></i>
+									</a>
+								</li>
+								@for (int i = 1; i <= Model.TotalPageCount; i++)
+								{
+									<li class="page-item @(Model.CurrentPage == i ? "active" : "") mb-0">
+										<a class="page-link" asp-action="activities" asp-route-page="@i">@i</a>
+									</li>
+								}
+								<li class="page-item @(Model.HasNext ? "" : "disabled") mb-0">
+									<a class="page-link" asp-action="activities" asp-route-page="@(Model.CurrentPage + 1)">
+										<i class="fa-solid fa-angle-right"></i>
+									</a>
+								</li>
+							</ul>
+
+						</nav>
+					</div>
+				</div>
+			</div>
+					</div>
+					<!-- Card footer END -->
+				</div>
+				<!-- Guest list END -->
+			</div>
+			<!-- Page main content END -->
+	

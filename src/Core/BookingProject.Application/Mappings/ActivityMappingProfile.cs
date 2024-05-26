@@ -13,5 +13,6 @@ public class ActivityMappingProfile:Profile
         CreateMap<ActivityCreateCommandRequest,Activity>().ReverseMap();
         CreateMap<ActivityUpdateCommandRequest,Activity>().ReverseMap();
         CreateMap<ActivityGetAllQueryResponse, Activity>().ReverseMap();
+        CreateMap<ActivityGetByIdQueryResponse, Activity>().ReverseMap();
     }
 }
