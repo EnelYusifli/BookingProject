@@ -43,7 +43,13 @@ public class StaffLanguagesController : ControllerBase
         };
         return Ok(await _mediator.Send(request));
     }
-    [HttpPut("{id}")]
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetById(int id)
+	{
+		StaffLanguageGetByIdQueryRequest request = new() { Id = id };
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPut("{id}")]
     public async Task<IActionResult> SoftDelete(int id)
     {
         StaffLanguageSoftDeleteCommandRequest request = new()

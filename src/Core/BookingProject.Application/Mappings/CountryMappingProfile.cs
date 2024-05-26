@@ -12,5 +12,6 @@ public class CountryMappingProfile : Profile
 		CreateMap<CountryCreateCommandRequest, Domain.Entities.Country>().ReverseMap();
 		CreateMap<CountryUpdateCommandRequest, Domain.Entities.Country>().ReverseMap();
 		CreateMap<CountryGetAllQueryResponse, Domain.Entities.Country>().ReverseMap();
+		CreateMap<CountryGetByIdQueryResponse, Domain.Entities.Country>().ReverseMap();
 	}
 }

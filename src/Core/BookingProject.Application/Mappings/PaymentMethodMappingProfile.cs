@@ -13,5 +13,6 @@ public class PaymentMethodMappingProfile : Profile
         CreateMap<PaymentMethodCreateCommandRequest, PaymentMethod>().ReverseMap();
         CreateMap<PaymentMethodUpdateCommandRequest, PaymentMethod>().ReverseMap();
         CreateMap<PaymentMethodGetAllQueryResponse, PaymentMethod>().ReverseMap();
+        CreateMap<PaymentMethodGetByIdQueryResponse, PaymentMethod>().ReverseMap();
     }
 }

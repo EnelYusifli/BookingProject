@@ -13,5 +13,6 @@ public class StaffLanguageMappingProfile : Profile
         CreateMap<StaffLanguageCreateCommandRequest, StaffLanguage>().ReverseMap();
         CreateMap<StaffLanguageUpdateCommandRequest, StaffLanguage>().ReverseMap();
         CreateMap<StaffLanguageGetAllQueryResponse, StaffLanguage>().ReverseMap();
+        CreateMap<StaffLanguageGetByIdQueryResponse, StaffLanguage>().ReverseMap();
     }
 }

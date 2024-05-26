@@ -35,7 +35,13 @@ public class PaymentMethodsController : ControllerBase
         request.Id = id;
         return Ok(await _mediator.Send(request));
     }
-    [HttpDelete("{id}")]
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetById(int id)
+	{
+		PaymentMethodGetByIdQueryRequest request = new() { Id = id };
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         PaymentMethodDeleteCommandRequest request = new()

@@ -43,7 +43,13 @@ public class TypesController : ControllerBase
         };
         return Ok(await _mediator.Send(request));
     }
-    [HttpPut("{id}")]
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetById(int id)
+	{
+		TypeGetByIdQueryRequest request = new() { Id = id };
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpPut("{id}")]
     public async Task<IActionResult> SoftDelete(int id)
     {
         TypeSoftDeleteCommandRequest request = new()

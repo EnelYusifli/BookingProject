@@ -13,5 +13,6 @@ public class ServiceMappingProfile : Profile
         CreateMap<ServiceCreateCommandRequest, Service>().ReverseMap();
         CreateMap<ServiceUpdateCommandRequest, Service>().ReverseMap();
         CreateMap<ServiceGetAllQueryResponse, Service>().ReverseMap();
+        CreateMap<ServiceGetByIdQueryResponse, Service>().ReverseMap();
     }
 }

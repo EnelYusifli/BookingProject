@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model UpdateStaffLanguageViewModel
+
+<!-- Page main content START -->
+<div class="page-content-wrapper p-xxl-4">
+    <!-- Title -->
+    <div class="row">
+        <div class="col-12 mb-4 mb-sm-5">
+            <div class="d-sm-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-3 mb-sm-0">Update StaffLanguage</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form START -->
+    <div class="card shadow mt-5">
+        <!-- Card body START -->
+        <div class="card-body">
+            <form asp-action="UpdateStaffLanguage" method="post">
+                <div class="mb-3">
+                    <label asp-for="StaffLanguageName" class="form-label">StaffLanguage Name</label>
+                    <input asp-for="StaffLanguageName" class="form-control" />
+                    <span asp-validation-for="StaffLanguageName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="IsDeactive" class="form-label">Deactive</label>
+                    <select asp-for="IsDeactive" class="form-select">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                    <span asp-validation-for="IsDeactive" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Update StaffLanguage</button>
+            </form>
+        </div>
+        <!-- Card body END -->
+    </div>
+    <!-- Form END -->
+</div>
+<!-- Page main content END -->

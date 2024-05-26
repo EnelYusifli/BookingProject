@@ -12,5 +12,6 @@ public class TypeMappingProfile : Profile
         CreateMap<TypeCreateCommandRequest, Domain.Entities.Type>().ReverseMap();
         CreateMap<TypeUpdateCommandRequest, Domain.Entities.Type>().ReverseMap();
         CreateMap<TypeGetAllQueryResponse, Domain.Entities.Type>().ReverseMap();
+        CreateMap<TypeGetByIdQueryResponse, Domain.Entities.Type>().ReverseMap();
     }
 }

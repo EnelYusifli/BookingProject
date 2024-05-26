@@ -2,6 +2,11 @@
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Activity;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Country;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.PaymentMethod;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Service;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.StaffLanguage;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Type;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -131,8 +136,8 @@ public class AdminController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var act = JsonConvert.DeserializeObject<List<GetActivityViewModel>>(responseData);
-			var queryableHotels = act.AsQueryable();
-			var paginatedDatas = PaginatedList<GetActivityViewModel>.Create(queryableHotels, itemPerPage, page);
+			var queryableItems = act.AsQueryable();
+			var paginatedDatas = PaginatedList<GetActivityViewModel>.Create(queryableItems, itemPerPage, page);
 
 			return View(paginatedDatas);
 		}
@@ -216,5 +221,466 @@ public class AdminController : Controller
 		}
 		return View();
 	}
+	public async Task<IActionResult> CreateCountry()
+	{
+		return View();
+	}
+	[HttpPost]
+	public async Task<IActionResult> CreateCountry(CreateCountryViewModel vm)
+	{
+		if (!ModelState.IsValid) return View();
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + "/countries/create", stringContent);
+
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("countries");
+		}
+		return View();
+	}
+	[HttpGet]
+	public async Task<IActionResult> UpdateCountry(int id)
+	{
+		var response = await _httpClient.GetAsync($"{baseAddress}/countries/getbyid/{id}");
+		if (!response.IsSuccessStatusCode)
+		{
+			return NotFound();
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<UpdateCountryViewModel>(dataStr);
+
+		return View(vm);
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> UpdateCountry(int id, UpdateCountryViewModel vm)
+	{
+		if (!ModelState.IsValid) return View(vm);
+		vm.Id = id;
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PutAsync($"{baseAddress}/countries/update/{id}", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("countries");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return View(vm);
+	}
+
+	public async Task<IActionResult> DeleteCountry(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.DeleteAsync(baseAddress + $"/countries/delete/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("countries");
+		}
+		return View();
+	}
+	public async Task<IActionResult> SoftDeleteCountry(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.PutAsync(baseAddress + $"/countries/softdelete/{id}", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("countries");
+		}
+		return View();
+	}
+	public async Task<IActionResult> Countries(int itemPerPage = 5, int page = 1)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + "/Countries/getall");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var act = JsonConvert.DeserializeObject<List<GetCountryViewModel>>(responseData);
+			var queryableItems = act.AsQueryable();
+			var paginatedDatas = PaginatedList<GetCountryViewModel>.Create(queryableItems, itemPerPage, page);
+
+			return View(paginatedDatas);
+		}
+		return View();
+	}
+	public async Task<IActionResult> CreatePaymentMethod()
+	{
+		return View();
+	}
+	[HttpPost]
+	public async Task<IActionResult> CreatePaymentMethod(CreatePaymentMethodViewModel vm)
+	{
+		if (!ModelState.IsValid) return View();
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + "/paymentmethods/create", stringContent);
+
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("paymentmethods");
+		}
+		return View();
+	}
+	[HttpGet]
+	public async Task<IActionResult> UpdatePaymentMethod(int id)
+	{
+		var response = await _httpClient.GetAsync($"{baseAddress}/paymentmethods/getbyid/{id}");
+		if (!response.IsSuccessStatusCode)
+		{
+			return NotFound();
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<UpdatePaymentMethodViewModel>(dataStr);
+
+		return View(vm);
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> UpdatePaymentMethod(int id, UpdatePaymentMethodViewModel vm)
+	{
+		if (!ModelState.IsValid) return View(vm);
+		vm.Id = id;
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PutAsync($"{baseAddress}/paymentmethods/update/{id}", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("paymentmethods");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return View(vm);
+	}
+
+	public async Task<IActionResult> DeletePaymentMethod(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.DeleteAsync(baseAddress + $"/paymentmethods/delete/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("paymentmethods");
+		}
+		return View();
+	}
+	public async Task<IActionResult> SoftDeletePaymentMethod(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.PutAsync(baseAddress + $"/paymentmethods/softdelete/{id}", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("paymentmethods");
+		}
+		return View();
+	}
+	public async Task<IActionResult> PaymentMethods(int itemPerPage = 5, int page = 1)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + "/paymentmethods/getall");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var act = JsonConvert.DeserializeObject<List<GetPaymentMethodViewModel>>(responseData);
+			var queryableItems = act.AsQueryable();
+			var paginatedDatas = PaginatedList<GetPaymentMethodViewModel>.Create(queryableItems, itemPerPage, page);
+
+			return View(paginatedDatas);
+		}
+		return View();
+	}
+    public async Task<IActionResult> CreateService()
+    {
+        return View();
+    }
+    [HttpPost]
+    public async Task<IActionResult> CreateService(CreateServiceViewModel vm)
+    {
+        if (!ModelState.IsValid) return View();
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync(baseAddress + "/Services/create", stringContent);
+
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Services");
+        }
+        return View();
+    }
+    [HttpGet]
+    public async Task<IActionResult> UpdateService(int id)
+    {
+        var response = await _httpClient.GetAsync($"{baseAddress}/Services/getbyid/{id}");
+        if (!response.IsSuccessStatusCode)
+        {
+            return NotFound();
+        }
+
+        var dataStr = await response.Content.ReadAsStringAsync();
+        var vm = JsonConvert.DeserializeObject<UpdateServiceViewModel>(dataStr);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateService(int id, UpdateServiceViewModel vm)
+    {
+        if (!ModelState.IsValid) return View(vm);
+        vm.Id = id;
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PutAsync($"{baseAddress}/Services/update/{id}", stringContent);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Services");
+        }
+        else
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            Console.WriteLine(responseContent);
+        }
+        return View(vm);
+    }
+
+    public async Task<IActionResult> DeleteService(int id)
+    {
+        if (!ModelState.IsValid) return View();
+        var response = await _httpClient.DeleteAsync(baseAddress + $"/Services/delete/{id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Services");
+        }
+        return View();
+    }
+    public async Task<IActionResult> SoftDeleteService(int id)
+    {
+        if (!ModelState.IsValid) return View();
+        var response = await _httpClient.PutAsync(baseAddress + $"/Services/softdelete/{id}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Services");
+        }
+        return View();
+    }
+    public async Task<IActionResult> Services(int itemPerPage = 5, int page = 1)
+    {
+        var response = await _httpClient.GetAsync(baseAddress + "/Services/getall");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = await response.Content.ReadAsStringAsync();
+            var act = JsonConvert.DeserializeObject<List<GetServiceViewModel>>(responseData);
+            var queryableItems = act.AsQueryable();
+            var paginatedDatas = PaginatedList<GetServiceViewModel>.Create(queryableItems, itemPerPage, page);
+
+            return View(paginatedDatas);
+        }
+        return View();
+    }
+    public async Task<IActionResult> CreateStaffLanguage()
+    {
+        return View();
+    }
+    [HttpPost]
+    public async Task<IActionResult> CreateStaffLanguage(CreateStaffLanguageViewModel vm)
+    {
+        if (!ModelState.IsValid) return View();
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync(baseAddress + "/StaffLanguages/create", stringContent);
+
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("StaffLanguages");
+        }
+        return View();
+    }
+    [HttpGet]
+    public async Task<IActionResult> UpdateStaffLanguage(int id)
+    {
+        var response = await _httpClient.GetAsync($"{baseAddress}/StaffLanguages/getbyid/{id}");
+        if (!response.IsSuccessStatusCode)
+        {
+            return NotFound();
+        }
+
+        var dataStr = await response.Content.ReadAsStringAsync();
+        var vm = JsonConvert.DeserializeObject<UpdateStaffLanguageViewModel>(dataStr);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateStaffLanguage(int id, UpdateStaffLanguageViewModel vm)
+    {
+        if (!ModelState.IsValid) return View(vm);
+        vm.Id = id;
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PutAsync($"{baseAddress}/StaffLanguages/update/{id}", stringContent);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("StaffLanguages");
+        }
+        else
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            Console.WriteLine(responseContent);
+        }
+        return View(vm);
+    }
+
+    public async Task<IActionResult> DeleteStaffLanguage(int id)
+    {
+        if (!ModelState.IsValid) return View();
+        var response = await _httpClient.DeleteAsync(baseAddress + $"/StaffLanguages/delete/{id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("StaffLanguages");
+        }
+        return View();
+    }
+    public async Task<IActionResult> SoftDeleteStaffLanguage(int id)
+    {
+        if (!ModelState.IsValid) return View();
+        var response = await _httpClient.PutAsync(baseAddress + $"/StaffLanguages/softdelete/{id}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("StaffLanguages");
+        }
+        return View();
+    }
+    public async Task<IActionResult> StaffLanguages(int itemPerPage = 5, int page = 1)
+    {
+        var response = await _httpClient.GetAsync(baseAddress + "/StaffLanguages/getall");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = await response.Content.ReadAsStringAsync();
+            var act = JsonConvert.DeserializeObject<List<GetStaffLanguageViewModel>>(responseData);
+            var queryableItems = act.AsQueryable();
+            var paginatedDatas = PaginatedList<GetStaffLanguageViewModel>.Create(queryableItems, itemPerPage, page);
+
+            return View(paginatedDatas);
+        }
+        return View();
+    }
+    public async Task<IActionResult> CreateType()
+    {
+        return View();
+    }
+    [HttpPost]
+    public async Task<IActionResult> CreateType(CreateTypeViewModel vm)
+    {
+        if (!ModelState.IsValid) return View();
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync(baseAddress + "/Types/create", stringContent);
+
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Types");
+        }
+        return View();
+    }
+    [HttpGet]
+    public async Task<IActionResult> UpdateType(int id)
+    {
+        var response = await _httpClient.GetAsync($"{baseAddress}/Types/getbyid/{id}");
+        if (!response.IsSuccessStatusCode)
+        {
+            return NotFound();
+        }
+
+        var dataStr = await response.Content.ReadAsStringAsync();
+        var vm = JsonConvert.DeserializeObject<UpdateTypeViewModel>(dataStr);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateType(int id, UpdateTypeViewModel vm)
+    {
+        if (!ModelState.IsValid) return View(vm);
+        vm.Id = id;
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PutAsync($"{baseAddress}/Types/update/{id}", stringContent);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Types");
+        }
+        else
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            Console.WriteLine(responseContent);
+        }
+        return View(vm);
+    }
+
+    public async Task<IActionResult> DeleteType(int id)
+    {
+        if (!ModelState.IsValid) return View();
+        var response = await _httpClient.DeleteAsync(baseAddress + $"/Types/delete/{id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Types");
+        }
+        return View();
+    }
+    public async Task<IActionResult> SoftDeleteType(int id)
+    {
+        if (!ModelState.IsValid) return View();
+        var response = await _httpClient.PutAsync(baseAddress + $"/Types/softdelete/{id}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Types");
+        }
+        return View();
+    }
+    public async Task<IActionResult> Types(int itemPerPage = 5, int page = 1)
+    {
+        var response = await _httpClient.GetAsync(baseAddress + "/Types/getall");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = await response.Content.ReadAsStringAsync();
+            var act = JsonConvert.DeserializeObject<List<GetTypeViewModel>>(responseData);
+            var queryableItems = act.AsQueryable();
+            var paginatedDatas = PaginatedList<GetTypeViewModel>.Create(queryableItems, itemPerPage, page);
+
+            return View(paginatedDatas);
+        }
+        return View();
+    }
+
 
 }

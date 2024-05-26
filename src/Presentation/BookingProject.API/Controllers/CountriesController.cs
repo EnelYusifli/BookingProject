@@ -23,6 +23,12 @@ public class CountriesController : ControllerBase
 		CountryGetAllQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetById(int id)
+	{
+		CountryGetByIdQueryRequest request = new() { Id = id };
+		return Ok(await _mediator.Send(request));
+	}
 	[HttpPost]
 	public async Task<IActionResult> Create(CountryCreateCommandRequest request)
 	{
