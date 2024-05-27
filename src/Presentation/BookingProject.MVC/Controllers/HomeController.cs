@@ -1,9 +1,11 @@
+using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -21,6 +23,7 @@ public class HomeController : Controller
 		_httpClient = httpClient;
 		_httpClient.BaseAddress = baseAddress;
 	}
+
 	public IActionResult Index()
 	{
 		return View();

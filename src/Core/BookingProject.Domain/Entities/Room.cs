@@ -10,14 +10,17 @@ public class Room : BaseEntity, IBaseAuditable
     public string RoomName { get; set; }
     public Hotel Hotel { get; set; }
     public int HotelId { get; set; }
+    public int? DiscountPercent { get; set; }
     public int AdultCount { get; set; }
     public int ChildCount { get; set; }
     public decimal ServiceFee { get; set; }
     public decimal PricePerNight { get; set; }
+    public decimal DiscountedPricePerNight { get; set; }
     public decimal Area {  get; set; }
     public bool IsCancellable { get; set; }
     public int? CancelAfterDay { get; set; }
     public bool IsReserved { get; set; }
     public List<Reservation>? Reservation { get; set; }
+    public List<Discount>? Discounts { get; set; } = null;
     public List<RoomImage> RoomImages { get; set; }
 }

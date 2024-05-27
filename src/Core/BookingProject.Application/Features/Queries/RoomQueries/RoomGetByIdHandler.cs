@@ -22,10 +22,27 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
 	{
 		Room room=await _roomRepository.Table.Include(x=>x.RoomImages).Include(x => x.Hotel)
 		   .ThenInclude(x => x.Rooms).Include(x => x.Hotel)
-		   .ThenInclude(x => x.HotelImages).FirstOrDefaultAsync(x=>x.Id==request.Id);
+		   .ThenInclude(x => x.HotelImages).Include(x=>x.Discounts).FirstOrDefaultAsync(x=>x.Id==request.Id);
 		if (room is null)
 			throw new NotFoundException("Room not found");
+		UpdateRoomDiscountedPrice(room);
 		RoomGetByIdResponse dto = _mapper.Map<RoomGetByIdResponse>(room);
 		return dto;
+	}
+	private void UpdateRoomDiscountedPrice(Room room)
+	{
+		decimal discountedPrice = room.PricePerNight;
+		int discPercent = 0;
+
+		foreach (var discount in room.Discounts)
+		{
+			if ((!discount.IsDeactive) && discount.StartTime <= DateTime.Now && discount.EndTime >= DateTime.Now)
+			{
+				discountedPrice -= room.PricePerNight * (discount.Percent / 100m);
+				discPercent=discount.Percent;
+			}
+		}
+		room.DiscountedPricePerNight = discountedPrice;
+		room.DiscountPercent= discPercent;
 	}
 }

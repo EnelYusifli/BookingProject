@@ -32,6 +32,8 @@ public static class PersistenceRegistration
         services.AddScoped<IReviewRepository, ReviewRepository>();
         services.AddScoped<IReviewImageRepository, ReviewImageRepository>();
         services.AddScoped<IRoomImageRepository, RoomImageRepository>();
+        services.AddScoped<IDiscountRepository, DiscountRepository>();
+        services.AddScoped<IOfferRepository, OfferRepository>();
         services.AddScoped<IRoomRepository, RoomRepository>();
         services.AddScoped<IHotelImageRepository, HotelImageRepository>();
         services.AddScoped<IHotelActivityRepository, HotelActivityRepository>();

@@ -33,6 +33,8 @@ public class AppDbContext : IdentityDbContext<AppUser>
     }
     public DbSet<Hotel> Hotels { get; set; }    
     public DbSet<Country> Countries { get; set; }    
+    public DbSet<Discount> Discounts { get; set; }    
+    public DbSet<Offer> Offers { get; set; }    
     public DbSet<UserCard> Cards { get; set; }    
     public DbSet<Reservation> Reservations { get; set; }    
     public DbSet<Activity> Activities { get; set; }    

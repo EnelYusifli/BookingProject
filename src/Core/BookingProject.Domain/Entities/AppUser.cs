@@ -19,4 +19,5 @@ public class AppUser:IdentityUser,IUser<string>
 	public List<UserWishlistHotel>? UserWishlistHotel { get; set; }
     public List<Hotel>? Hotels { get; set; }
     public List<UserCard>? Cards { get; set; }
+    public List<Offer>? Offers { get; set; }
 }

@@ -10,8 +10,10 @@ public class RoomGetAllQueryResponse
     public bool IsDeactive { get; set; }
     public int AdultCount { get; set; }
     public int ChildCount { get; set; }
-    public decimal ServiceFee { get; set; }
+	public int DiscountPercent { get; set; }
+	public decimal ServiceFee { get; set; }
     public decimal PricePerNight { get; set; }
+    public decimal DiscountedPricePerNight { get; set; }
     public decimal Area { get; set; }
     public bool IsCancellable { get; set; }
     public int? CancelAfterDay { get; set; }

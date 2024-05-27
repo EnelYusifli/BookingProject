@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BookingProject.Application.Features.Commands.DiscountCommands.DiscountCreateCommands;
+using BookingProject.Application.Features.Commands.OfferCommands.OfferCreateCommands;
 using BookingProject.Application.Features.Commands.RoomCommands.RoomCreateCommands;
 using BookingProject.Application.Features.Commands.RoomCommands.RoomUpdateCommands;
 using BookingProject.Application.Features.DTOs;
@@ -30,6 +32,8 @@ public class RoomMappingProfile:Profile
 		   .ForMember(dest => dest.RoomImageUrls, opt => opt.MapFrom(src => src.RoomImages.Select(ri => ri.Url).ToList()))
 		   .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
 		   .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => src.ModifiedDate));
+		CreateMap<Discount, DiscountCreateCommandRequest>().ReverseMap();
+		CreateMap<Offer, OfferCreateCommandRequest>().ReverseMap();
 	}
 }
 

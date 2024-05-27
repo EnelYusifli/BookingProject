@@ -22,6 +22,21 @@ namespace BookingProject.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AppUserOffer", b =>
+                {
+                    b.Property<string>("AppUsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("OffersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppUsersId", "OffersId");
+
+                    b.HasIndex("OffersId");
+
+                    b.ToTable("AppUserOffer");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.Activity", b =>
                 {
                     b.Property<int>("Id")
@@ -215,6 +230,42 @@ namespace BookingProject.Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("CustomerReviews");
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.Discount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Percent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Discounts");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Hotel", b =>
@@ -478,6 +529,42 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("HotelStaffLanguages");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.Offer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Percent")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Offers");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.PaymentMethod", b =>
                 {
                     b.Property<int>("Id")
@@ -603,6 +690,12 @@ namespace BookingProject.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("DiscountPercent")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("DiscountedPricePerNight")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
@@ -957,6 +1050,21 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("Cards");
                 });
 
+            modelBuilder.Entity("AppUserOffer", b =>
+                {
+                    b.HasOne("BookingProject.Domain.Entities.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("AppUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookingProject.Domain.Entities.Offer", null)
+                        .WithMany()
+                        .HasForeignKey("OffersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.CustomerReview", b =>
                 {
                     b.HasOne("BookingProject.Domain.Entities.Hotel", "Hotel")
@@ -974,6 +1082,17 @@ namespace BookingProject.Persistence.Migrations
                     b.Navigation("Hotel");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BookingProject.Domain.Entities.Discount", b =>
+                {
+                    b.HasOne("BookingProject.Domain.Entities.Room", "Room")
+                        .WithMany("Discounts")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Hotel", b =>
@@ -1290,6 +1409,8 @@ namespace BookingProject.Persistence.Migrations
 
             modelBuilder.Entity("BookingProject.Domain.Entities.Room", b =>
                 {
+                    b.Navigation("Discounts");
+
                     b.Navigation("Reservation");
 
                     b.Navigation("RoomImages");
