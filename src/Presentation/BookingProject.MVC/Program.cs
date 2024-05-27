@@ -8,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.AddSession(options =>
+{
+	options.IdleTimeout = TimeSpan.FromDays(1);
+	options.Cookie.HttpOnly = true;
+	options.Cookie.IsEssential = true;
+});
 builder.Services.AddAuthentication(opt =>
 {
 	opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -36,7 +42,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 app.UseSession();
 app.UseAuthentication();

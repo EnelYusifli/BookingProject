@@ -1,8 +1,8 @@
 ﻿@model RoomGetViewModel
 @{
-	string date = ViewBag.Dates;
 	string checkInDate=ViewBag.CheckInDate;
 	string checkOutDate=ViewBag.CheckOutDate;
+	int nights = ViewBag.Nights;
 }
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
@@ -82,17 +82,17 @@
 											<div class="col-md-4">
 												<!-- Image -->
 												<div class="position-relative">
-													<img src="assets/images/category/hotel/4by3/02.jpg" class="card-img" alt="">
+													<img src="~/assets/images/category/hotel/4by3/02.jpg" class="card-img" alt="">
 													<!-- Badge -->
 													<div class="card-img-overlay">
-														<a href="assets/images/gallery/12.jpg" class="badge bg-dark stretched-link" data-glightbox="" data-gallery="gallery">
+														<a href="~/assets/images/gallery/12.jpg" class="badge bg-dark stretched-link" data-glightbox="" data-gallery="gallery">
 															5 Photos <i class="bi bi-arrow-right"></i>
 														</a>
 													</div>
 													<!-- Popup Images -->
-													<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
-													<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/15.jpg"></a>
-													<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/16.jpg"></a>
+													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
+													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/15.jpg"></a>
+													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/16.jpg"></a>
 												</div>
 											</div>
 
@@ -105,7 +105,7 @@
 													<!-- List -->
 													<ul class="nav small nav-divider mb-0">
 														<li class="nav-item mb-0">
-															<i class="fa-regular fa-square me-1"></i>315 sq.ft
+															<i class="fa-regular fa-square me-1"></i>@Model.Area sq.ft
 														</li>
 														<li class="nav-item mb-0">
 															<i class="fa-solid fa-table-cells-large me-1"></i>City view
@@ -118,7 +118,7 @@
 													<!-- Price and button -->
 													<div class="d-flex justify-content-between align-items-center mt-2 mt-md-auto">
 														<div class="d-flex text-success">
-															<h6 class="h5 mb-0 text-success">$385</h6>
+															<h6 class="h5 mb-0 text-success">$@Model.PricePerNight</h6>
 															<span class="fw-light">/per night</span>
 														</div>
 														<a href="#" class="btn btn-sm btn-dark mb-0">Select room</a>
@@ -136,17 +136,17 @@
 											<div class="col-md-4">
 												<!-- Image -->
 												<div class="position-relative">
-													<img src="assets/images/category/hotel/4by3/10.jpg" class="card-img" alt="">
+													<img src="~/assets/images/category/hotel/4by3/10.jpg" class="card-img" alt="">
 													<!-- Badge -->
 													<div class="card-img-overlay">
-														<a href="assets/images/gallery/13.jpg" class="badge bg-dark stretched-link" data-glightbox="" data-gallery="gallery">
+														<a href="~/assets/images/gallery/13.jpg" class="badge bg-dark stretched-link" data-glightbox="" data-gallery="gallery">
 															4 Photos <i class="bi bi-arrow-right"></i>
 														</a>
 													</div>
 													<!-- Popup Images -->
-													<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
-													<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/15.jpg"></a>
-													<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/16.jpg"></a>
+													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
+													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/15.jpg"></a>
+													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/16.jpg"></a>
 												</div>
 											</div>
 
@@ -222,26 +222,29 @@
 								<!-- List -->
 								<ul class="list-group list-group-borderless mb-3">
 									<li class="list-group-item px-2 d-flex justify-content-between">
-										<span class="h6 fw-light mb-0">$6,100 x 2 Nights</span>
-										<span class="h6 fw-light mb-0">$13,200</span>
-									</li>
-									<li class="list-group-item px-2 d-flex justify-content-between">
+									<span class="h6 fw-light mb-0">$@(Model.PricePerNight) x @(nights) Nights</span>
+									@{
+										decimal price = Model.PricePerNight * nights;
+									}
+									<span class="h6 fw-light mb-0">$@(price)</span>
+								</li>
+								@* 	<li class="list-group-item px-2 d-flex justify-content-between">
 										<span class="h6 fw-light mb-0">10% campaign discount</span>
 										<span class="h6 fw-light mb-0">-$500</span>
-									</li>
+									</li> *@
 									<li class="list-group-item px-2 d-flex justify-content-between">
 										<span class="h6 fw-light mb-0">Services Fee</span>
-										<span class="h6 fw-light mb-0">$100</span>
+										<span class="h6 fw-light mb-0">$@Model.ServiceFee</span>
 									</li>
 									<li class="list-group-item bg-light d-flex justify-content-between rounded-2 px-2 mt-2">
 										<span class="h5 fw-normal mb-0 ps-1">Total</span>
-										<span class="h5 fw-normal mb-0">$13,500</span>
+										<span class="h5 fw-normal mb-0">$@(price+Model.ServiceFee)</span>
 									</li>
 								</ul>
 
 								<!-- Button -->
 								<div class="d-grid gap-2">
-									<a href="hotel-booking.html" class="btn btn-dark mb-0">Continue To Book</a>
+									<a asp-action="reservation" asp-route-roomid="@Model.Id" class="btn btn-dark mb-0">Continue To Reserve</a>
 								</div>
 							</div>
 							<!-- Card body END -->

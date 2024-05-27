@@ -1,4 +1,5 @@
-﻿using BookingProject.Domain.Entities;
+﻿using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.Domain.Entities;
 
 namespace BookingProject.Application.Features.Queries.RoomQueries;
 
@@ -9,6 +10,7 @@ public class RoomGetByIdResponse
 	public string RoomName { get; set; }
 	public int Id { get; set; }
 	public string HotelName { get; set; }
+	public int HotelId { get; set; }
 	public int AdultCount { get; set; }
 	public int ChildCount { get; set; }
 	public decimal ServiceFee { get; set; }

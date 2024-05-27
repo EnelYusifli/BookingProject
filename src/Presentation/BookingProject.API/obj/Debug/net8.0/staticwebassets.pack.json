@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\email\\forgotpassword.html"
     },
     {
+      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
+      "PackagePath": "staticwebassets\\email\\nonpaidreservation.html"
+    },
+    {
+      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
+      "PackagePath": "staticwebassets\\email\\paidreservation.html"
+    },
+    {
       "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
       "PackagePath": "staticwebassets\\email\\requestapproved.html"
     },

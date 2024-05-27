@@ -21,7 +21,8 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
     public async Task<RoomGetByIdResponse> Handle(RoomGetByIdRequest request, CancellationToken cancellationToken)
 	{
 		Room room=await _roomRepository.Table.Include(x=>x.RoomImages).Include(x => x.Hotel)
-		   .ThenInclude(x => x.Rooms).FirstOrDefaultAsync(x=>x.Id==request.Id);
+		   .ThenInclude(x => x.Rooms).Include(x => x.Hotel)
+		   .ThenInclude(x => x.HotelImages).FirstOrDefaultAsync(x=>x.Id==request.Id);
 		if (room is null)
 			throw new NotFoundException("Room not found");
 		RoomGetByIdResponse dto = _mapper.Map<RoomGetByIdResponse>(room);

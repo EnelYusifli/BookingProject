@@ -19,6 +19,7 @@ public class RoomMappingProfile:Profile
 		CreateMap<Room, RoomGetByIdResponse>()
 		   .ForMember(dest => dest.RoomName, opt => opt.MapFrom(src => src.RoomName))
 		   .ForMember(dest => dest.HotelName, opt => opt.MapFrom(src => src.Hotel.Name))
+		   .ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.Hotel.Id))
 		   .ForMember(dest => dest.AdultCount, opt => opt.MapFrom(src => src.AdultCount))
 		   .ForMember(dest => dest.ChildCount, opt => opt.MapFrom(src => src.ChildCount))
 		   .ForMember(dest => dest.ServiceFee, opt => opt.MapFrom(src => src.ServiceFee))

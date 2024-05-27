@@ -1,9 +1,12 @@
+using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
+using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace BookingProject.MVC.Controllers;
 
@@ -23,11 +26,10 @@ public class HomeController : Controller
 		return View();
 	}
 	[HttpGet]
-	public async Task<IActionResult> HotelDetail([FromRoute]int id, string? dateRange)
+	public async Task<IActionResult> HotelDetail([FromRoute]int id)
 	{
 		HotelDetailViewModel vm = new();
 		if (!ModelState.IsValid) return View();
-        ViewBag.Dates = dateRange;
         var response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
 
 		if (response.IsSuccessStatusCode)
@@ -40,25 +42,23 @@ public class HomeController : Controller
 		return RedirectToAction("Index");
 	}
 	[HttpGet]
-	public async Task<IActionResult> RoomDetail([FromRoute] int id,string? dateRange)
+	public async Task<IActionResult> RoomDetail([FromRoute] int id)
 	{
 		RoomGetViewModel vm = new();
-        string? checkInDate = null;
-        string? checkOutDate = null;
+		var checkInDateString = HttpContext.Session.GetString("CheckInDate");
+		var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+		if (!DateTime.TryParse(checkInDateString, out DateTime checkInDate) ||
+			!DateTime.TryParse(checkOutDateString, out DateTime checkOutDate))
+		{
+			return BadRequest("Invalid date format.");
+		}
 
-        if (!string.IsNullOrEmpty(dateRange))
-        {
-            var dates = dateRange.Split(" to ");
-            if (dates.Length == 2)
-            {
-                checkInDate = dates[0];
-                checkOutDate = dates[1];
-            }
-        }
+		int numberOfNights = (int)(checkOutDate - checkInDate).TotalDays;
+		ViewBag.Nights = numberOfNights;
+		ViewBag.CheckInDate = checkInDate.ToString("yyyy-MM-dd");
+		ViewBag.CheckOutDate = checkOutDate.ToString("yyyy-MM-dd");
 
-        ViewBag.CheckInDate = checkInDate;
-        ViewBag.CheckOutDate = checkOutDate;
-        if (!ModelState.IsValid) return View();
+		if (!ModelState.IsValid) return View();
 
 		var response = await _httpClient.GetAsync(baseAddress + $"/rooms/getbyid/{id}");
 
@@ -88,19 +88,27 @@ public class HomeController : Controller
 		int page = 1,
 		int itemPerPage = 2)
 	{
-		DateTime? checkInDate = null;
-		DateTime? checkOutDate = null;
-
-		if (!string.IsNullOrEmpty(dateRange))
+		if (string.IsNullOrEmpty(dateRange))
 		{
-			var dates = dateRange.Split(" to ");
-			if (dates.Length == 2)
-			{
-				checkInDate = DateTime.Parse(dates[0]);
-				checkOutDate = DateTime.Parse(dates[1]);
-			}
+			return BadRequest("Date range is required.");
 		}
-		ViewBag.Dates = dateRange;
+
+		var dates = dateRange.Split(" to ");
+		if (dates.Length != 2)
+		{
+			return BadRequest("Invalid date range format.");
+		}
+
+		if (!DateTime.TryParse(dates[0], out DateTime checkInDate) ||
+			!DateTime.TryParse(dates[1], out DateTime checkOutDate) ||
+			checkInDate >= checkOutDate)
+		{
+			return BadRequest("Invalid date range.");
+		}
+
+		HttpContext.Session.SetString("CheckInDate", checkInDate.ToString("yyyy-MM-dd"));
+		HttpContext.Session.SetString("CheckOutDate", checkOutDate.ToString("yyyy-MM-dd"));
+
 		if (!ModelState.IsValid) return View();
 
 		var response = await _httpClient.GetAsync(baseAddress + "/hotels/getall");
@@ -109,7 +117,7 @@ public class HomeController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
-			var queryableHotels = hotels.Where(x => x.IsDeactive == false).AsQueryable();
+			var queryableHotels = hotels.Where(x => !x.IsDeactive).AsQueryable();
 
 			if (!string.IsNullOrEmpty(searchStr))
 			{
@@ -167,12 +175,82 @@ public class HomeController : Controller
 				queryableHotels = queryableHotels.OrderByDescending(x => x.StarPoint);
 			}
 
-			var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, itemPerPage, page);
+				var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, itemPerPage, page);
 
 			return View(paginatedDatas);
 		}
 		return View();
 	}
 
+	public async Task<IActionResult> Reservation(int roomid,ReservationViewModel vm)
+	{
+		var roomResponse = await _httpClient.GetAsync(baseAddress + $"/rooms/getbyid/{roomid}");
+
+		if (roomResponse.IsSuccessStatusCode)
+		{
+			var roomResponseData = await roomResponse.Content.ReadAsStringAsync();
+			var room = JsonConvert.DeserializeObject<RoomGetViewModel>(roomResponseData);
+			vm.Room = room;
+			var checkInDateString = HttpContext.Session.GetString("CheckInDate");
+			var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+			if (!DateTime.TryParse(checkInDateString, out DateTime checkInDate) ||
+				!DateTime.TryParse(checkOutDateString, out DateTime checkOutDate))
+			{
+				return BadRequest("Invalid date format.");
+			}
+
+			int numberOfNights = (int)(checkOutDate - checkInDate).TotalDays;
+			vm.Nights = numberOfNights;
+			vm.CheckInDate = checkInDate.ToString("yyyy-MM-dd");
+			vm.CheckOutDate = checkOutDate.ToString("yyyy-MM-dd");
+			var hotelResponse = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{room.HotelId}");
+			if (hotelResponse.IsSuccessStatusCode)
+			{
+				var hotelResponseData = await hotelResponse.Content.ReadAsStringAsync();
+				var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(hotelResponseData);
+				vm.Hotel = hotel;
+			}
+			var userResponse = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+
+			if (userResponse.IsSuccessStatusCode)
+			{
+				var responseData = await userResponse.Content.ReadAsStringAsync();
+				var user = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+				vm.User=user;
+			}
+			return View(vm);
+		}
+		return RedirectToAction("Index");
+	}
+
+	public async Task<IActionResult> ReserveRoom(int roomid, bool ispaid, ReservationCreateViewModel vm)
+	{
+		vm.RoomId=roomid;
+		vm.IsPaid=ispaid;
+		var checkInDateString = HttpContext.Session.GetString("CheckInDate");
+		var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+		if (!DateTime.TryParse(checkInDateString, out DateTime checkInDate) ||
+			!DateTime.TryParse(checkOutDateString, out DateTime checkOutDate))
+		{
+			return BadRequest("Invalid date format.");
+		}
+		vm.StartTime = checkInDate;
+		vm.EndTime = checkOutDate;
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + "/reservations/create", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Profile","Account");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return RedirectToAction("Index");
+	}
 
 }

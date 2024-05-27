@@ -1,4 +1,7 @@
-﻿namespace BookingProject.MVC.ViewModels.RoomViewModels;
+﻿using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.MVC.ViewModels.HotelViewModels;
+
+namespace BookingProject.MVC.ViewModels.RoomViewModels;
 
 public class RoomGetViewModel
 {
@@ -7,6 +10,7 @@ public class RoomGetViewModel
 	public string RoomName { get; set; }
 	public int Id { get; set; }
 	public string HotelName { get; set; }
+	public int HotelId { get; set; }
 	public int AdultCount { get; set; }
 	public int ChildCount { get; set; }
 	public decimal ServiceFee { get; set; }
