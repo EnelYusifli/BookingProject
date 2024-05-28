@@ -28,6 +28,12 @@ public class HotelsController : ControllerBase
 		HotelGetAllQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
+	[HttpGet]
+	public async Task<IActionResult> GetAllByUser()
+	{
+		HotelGetAllByUserQueryRequest request = new();
+		return Ok(await _mediator.Send(request));
+	}
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{

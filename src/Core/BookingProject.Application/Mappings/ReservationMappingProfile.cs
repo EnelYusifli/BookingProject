@@ -15,6 +15,11 @@ public class ReservationMappingProfile:Profile
 	.ForMember(dest => dest.HotelName, opt => opt.MapFrom(src => src.Room.Hotel.Name))
 	.ForMember(dest => dest.RoomName, opt => opt.MapFrom(src => src.Room.RoomName))
 	.ReverseMap();
+		CreateMap<Reservation, ReservationGetAllByOwnerQueryResponse>()
+	.ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.Room.HotelId))
+	.ForMember(dest => dest.HotelName, opt => opt.MapFrom(src => src.Room.Hotel.Name))
+	.ForMember(dest => dest.RoomName, opt => opt.MapFrom(src => src.Room.RoomName))
+	.ReverseMap();
 
 	}
 }

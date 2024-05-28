@@ -40,4 +40,10 @@ public class ReservationsController : ControllerBase
 		ReservationGetAllByUserQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
+	[HttpGet]
+	public async Task<IActionResult> GetAllByOwner()
+	{
+		ReservationGetAllByOwnerQueryRequest request = new();
+		return Ok(await _mediator.Send(request));
+	}
 }

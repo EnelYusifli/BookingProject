@@ -21,7 +21,6 @@ public class AccountController : Controller
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	private readonly HttpClient _httpClient;
 
-
 	public AccountController(HttpClient httpClient)
 	{
 		_httpClient = httpClient;
@@ -293,6 +292,7 @@ public class AccountController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
+			vm.Review = null;
 			vm.CancelledReservations=dtos.Where(x=>x.IsCancelled==true).ToList();
 			vm.UpcomingReservations=dtos.Where(x=>x.StartTime>DateTime.Now && x.IsCancelled==false && x.IsDeactive==false).ToList();
 			vm.CompletedReservations=dtos.Where(x=>x.StartTime<DateTime.Now && x.IsCancelled == false && x.IsDeactive == false) .ToList();
@@ -300,5 +300,21 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Index", "Home");
 	}
+	[HttpPost]
+	public async Task<IActionResult> LeaveReview(ReviewCreateViewModel vm)
+	{
+		//if (!ModelState.IsValid) return View();
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + "/reviews/create", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("reservations");
+		}
+		return RedirectToAction("index","home");
+	}
+	
+
 }
 

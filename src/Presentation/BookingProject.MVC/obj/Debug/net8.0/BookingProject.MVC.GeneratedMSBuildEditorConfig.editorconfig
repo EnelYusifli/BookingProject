@@ -166,6 +166,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSb29tRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Listings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcTGlzdGluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Reservations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcUmVzZXJ2YXRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Property/AddHotel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydHlcQWRkSG90ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -188,6 +200,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5vdEZvdW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/OwnerLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE93bmVyTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/_ViewImports.cshtml]

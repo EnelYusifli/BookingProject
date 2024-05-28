@@ -39,136 +39,285 @@
 
 									<!-- Tab content item START -->
 									<div class="tab-pane fade show active" id="tab-1">
-										<h6>Upcoming reservations (@Model.UpcomingReservations.Count())</h6>
-										@foreach (var item in Model.UpcomingReservations)
+										@if (Model.UpcomingReservations.Count() == 0)
+										{
+											<div class="bg-mode shadow p-4 rounded overflow-hidden">
+												<div class="row g-4 align-items-center">
+													<!-- Content -->
+													<div class="col-md-9">
+														<h6>Looks like you have never reserved with BOOKING</h6>
+														<h4 class="mb-2">When you reserve your hotel will be shown here.</h4>
+														<a asp-action="index" asp-controller="home" class="btn btn-primary-soft mb-0">Start now</a>
+													</div>
+													<!-- Image -->
+													<div class="col-md-3 text-end">
+														<img src="~/assets/images/element/17.svg" class="mb-n5" alt="">
+													</div>
+												</div>
+											</div>
+										}
+										else
 										{
 						
-										<!-- Card item START -->
-						<div class="card border mb-4">
-							<!-- Card header -->
-							<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-								<!-- Icon and Title -->
-								<div class="d-flex align-items-center">
-									<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
-									<!-- Title -->
-									<div class="ms-2">
-										<h6 class="card-title mb-0">Hotel</h6>
-									</div>
-								</div>
+										<h6>Upcoming reservations (@Model.UpcomingReservations.Count())</h6>
+															@foreach (var item in Model.UpcomingReservations)
+															{
+						
+															<!-- Card item START -->
+											<div class="card border mb-4">
+												<!-- Card header -->
+												<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+													<!-- Icon and Title -->
+													<div class="d-flex align-items-center">
+														<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
+														<!-- Title -->
+														<div class="ms-2">
+															<h6 class="card-title mb-0">Hotel</h6>
+														</div>
+													</div>
 
-								<!-- Hotel, Room and Paid Status -->
-								<div class="ms-3">
-									<ul class="nav nav-divider small">
-										<li class="nav-item">Hotel: @item.HotelName</li>
-										<li class="nav-item">Room: @item.RoomName</li>
-									</ul>
-								</div>
+													<!-- Hotel, Room and Paid Status -->
+													<div class="ms-3">
+														<ul class="nav nav-divider small">
+															<li class="nav-item">Hotel: @item.HotelName</li>
+															<li class="nav-item">Room: @item.RoomName</li>
+														</ul>
+													</div>
 
-								<!-- Buttons -->
-								<div class="mt-2 mt-md-0">
-									<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
-									<a asp-action="cancelreservation" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
-								</div>
-							</div>
+													<!-- Buttons -->
+													<div class="mt-2 mt-md-0">
+														<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
+														<a asp-action="cancelreservation" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
+													</div>
+												</div>
 
-							<!-- Card body -->
-							<div class="card-body">
-								<div class="row g-3">
-									<div class="col-sm-6 col-md-4">
-										<span>Check-in date</span>
-										<h6 class="mb-0">@item.StartTime.ToString("dd/MM/yyyy")</h6>
-									</div>
+												<!-- Card body -->
+												<div class="card-body">
+													<div class="row g-3">
+														<div class="col-sm-6 col-md-4">
+															<span>Check-in date</span>
+															<h6 class="mb-0">@item.StartTime.ToString("dd/MM/yyyy")</h6>
+														</div>
 
-									<div class="col-sm-6 col-md-4">
-										<span>Check-out date</span>
-										<h6 class="mb-0">@item.EndTime.ToString("dd/MM/yyyy")</h6>
-									</div>
+														<div class="col-sm-6 col-md-4">
+															<span>Check-out date</span>
+															<h6 class="mb-0">@item.EndTime.ToString("dd/MM/yyyy")</h6>
+														</div>
 
-									<div class="col-md-4">
-										<span>Paid status</span>
-										<h6 class="mb-0">@item.IsPaid</h6>
-									</div>
-								</div>
-							</div>
-						</div>
+														<div class="col-md-4">
+															<span>Paid status</span>
+															<h6 class="mb-0">@item.IsPaid</h6>
+														</div>
+													</div>
+												</div>
+											</div>
 
-										<!-- Card item END -->
+															<!-- Card item END -->
+															}
 										}
 					
 									</div>
 									<!-- Tabs content item END -->
 									<!-- Tab content item START -->
 									<div class="tab-pane fade" id="tab-2">
-										<h6>Cancelled booking (1)</h6>
+										@if (Model.CancelledReservations.Count()==0)
+										{
+						<div class="bg-mode shadow p-4 rounded overflow-hidden">
+							<div class="row g-4 align-items-center">
+								<!-- Content -->
+								<div class="col-md-9">
+									<h6>Looks like you have never canceled a reserve with BOOKING</h6>
+									<h4 class="mb-2">When you cancel a reserve will be shown here.</h4>
+								</div>
+								<!-- Image -->
+								<div class="col-md-3 text-end">
+									<img src="~/assets/images/element/17.svg" class="mb-n5" alt="">
+								</div>
+							</div>
+						</div>
+										}
+										else
+										{
+						
+										<h6>Cancelled booking (@Model.CancelledReservations.Count())</h6>
 
-										<!-- Card item START -->
-										<div class="card border">
-											<!-- Card header -->
-											<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-												<!-- Icon and Title -->
-												<div class="d-flex align-items-center">
-													<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
-													<!-- Title -->
-													<div class="ms-2">
-														<h6 class="card-title mb-0">Courtyard by Marriott New York</h6>
-														<ul class="nav nav-divider small">
-															<li class="nav-item">Booking ID: CGDSUAHA12548</li>
-															<li class="nav-item">AC</li>
-														</ul>
-													</div>
-												</div>
+															<!-- Card item START -->
+															@foreach (var item in Model.CancelledReservations)
+															{
 
-												<!-- Button -->
-												<div class="mt-2 mt-md-0">
-													<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
-													<p class="text-danger text-md-end mb-0">Booking cancelled</p>
-												</div>
-											</div>
+																<!-- Card item START -->
+																<div class="card border mb-4">
+																	<!-- Card header -->
+																	<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+																		<!-- Icon and Title -->
+																		<div class="d-flex align-items-center">
+																			<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
+																			<!-- Title -->
+																			<div class="ms-2">
+																				<h6 class="card-title mb-0">Hotel</h6>
+																			</div>
+																		</div>
 
-											<!-- Card body -->
-											<div class="card-body">
-												<div class="row g-3">
-													<div class="col-sm-6 col-md-4">
-														<span>Check in time</span>
-														<h6 class="mb-0">Tue 05 Aug 12:00 AM</h6>
-													</div>
+																		<!-- Hotel, Room and Paid Status -->
+																		<div class="ms-3">
+																			<ul class="nav nav-divider small">
+																				<li class="nav-item">Hotel: @item.HotelName</li>
+																				<li class="nav-item">Room: @item.RoomName</li>
+																			</ul>
+																		</div>
 
-													<div class="col-sm-6 col-md-4">
-														<span>Check out time</span>
-														<h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-													</div>
+																		<!-- Buttons -->
+																		<div class="mt-2 mt-md-0">
+																			<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
+																			<a asp-action="cancelreservation" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
+																		</div>
+																	</div>
 
-													<div class="col-md-4">
-														<span>Booked by</span>
-														<h6 class="mb-0">Frances Guerrero</h6>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Card item END -->
+																	<!-- Card body -->
+																	<div class="card-body">
+																		<div class="row g-3">
+																			<div class="col-sm-6 col-md-4">
+																				<span>Check-in date</span>
+																				<h6 class="mb-0">@item.StartTime.ToString("dd/MM/yyyy")</h6>
+																			</div>
+
+																			<div class="col-sm-6 col-md-4">
+																				<span>Check-out date</span>
+																				<h6 class="mb-0">@item.EndTime.ToString("dd/MM/yyyy")</h6>
+																			</div>
+
+																			<div class="col-md-4">
+																				<span>Paid status</span>
+																				<h6 class="mb-0">@item.IsPaid</h6>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
+																<!-- Card item END -->
+															}
+															<!-- Card item END -->
+										}
 									</div>
 									<!-- Tabs content item END -->
 									<!-- Tab content item START -->
 									<div class="tab-pane fade" id="tab-3">
-										<div class="bg-mode shadow p-4 rounded overflow-hidden">
-											<div class="row g-4 align-items-center">
-												<!-- Content -->
-												<div class="col-md-9">
-													<h6>Looks like you have never booked with BOOKING</h6>
-													<h4 class="mb-2">When you book your trip will be shown here.</h4>
-													<a href="hotel-list.html" class="btn btn-primary-soft mb-0">Start booking now</a>
-												</div>
-												<!-- Image -->
-												<div class="col-md-3 text-end">
-													<img src="assets/images/element/17.svg" class="mb-n5" alt="">
+										@if (Model.CompletedReservations.Count() == 0)
+										{
+											<div class="bg-mode shadow p-4 rounded overflow-hidden">
+												<div class="row g-4 align-items-center">
+													<!-- Content -->
+													<div class="col-md-9">
+													<h6>Looks like you have never completed a reservation with BOOKING</h6>
+														<h4 class="mb-2">When you complete your reservation will be shown here.</h4>
+													</div>
+													<!-- Image -->
+													<div class="col-md-3 text-end">
+														<img src="~/assets/images/element/17.svg" class="mb-n5" alt="">
+													</div>
 												</div>
 											</div>
-										</div>
+										}
+										else
+										{
 
+											<h6>Cancelled booking (@Model.CompletedReservations.Count())</h6>
+
+											<!-- Card item START -->
+											@foreach (var item in Model.CompletedReservations)
+											{
+
+												<!-- Card item START -->
+												<div class="card border mb-4">
+													<!-- Card header -->
+													<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+														<!-- Icon and Title -->
+														<div class="d-flex align-items-center">
+															<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
+															<!-- Title -->
+															<div class="ms-2">
+																<h6 class="card-title mb-0">Hotel</h6>
+															</div>
+														</div>
+
+														<!-- Hotel, Room and Paid Status -->
+														<div class="ms-3">
+															<ul class="nav nav-divider small">
+																<li class="nav-item">Hotel: @item.HotelName</li>
+																<li class="nav-item">Room: @item.RoomName</li>
+															</ul>
+														</div>
+
+														<!-- Buttons -->
+														<div class="mt-2 mt-md-0">
+															<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-orange-soft mb-0 me-2">Go to detail</a>
+															<button type="button" class="btn btn-success-soft mb-0" data-bs-toggle="modal" data-bs-target="#reviewModal">
+																Leave Review
+															</button>
+														</div>
+													</div>
+
+													<!-- Card body -->
+													<div class="card-body">
+														<div class="row g-3">
+															<div class="col-sm-6 col-md-4">
+																<span>Check-in date</span>
+																<h6 class="mb-0">@item.StartTime.ToString("dd/MM/yyyy")</h6>
+															</div>
+
+															<div class="col-sm-6 col-md-4">
+																<span>Check-out date</span>
+																<h6 class="mb-0">@item.EndTime.ToString("dd/MM/yyyy")</h6>
+															</div>
+
+															<div class="col-md-4">
+																<span>Paid status</span>
+																<h6 class="mb-0">@item.IsPaid</h6>
+															</div>
+														</div>
+													</div>
+												</div>
+							<!-- Review Modal -->
+							<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="reviewModalLabel">Leave a Review</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<form method="post" asp-controller="account" asp-action="LeaveReview" enctype="multipart/form-data">
+												<!-- Rating -->
+												<div class="form-control-bg-light mb-3">
+													<select class="form-select js-choice" asp-for="Review.StarPoint">
+														<option value="5">★★★★★ (5/5)</option>
+														<option value="4">★★★★☆ (4/5)</option>
+														<option value="3">★★★☆☆ (3/5)</option>
+														<option value="2">★★☆☆☆ (2/5)</option>
+														<option value="1">★☆☆☆☆ (1/5)</option>
+													</select>
+												</div>
+												<input type="hidden" asp-for="Review.HotelId" value="@item.HotelId" />
+												<!-- Message -->
+												<div class="form-control-bg-light mb-3">
+													<input type="text" maxlength="200" class="form-control" id="exampleFormControlInput1" placeholder="Your review" asp-for="Review.ReviewMessage">
+												</div>
+												<!-- Button -->
+												<button type="submit" class="btn btn-lg btn-primary mb-0">Post review <i class="bi fa-fw bi-arrow-right ms-2"></i></button>
+											</form>
+
+										</div>
+									</div>
+								</div>
+							</div>
+												<!-- Card item END -->
+											}
+											<!-- Card item END -->
+										}
 									</div>
 									<!-- Tabs content item END -->
 								</div>
-
+			
 							</div>
 							<!-- Card body END -->
 						</div>
