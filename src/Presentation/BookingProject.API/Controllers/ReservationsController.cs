@@ -2,7 +2,9 @@
 using BookingProject.Application.Features.Commands.HotelCommands.HotelUpdateCommands;
 using BookingProject.Application.Features.Commands.ReservationCommands.ReservationCancelCommands;
 using BookingProject.Application.Features.Commands.ReservationCommands.ReservationCreateCommands;
+using BookingProject.Application.Features.Queries.CountryQueries;
 using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.Application.Features.Queries.ReservationQueries.ReservationGetAllByUserQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +32,12 @@ public class ReservationsController : ControllerBase
 		{
 			ReservationId = id
 		};
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpGet]
+	public async Task<IActionResult> GetAllByUser()
+	{
+		ReservationGetAllByUserQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
 }

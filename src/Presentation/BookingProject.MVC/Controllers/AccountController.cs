@@ -1,6 +1,7 @@
 ﻿using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
 using BookingProject.MVC.ViewModels.AccountViewModels;
+using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -284,6 +285,20 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("index", "home");
 	}
+	public async Task<IActionResult> Reservations(UserReservationsViewModel vm)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + "/reservations/getallbyuser");
 
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
+			vm.CancelledReservations=dtos.Where(x=>x.IsCancelled==true).ToList();
+			vm.UpcomingReservations=dtos.Where(x=>x.StartTime>DateTime.Now && x.IsCancelled==false && x.IsDeactive==false).ToList();
+			vm.CompletedReservations=dtos.Where(x=>x.StartTime<DateTime.Now && x.IsCancelled == false && x.IsDeactive == false) .ToList();
+			return View(vm);
+		}
+		return RedirectToAction("Index", "Home");
+	}
 }
 

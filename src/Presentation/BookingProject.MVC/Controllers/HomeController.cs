@@ -50,6 +50,13 @@ public class HomeController : Controller
 		RoomGetViewModel vm = new();
 		var checkInDateString = HttpContext.Session.GetString("CheckInDate");
 		var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+		if (string.IsNullOrEmpty(checkInDateString))
+		{
+			checkInDateString = $"{DateTime.Now.ToString("yyyy-MM-dd")}";
+		}if (string.IsNullOrEmpty(checkOutDateString))
+		{
+			checkOutDateString = $"{DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")}";
+		}
 		if (!DateTime.TryParse(checkInDateString, out DateTime checkInDate) ||
 			!DateTime.TryParse(checkOutDateString, out DateTime checkOutDate))
 		{
@@ -76,7 +83,6 @@ public class HomeController : Controller
 	}
 
 	public async Task<IActionResult> HotelGrid(
-		string? dateRange,
 		decimal? minPrice,
 		decimal? maxPrice,
 		decimal? starPoint,
@@ -88,12 +94,13 @@ public class HomeController : Controller
 		int? roomCount,
 		int? childCount,
 		string? countryName,
+		string? dateRange,
 		int page = 1,
-		int itemPerPage = 2)
+		int itemPerPage = 3)
 	{
 		if (string.IsNullOrEmpty(dateRange))
 		{
-			return BadRequest("Date range is required.");
+			dateRange = $"{DateTime.Now.ToString("yyyy-MM-dd")} to {DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")}";
 		}
 
 		var dates = dateRange.Split(" to ");
@@ -196,6 +203,14 @@ public class HomeController : Controller
 			vm.Room = room;
 			var checkInDateString = HttpContext.Session.GetString("CheckInDate");
 			var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+			if (string.IsNullOrEmpty(checkInDateString))
+			{
+				checkInDateString = $"{DateTime.Now.ToString("yyyy-MM-dd")}";
+			}
+			if (string.IsNullOrEmpty(checkOutDateString))
+			{
+				checkOutDateString = $"{DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")}";
+			}
 			if (!DateTime.TryParse(checkInDateString, out DateTime checkInDate) ||
 				!DateTime.TryParse(checkOutDateString, out DateTime checkOutDate))
 			{
@@ -232,6 +247,14 @@ public class HomeController : Controller
 		vm.IsPaid=ispaid;
 		var checkInDateString = HttpContext.Session.GetString("CheckInDate");
 		var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+		if (string.IsNullOrEmpty(checkInDateString))
+		{
+			checkInDateString = $"{DateTime.Now.ToString("yyyy-MM-dd")}";
+		}
+		if (string.IsNullOrEmpty(checkOutDateString))
+		{
+			checkOutDateString = $"{DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")}";
+		}
 		if (!DateTime.TryParse(checkInDateString, out DateTime checkInDate) ||
 			!DateTime.TryParse(checkOutDateString, out DateTime checkOutDate))
 		{

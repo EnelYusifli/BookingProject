@@ -349,14 +349,18 @@
 											
 												<span class="fs-5">$@(price)</span>
 											</li>
-											@* <li class="list-group-item d-flex justify-content-between align-items-center">
-												<span class="h6 fw-light mb-0">Total Discount<span class="badge text-bg-danger smaller mb-0 ms-2">10% off</span></span>
-												<span class="fs-5 text-success">-$2,560</span>
-											</li> *@
-										@* 	<li class="list-group-item d-flex justify-content-between align-items-center">
+										@if (Model.Room.PricePerNight>Model.Room.DiscountedPricePerNight)
+										{
+										<li class="list-group-item d-flex justify-content-between align-items-center">
+												<span class="h6 fw-light mb-0">Total Discount<span class="badge text-bg-danger smaller mb-0 ms-2">@Model.Room.DiscountPercent% off</span></span>
+												<span class="fs-5 text-success">-$@(price - (Model.Room.DiscountedPricePerNight * Model.Nights))</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
 												<span class="h6 fw-light mb-0">Price after discount</span>
-												<span class="fs-5">$1852</span>
-											</li> *@
+												@{price = (Model.Room.DiscountedPricePerNight * Model.Nights);}
+												<span class="fs-5">$@price</span>
+											</li>
+										}
 											<li class="list-group-item d-flex justify-content-between align-items-center">
 												<span class="h6 fw-light mb-0">Service Fees</span>
 												<span class="fs-5">$@Model.Room.ServiceFee</span>

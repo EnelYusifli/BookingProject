@@ -36,13 +36,20 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
 
 		foreach (var discount in room.Discounts)
 		{
-			if ((!discount.IsDeactive) && discount.StartTime <= DateTime.Now && discount.EndTime >= DateTime.Now)
+			if (!discount.IsDeactive &&
+				discount.StartTime <= DateTime.Now &&
+				discount.EndTime >= DateTime.Now)
 			{
-				discountedPrice -= room.PricePerNight * (discount.Percent / 100m);
-				discPercent=discount.Percent;
+				decimal discountPercentage = discount.Percent / 100m;
+				decimal discountedAmount = room.PricePerNight * discountPercentage;
+				int roundedDiscountedAmount = (int)Math.Round(discountedAmount);
+				discountedPrice -= roundedDiscountedAmount;
+				discPercent = discount.Percent;
 			}
 		}
+
 		room.DiscountedPricePerNight = discountedPrice;
-		room.DiscountPercent= discPercent;
+		room.DiscountPercent = discPercent;
 	}
+
 }

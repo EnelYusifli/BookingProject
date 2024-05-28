@@ -220,27 +220,32 @@
 								</div>
 
 								<!-- List -->
-								<ul class="list-group list-group-borderless mb-3">
-									<li class="list-group-item px-2 d-flex justify-content-between">
-									<span class="h6 fw-light mb-0">$@(Model.PricePerNight) x @(nights) Nights</span>
-									@{
-										decimal price = Model.PricePerNight * nights;
-									}
-									<span class="h6 fw-light mb-0">$@(price)</span>
-								</li>
-								@* 	<li class="list-group-item px-2 d-flex justify-content-between">
-										<span class="h6 fw-light mb-0">10% campaign discount</span>
-										<span class="h6 fw-light mb-0">-$500</span>
-									</li> *@
-									<li class="list-group-item px-2 d-flex justify-content-between">
-										<span class="h6 fw-light mb-0">Services Fee</span>
-										<span class="h6 fw-light mb-0">$@Model.ServiceFee</span>
-									</li>
-									<li class="list-group-item bg-light d-flex justify-content-between rounded-2 px-2 mt-2">
-										<span class="h5 fw-normal mb-0 ps-1">Total</span>
-										<span class="h5 fw-normal mb-0">$@(price+Model.ServiceFee)</span>
-									</li>
-								</ul>
+							<ul class="list-group list-group-borderless mb-3">
+    <li class="list-group-item px-2 d-flex justify-content-between">
+        <span class="h6 fw-light mb-0">$@(Model.PricePerNight) x @(nights) Nights</span>
+        @{
+            decimal price = Model.PricePerNight * nights;
+        }
+        <span class="h6 fw-light mb-0">$@(price)</span>
+    </li>
+    @if (Model.PricePerNight > Model.DiscountedPricePerNight)
+    {
+        <li class="list-group-item px-2 d-flex justify-content-between">
+            <span class="h6 fw-light mb-0 text-danger">@(Model.DiscountPercent)% campaign discount</span>
+            <span class="h6 fw-light mb-0">-$@(price-(Model.DiscountedPricePerNight * nights))</span>
+        </li>
+            price =(Model.DiscountedPricePerNight * nights);
+    }
+    <li class="list-group-item px-2 d-flex justify-content-between">
+        <span class="h6 fw-light mb-0">Services Fee</span>
+        <span class="h6 fw-light mb-0">$@Model.ServiceFee</span>
+    </li>
+    <li class="list-group-item bg-light d-flex justify-content-between rounded-2 px-2 mt-2">
+        <span class="h5 fw-normal mb-0 ps-1">Total</span>
+        <span class="h5 fw-normal mb-0">$@(price + Model.ServiceFee)</span>
+    </li>
+</ul>
+
 
 								<!-- Button -->
 								<div class="d-grid gap-2">

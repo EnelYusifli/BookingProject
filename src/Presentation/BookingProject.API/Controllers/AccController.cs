@@ -7,6 +7,9 @@ using BookingProject.Application.Features.Commands.UserCommands.UserUpdatePasswo
 using BookingProject.Application.Features.Queries;
 using BookingProject.Application.Features.Queries.UserQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -63,4 +66,5 @@ public class AccController : ControllerBase
 	{
 		return Ok(await _mediator.Send(request));
 	}
+	
 }
