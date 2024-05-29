@@ -1,0 +1,61 @@
+﻿@model BookingProject.MVC.ViewModels.AccountViewModels.ReviewCreateViewModel
+
+@{
+    int hotelid = ViewBag.Id;
+}
+
+<section class="review-form-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card p-4 shadow-sm">
+                    <h2 class="card-title text-center mb-4">Leave a Review</h2>
+                    <form method="post" asp-controller="account" asp-action="LeaveReview" enctype="multipart/form-data">
+                        <!-- Rating -->
+                        <div class="mb-3">
+                            <label for="StarPoint" class="form-label">Rating</label>
+                            <select class="form-select js-choice" asp-for="StarPoint" id="StarPoint">
+                                <option value="5">★★★★★ (5/5)</option>
+                                <option value="4">★★★★☆ (4/5)</option>
+                                <option value="3">★★★☆☆ (3/5)</option>
+                                <option value="2">★★☆☆☆ (2/5)</option>
+                                <option value="1">★☆☆☆☆ (1/5)</option>
+                            </select>
+                        </div>
+                        <input type="hidden" asp-for="HotelId" value="@hotelid" />
+                        <!-- Message -->
+                        <div class="mb-3">
+                            <label for="ReviewMessage" class="form-label">Your Review</label>
+                            <input type="text" maxlength="200" class="form-control" id="ReviewMessage" placeholder="Your review" asp-for="ReviewMessage">
+                        </div>
+                        <!-- Images -->
+                        <div class="mb-3">
+                            <label for="ReviewImages" class="form-label">Add Images</label>
+                            <input type="file" class="form-control" id="ReviewImages" asp-for="ReviewImageFiles" multiple>
+                        </div>
+                        <!-- Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-lg btn-primary">Post Review <i class="bi fa-fw bi-arrow-right ms-2"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Optional: Include your own CSS or use Bootstrap classes to further style the form -->
+<style>
+    .review-form-section {
+        padding: 60px 0;
+    }
+
+    .card {
+        border: none;
+        border-radius: 8px;
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+</style>

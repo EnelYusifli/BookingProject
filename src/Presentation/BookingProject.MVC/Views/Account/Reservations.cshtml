@@ -251,9 +251,9 @@
 														<!-- Buttons -->
 														<div class="mt-2 mt-md-0">
 															<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-orange-soft mb-0 me-2">Go to detail</a>
-															<button type="button" class="btn btn-success-soft mb-0" data-bs-toggle="modal" data-bs-target="#reviewModal">
+										<a asp-action="LeaveReview" asp-route-hotelid="@item.HotelId" class="btn btn-success-soft mb-0">
 																Leave Review
-															</button>
+															</a>
 														</div>
 													</div>
 
@@ -278,7 +278,7 @@
 													</div>
 												</div>
 							<!-- Review Modal -->
-							<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+					@* 		<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -301,15 +301,17 @@
 												<!-- Message -->
 												<div class="form-control-bg-light mb-3">
 													<input type="text" maxlength="200" class="form-control" id="exampleFormControlInput1" placeholder="Your review" asp-for="Review.ReviewMessage">
+													<input multiple class="form-control" id="exampleFormControlInput2" asp-for="Review.ReviewImages">
 												</div>
 												<!-- Button -->
 												<button type="submit" class="btn btn-lg btn-primary mb-0">Post review <i class="bi fa-fw bi-arrow-right ms-2"></i></button>
 											</form>
 
+
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> *@
 												<!-- Card item END -->
 											}
 											<!-- Card item END -->

@@ -9,5 +9,5 @@ public class ReviewCreateViewModel
 	public int StarPoint { get; set; }
 	[MaxLength(200)]
 	public string ReviewMessage { get; set; }
-	public List<IFormFile>? ReviewImages { get; set; }
+	public List<IFormFile>? ReviewImageFiles { get; set; }
 }

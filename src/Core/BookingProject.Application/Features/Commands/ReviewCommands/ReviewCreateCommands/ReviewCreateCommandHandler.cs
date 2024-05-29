@@ -62,9 +62,9 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 		CustomerReview review = _mapper.Map<CustomerReview>(request);
 		review.IsDeactive = false;
 		SaveFileExtension.Initialize(_configuration);
-		if (request.ReviewImages is not null)
+		if (request.ReviewImageFiles is not null)
 		{
-			foreach (var image in request.ReviewImages)
+			foreach (var image in request.ReviewImageFiles)
 			{
 				if (image is null)
 					throw new NotFoundException($"Image not found");
@@ -75,6 +75,7 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 					Url = url,
 					IsDeactive = false
 				};
+				review.ReviewImages.Add(img);
 				await _reviewImageRepository.CreateAsync(img);
 			}
 		}

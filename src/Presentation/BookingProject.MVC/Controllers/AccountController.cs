@@ -300,19 +300,63 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Index", "Home");
 	}
+	public IActionResult LeaveReview(int hotelid)
+	{
+		ViewBag.Id=hotelid;
+		return View();
+	}
 	[HttpPost]
 	public async Task<IActionResult> LeaveReview(ReviewCreateViewModel vm)
 	{
-		//if (!ModelState.IsValid) return View();
-		var dataStr = JsonConvert.SerializeObject(vm);
-		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
-		var response = await _httpClient.PostAsync(baseAddress + "/reviews/create", stringContent);
+		if (!ModelState.IsValid) {
+			var errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
+			foreach (var error in errors)
+			{
+				Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				Console.WriteLine(error.ErrorMessage);
+			}
+			return RedirectToAction("Index", "home"); }
+		using (var content = new MultipartFormDataContent())
+		{
+			content.Add(new StringContent(vm.HotelId.ToString()), nameof(vm.HotelId));
+			content.Add(new StringContent(vm.ReviewMessage), nameof(vm.ReviewMessage));
+			content.Add(new StringContent(vm.StarPoint.ToString()), nameof(vm.StarPoint));
+		if (vm.ReviewImageFiles != null)
+		{
+			foreach (var file in vm.ReviewImageFiles)
+			{
+				if (file != null)
+				{
+					var fileContent = new StreamContent(file.OpenReadStream());
+					fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.ContentType);
+					content.Add(fileContent, nameof(vm.ReviewImageFiles), file.FileName);
+				}
+			}
+		}
+		var response = await _httpClient.PostAsync(baseAddress + "/reviews/create", content);
 
 		if (response.IsSuccessStatusCode)
 		{
-			return RedirectToAction("reservations");
+			return RedirectToAction("Reservations");
 		}
-		return RedirectToAction("index","home");
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+			return RedirectToAction("Index","Home");
+
+		}
+		//var dataStr = JsonConvert.SerializeObject(vm);
+		//var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		//var response = await _httpClient.PostAsync(baseAddress + "/reviews/create", stringContent);
+
+		//if (response.IsSuccessStatusCode)
+		//{
+		//	return RedirectToAction("reservations");
+		//}
+		//return RedirectToAction("index","home");
 	}
 	
 

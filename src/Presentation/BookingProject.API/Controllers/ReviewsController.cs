@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookingProject.API.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class ReviewsController : ControllerBase
 {
@@ -26,7 +26,13 @@ public class ReviewsController : ControllerBase
 		};
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpPost]
+    [HttpGet]
+    public async Task<IActionResult> GetAllByOwner()
+    {
+		ReviewGetAllByOwnerQueryRequest request = new();
+        return Ok(await _mediator.Send(request));
+    }
+    [HttpPost]
 	public async Task<IActionResult> Create(ReviewCreateCommandRequest request)
 	{
 		return Ok(await _mediator.Send(request));

@@ -12,5 +12,5 @@ public class ReviewCreateCommandRequest:IRequest<ReviewCreateCommandResponse>
 	public required int StarPoint { get; set; }
 	[MaxLength(200)]
 	public required string ReviewMessage { get; set; }
-	public List<IFormFile>? ReviewImages { get; set; }
+	public List<IFormFile>? ReviewImageFiles { get; set; }
 }

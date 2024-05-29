@@ -44,4 +44,16 @@ public class OwnerController : Controller
 		}
 		return RedirectToAction("Index", "Home");
 	}
+    public async Task<IActionResult> Reviews()
+    {
+        var response = await _httpClient.GetAsync(baseAddress + "/reviews/getallbyowner");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = await response.Content.ReadAsStringAsync();
+            var dtos = JsonConvert.DeserializeObject<List<ReviewGetViewModel>>(responseData);
+            return View(dtos);
+        }
+        return RedirectToAction("Index", "Home");
+    }
 }
