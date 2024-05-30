@@ -1,7 +1,10 @@
-﻿using BookingProject.MVC.ViewModels.AccountViewModels;
+﻿using BookingProject.MVC.Models;
+using BookingProject.MVC.ViewModels.AccountViewModels;
+using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace BookingProject.MVC.Controllers;
 
@@ -44,7 +47,7 @@ public class OwnerController : Controller
 		}
 		return RedirectToAction("Index", "Home");
 	}
-    public async Task<IActionResult> Reviews()
+    public async Task<IActionResult> Reviews(int itemPerPage=10,int page=1)
     {
         var response = await _httpClient.GetAsync(baseAddress + "/reviews/getallbyowner");
 
@@ -52,7 +55,20 @@ public class OwnerController : Controller
         {
             var responseData = await response.Content.ReadAsStringAsync();
             var dtos = JsonConvert.DeserializeObject<List<ReviewGetViewModel>>(responseData);
-            return View(dtos);
+			dtos=dtos.Where(x=>x.IsReported==false && x.IsDeactive==false).ToList();
+			var queryableItems = dtos.AsQueryable();
+			var paginatedDatas = PaginatedList<ReviewGetViewModel>.Create(queryableItems, itemPerPage, page);
+			return View(paginatedDatas);
+        }
+        return RedirectToAction("Index", "Home");
+    }
+    public async Task<IActionResult> ReportReview(int id)
+    {
+        var response = await _httpClient.PutAsync($"{baseAddress}/reviews/report/{id}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("reviews");
         }
         return RedirectToAction("Index", "Home");
     }

@@ -23,15 +23,27 @@ public class ReviewGetAllQueryHandler : IRequestHandler<ReviewGetAllQueryRequest
 
 	public async Task<ICollection<ReviewGetAllQueryResponse>> Handle(ReviewGetAllQueryRequest request, CancellationToken cancellationToken)
 	{
+		if(request.HotelId is not null)
+		{
 		Hotel hotel = await _hotelRepository.Table.FirstOrDefaultAsync(x => x.Id == request.HotelId);
 		if (hotel is null)
 			throw new NotFoundException("Hotel not found");
 		ICollection<CustomerReview> act = await _repository.Table
 		   .Where(x => x.HotelId == request.HotelId)
 		   .Include(x => x.ReviewImages)
-		   .ToListAsync();
+           .Include(x => x.User)
+           .ToListAsync();
 		if (act is null) throw new Exception("Review not found");
+            ICollection<ReviewGetAllQueryResponse> dtos = _mapper.Map<ICollection<ReviewGetAllQueryResponse>>(act);
+            return dtos;
+        }
+		else
+		{
+            ICollection<CustomerReview> act = await _repository.Table
+           .Include(x => x.ReviewImages)
+           .ToListAsync();
 		ICollection<ReviewGetAllQueryResponse> dtos = _mapper.Map<ICollection<ReviewGetAllQueryResponse>>(act);
 		return dtos;
+        }
 	}
 }

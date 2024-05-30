@@ -1,5 +1,6 @@
 ﻿using BookingProject.Application.Features.Commands.ReviewCommands.ReviewCreateCommands;
 using BookingProject.Application.Features.Commands.ReviewCommands.ReviewDeleteCommands;
+using BookingProject.Application.Features.Commands.ReviewCommands.ReviewReportCommands;
 using BookingProject.Application.Features.Commands.ReviewCommands.ReviewUpdateCommands;
 using BookingProject.Application.Features.Commands.RoomCommands.RoomUpdateCommands;
 using BookingProject.Application.Features.Queries.ReviewQueries;
@@ -17,8 +18,8 @@ public class ReviewsController : ControllerBase
 	{
 		_mediator = mediator;
 	}
-	[HttpGet("{hotelId}")]
-	public async Task<IActionResult> GetAll(int hotelId)
+	[HttpGet]
+	public async Task<IActionResult> GetAll(int? hotelId)
 	{
 		ReviewGetAllQueryRequest request = new()
 		{
@@ -43,7 +44,16 @@ public class ReviewsController : ControllerBase
 		request.Id = id;
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpDelete("{id}")]
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Report(int id)
+    {
+        ReviewReportCommandRequest request = new()
+		{
+			Id=id
+		};
+        return Ok(await _mediator.Send(request));
+    }
+    [HttpDelete("{id}")]
 	public async Task<IActionResult> Delete(int id)
 	{
 		ReviewDeleteCommandRequest request = new()

@@ -681,6 +681,39 @@ public class AdminController : Controller
         }
         return View();
     }
+    public async Task<IActionResult> ReportedReviews(int itemPerPage = 10, int page = 1)
+    {
+        var response = await _httpClient.GetAsync(baseAddress + "/reviews/getall");
 
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = await response.Content.ReadAsStringAsync();
+            var dtos = JsonConvert.DeserializeObject<List<ReviewGetViewModel>>(responseData);
+            dtos = dtos.Where(x => x.IsReported == true).ToList();
+            var queryableItems = dtos.AsQueryable();
+            var paginatedDatas = PaginatedList<ReviewGetViewModel>.Create(queryableItems, itemPerPage, page);
+            return View(paginatedDatas);
+        }
+        return RedirectToAction("Index", "Home");
+    }
+    public async Task<IActionResult> DeleteReview(int id)
+    {
+        var response = await _httpClient.DeleteAsync(baseAddress + $"/reviews/delete/{id}");
 
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("ReportedReviews");
+        }
+            return RedirectToAction("Index", "Home");
+    }
+    public async Task<IActionResult> NonReportReview(int id)
+    {
+        var response = await _httpClient.PutAsync($"{baseAddress}/reviews/report/{id}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("reportedreviews");
+        }
+        return RedirectToAction("Index", "Home");
+    }
 }

@@ -41,7 +41,7 @@ if (app.Environment.IsDevelopment())
 //app.MapIdentityApi<AppUser>();
 //app.UseCors("AllowSpecificOrigin");
 app.UseHttpsRedirection();
-app.UseMiddleware<TokenRefreshMiddleware>();
+//app.UseMiddleware<TokenRefreshMiddleware>();
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();

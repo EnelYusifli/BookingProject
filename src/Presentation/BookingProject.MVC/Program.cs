@@ -2,12 +2,9 @@ using BookingProject.Application.Services.Implementations;
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using BookingProject.Persistence.Contexts;
-using Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,22 +12,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 
-builder.Services.AddSession(options =>
+builder.Services.AddSession();
+
+builder.Services.AddAuthentication(opt =>
 {
-	options.IdleTimeout = TimeSpan.FromDays(1);
-	options.Cookie.HttpOnly = true;
-	options.Cookie.IsEssential = true;
+	opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+	opt.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+	opt.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(options =>
+{
+	options.Cookie.Name = ".AspNetCore.Identity.Application";
+	// Additional cookie options/configuration if needed
 });
-//builder.Services.AddAuthentication(opt =>
-//{
-//	opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-//	opt.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-//	opt.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-//}).AddCookie(options =>
-//{
-//	options.Cookie.Name = ".AspNetCore.Identity.Application";
-//	// Additional cookie options/configuration if needed
-//});
 
 //builder.Services.AddScoped<UserManager<AppUser>>();
 //builder.Services.AddSession(opt =>
@@ -39,13 +32,13 @@ builder.Services.AddSession(options =>
 //});
 //builder.Services.AddHttpClient("ApiClient")
 //		.AddHttpMessageHandler<CustomHttpClientHandler>();
-//builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
-//builder.Services.AddDbContext<AppDbContext>(options =>
-//{
-//	options.UseSqlServer(builder.Configuration.GetConnectionString("default"));
-//});
-//builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+	options.UseSqlServer(builder.Configuration.GetConnectionString("default"));
+});
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,6 +50,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<TokenRefreshMiddleware>();
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();

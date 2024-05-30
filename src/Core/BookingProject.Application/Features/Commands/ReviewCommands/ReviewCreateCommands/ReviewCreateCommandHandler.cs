@@ -46,7 +46,14 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
 		{
 			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(user.NormalizedEmail);
 		}
+		else
+		{
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            Console.WriteLine("user.NormalizedEmail");
+        }
 		if (user is null)
 			throw new NotFoundException("User not found");
 

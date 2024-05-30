@@ -31,7 +31,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
         private readonly UserManager<AppUser> _userManager;
 		private readonly IRoomService _roomService;
 		private readonly ITypeRepository _typeRepository;
-		private readonly ICountryRepository _countryRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ICountryRepository _countryRepository;
 		private readonly IHttpContextAccessor _httpContext;
 
 		public HotelCreateCommandHandler(IHotelRepository repository,
@@ -51,7 +52,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             UserManager<AppUser> userManager,
             IRoomService roomService,
             ICountryRepository countryRepository,
-            ITypeRepository typeRepository)
+            ITypeRepository typeRepository,
+            IHttpContextAccessor httpContextAccessor)
         {
             _repository = repository;
             _mapper = mapper;
@@ -70,7 +72,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             _userManager = userManager;
 			_roomService = roomService;
 			_typeRepository = typeRepository;
-			_httpContext = httpContext;
+            _httpContextAccessor = httpContextAccessor;
+            _httpContext = httpContext;
 		}
 
         public async Task<HotelCreateCommandResponse> Handle(HotelCreateCommandRequest request, CancellationToken cancellationToken)
@@ -78,10 +81,17 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             if (request is null)
                 throw new NotFoundException("Request not found");
             AppUser appUser = new();
-			if (_httpContext.HttpContext.User.Identity.IsAuthenticated)
-			{
-				 appUser= await _userManager.FindByNameAsync(_httpContext.HttpContext.User.Identity.Name);
-			}
+			if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+		{
+                appUser = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(appUser.NormalizedEmail);
+		}
+		else
+		{
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            Console.WriteLine("user.NormalizedEmail");
+        }
 				if (appUser is null)
 					throw new NotFoundException("User not found");
 			if (request.Name.IsNullOrEmpty())

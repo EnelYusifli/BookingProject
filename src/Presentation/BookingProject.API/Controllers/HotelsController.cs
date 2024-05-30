@@ -8,8 +8,10 @@ using BookingProject.Application.Features.Commands.WishlistCommands.WishlistAddC
 using BookingProject.Application.Features.Commands.WishlistCommands.WishlistRemoveCommands;
 using BookingProject.Application.Features.Queries.HotelQueries;
 using BookingProject.Application.Features.Queries.WishlistQueries;
+using BookingProject.Application.Services.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingProject.API.Controllers;
 
@@ -18,10 +20,13 @@ namespace BookingProject.API.Controllers;
 public class HotelsController : ControllerBase
 {
 	private readonly IMediator _mediator;
-	public HotelsController(IMediator mediator)
+    private readonly IHotelService _hotelService;
+
+    public HotelsController(IMediator mediator,IHotelService hotelService)
 	{
 		_mediator = mediator;
-	}
+        _hotelService = hotelService;
+    }
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
@@ -89,4 +94,11 @@ public class HotelsController : ControllerBase
 		};
 		return Ok(await _mediator.Send(request));
 	}
+    [HttpPost("{id}")]
+    public async Task<IActionResult> IncrementViewerCount(int id)
+    {
+       await _hotelService.IncreaseViewerCount(id);
+        return Ok("increased viewer count");
+    }
+
 }

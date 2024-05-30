@@ -56,6 +56,8 @@ public class ReviewGetAllByOwnerQueryHandler:IRequestHandler<ReviewGetAllByOwner
         var reviews = await _repository.Table
             .Where(r => hotelIds.Contains(r.HotelId))
             .Include(r => r.ReviewImages)
+            .Include(x => x.User)
+            .Include(r => r.Hotel)
             .ToListAsync();
 
         if (reviews == null || !reviews.Any())

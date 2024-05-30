@@ -40,7 +40,12 @@ public class HomeController : Controller
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(responseData);
 			vm.Hotel = hotel;
-			return View(vm);
+            var incrementResponse = await _httpClient.PostAsync(baseAddress + $"/hotels/IncrementViewerCount/{id}", null);
+            if (!incrementResponse.IsSuccessStatusCode)
+            {
+                ModelState.AddModelError("", "Unable to update viewer count");
+            }
+            return View(vm);
 		}
 		return RedirectToAction("Index");
 	}
@@ -189,7 +194,13 @@ public class HomeController : Controller
 
 			return View(paginatedDatas);
 		}
-		return View();
+        else
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            Console.WriteLine(responseContent);
+        }
+        return View();
 	}
 
 	public async Task<IActionResult> Reservation(int roomid,ReservationViewModel vm)

@@ -31,67 +31,65 @@ public class AccountController : Controller
 		return View();
 	}
 	[HttpPost]
-	public async Task<IActionResult> Login(LoginViewModel vm)
-	{
-		if (!ModelState.IsValid)
-			return View();
+    public async Task<IActionResult> Login(LoginViewModel vm)
+    {
+        if (!ModelState.IsValid)
+            return View();
 
-		var dataStr = JsonConvert.SerializeObject(vm);
-		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
-		var response = await _httpClient.PostAsync(baseAddress + "/acc/login", stringContent);
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync(baseAddress + "/acc/login", stringContent);
 
-		if (response.IsSuccessStatusCode)
-		{
-			var responseContent = await response.Content.ReadAsStringAsync();
-			var tokenObject = JObject.Parse(responseContent);
-			var token = tokenObject["token"].ToString();
-			var refreshToken = tokenObject["refreshToken"].ToString(); 
+        if (response.IsSuccessStatusCode)
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var tokenObject = JObject.Parse(responseContent);
+            var token = tokenObject["token"].ToString();
+            var refreshToken = tokenObject["refreshToken"].ToString();
 
-			Response.Cookies.Append("token", token,
-				new CookieOptions
-				{
-					Expires = DateTime.UtcNow.AddMinutes(10),
-					HttpOnly = true,
-					Secure = true,
-					IsEssential = true,
-					SameSite = SameSiteMode.None
-				});
+            Response.Cookies.Append("token", token, new CookieOptions
+            {
+                Expires = DateTime.UtcNow.AddMinutes(10),
+                HttpOnly = true,
+                Secure = true,
+                IsEssential = true,
+                SameSite = SameSiteMode.None
+            });
 
-			// Save the refresh token to a cookie
-			Response.Cookies.Append("refreshToken", refreshToken,
-				new CookieOptions
-				{
-					Expires = DateTime.UtcNow.AddDays(7), 
-					HttpOnly = true,
-					Secure = true,
-					IsEssential = true,
-					SameSite = SameSiteMode.None
-				});
+            Response.Cookies.Append("refreshToken", refreshToken, new CookieOptions
+            {
+                Expires = DateTime.UtcNow.AddDays(7),
+                HttpOnly = true,
+                Secure = true,
+                IsEssential = true,
+                SameSite = SameSiteMode.None
+            });
+
+            var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, vm.UserName),
+            new Claim("Token", token) // Add token as a custom claim if needed
+        };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+            {
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(4),
+                IsPersistent = true,
+                AllowRefresh = true,
+            };
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        ModelState.AddModelError("", "Invalid credentials");
+        return View();
+    }
 
 
-			var claims = new List<Claim>
-		{
-			new Claim(ClaimTypes.Name, vm.UserName)
-
-		};
-
-			var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-			var authProperties = new AuthenticationProperties
-			{
-				ExpiresUtc = DateTimeOffset.UtcNow.AddDays(4),
-				IsPersistent = true,
-				AllowRefresh = true,
-			};
-
-			//	await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-
-			return RedirectToAction("Index", "Home");
-		}
-		ModelState.AddModelError("", "Invalid credentials");
-		return View();
-	}
-
-	public IActionResult Register()
+    public IActionResult Register()
 	{
 		return View();
 	}
