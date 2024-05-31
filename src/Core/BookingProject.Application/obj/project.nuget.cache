@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dxRhIMGg1z8=",
+  "dgSpecHash": "v43XwFu5iBM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
+  "projectFilePath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Enel\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Enel\\.nuget\\packages\\bouncycastle.cryptography\\2.3.0\\bouncycastle.cryptography.2.3.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6sSIG+bvSfQ=",
+  "dgSpecHash": "rEBCCqCbE4A=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
+  "projectFilePath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Enel\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Enel\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

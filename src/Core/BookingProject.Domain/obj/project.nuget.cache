@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Kr+MQqoGkjw=",
+  "dgSpecHash": "UAa0GKOly+g=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Enel\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.4\\microsoft.aspnet.identity.core.2.2.4.nupkg.sha512",
     "C:\\Users\\Enel\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.0\\microsoft.aspnetcore.cryptography.internal.8.0.0.nupkg.sha512",

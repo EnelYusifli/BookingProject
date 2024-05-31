@@ -6103,11 +6103,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\BookingProject.API.csproj",
+      "projectUniqueName": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\BookingProject.API.csproj",
       "projectName": "BookingProject.API",
-      "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\BookingProject.API.csproj",
+      "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\BookingProject.API.csproj",
       "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\obj\\",
+      "outputPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6125,8 +6125,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj": {
-              "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj"
+            "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj": {
+              "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj"
             }
           }
         }

@@ -11,3 +11,16 @@ C:\Users\Enel\source\repos\BookingProject\src\Core\BookingProject.Domain\obj\Deb
 C:\Users\Enel\source\repos\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\refint\BookingProject.Domain.dll
 C:\Users\Enel\source\repos\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.pdb
 C:\Users\Enel\source\repos\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\ref\BookingProject.Domain.dll
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\bin\Debug\net8.0\BookingProject.Domain.deps.json
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\bin\Debug\net8.0\BookingProject.Domain.dll
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\bin\Debug\net8.0\BookingProject.Domain.pdb
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.csproj.AssemblyReference.cache
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.AssemblyInfoInputs.cache
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.AssemblyInfo.cs
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.sourcelink.json
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.dll
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\refint\BookingProject.Domain.dll
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\BookingProject.Domain.pdb
+C:\Users\Enel\Desktop\BookingProject\src\Core\BookingProject.Domain\obj\Debug\net8.0\ref\BookingProject.Domain.dll

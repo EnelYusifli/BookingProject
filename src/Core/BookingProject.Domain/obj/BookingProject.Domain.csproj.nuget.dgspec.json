@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {}
+    "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
+    "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
         "projectName": "BookingProject.Domain",
-        "projectPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+        "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
         "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",

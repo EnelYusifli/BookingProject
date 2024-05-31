@@ -1,27 +1,27 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
+      "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
       "PackagePath": "staticwebassets\\email\\forgotpassword.html"
     },
     {
-      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
+      "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
       "PackagePath": "staticwebassets\\email\\nonpaidreservation.html"
     },
     {
-      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
+      "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
       "PackagePath": "staticwebassets\\email\\paidreservation.html"
     },
     {
-      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
+      "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
       "PackagePath": "staticwebassets\\email\\requestapproved.html"
     },
     {
-      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
+      "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
       "PackagePath": "staticwebassets\\email\\requestrefused.html"
     },
     {
-      "Id": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
+      "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
       "PackagePath": "staticwebassets\\email\\updatedemail.html"
     },
     {

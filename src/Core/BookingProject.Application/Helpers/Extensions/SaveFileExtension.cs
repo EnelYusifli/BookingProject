@@ -3,9 +3,6 @@ using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Storage.V1;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace BookingProject.Application.Helpers.Extensions
 {
@@ -46,7 +43,7 @@ namespace BookingProject.Application.Helpers.Extensions
                 memoryStream.Position = 0;
 
                 var objectName = $"{folderName}/{Guid.NewGuid()}_{image.FileName}";
-                var bucketName = "bookingproject";
+                var bucketName = "bookingproject1";
 
                 await client.UploadObjectAsync(bucketName, objectName, null, memoryStream);
                 return $"https://storage.googleapis.com/{bucketName}/{objectName}";
@@ -58,7 +55,7 @@ namespace BookingProject.Application.Helpers.Extensions
                 throw new ArgumentException("Url cannot be null or empty.", nameof(imageUrl));
             if (_configuration == null)
                 throw new InvalidOperationException("Configuration has not been initialized. Call Initialize before using SaveFile.");
-            var bucketName = "bookingproject";
+            var bucketName = "bookingproject1";
             string baseUrl = $"https://storage.googleapis.com/{bucketName}/";
             string apiKey = _configuration["GoogleCloud:ApiKey"];
             if (string.IsNullOrEmpty(apiKey))

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "polynomial-land-425014-g3",
+  "private_key_id": "4bad66e44b5fc9de227b7edaebeba1fa9bb906b5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCGjwclcozbehiT\nz5/7eszPUwjNXT9LPB/Xhreu6no6kOjWMoYz/ScBM/Axc4J2/vfxMNBT8GUqMQXs\neSnmU5MzTF40IzTWYLrTnHZUAP9jIf14OSsLV6oAz8dGS8jecutf4MtiIkKmhDVV\nGmN33RZc3o8H+TjYiL2toaf8ObJy93cYBEQPJYSf39W5Mfi1aw1ooWQfBWQm0hKe\nSef1hqqvLRptLj14yiHldgZ61PIVLHxJILAIeqFwOJ4E4W9tJG6VojvIpV/3pK4Y\nPJMFJMHd0tTRj92fdmILYbniQqymTHC5zy61u/xTVg+DLafb0G2lxx1GY6lAoVJt\nVDPNuH95AgMBAAECggEAAvaxDGFR1uXkwcvHqmJnBKGGxuHTqn9R9KnVtoWK5vjg\nF/bCeGIAAV7jXqcDpLeIPrNdT7oygf5jFnVBm1OiWgPkP7dIIIdMp+RIM8tzKd91\ncg00u5vGyuPIqNElYVVVFEK/WAUzmX4vSocdQ0nOFJ6rmc3pwZwM9Bu58DqObUmN\notfehRaeIny/44lceb4Cct/auO1QmtQN6ngKVWcB0lClvTM18gTn3Oc1Igqq0W/s\nc8v23Y2HYqAcX7juiliH6KKhNIoQpUWNP12sRCxTsGSfqJLb5IpY8hZtg3vAPzBa\nqLdeX85GTXu0h6AHV3wnCqGcYVFnqsxPY+wINgePMQKBgQC6QfVXTioMSLQlafKf\n+LqScNGCcCmQBjKK0Bgbcb8H+36lveKlArhxU0pMVY+77tPVHKnpxxT7J1TlWLQM\nHrya/6mnNnPDyQND/3rb5F1G13Z5kARKxzxHBlNx5RT5qHWcHMZ9ViH5jrqtPrnb\nfjSDsxAtkgdjqIpX4xMA0yHybQKBgQC48WExHw3G2Z/3R3BfdUmZ4zR5H2SNfuDI\naENua03BAvlPIe8H1n88f1bRUKOgvY5zPS32NPOpXvN3b6A1EPgvwq/VpkkMDV8N\nHnI1O+ha1ehRlbdRIh8AopkFz/w52ZyROe2FonycKaNSs0IlKwjklkbJqjrzo/Tu\nyyZ5Vn95vQKBgCJEKjfSqIe0BHhxonJt1x1D5jeCHRNjIH9LQ3QhHA0C5szlP0Iu\nWvJ2aU/b2eKwUIZ/jH724lRGayb6h71HFlnJuVOLAAc//vrOkLLNs59p2mEI7tE3\nEE7cyhNFGvPHW0PKQ3Yhl4SLDqr6xESuVkj4c3x+xh8+jZ0XqJJZRYCNAoGBAJrq\nzuAnxBGKoD2xoMbFZ4a5VG4VRtRjsIUPGVT4G2SPSijoIuLs4R3bCO1C4B24Swfq\n+oIfbu+0MrscTRXGhi7zpPiRVuT6mmFR3JcM/KCCSB13DNyweUm96fJ9eyk2SLk5\nzeW/6yOgmUegEssxljxsSRWKO+F0uKoCj9LaCuP9AoGAGwcOiTqNwzook8aZ22r0\nd+5WXETLWaPKisZP3Yht+3I4kyjxuBHP0U4vEsQK6c+/QHC2jl3xR4+41HHn3CsJ\n6GWbu9UDxNVM7owxqKrpW0oVTTDTLg64ve+N6WEMbdvn4R/uIac71h+U5T4pNl3r\nMYdZTAlwIPiPShJ4OZ5nw0I=\n-----END PRIVATE KEY-----\n",
+  "client_email": "bookingproject@polynomial-land-425014-g3.iam.gserviceaccount.com",
+  "client_id": "100805653196176621127",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bookingproject%40polynomial-land-425014-g3.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

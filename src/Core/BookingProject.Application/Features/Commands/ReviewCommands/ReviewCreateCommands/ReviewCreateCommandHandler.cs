@@ -82,7 +82,7 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 					Url = url,
 					IsDeactive = false
 				};
-				review.ReviewImages.Add(img);
+				//review.ReviewImages.Add(img);
 				await _reviewImageRepository.CreateAsync(img);
 			}
 		}

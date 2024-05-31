@@ -9,223 +9,223 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BookingProject.MVC
 build_property.RootNamespace = BookingProject.MVC
-build_property.ProjectDir = C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC\
+build_property.ProjectDir = C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Enel\source\repos\BookingProject\src\Presentation\BookingProject.MVC
+build_property.MSBuildProjectDirectory = C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/ForgotPassword.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/LeaveReview.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/LeaveReview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMZWF2ZVJldmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Login.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Profile.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Register.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Reservations.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Reservations.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNlcnZhdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/ResetPassword.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/ResetPasswordInfo.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/ResetPasswordInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkSW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Wishlist.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Account/Wishlist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxXaXNobGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Activities.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Activities.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWN0aXZpdGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Countries.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Countries.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ291bnRyaWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateActivity.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateActivity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQWN0aXZpdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateCountry.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateCountry.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQ291bnRyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreatePaymentMethod.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreatePaymentMethod.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlUGF5bWVudE1ldGhvZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateService.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateService.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlU2VydmljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateStaffLanguage.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateStaffLanguage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlU3RhZmZMYW5ndWFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateType.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/CreateType.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlVHlwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/HotelDetail.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/HotelDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG90ZWxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Index.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/OwnerDetail.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/OwnerDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3duZXJEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/OwnersList.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/OwnersList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3duZXJzTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/PaymentMethods.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/PaymentMethods.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGF5bWVudE1ldGhvZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/ReportedReviews.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/ReportedReviews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVwb3J0ZWRSZXZpZXdzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Services.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Services.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2VydmljZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/StaffLanguages.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/StaffLanguages.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3RhZmZMYW5ndWFnZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/SubmittedHotels.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/SubmittedHotels.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3VibWl0dGVkSG90ZWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Types.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/Types.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVHlwZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateActivity.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateActivity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlQWN0aXZpdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateCountry.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateCountry.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlQ291bnRyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdatePaymentMethod.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdatePaymentMethod.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlUGF5bWVudE1ldGhvZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateService.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateService.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlU2VydmljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateStaffLanguage.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateStaffLanguage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlU3RhZmZMYW5ndWFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateType.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateType.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlVHlwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UserHotelDetail.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UserHotelDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlckhvdGVsRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/HotelDetail.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/HotelDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb3RlbERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/HotelGrid.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/HotelGrid.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb3RlbEdyaWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/Index.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/Reservation.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/Reservation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNlcnZhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/RoomDetail.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Home/RoomDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSb29tRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Dashboard.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Listings.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Listings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcTGlzdGluZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Reservations.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Reservations.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcUmVzZXJ2YXRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Reviews.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Reviews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcUmV2aWV3cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Property/AddHotel.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Property/AddHotel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydHlcQWRkSG90ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Property/HotelAdded.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Property/HotelAdded.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydHlcSG90ZWxBZGRlZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Property/JoinUs.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Property/JoinUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydHlcSm9pblVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/AccountLayout.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/AccountLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFjY291bnRMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/AdminLayout.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFkbWluTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/NotFound.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5vdEZvdW5kLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/OwnerLayout.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/OwnerLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE93bmVyTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/_ViewImports.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/_ViewStart.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/source/repos/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/_Layout.cshtml]
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-yjpf788gdi

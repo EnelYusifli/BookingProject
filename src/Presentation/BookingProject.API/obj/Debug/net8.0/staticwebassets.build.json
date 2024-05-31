@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "74UUOYRxM/Ab0FL5mObZwP4MbMnDCHMPbdAqW164lpM=",
+  "Hash": "7O5aaMamE04OQI0yZsE1+inz+rLyGnAezvUKbknBULg=",
   "Source": "BookingProject.API",
   "BasePath": "_content/BookingProject.API",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "BookingProject.API\\wwwroot",
       "Source": "BookingProject.API",
-      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
+      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "RelativePath": "email/forgotpassword.html",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\email\\forgotpassword.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
+      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "RelativePath": "email/nonpaidreservation.html",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\email\\nonpaidreservation.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
+      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "RelativePath": "email/paidreservation.html",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\email\\paidreservation.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
+      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "RelativePath": "email/requestapproved.html",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\email\\requestapproved.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
+      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "RelativePath": "email/requestrefused.html",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\email\\requestrefused.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
+      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "RelativePath": "email/updatedemail.html",
       "AssetKind": "All",
