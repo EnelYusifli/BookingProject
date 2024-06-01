@@ -80,18 +80,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
         {
             if (request is null)
                 throw new NotFoundException("Request not found");
-            AppUser appUser = new();
-			if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-		{
-                appUser = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-			Console.WriteLine(appUser.NormalizedEmail);
-		}
-		else
-		{
-            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            Console.WriteLine("user.NormalizedEmail");
-        }
+            AppUser appUser = await _userManager.FindByIdAsync(request.UserId);
 				if (appUser is null)
 					throw new NotFoundException("User not found");
 			if (request.Name.IsNullOrEmpty())
@@ -105,7 +94,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             
             var hotel = _mapper.Map<Hotel>(request);
             hotel.AppUser = appUser;
-            hotel.AppUserId = appUser.Id;
+            //hotel.AppUserId = appUser.Id;
             hotel.IsDeactive = true;
             hotel.IsApproved = false;
             hotel.IsRefused = false;

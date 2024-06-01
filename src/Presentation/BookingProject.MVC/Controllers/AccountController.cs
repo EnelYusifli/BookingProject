@@ -1,11 +1,13 @@
 ﻿using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
+using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -19,14 +21,29 @@ namespace BookingProject.MVC.Controllers;
 public class AccountController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
+	
 	private readonly HttpClient _httpClient;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly ILoginService _loginService;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-	public AccountController(HttpClient httpClient)
+    public AccountController(HttpClient httpClient,UserManager<AppUser> userManager,ILoginService loginService,IHttpContextAccessor httpContextAccessor)
 	{
 		_httpClient = httpClient;
-		_httpClient.BaseAddress = baseAddress;
+        _userManager = userManager;
+        _loginService = loginService;
+        _httpContextAccessor = httpContextAccessor;
+        _httpClient.BaseAddress = baseAddress;
 	}
-	public IActionResult Login()
+    private async Task<AppUser> GetCurrentUserAsync()
+    {
+        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            return await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+        }
+        return null;
+    }
+    public IActionResult Login()
 	{
 		return View();
 	}
@@ -35,60 +52,68 @@ public class AccountController : Controller
     {
         if (!ModelState.IsValid)
             return View();
-
-        var dataStr = JsonConvert.SerializeObject(vm);
-        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync(baseAddress + "/acc/login", stringContent);
-
-        if (response.IsSuccessStatusCode)
-        {
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var tokenObject = JObject.Parse(responseContent);
-            var token = tokenObject["token"].ToString();
-            var refreshToken = tokenObject["refreshToken"].ToString();
-
-            Response.Cookies.Append("token", token, new CookieOptions
-            {
-                Expires = DateTime.UtcNow.AddMinutes(10),
-                HttpOnly = true,
-                Secure = true,
-                IsEssential = true,
-                SameSite = SameSiteMode.None
-            });
-
-            Response.Cookies.Append("refreshToken", refreshToken, new CookieOptions
-            {
-                Expires = DateTime.UtcNow.AddDays(7),
-                HttpOnly = true,
-                Secure = true,
-                IsEssential = true,
-                SameSite = SameSiteMode.None
-            });
-
-            var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, vm.UserName),
-            new Claim("Token", token) // Add token as a custom claim if needed
-        };
-
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var authProperties = new AuthenticationProperties
-            {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(4),
-                IsPersistent = true,
-                AllowRefresh = true,
-            };
-
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-
+		try
+		{
+		await _loginService.LoginUser(vm);
             return RedirectToAction("Index", "Home");
+
         }
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+			return View();
+		}
+        //ModelState.AddModelError("", "Invalid credentials");
+        //return View();
+        //var dataStr = JsonConvert.SerializeObject(vm);
+        //var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        //var response = await _httpClient.PostAsync(baseAddress + "/acc/login", stringContent);
 
-        ModelState.AddModelError("", "Invalid credentials");
-        return View();
+        //if (response.IsSuccessStatusCode)
+        //{
+        //    var responseContent = await response.Content.ReadAsStringAsync();
+        //    var tokenObject = JObject.Parse(responseContent);
+        //    var token = tokenObject["token"].ToString();
+        //    var refreshToken = tokenObject["refreshToken"].ToString();
+
+        //    Response.Cookies.Append("token", token, new CookieOptions
+        //    {
+        //        Expires = DateTime.UtcNow.AddMinutes(10),
+        //        HttpOnly = true,
+        //        Secure = true,
+        //        IsEssential = true,
+        //        SameSite = SameSiteMode.None
+        //    });
+
+        //    Response.Cookies.Append("refreshToken", refreshToken, new CookieOptions
+        //    {
+        //        Expires = DateTime.UtcNow.AddDays(7),
+        //        HttpOnly = true,
+        //        Secure = true,
+        //        IsEssential = true,
+        //        SameSite = SameSiteMode.None
+        //    });
+
+        //    var claims = new List<Claim>
+        //{
+        //    new Claim(ClaimTypes.Name, vm.UserName),
+        //    new Claim("Token", token) // Add token as a custom claim if needed
+        //};
+
+        //    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        //    var authProperties = new AuthenticationProperties
+        //    {
+        //        ExpiresUtc = DateTimeOffset.UtcNow.AddDays(4),
+        //        IsPersistent = true,
+        //        AllowRefresh = true,
+        //    };
+
+        //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+            //return RedirectToAction("Index", "Home");
+        //}
+
     }
-
-
     public IActionResult Register()
 	{
 		return View();
@@ -155,12 +180,17 @@ public class AccountController : Controller
 		ProfileViewModel profileViewModel = new();
 		profileViewModel.PersonalInfo = new();
 		profileViewModel.Password = new();
-		var response = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+		AppUser user=await GetCurrentUserAsync();
+        var response = await _httpClient.GetAsync(baseAddress + $"/users/getbyid/{user.Id}");
 
 		if (response.IsSuccessStatusCode)
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+			//AppUser appUser = new();
+			//if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+			//{
+			//    appUser = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
 			profileViewModel.User = dto;
 			return View(profileViewModel);
 		}
@@ -171,7 +201,10 @@ public class AccountController : Controller
 	{
         using (var content = new MultipartFormDataContent())
         {
+            AppUser user = await GetCurrentUserAsync();
+			vm.PersonalInfo.Id = user.Id;
             // Add individual properties as StringContent
+            content.Add(new StringContent(vm.PersonalInfo.Id), nameof(vm.PersonalInfo.Id));
             content.Add(new StringContent(vm.PersonalInfo.FirstName), nameof(vm.PersonalInfo.FirstName));
             content.Add(new StringContent(vm.PersonalInfo.LastName), nameof(vm.PersonalInfo.LastName));
             content.Add(new StringContent(vm.PersonalInfo.Email), nameof(vm.PersonalInfo.Email));
@@ -232,7 +265,8 @@ public class AccountController : Controller
 	{
 		List<WishlistViewModel> vms = new List<WishlistViewModel>();
 		if (!ModelState.IsValid) return View();
-		var response = await _httpClient.GetAsync(baseAddress + $"/users/WishlistGetAll");
+		AppUser user = await GetCurrentUserAsync();
+        var response = await _httpClient.GetAsync(baseAddress + $"/users/WishlistGetAll/{user.Id}");
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -244,10 +278,14 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Index");
 	}
-	public async Task<IActionResult> AddtoWishlist(int hotelid)
+	public async Task<IActionResult> AddtoWishlist(AddToWishlistViewModel vm)
 	{
-		if (!ModelState.IsValid) return View();
-		var response = await _httpClient.PostAsync(baseAddress + $"/users/addtowishlist/{hotelid}",null);
+		AppUser user = await GetCurrentUserAsync();
+		vm.Id = user.Id;
+		//if (!ModelState.IsValid) return View();
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync(baseAddress + $"/users/addtowishlist", stringContent);
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -284,7 +322,8 @@ public class AccountController : Controller
 	}
 	public async Task<IActionResult> Reservations(UserReservationsViewModel vm)
 	{
-		var response = await _httpClient.GetAsync(baseAddress + "/reservations/getallbyuser");
+		AppUser user = await GetCurrentUserAsync();
+		var response = await _httpClient.GetAsync(baseAddress + $"/reservations/getallbyuser/{user.Id}");
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -306,18 +345,21 @@ public class AccountController : Controller
 	[HttpPost]
 	public async Task<IActionResult> LeaveReview(ReviewCreateViewModel vm)
 	{
-		if (!ModelState.IsValid) {
-			var errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
-			foreach (var error in errors)
-			{
-				Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-				Console.WriteLine(error.ErrorMessage);
-			}
-			return RedirectToAction("Index", "home"); }
+		AppUser user = await GetCurrentUserAsync();
+		vm.UserId = user.Id;
+		//if (!ModelState.IsValid) {
+		//	var errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
+		//	foreach (var error in errors)
+		//	{
+		//		Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		//		Console.WriteLine(error.ErrorMessage);
+		//	}
+		//	return RedirectToAction("Index", "home"); }
 		using (var content = new MultipartFormDataContent())
 		{
 			content.Add(new StringContent(vm.HotelId.ToString()), nameof(vm.HotelId));
 			content.Add(new StringContent(vm.ReviewMessage), nameof(vm.ReviewMessage));
+			content.Add(new StringContent(vm.UserId), nameof(vm.UserId));
 			content.Add(new StringContent(vm.StarPoint.ToString()), nameof(vm.StarPoint));
 		if (vm.ReviewImageFiles != null)
 		{
@@ -356,7 +398,6 @@ public class AccountController : Controller
 		//}
 		//return RedirectToAction("index","home");
 	}
-	
-
 }
+
 

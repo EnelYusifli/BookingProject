@@ -37,11 +37,7 @@ public class ReviewGetAllByOwnerQueryHandler:IRequestHandler<ReviewGetAllByOwner
     }
     public async Task<ICollection<ReviewGetAllQueryResponse>> Handle(ReviewGetAllByOwnerQueryRequest request, CancellationToken cancellationToken)
     {
-        AppUser user = null;
-        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-        {
-            user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-        }
+        AppUser user = await _userManager.FindByIdAsync(request.Id);
         if (user == null)
             throw new NotFoundException("User not found");
 

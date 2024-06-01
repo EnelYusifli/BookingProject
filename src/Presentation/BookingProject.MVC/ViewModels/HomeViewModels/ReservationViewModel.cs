@@ -11,7 +11,6 @@ public class ReservationViewModel
 	public string CheckInDate { get; set; }
 	public string CheckOutDate { get; set; }
 	public int Nights { get; set; }
-	public UserViewModel User { get; set; }
 
 
 }

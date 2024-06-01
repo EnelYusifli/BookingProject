@@ -20,23 +20,26 @@ namespace BookingProject.API.Controllers;
 public class HotelsController : ControllerBase
 {
 	private readonly IMediator _mediator;
-    private readonly IHotelService _hotelService;
+	private readonly IHotelService _hotelService;
 
-    public HotelsController(IMediator mediator,IHotelService hotelService)
+	public HotelsController(IMediator mediator, IHotelService hotelService)
 	{
 		_mediator = mediator;
-        _hotelService = hotelService;
-    }
+		_hotelService = hotelService;
+	}
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
 		HotelGetAllQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpGet]
-	public async Task<IActionResult> GetAllByUser()
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetAllByUser(string id)
 	{
-		HotelGetAllByUserQueryRequest request = new();
+		HotelGetAllByUserQueryRequest request = new()
+		{
+			Id = id
+		};
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpGet("{id}")]

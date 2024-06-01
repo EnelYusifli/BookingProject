@@ -27,10 +27,13 @@ public class ReviewsController : ControllerBase
 		};
 		return Ok(await _mediator.Send(request));
 	}
-    [HttpGet]
-    public async Task<IActionResult> GetAllByOwner()
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetAllByOwner(string id)
     {
-		ReviewGetAllByOwnerQueryRequest request = new();
+		ReviewGetAllByOwnerQueryRequest request = new()
+		{
+			Id=id
+		};
         return Ok(await _mediator.Send(request));
     }
     [HttpPost]

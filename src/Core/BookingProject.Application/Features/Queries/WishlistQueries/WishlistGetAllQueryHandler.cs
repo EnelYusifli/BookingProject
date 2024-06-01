@@ -28,11 +28,7 @@ public class WishlistGetAllQueryHandler : IRequestHandler<WishlistGetAllQueryReq
 	{
 		if (request is null)
 			throw new NotFoundException("Request not found");
-		AppUser user = new();
-		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-		{
-			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-		}
+		AppUser user =await _userManager.FindByIdAsync(request.Id);
 		if (user is null)
 			throw new NotFoundException("User not found");
 		ICollection<UserWishlistHotel> act = await _repository.Table

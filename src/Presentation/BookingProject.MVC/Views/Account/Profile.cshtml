@@ -32,7 +32,7 @@
 										<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
 											<!-- Avatar place holder -->
 											<span class="avatar avatar-xl">
-												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src='@(string.IsNullOrEmpty(Model.User.User.ProfilePhotoUrl) ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : Model.User.User.ProfilePhotoUrl)' alt="">
+												<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src='@(string.IsNullOrEmpty(Model.User.ProfilePhotoUrl) ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : Model.User.ProfilePhotoUrl)' alt="">
 											</span>
 										</label>
 										<!-- Upload button -->
@@ -44,20 +44,20 @@
 								<!-- Name -->
 								<div class="col-md-6">
 									<label class="form-label">First Name<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="@Model.User.User.FirstName" placeholder="Enter your first name" asp-for="PersonalInfo.FirstName">
+									<input type="text" class="form-control" value="@Model.User.FirstName" placeholder="Enter your first name" asp-for="PersonalInfo.FirstName">
 								</div>
 
 								<!-- Name -->
 								<div class="col-md-6">
 									<label class="form-label">Last Name<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="@Model.User.User.LastName" asp-for="PersonalInfo.LastName" placeholder="Enter your last name">
+									<input type="text" class="form-control" value="@Model.User.LastName" asp-for="PersonalInfo.LastName" placeholder="Enter your last name">
 								</div>
 
 								<!-- Mobile -->
 								<div class="col-md-6">
 									<label class="form-label">Mobile number</label>
 									<input type="text" class="form-control"
-									value=@Model.User.User.PhoneNumber
+									value=@Model.User.PhoneNumber
 									asp-for="PersonalInfo.PhoneNumber"
 									placeholder="Enter your mobile number">
 								</div>
@@ -66,19 +66,19 @@
 								<!-- Email -->
 								<div class="col-md-6">
 									<label class="form-label">Email address<span class="text-danger">*</span></label>
-									<input type="email" class="form-control" value="@Model.User.User.Email" placeholder="Enter your email" asp-for="PersonalInfo.Email">
+									<input type="email" class="form-control" value="@Model.User.Email" placeholder="Enter your email" asp-for="PersonalInfo.Email">
 								</div>
 								<!-- UserName -->
 								<div class="col-md-6">
 									<label class="form-label">Username<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value="@Model.User.User.UserName" placeholder="Enter your username" asp-for="PersonalInfo.UserName">
+									<input type="text" class="form-control" value="@Model.User.UserName" placeholder="Enter your username" asp-for="PersonalInfo.UserName">
 								</div>
 
 								<!-- Date of birth -->
 								<div class="col-md-6">
 									<label class="form-label">Date of Birth</label>
 									<input type="text" class="form-control flatpickr"
-										   value="@Model.User.User.Birthdate?.ToString("yyyy-MM-dd")"
+										   value="@Model.User.Birthdate?.ToString("yyyy-MM-dd")"
 										   placeholder="Enter date of birth"
 										   data-date-format="Y-m-d" asp-for="PersonalInfo.Birthdate">
 								</div>

@@ -12,56 +12,55 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands
+namespace BookingProject.Application.Features.Commands.AuthCommands.AuthLoginCommands;
+
+public class AuthLoginCommandHandler : IRequestHandler<AuthLoginCommandRequest, AuthLoginCommandResponse>
 {
-    public class AuthLoginCommandHandler : IRequestHandler<AuthLoginCommandRequest, AuthLoginCommandResponse>
-    {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly IConfiguration _configuration;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly SignInManager<AppUser> _signInManager;
+    private readonly IConfiguration _configuration;
 		private readonly IHttpContextAccessor _httpContextAccessor;
 		private readonly ITokenService _tokenService;
 
 		public AuthLoginCommandHandler(
-                UserManager<AppUser> userManager,
-                SignInManager<AppUser> signInManager,
-                IConfiguration configuration,
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
+            IConfiguration configuration,
 				IHttpContextAccessor httpContextAccessor,
-                ITokenService tokenService)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _configuration = configuration;
+            ITokenService tokenService)
+    {
+        _userManager = userManager;
+        _signInManager = signInManager;
+        _configuration = configuration;
 			_httpContextAccessor = httpContextAccessor;
 			_tokenService = tokenService;
 		}
 
-        public async Task<AuthLoginCommandResponse> Handle(AuthLoginCommandRequest request, CancellationToken cancellationToken)
-        {
-            var user = await _userManager.FindByNameAsync(request.UserName);
-            if (user is null) 
-                user = await _userManager.FindByEmailAsync(request.UserName);
+    public async Task<AuthLoginCommandResponse> Handle(AuthLoginCommandRequest request, CancellationToken cancellationToken)
+    {
+        var user = await _userManager.FindByNameAsync(request.UserName);
+        if (user is null) 
+            user = await _userManager.FindByEmailAsync(request.UserName);
 
 			if (user is null)
-            {
-                throw new BadRequestException("Invalid credentials. Please try again.");
-            }
-
-            var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
-
-            if (!result.Succeeded)
-            {
-                throw new BadRequestException("Invalid credentials. Please try again.");
-            }
-
-            TokenDto dto = await _tokenService.CreateToken(true,user, _httpContextAccessor.HttpContext);
-
-            return new AuthLoginCommandResponse()
-            {
-                UserName = user.UserName,
-                Token = dto.AccessToken,
-                RefreshToken = dto.RefreshToken,
-            };
+        {
+            throw new BadRequestException("Invalid credentials. Please try again.");
         }
+
+        var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
+
+        if (!result.Succeeded)
+        {
+            throw new BadRequestException("Invalid credentials. Please try again.");
+        }
+
+        TokenDto dto = await _tokenService.CreateToken(true,user, _httpContextAccessor.HttpContext);
+
+        return new AuthLoginCommandResponse()
+        {
+            UserName = user.UserName,
+            Token = dto.AccessToken,
+            RefreshToken = dto.RefreshToken,
+        };
+    }
 	}
-}

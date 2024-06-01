@@ -346,3 +346,4 @@ C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.API\obj\Deb
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.API\obj\Debug\net8.0\BookingProject.API.pdb
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.API\obj\Debug\net8.0\BookingProject.API.genruntimeconfig.cache
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.API\obj\Debug\net8.0\ref\BookingProject.API.dll
+C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.API\bin\Debug\net8.0\polynomial-land-425014-g3-4bad66e44b5f.json

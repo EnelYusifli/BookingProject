@@ -25,11 +25,7 @@ public class ReservationGetAllByOwnerQueryHandler : IRequestHandler<ReservationG
 	}
 	public async Task<ICollection<ReservationGetAllByOwnerQueryResponse>> Handle(ReservationGetAllByOwnerQueryRequest request, CancellationToken cancellationToken)
 	{
-		AppUser user = new();
-		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-		{
-			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-		}
+		AppUser user = await _userManager.FindByIdAsync(request.Id);
 		if (user is null)
 			throw new NotFoundException("User not found");
 		ICollection<Reservation> act = await _reservationRepository.Table.Include(x => x.Room).ThenInclude(x => x.Hotel).Where(r => r.Room.Hotel.AppUserId == user.Id).ToListAsync();

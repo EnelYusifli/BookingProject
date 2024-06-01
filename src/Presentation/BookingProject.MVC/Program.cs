@@ -1,6 +1,7 @@
 using BookingProject.Application.Services.Implementations;
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
+using BookingProject.MVC.Services;
 using BookingProject.Persistence.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 
 builder.Services.AddSession();
+builder.Services.AddScoped<ILoginService,LoginService>();
 
 builder.Services.AddAuthentication(opt =>
 {

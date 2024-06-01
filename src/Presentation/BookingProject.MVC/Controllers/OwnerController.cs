@@ -1,7 +1,10 @@
-﻿using BookingProject.MVC.Models;
+﻿using BookingProject.Domain.Entities;
+using BookingProject.MVC.Models;
+using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -12,19 +15,32 @@ public class OwnerController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	private readonly HttpClient _httpClient;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-	public OwnerController(HttpClient httpClient)
-	{
-		_httpClient = httpClient;
-		_httpClient.BaseAddress = baseAddress;
-	}
-	public IActionResult Dashboard()
+    public OwnerController(HttpClient httpClient, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
+    {
+        _httpClient = httpClient;
+        _userManager = userManager;
+        _httpContextAccessor = httpContextAccessor;
+        _httpClient.BaseAddress = baseAddress;
+    }
+    private async Task<AppUser> GetCurrentUserAsync()
+    {
+        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            return await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+        }
+        return null;
+    }
+    public IActionResult Dashboard()
 	{
 		return View();
 	}
 	public async Task<IActionResult> Listings()
 	{
-		var response = await _httpClient.GetAsync(baseAddress + "/hotels/getallbyuser");
+        AppUser user = await GetCurrentUserAsync();
+		var response = await _httpClient.GetAsync(baseAddress + $"/hotels/getallbyuser/{user.Id}");
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -36,7 +52,8 @@ public class OwnerController : Controller
 	}
 	public async Task<IActionResult> Reservations()
 	{
-		var response = await _httpClient.GetAsync(baseAddress + "/reservations/getallbyowner");
+        AppUser user = await GetCurrentUserAsync();
+		var response = await _httpClient.GetAsync(baseAddress + $"/reservations/getallbyowner/{user.Id}");
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -49,7 +66,8 @@ public class OwnerController : Controller
 	}
     public async Task<IActionResult> Reviews(int itemPerPage=10,int page=1)
     {
-        var response = await _httpClient.GetAsync(baseAddress + "/reviews/getallbyowner");
+        AppUser user = await GetCurrentUserAsync();
+        var response = await _httpClient.GetAsync(baseAddress + $"/reviews/getallbyowner/{user.Id}");
 
         if (response.IsSuccessStatusCode)
         {

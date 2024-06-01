@@ -42,21 +42,10 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 	}
 	public async Task<ReviewCreateCommandResponse> Handle(ReviewCreateCommandRequest request, CancellationToken cancellationToken)
 	{
-		AppUser user = new();
-		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-		{
-			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-			Console.WriteLine(user.NormalizedEmail);
-		}
-		else
-		{
-            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            Console.WriteLine("user.NormalizedEmail");
-        }
+		AppUser user = await _userManager.FindByIdAsync(request.UserId);
 		if (user is null)
 			throw new NotFoundException("User not found");
-
+		
 		Hotel hotel = await _hotelRepository.GetByIdAsync(request.HotelId);
 		if (hotel is null)
 			throw new NotFoundException("Hotel not found");

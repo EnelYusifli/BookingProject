@@ -1,9 +1,12 @@
 ﻿using Azure;
+using BookingProject.Domain.Entities;
+using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using BookingProject.MVC.ViewModels.PropertyViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -15,14 +18,26 @@ namespace BookingProject.MVC.Controllers;
 public class PropertyController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
-	private readonly HttpClient _httpClient;
+    private readonly HttpClient _httpClient;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-	public PropertyController(HttpClient httpClient)
-	{
-		_httpClient = httpClient;
-		_httpClient.BaseAddress = baseAddress;
-	}
-	public IActionResult JoinUs()
+    public PropertyController(HttpClient httpClient, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
+    {
+        _httpClient = httpClient;
+        _userManager = userManager;
+        _httpContextAccessor = httpContextAccessor;
+        _httpClient.BaseAddress = baseAddress;
+    }
+    private async Task<AppUser> GetCurrentUserAsync()
+    {
+        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            return await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+        }
+        return null;
+    }
+    public IActionResult JoinUs()
 	{
 		return View();
 	}
@@ -135,7 +150,10 @@ public class PropertyController : Controller
 	[HttpPost]
     public async Task<IActionResult> AddHotel(HotelCreateViewModel hotelCreateViewModel)
     {
-		if (!ModelState.IsValid)
+        AppUser user = await GetCurrentUserAsync();
+        hotelCreateViewModel.UserId = user.Id;
+
+        if (!ModelState.IsValid)
 		{
 			//var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
 

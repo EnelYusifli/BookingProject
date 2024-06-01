@@ -1,6 +1,7 @@
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
+using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
@@ -17,14 +18,26 @@ public class HomeController : Controller
 
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	private readonly HttpClient _httpClient;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-	public HomeController(HttpClient httpClient)
-	{
-		_httpClient = httpClient;
-		_httpClient.BaseAddress = baseAddress;
-	}
+    public HomeController(HttpClient httpClient, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
+    {
+        _httpClient = httpClient;
+        _userManager = userManager;
+        _httpContextAccessor = httpContextAccessor;
+        _httpClient.BaseAddress = baseAddress;
+    }
+    private async Task<AppUser> GetCurrentUserAsync()
+    {
+        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            return await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+        }
+        return null;
+    }
 
-	public IActionResult Index()
+    public IActionResult Index()
 	{
 		return View();
 	}
@@ -239,14 +252,6 @@ public class HomeController : Controller
 				var hotel = JsonConvert.DeserializeObject<HotelGetViewModel>(hotelResponseData);
 				vm.Hotel = hotel;
 			}
-			var userResponse = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
-
-			if (userResponse.IsSuccessStatusCode)
-			{
-				var responseData = await userResponse.Content.ReadAsStringAsync();
-				var user = JsonConvert.DeserializeObject<UserViewModel>(responseData);
-				vm.User=user;
-			}
 			return View(vm);
 		}
 		return RedirectToAction("Index");
@@ -256,6 +261,8 @@ public class HomeController : Controller
 	{
 		vm.RoomId=roomid;
 		vm.IsPaid=ispaid;
+		AppUser user = await GetCurrentUserAsync();
+		vm.UserId=user.Id;
 		var checkInDateString = HttpContext.Session.GetString("CheckInDate");
 		var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
 		if (string.IsNullOrEmpty(checkInDateString))

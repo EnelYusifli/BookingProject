@@ -46,16 +46,19 @@ public class UsersController : ControllerBase
 		GetAllUsersQueryRequest request = new();
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpGet]
-	public async Task<IActionResult> WishlistGetAll()
+	[HttpGet("{id}")]
+	public async Task<IActionResult> WishlistGetAll(string id)
 	{
-		WishlistGetAllQueryRequest request = new();
+		WishlistGetAllQueryRequest request = new()
+		{
+			Id = id
+		};
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpPost("{hotelid}")]
-	public async Task<IActionResult> AddToWishlist(int hotelid)
+	[HttpPost]
+	public async Task<IActionResult> AddToWishlist(WishlistAddCommandRequest request)
 	{
-		WishlistAddCommandRequest request = new() { HotelId=hotelid };
+		//WishlistAddCommandRequest request = new() { HotelId=hotelid };
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpDelete("{id}")]

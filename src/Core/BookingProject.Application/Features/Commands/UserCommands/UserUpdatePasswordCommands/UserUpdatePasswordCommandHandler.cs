@@ -18,11 +18,7 @@ public class UserUpdatePasswordCommandHandler : IRequestHandler<UserUpdatePasswo
 	}
     public async Task<UserUpdatePasswordCommandResponse> Handle(UserUpdatePasswordCommandRequest request, CancellationToken cancellationToken)
 	{
-		AppUser user = new();
-		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-		{
-			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-		}
+		AppUser user =await _userManager.FindByIdAsync(request.Id);
 		if (user is null)
 			throw new NotFoundException("User not found");
 		var result=await _userManager.ChangePasswordAsync(user,request.OldPassword,request.NewPassword);

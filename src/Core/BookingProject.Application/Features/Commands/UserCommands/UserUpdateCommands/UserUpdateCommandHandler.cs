@@ -39,11 +39,7 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommandRequest
 	{
 		if (request is null)
 			throw new BadRequestException("Request not found");
-		AppUser user = new();
-		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-		{
-			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-		}
+		AppUser user = await _userManager.FindByIdAsync(request.Id);
 		if (user is null)
 			throw new NotFoundException("User not found");
 		AppUser existUser = await _userManager.FindByEmailAsync(request.Email);

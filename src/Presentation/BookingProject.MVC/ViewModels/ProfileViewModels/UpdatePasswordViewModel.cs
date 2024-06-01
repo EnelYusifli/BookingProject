@@ -11,4 +11,5 @@ public class UpdatePasswordViewModel
 	[DataType(DataType.Password)]
 	[Compare("NewPassword")]
 	public string? ConfirmNewPassword { get; set; }
+	public string Id { get; set; }
 }

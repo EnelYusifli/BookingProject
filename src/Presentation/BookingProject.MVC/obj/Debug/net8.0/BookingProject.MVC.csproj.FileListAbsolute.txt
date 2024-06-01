@@ -238,3 +238,4 @@ C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\obj\Deb
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\obj\Debug\net8.0\BookingProject.MVC.pdb
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\obj\Debug\net8.0\BookingProject.MVC.genruntimeconfig.cache
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\obj\Debug\net8.0\ref\BookingProject.MVC.dll
+C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\polynomial-land-425014-g3-4bad66e44b5f.json

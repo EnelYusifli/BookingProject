@@ -12,4 +12,5 @@ public class UserUpdatePasswordCommandRequest:IRequest<UserUpdatePasswordCommand
 	[DataType(DataType.Password)]
 	[Compare("NewPassword")]
 	public required string ConfirmNewPassword { get; set; }
+	public string Id { get; set; }
 }

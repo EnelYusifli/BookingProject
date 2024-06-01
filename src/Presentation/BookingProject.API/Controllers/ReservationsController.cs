@@ -34,16 +34,22 @@ public class ReservationsController : ControllerBase
 		};
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpGet]
-	public async Task<IActionResult> GetAllByUser()
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetAllByUser(string id)
 	{
-		ReservationGetAllByUserQueryRequest request = new();
+		ReservationGetAllByUserQueryRequest request = new()
+		{
+			Id = id
+		};
 		return Ok(await _mediator.Send(request));
 	}
-	[HttpGet]
-	public async Task<IActionResult> GetAllByOwner()
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetAllByOwner(string id)
 	{
-		ReservationGetAllByOwnerQueryRequest request = new();
+		ReservationGetAllByOwnerQueryRequest request = new()
+		{
+			Id = id
+		};
 		return Ok(await _mediator.Send(request));
 	}
 }

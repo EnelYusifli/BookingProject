@@ -4,4 +4,5 @@ namespace BookingProject.Application.Features.Queries.ReservationQueries.Reserva
 
 public class ReservationGetAllByUserQueryRequest:IRequest<ICollection<ReservationGetAllByUserQueryResponse>>
 {
+    public string Id { get; set; }
 }

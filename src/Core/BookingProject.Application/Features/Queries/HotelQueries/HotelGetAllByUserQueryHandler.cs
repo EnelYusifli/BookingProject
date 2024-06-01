@@ -25,11 +25,7 @@ public class HotelGetAllByUserQueryHandler : IRequestHandler<HotelGetAllByUserQu
 	}
 	public async Task<ICollection<HotelGetAllByUserQueryResponse>> Handle(HotelGetAllByUserQueryRequest request, CancellationToken cancellationToken)
 	{
-		AppUser user = new();
-		if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-		{
-			user = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-		}
+		AppUser user = await _userManager.FindByIdAsync(request.Id);
 		if (user is null)
 			throw new NotFoundException("User not found");
 		ICollection<Hotel> act = await _repository.Table
