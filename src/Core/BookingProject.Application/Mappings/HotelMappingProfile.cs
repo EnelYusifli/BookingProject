@@ -14,8 +14,14 @@ public class HotelMappingProfile:Profile
 		CreateMap<HotelCreateCommandRequest, Hotel>().ReverseMap();
 			//.ForMember(dest => dest.AppUserId, opt => opt.MapFrom(src => src.AppUserId)).ReverseMap();
 		CreateMap<HotelUpdateCommandRequest, Hotel>();
+		CreateMap<Hotel,HotelGetByIdForUpdateQueryResponse>()
+			 .ForMember(dest => dest.StaffLanguageIds, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(hsl => hsl.StaffLanguageId)))
+			.ForMember(dest => dest.ServiceIds, opt => opt.MapFrom(src => src.HotelServices.Select(hs => hs.ServiceId)))
+			.ForMember(dest => dest.PaymentMethodIds, opt => opt.MapFrom(src => src.HotelPaymentMethods.Select(hpm => hpm.PaymentMethodId)))
+			.ForMember(dest => dest.ActivityIds, opt => opt.MapFrom(src => src.HotelActivities.Select(ha => ha.ActivityId))).ReverseMap();
+	
 
-		CreateMap<Hotel, HotelGetAllByUserQueryResponse>()
+	CreateMap<Hotel, HotelGetAllByUserQueryResponse>()
 		   .ForMember(dest => dest.ImageFileUrls, opt => opt.MapFrom(src => src.HotelImages.Select(a => a.Url)))
 		   .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.Type.TypeName))
 		   .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.CountryName))

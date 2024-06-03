@@ -48,6 +48,7 @@ public class RoomCreateCommandHandler : IRequestHandler<RoomCreateCommandRequest
             request.CancelAfterDay = 0;
         var room = _mapper.Map<Room>(request);
         room.IsReserved = false;
+        room.DiscountedPricePerNight = room.PricePerNight;
         SaveFileExtension.Initialize(_configuration);
         foreach (var image in request.ImageFiles)
         {

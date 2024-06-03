@@ -9,6 +9,7 @@ using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.StaffLanguage
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Type;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Data;
@@ -16,7 +17,7 @@ using System.Net.Http;
 using System.Text;
 
 namespace BookingProject.MVC.Controllers;
-
+[Authorize(Roles = "Admin")]
 public class AdminController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");

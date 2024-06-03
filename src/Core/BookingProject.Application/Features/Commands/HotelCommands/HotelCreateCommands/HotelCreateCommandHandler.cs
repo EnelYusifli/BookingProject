@@ -204,6 +204,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             }
 			await _repository.CreateAsync(hotel);
             await _repository.CommitAsync();
+            await _userManager.AddToRoleAsync(appUser, "Owner");
 
             return new HotelCreateCommandResponse();
         }

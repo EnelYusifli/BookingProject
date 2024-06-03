@@ -4,13 +4,14 @@ using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
 
 namespace BookingProject.MVC.Controllers;
-
+[Authorize(Roles = "Owner,Admin")]
 public class OwnerController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");

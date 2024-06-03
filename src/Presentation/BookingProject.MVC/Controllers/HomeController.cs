@@ -6,6 +6,7 @@ using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -215,8 +216,8 @@ public class HomeController : Controller
         }
         return View();
 	}
-
-	public async Task<IActionResult> Reservation(int roomid,ReservationViewModel vm)
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> Reservation(int roomid,ReservationViewModel vm)
 	{
 		var roomResponse = await _httpClient.GetAsync(baseAddress + $"/rooms/getbyid/{roomid}");
 
@@ -256,8 +257,8 @@ public class HomeController : Controller
 		}
 		return RedirectToAction("Index");
 	}
-
-	public async Task<IActionResult> ReserveRoom(int roomid, bool ispaid, ReservationCreateViewModel vm)
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> ReserveRoom(int roomid, bool ispaid, ReservationCreateViewModel vm)
 	{
 		vm.RoomId=roomid;
 		vm.IsPaid=ispaid;

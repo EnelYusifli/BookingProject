@@ -43,6 +43,15 @@ public class HotelsController : ControllerBase
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpGet("{id}")]
+	public async Task<IActionResult> GetByIdForUpdate(int id)
+	{
+		HotelGetByIdForUpdateQueryRequest request = new()
+		{
+			Id = id
+		};
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpGet("{id}")]
 	public async Task<IActionResult> GetById(int id)
 	{
 		HotelGetByIdQueryRequest request = new() { Id = id };

@@ -185,8 +185,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 			{
 				HotelImage img = await _hotelImageRepository.Table.FirstOrDefaultAsync(x => x.HotelId == hotel.Id && x.Id == id);
 				if (img is null) throw new NotFoundException("Image not found in hotel");
-				_hotelImageRepository.Delete(img);
 				await SaveFileExtension.DeleteFileAsync(img.Url);
+				_hotelImageRepository.Delete(img);
 			}
 			foreach (var languageId in newLanguageIds)
 			{

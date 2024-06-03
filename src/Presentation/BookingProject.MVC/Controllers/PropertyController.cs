@@ -2,6 +2,7 @@
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Activity;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using BookingProject.MVC.ViewModels.PropertyViewModels;
@@ -15,6 +16,7 @@ using System.Security.Claims;
 using System.Text;
 
 namespace BookingProject.MVC.Controllers;
+[Authorize]
 public class PropertyController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
@@ -39,24 +41,6 @@ public class PropertyController : Controller
     }
     public IActionResult JoinUs()
 	{
-		return View();
-	}
-	public async Task<IActionResult> ApproveHotel([FromRoute]int id)
-	{
-		ApproveHotelViewModel vm = new()
-		{
-			Id = id
-		};
-		if (!ModelState.IsValid) return View();
-		var dataStr = JsonConvert.SerializeObject(vm);
-		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
-		var response = await _httpClient.PostAsync(baseAddress + $"/hotel/approvehotel/{id}", stringContent);
-
-
-		if (response.IsSuccessStatusCode)
-		{
-			return RedirectToAction("Index", "Home");
-		}
 		return View();
 	}
 
@@ -145,8 +129,6 @@ public class PropertyController : Controller
 
 		return View();
 	}
-
-
 	[HttpPost]
     public async Task<IActionResult> AddHotel(HotelCreateViewModel hotelCreateViewModel)
     {
@@ -171,6 +153,7 @@ public class PropertyController : Controller
         using (var content = new MultipartFormDataContent())
         {
             content.Add(new StringContent(hotelCreateViewModel.TypeId.ToString()), nameof(hotelCreateViewModel.TypeId));
+            content.Add(new StringContent(hotelCreateViewModel.UserId), nameof(hotelCreateViewModel.UserId));
             content.Add(new StringContent(hotelCreateViewModel.Name), nameof(hotelCreateViewModel.Name));
             content.Add(new StringContent(hotelCreateViewModel.Desc), nameof(hotelCreateViewModel.Desc));
             content.Add(new StringContent(hotelCreateViewModel.Address), nameof(hotelCreateViewModel.Address));
@@ -294,4 +277,174 @@ public class PropertyController : Controller
 	{
 		return View();
 	}
+	public async Task<IActionResult> UpdateHotel(int id)
+	{
+		PropertyViewModel viewModel = new PropertyViewModel();
+		await PopulatePropertyViewModel(viewModel);
+		ViewBag.Property = viewModel;
+		//GetByIdForUpdate
+		var response = await _httpClient.GetAsync($"{baseAddress}/hotels/getbyidforupdate/{id}");
+		if (!response.IsSuccessStatusCode)
+		{
+			return NotFound();
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<HotelUpdateViewModel>(dataStr);
+
+		return View(vm);
+		
+	}
+	[HttpPost]
+    public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm)
+    {
+        //AppUser user = await GetCurrentUserAsync();
+        //vm.UserId = user.Id;
+
+        if (!ModelState.IsValid)
+        {
+            //var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+
+            //if (responseId2.IsSuccessStatusCode)
+            //{
+            //	var responseData = await responseId2.Content.ReadAsStringAsync();
+            //	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+            //	ViewBag.UserId = dto.User.Id;
+            //}
+            PropertyViewModel vm2 = new PropertyViewModel();
+            await PopulatePropertyViewModel(vm2);
+            ViewBag.Property = vm2;
+            return View();
+        }
+        using (var content = new MultipartFormDataContent())
+        {
+            content.Add(new StringContent(vm.TypeId.ToString()), nameof(vm.TypeId));
+            content.Add(new StringContent(vm.Id.ToString()), nameof(vm.Id));
+            //content.Add(new StringContent(vm.UserId), nameof(vm.UserId));
+            content.Add(new StringContent(vm.Name), nameof(vm.Name));
+            content.Add(new StringContent(vm.Desc), nameof(vm.Desc));
+            content.Add(new StringContent(vm.Address), nameof(vm.Address));
+            content.Add(new StringContent(vm.CountryId.ToString()), nameof(vm.CountryId));
+            content.Add(new StringContent(vm.City), nameof(vm.City));
+            content.Add(new StringContent(vm.IsDeactive.ToString()), nameof(vm.IsDeactive));
+
+            //if (vm.HotelAdvantageNames != null)
+            //{
+            //    foreach (var advantageName in vm.HotelAdvantageNames)
+            //    {
+            //        content.Add(new StringContent(advantageName), nameof(hotelCreateViewModel.HotelAdvantageNames));
+            //    }
+            //}
+
+            if (vm.StaffLanguageIds != null)
+            {
+                foreach (var id in vm.StaffLanguageIds)
+                {
+                    content.Add(new StringContent(id.ToString()), nameof(vm.StaffLanguageIds));
+                }
+            }
+
+            if (vm.ServiceIds != null)
+            {
+                foreach (var id in vm.ServiceIds)
+                {
+                    content.Add(new StringContent(id.ToString()), nameof(vm.ServiceIds));
+                }
+            }
+
+            if (vm.PaymentMethodIds != null)
+            {
+                foreach (var id in vm.PaymentMethodIds)
+                {
+                    content.Add(new StringContent(id.ToString()), nameof(vm.PaymentMethodIds));
+                }
+            }
+
+            if (vm.ActivityIds != null)
+            {
+                foreach (var id in vm.ActivityIds)
+                {
+                    content.Add(new StringContent(id.ToString()), nameof(vm.ActivityIds));
+                }
+            }
+            if (vm.DeletedImageFileIds != null)
+            {
+                foreach (var id in vm.DeletedImageFileIds)
+                {
+                    content.Add(new StringContent(id.ToString()), nameof(vm.DeletedImageFileIds));
+                }
+            }
+
+            if (vm.ImageFiles != null)
+            {
+                foreach (var file in vm.ImageFiles)
+                {
+                    if (file != null)
+                    {
+                        var fileContent = new StreamContent(file.OpenReadStream());
+                        fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.ContentType);
+                        content.Add(fileContent, nameof(vm.ImageFiles), file.FileName);
+                    }
+                }
+            }
+
+            //if (vm.RoomCreateDtos != null)
+            //{
+            //    for (int i = 0; i < vm.RoomCreateDtos.Count; i++)
+            //    {
+            //        var room = vm.RoomCreateDtos[i];
+            //        content.Add(new StringContent(room.RoomName), $"RoomCreateDtos[{i}].RoomName");
+            //        content.Add(new StringContent(room.AdultCount.ToString()), $"RoomCreateDtos[{i}].AdultCount");
+            //        content.Add(new StringContent(room.ChildCount.ToString()), $"RoomCreateDtos[{i}].ChildCount");
+            //        content.Add(new StringContent(room.ServiceFee.ToString()), $"RoomCreateDtos[{i}].ServiceFee");
+            //        content.Add(new StringContent(room.PricePerNight.ToString()), $"RoomCreateDtos[{i}].PricePerNight");
+            //        content.Add(new StringContent(room.Area.ToString()), $"RoomCreateDtos[{i}].Area");
+            //        content.Add(new StringContent(room.IsCancellable.ToString()), $"RoomCreateDtos[{i}].IsCancellable");
+
+            //        if (room.CancelAfterDay.HasValue)
+            //        {
+            //            content.Add(new StringContent(room.CancelAfterDay.Value.ToString()), $"RoomCreateDtos[{i}].CancelAfterDay");
+            //        }
+
+            //        if (room.ImageFiles != null)
+            //        {
+            //            foreach (var file in room.ImageFiles)
+            //            {
+            //                if (file != null)
+            //                {
+            //                    var fileContent = new StreamContent(file.OpenReadStream());
+            //                    fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.ContentType);
+            //                    content.Add(fileContent, $"RoomCreateDtos[{i}].ImageFiles", file.FileName);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            var response = await _httpClient.PutAsync(baseAddress + $"/hotels/update/{vm.Id}", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("HotelAdded");
+            }
+            else
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                Console.WriteLine(responseContent);
+            }
+        }
+        //var responseId = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+
+        //if (responseId.IsSuccessStatusCode)
+        //{
+        //	var responseData = await responseId.Content.ReadAsStringAsync();
+        //	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+        //	ViewBag.UserId = dto.User.Id;
+        //}
+        PropertyViewModel vm3 = new PropertyViewModel();
+        await PopulatePropertyViewModel(vm3);
+        ViewBag.Property = vm3;
+        return View();
+    }
 }

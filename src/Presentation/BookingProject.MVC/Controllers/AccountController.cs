@@ -7,6 +7,7 @@ using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -174,7 +175,8 @@ public class AccountController : Controller
 		}
 		return View();
 	}
-	public async Task<IActionResult> Profile()
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> Profile()
 	{
 		//if (!ModelState.IsValid) return View();
 		ProfileViewModel profileViewModel = new();
@@ -196,7 +198,8 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Index", "Home");
 	}
-	[HttpPost]
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    [HttpPost]
 	public async Task<IActionResult> UpdatePersonalInfo(ProfileViewModel vm)
 	{
         using (var content = new MultipartFormDataContent())
@@ -247,7 +250,8 @@ public class AccountController : Controller
         // If the request failed, return the view with the original model to display validation errors
         return View(vm);
     }
-	[HttpPost]
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    [HttpPost]
 	public async Task<IActionResult> UpdatePassword(ProfileViewModel vm)
 	{
 		var dataStr = JsonConvert.SerializeObject(vm.Password);
@@ -261,7 +265,8 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Profile");
 	}
-	public async Task<IActionResult> Wishlist(int itemPerPage=5,int page=1)
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> Wishlist(int itemPerPage=5,int page=1)
 	{
 		List<WishlistViewModel> vms = new List<WishlistViewModel>();
 		if (!ModelState.IsValid) return View();
@@ -278,7 +283,8 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Index");
 	}
-	public async Task<IActionResult> AddtoWishlist(AddToWishlistViewModel vm)
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> AddtoWishlist(AddToWishlistViewModel vm)
 	{
 		AppUser user = await GetCurrentUserAsync();
 		vm.Id = user.Id;
@@ -301,7 +307,8 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("index","home");
 	}
-	public async Task<IActionResult> RemoveFromWishlist(int id)
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> RemoveFromWishlist(int id)
 	{
 		if (!ModelState.IsValid) return View();
 		var response = await _httpClient.DeleteAsync(baseAddress + $"/users/removefromwishlist/{id}");
@@ -320,7 +327,8 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("index", "home");
 	}
-	public async Task<IActionResult> Reservations(UserReservationsViewModel vm)
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> Reservations(UserReservationsViewModel vm)
 	{
 		AppUser user = await GetCurrentUserAsync();
 		var response = await _httpClient.GetAsync(baseAddress + $"/reservations/getallbyuser/{user.Id}");
@@ -337,12 +345,14 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Index", "Home");
 	}
-	public IActionResult LeaveReview(int hotelid)
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    public IActionResult LeaveReview(int hotelid)
 	{
 		ViewBag.Id=hotelid;
 		return View();
 	}
-	[HttpPost]
+    [Authorize(Roles = "Customer,Owner,Admin")]
+    [HttpPost]
 	public async Task<IActionResult> LeaveReview(ReviewCreateViewModel vm)
 	{
 		AppUser user = await GetCurrentUserAsync();
