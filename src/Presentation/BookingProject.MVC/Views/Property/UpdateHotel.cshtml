@@ -93,7 +93,7 @@
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/stepper/css/bs-stepper.min.css">
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/quill/css/quill.snow.css">
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/dropzone/css/dropzone.css">
-
+			
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
 
@@ -626,7 +626,6 @@ Steps START -->
 												<!-- Card body END -->
 											</div>
 											<!-- Listing location END -->
-
 											<!-- Upload image START -->
 											<div class="card shadow">
 												<!-- Card header -->
@@ -638,23 +637,46 @@ Steps START -->
 												<!-- Card body START -->
 												<div class="card-body">
 													<div class="row g-3">
-														<!-- Images -->
+														<!-- New Images -->
 														<div class="col-12">
-															<label class="form-label">Upload images *</label>
-															<input class="form-control" id="image" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.ImageFiles">
-															<span asp-validation-for="@Model.ImageFiles" class="text-danger"></span>
+															<label class="form-label">Upload new images *</label>
+															<input class="form-control" id="image" accept="image/jpg, image/jpeg, image/png" multiple asp-for="NewImageFiles">
+															<span asp-validation-for="NewImageFiles" class="text-danger"></span>
 
 															<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. </p>
 															<p class="small mb-0 mt-2"><b>Note:</b> At least 4 images are required.</p>
 														</div>
 
+														<!-- Existing Images -->
+														<div class="col-12 mt-4">
+															<h5>Existing Images</h5>
+															<div class="row">
+																@foreach (var image in Model.Images)
+																{
+																	<div class="col-md-3 mb-3">
+																		<div class="card">
+																			<img src="@image.Url" class="card-img-top" alt="Image @image.Id">
+																			<div class="card-body">
+																				<div class="form-check">
+																					<input class="form-check-input" type="checkbox" id="deleteImage_@image.Id" value="@image.Id">
+																					<label class="form-check-label" for="deleteImage_@image.Id">Delete</label>
+
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																}
+															</div>
+															
+														</div>
+
+													
 													</div>
 												</div>
 												<!-- Card body END -->
 											</div>
 											<!-- Upload image END -->
-
-									<!-- Step 1 button -->
+											<!-- Step 1 button -->
 									<div class="text-end">
 										<button type="button" class="btn btn-primary next-btn mb-0">Next</button>
 									</div>
@@ -952,6 +974,22 @@ Footer END -->
 			});
 		});
 	</script>
+	<script>
+		@{
+			int counter = 0;
+		}
+		document.querySelectorAll('.form-check-input:checked').forEach(function (checkbox) {
+			var hiddenInput = document.createElement('input');
+			hiddenInput.type = 'hidden';
+			hiddenInput.setAttribute('asp-for', 'DeletedImageFileIds[' + @counter + ']'); // Use Razor syntax here
+			hiddenInput.value = checkbox.value;
+			document.body.appendChild(hiddenInput);
+		@counter++;
+		});
+
+	</script>
+
+	
 
 
 <!-- Vendors -->
@@ -965,55 +1003,7 @@ Footer END -->
 
 <!-- ThemeFunctions -->
 <script src="~/assets/js/functions.js"></script>
-	<script>
-		$(document).ready(function () {
-			// Counter to track the number of rooms added
-			var roomCount = $(".room-card").length;
 
-			// Add event listener to the "Add New Room" button
-			$("#addRoomBtn").click(function () {
-				// Clone the room card
-				var clonedCard = $(".room-card").first().clone();
-
-				// Update the index in the input field names
-				clonedCard.find("input, select").each(function () {
-					var nameAttr = $(this).attr("name");
-					if (nameAttr) {
-						$(this).attr("name", nameAttr.replace("[0]", "[" + roomCount + "]"));
-					}
-				});
-
-				// Append delete button to the cloned card
-				var deleteButton = $('<button class="btn btn-danger delete-room-btn"><i class="bi bi-x"></i></button>');
-				deleteButton.click(function () {
-					$(this).closest(".room-card").remove();
-					updateRoomCount();
-				});
-				clonedCard.find(".card-header").append(deleteButton);
-
-				// Increment the room count
-				roomCount++;
-
-				// Append the cloned card to the container
-				$(".room-card").last().after(clonedCard);
-				console.log(roomCount)
-			});
-
-			// Function to update roomCount after removing a room card
-			function updateRoomCount() {
-				roomCount = $(".room-card").length;
-				// Update input field names if necessary
-				$(".room-card").each(function (index) {
-					$(this).find("input, select").each(function () {
-						var nameAttr = $(this).attr("name");
-						if (nameAttr) {
-							$(this).attr("name", nameAttr.replace(/\[\d+\]/, "[" + index + "]"));
-						}
-					});
-				});
-			}
-		});
-	</script>
 	<script>
 		$(document).ready(function () {
 			// Add event listener to the "Add New Advantage Name" button

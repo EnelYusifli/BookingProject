@@ -301,21 +301,21 @@ public class PropertyController : Controller
         //AppUser user = await GetCurrentUserAsync();
         //vm.UserId = user.Id;
 
-        if (!ModelState.IsValid)
-        {
-            //var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
+        //if (!ModelState.IsValid)
+        //{
+        //    //var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
 
-            //if (responseId2.IsSuccessStatusCode)
-            //{
-            //	var responseData = await responseId2.Content.ReadAsStringAsync();
-            //	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
-            //	ViewBag.UserId = dto.User.Id;
-            //}
-            PropertyViewModel vm2 = new PropertyViewModel();
-            await PopulatePropertyViewModel(vm2);
-            ViewBag.Property = vm2;
-            return View();
-        }
+        //    //if (responseId2.IsSuccessStatusCode)
+        //    //{
+        //    //	var responseData = await responseId2.Content.ReadAsStringAsync();
+        //    //	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+        //    //	ViewBag.UserId = dto.User.Id;
+        //    //}
+        //    PropertyViewModel vm2 = new PropertyViewModel();
+        //    await PopulatePropertyViewModel(vm2);
+        //    ViewBag.Property = vm2;
+        //    return View(vm);
+        //}
         using (var content = new MultipartFormDataContent())
         {
             content.Add(new StringContent(vm.TypeId.ToString()), nameof(vm.TypeId));
@@ -375,15 +375,15 @@ public class PropertyController : Controller
                 }
             }
 
-            if (vm.ImageFiles != null)
+            if (vm.NewImageFiles != null)
             {
-                foreach (var file in vm.ImageFiles)
+                foreach (var file in vm.NewImageFiles)
                 {
                     if (file != null)
                     {
                         var fileContent = new StreamContent(file.OpenReadStream());
                         fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.ContentType);
-                        content.Add(fileContent, nameof(vm.ImageFiles), file.FileName);
+                        content.Add(fileContent, nameof(vm.NewImageFiles), file.FileName);
                     }
                 }
             }
@@ -445,6 +445,6 @@ public class PropertyController : Controller
         PropertyViewModel vm3 = new PropertyViewModel();
         await PopulatePropertyViewModel(vm3);
         ViewBag.Property = vm3;
-        return View();
+        return View(vm);
     }
 }

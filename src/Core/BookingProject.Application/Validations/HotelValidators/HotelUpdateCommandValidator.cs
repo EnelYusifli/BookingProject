@@ -13,9 +13,9 @@ public class HotelUpdateCommandValidator:AbstractValidator<HotelUpdateCommandReq
 		RuleFor(x => x.Id).NotNull();
 		RuleFor(x => x.City).NotEmpty().NotNull().MaximumLength(50);
 		RuleFor(x => x.TypeId).NotEmpty().NotNull();
-		RuleFor(x => x.ImageFiles).NotNull()
-		   .Must(images => images != null && images.Count >= 4)
-			   .WithMessage("At least 4 images are required.");
+		//RuleFor(x => x.NewImageFiles).NotNull()
+		//   .Must(images => images != null && images.Count >= 4)
+		//	   .WithMessage("At least 4 images are required.");
 		RuleFor(x => x.Desc).NotEmpty().NotNull().MaximumLength(1000).MinimumLength(20);
 	}
 }

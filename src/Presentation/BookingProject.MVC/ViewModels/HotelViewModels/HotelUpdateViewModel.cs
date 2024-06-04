@@ -1,4 +1,6 @@
-﻿namespace BookingProject.MVC.ViewModels.HotelViewModels;
+﻿using BookingProject.Application.Features.DTOs;
+
+namespace BookingProject.MVC.ViewModels.HotelViewModels;
 
 public class HotelUpdateViewModel
 {
@@ -10,8 +12,9 @@ public class HotelUpdateViewModel
     public string Address { get; set; }
     public string City { get; set; }
     public bool IsDeactive { get; set; }
-    public List<IFormFile>? ImageFiles { get; set; }
-    public List<int>? StaffLanguageIds { get; set; }
+    public List<IFormFile>? NewImageFiles { get; set; }
+	public List<ImageDto>? Images { get; set; }
+	public List<int>? StaffLanguageIds { get; set; }
     public List<int>? ServiceIds { get; set; }
     public List<int>? PaymentMethodIds { get; set; }
     public List<int>? ActivityIds { get; set; }

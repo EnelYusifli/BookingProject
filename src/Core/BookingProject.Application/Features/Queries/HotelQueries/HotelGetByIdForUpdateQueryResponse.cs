@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BookingProject.Application.Features.DTOs;
+using Microsoft.AspNetCore.Http;
 
 namespace BookingProject.Application.Features.Queries.HotelQueries;
 
@@ -15,6 +16,7 @@ public class HotelGetByIdForUpdateQueryResponse
 	public List<IFormFile>? ImageFiles { get; set; }
 	//public List<int>? ImageFileIds { get; set; }
 	public List<int>? StaffLanguageIds { get; set; }
+	public List<ImageDto>? Images { get; set; }
 	public List<int>? ServiceIds { get; set; }
 	public List<int>? PaymentMethodIds { get; set; }
 	public List<int>? ActivityIds { get; set; }

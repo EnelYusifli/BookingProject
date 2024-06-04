@@ -181,12 +181,15 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				await _hotelServiceRepository.CreateAsync(hotelServ);
 			}
 			SaveFileExtension.Initialize(_configuration);
+			if(request.DeletedImageFileIds is not null)
+			{
 			foreach (var id in request.DeletedImageFileIds)
 			{
 				HotelImage img = await _hotelImageRepository.Table.FirstOrDefaultAsync(x => x.HotelId == hotel.Id && x.Id == id);
 				if (img is null) throw new NotFoundException("Image not found in hotel");
 				await SaveFileExtension.DeleteFileAsync(img.Url);
 				_hotelImageRepository.Delete(img);
+			}
 			}
 			foreach (var languageId in newLanguageIds)
 			{
@@ -204,7 +207,10 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				};
 				await _hotelStaffLanguageRepository.CreateAsync(newHotelLang);
 			}
-			foreach (var image in request.ImageFiles)
+			if(request.NewImageFiles is not null)
+			{
+
+			foreach (var image in request.NewImageFiles)
 			{
 				if (image is null)
 					throw new NotFoundException($"Image not found");
@@ -216,6 +222,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 					IsDeactive = request.IsDeactive
 				};
 				await _hotelImageRepository.CreateAsync(hotelImg);
+			}
 			}
 			hotel.ModifiedDate=DateTime.Now;
 		    hotel=_mapper.Map(request, hotel);
