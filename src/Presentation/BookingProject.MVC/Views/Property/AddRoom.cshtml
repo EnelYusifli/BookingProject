@@ -1,0 +1,100 @@
+﻿@{
+	Layout = "~/Views/Shared/OwnerLayout.cshtml";
+	var hotelid = ViewBag.HotelId;
+}
+@model RoomCreateViewModel
+<section class="pt-0">
+	<div class="container vstack gap-4">
+<form method="post" enctype="multipart/form-data">
+	<div class="vstack gap-4">
+		<!-- Title -->
+		<h4 class="mb-0">Add Room</h4>
+		<!-- Room options START -->
+		<div class="card shadow room-card">
+			<!-- Card header -->
+			<div class="card-header border-bottom">
+				<h5 class="mb-0">Room Options</h5>
+			</div>
+
+			<!-- Card body START -->
+			<div class="card-body">
+				<div class="row g-4">
+					<!-- Room name -->
+					<div class="col-md-6">
+						<label class="form-label">Room name *</label>
+						<input class="form-control" placeholder="Enter name" asp-for="@Model.RoomName">
+
+					</div>
+
+					<!-- Room images -->
+					<div class="col-md-6">
+						<label class="form-label">Room images *</label>
+						<input class="form-control" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.ImageFiles">
+					</div>
+
+					<!-- Room Price -->
+					<div class="col-md-6">
+						<label class="form-label">Room Price Per Night *</label>
+						<input class="form-control" placeholder="Enter price" asp-for="@Model.PricePerNight">
+					</div>
+
+					<!-- ServiceFee -->
+					<div class="col-md-6">
+						<label class="form-label">Service Fee *</label>
+						<input class="form-control" placeholder="Enter fee" asp-for="@Model.ServiceFee">
+					</div>
+
+					<!-- Area -->
+					<div class="col-md-6">
+						<label class="form-label">Area *</label>
+						<input class="form-control" placeholder="Enter area" asp-for="@Model.Area">
+					</div>
+
+					<!-- AdultCount -->
+					<div class="col-md-6">
+						<label class="form-label">Adult Count *</label>
+						<input class="form-control" placeholder="Enter adult count" asp-for="@Model.AdultCount">
+					</div>
+
+					<!-- ChildCount -->
+					<div class="col-md-6">
+						<label class="form-label">Child Count *</label>
+						<input class="form-control" placeholder="Enter child count" asp-for="@Model.ChildCount">
+					</div>
+
+					<!-- Cancel info -->
+					<div class="col-md-6">
+						<label class="form-label">Cancellation info *</label>
+						<select class="form-select js-choice border-0 z-index-9 bg-transparent" asp-for="@Model.IsCancellable">
+							<option value="">Select item</option>
+							<option value="false">Non Refundable</option>
+							<option value="true">Free Cancellation</option>
+						</select>
+
+						<div id="cancelAfterDayCard" style="display: none;">
+							<label class="form-label">Cancel after x days *</label>
+							<input class="form-control" placeholder="Enter day count" asp-for="@Model.CancelAfterDay">
+							<input type="hidden" asp-for="@Model.HotelId" value="@hotelid">
+						</div>
+						@* 	<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span> *@
+
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div asp-validation-summary="All" class="text-danger"></div>
+			</div>
+
+			<!-- Card body END -->
+		</div>
+		<!-- Room options END -->
+		<!-- Step 3 button -->
+		<div class="d-flex justify-content-between">
+			<div class="text-end">
+				<button type="submit" class="btn btn-success" asp-route-hotelid="@hotelid">Add Room</button>
+			</div>
+		</div>
+	</div>
+</form>
+	</div>
+	</section>

@@ -1,8 +1,10 @@
+using BookingProject.Application.Repositories;
 using BookingProject.Application.Services.Implementations;
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Services;
 using BookingProject.Persistence.Contexts;
+using BookingProject.Persistence.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +17,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddSession();
 builder.Services.AddScoped<ILoginService,LoginService>();
+builder.Services.AddScoped<IRoomRepository,RoomRepository>();
 
 builder.Services.AddAuthentication(opt =>
 {

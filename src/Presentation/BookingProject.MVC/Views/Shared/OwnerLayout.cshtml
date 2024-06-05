@@ -179,7 +179,7 @@
 
 								<!-- Dropdown submenu -->
 								<li class="dropdown-submenu dropend">
-									<a class="dropdown-item dropdown-toggle" href="#">Add Listing</a>
+									<a class="dropdown-item dropdown-toggle" asp-action="addhotel" asp-controller="property">Add Listing</a>
 									<ul class="dropdown-menu" data-bs-popper="none">
 										<li> <a class="dropdown-item" href="join-us.html">Join us</a></li>
 										<li> <a class="dropdown-item" href="add-listing.html">Add Listing</a></li>
@@ -433,7 +433,7 @@
 							<img class="avatar-img rounded-circle" src="~/assets/images/avatar/01.jpg" alt="">
 						</div>
 						<h4 class="mb-2 mb-sm-0 ms-sm-3"><span class="fw-light">Hi</span> Jacqueline Miller</h4>
-						<a href="add-listing.html" class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
+						<a asp-action="addhotel" asp-controller="property" class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
 					</div>
 					<!-- Avatar and info START -->
 					<!-- Responsive navbar toggler -->
