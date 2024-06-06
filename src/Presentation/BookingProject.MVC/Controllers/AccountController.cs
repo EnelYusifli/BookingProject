@@ -7,6 +7,7 @@ using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -44,7 +45,35 @@ public class AccountController : Controller
         }
         return null;
     }
-    public IActionResult Login()
+	public IActionResult LoginWithGoogle()
+	{
+		var redirectUrl = Url.Action(nameof(GoogleResponse), "Account");
+		var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+		return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+	}
+
+	public async Task<IActionResult> GoogleResponse()
+	{
+		await _loginService.LoginWithGoogle();
+
+		return RedirectToAction("Index", "Home");
+	}
+	public IActionResult RegisterWithGoogle()
+	{
+		var redirectUrl = Url.Action(nameof(GoogleRegisterResponse), "Account");
+		var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+		return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+	}
+
+	public async Task<IActionResult> GoogleRegisterResponse()
+	{
+		await _loginService.RegisterWithGoogle();
+
+		return RedirectToAction("Account", "Login");
+	}
+
+
+	public IActionResult Login()
 	{
 		return View();
 	}

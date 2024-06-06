@@ -4905,6 +4905,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "BookingProject.API >= 1.0.0",
+      "Microsoft.AspNetCore.Authentication.Google >= 8.0.0",
       "System.IdentityModel.Tokens.Jwt >= 7.5.1"
     ]
   },
@@ -4957,6 +4958,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[7.5.1, )"

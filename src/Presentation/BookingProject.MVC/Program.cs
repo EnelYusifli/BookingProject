@@ -6,6 +6,7 @@ using BookingProject.MVC.Services;
 using BookingProject.Persistence.Contexts;
 using BookingProject.Persistence.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,12 +23,16 @@ builder.Services.AddScoped<IRoomRepository,RoomRepository>();
 builder.Services.AddAuthentication(opt =>
 {
 	opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-	opt.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+	opt.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
 	opt.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 }).AddCookie(options =>
 {
 	options.Cookie.Name = ".AspNetCore.Identity.Application";
-	// Additional cookie options/configuration if needed
+}).AddGoogle(GoogleDefaults.AuthenticationScheme,googleOptions =>
+{
+	googleOptions.ClientId = builder.Configuration["Authentication:GoogleClientId"];
+	googleOptions.ClientSecret = builder.Configuration["Authentication:GoogleClientSecret"];
+	googleOptions.CallbackPath = "/signin-google";
 });
 
 //builder.Services.AddScoped<UserManager<AppUser>>();
