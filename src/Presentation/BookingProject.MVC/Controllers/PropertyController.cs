@@ -512,5 +512,68 @@ public class PropertyController : Controller
 		ViewBag.HotelId = hotelid;
 		return View();
 	}
+    public async Task<IActionResult> UpdateRoom(int id)
+    {
+		var response = await _httpClient.GetAsync($"{baseAddress}/rooms/getbyid/{id}");
+		if (!response.IsSuccessStatusCode)
+		{
+			return NotFound();
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<RoomUpdateViewModel>(dataStr);
+
+		return View(vm);
+	}
+    [HttpPost]
+    public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm) {
+		using (var content = new MultipartFormDataContent())
+		{
+			content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));
+			content.Add(new StringContent(vm.AdultCount.ToString()), nameof(vm.AdultCount));
+			content.Add(new StringContent(vm.ChildCount.ToString()), nameof(vm.ChildCount));
+			content.Add(new StringContent(vm.ServiceFee.ToString()), nameof(vm.ServiceFee));
+			content.Add(new StringContent(vm.PricePerNight.ToString()), nameof(vm.PricePerNight));
+			content.Add(new StringContent(vm.Area.ToString()), nameof(vm.Area));
+			content.Add(new StringContent(vm.IsCancellable.ToString()), nameof(vm.IsCancellable));
+
+			if (vm.CancelAfterDay.HasValue)
+			{
+				content.Add(new StringContent(vm.CancelAfterDay.Value.ToString()), nameof(vm.CancelAfterDay));
+			}
+			else
+			{
+				vm.CancelAfterDay = 0;
+				content.Add(new StringContent(vm.CancelAfterDay.Value.ToString()), nameof(vm.CancelAfterDay));
+			}
+			if (vm.ImageFiles != null)
+			{
+				foreach (var file in vm.ImageFiles)
+				{
+					if (file != null)
+					{
+						var fileContent = new StreamContent(file.OpenReadStream());
+						fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.ContentType);
+						content.Add(fileContent, nameof(vm.ImageFiles), file.FileName);
+						Console.WriteLine($"File: {file.FileName}, Size: {file.Length}");
+					}
+				}
+			}
+			var response = await _httpClient.PutAsync(baseAddress + $"/rooms/update/{vm.Id}", content);
+
+			if (response.IsSuccessStatusCode)
+			{
+				return RedirectToAction("HotelAdded");
+			}
+			else
+			{
+				var responseContent = await response.Content.ReadAsStringAsync();
+				Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				Console.WriteLine(responseContent);
+			}
+		}
+		return View();
+	}
+
 }
 

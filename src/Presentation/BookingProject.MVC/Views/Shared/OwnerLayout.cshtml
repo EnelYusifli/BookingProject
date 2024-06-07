@@ -524,7 +524,23 @@
 	Footer END -->
 	<!-- Back to top -->
 	<div class="back-top"></div>
+	<script>
+		$(document).ready(function () {
+			// Add change event listener to the select element
+			$("select.js-choice").change(function () {
+				var selectedValue = $(this).val();
 
+				// Check if the selected value is "true" (Free Cancellation)
+				if (selectedValue === "true") {
+					// Show the cancelAfterDayCard
+					$("#cancelAfterDayCard").show();
+				} else {
+					// Hide the cancelAfterDayCard
+					$("#cancelAfterDayCard").hide();
+				}
+			});
+		});
+	</script>
 	<!-- Bootstrap JS -->
 	<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

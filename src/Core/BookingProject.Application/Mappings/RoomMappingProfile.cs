@@ -24,6 +24,7 @@ public class RoomMappingProfile:Profile
 		   .ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.Hotel.Id))
 		   .ForMember(dest => dest.AdultCount, opt => opt.MapFrom(src => src.AdultCount))
 		   .ForMember(dest => dest.ChildCount, opt => opt.MapFrom(src => src.ChildCount))
+		   .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.RoomImages.Select(hi => new ImageDto { Id = hi.Id, Url = hi.Url })))
 		   .ForMember(dest => dest.ServiceFee, opt => opt.MapFrom(src => src.ServiceFee))
 		   .ForMember(dest => dest.PricePerNight, opt => opt.MapFrom(src => src.PricePerNight))
 		   .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area))

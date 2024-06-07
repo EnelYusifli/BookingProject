@@ -1,4 +1,5 @@
-﻿using BookingProject.Application.Features.Queries.HotelQueries;
+﻿using BookingProject.Application.Features.DTOs;
+using BookingProject.Application.Features.Queries.HotelQueries;
 using BookingProject.Domain.Entities;
 
 namespace BookingProject.Application.Features.Queries.RoomQueries;
@@ -21,5 +22,6 @@ public class RoomGetByIdResponse
 	public bool IsCancellable { get; set; }
 	public int? CancelAfterDay { get; set; }
 	public List<string> RoomImageUrls { get; set; }
+	public List<ImageDto> Images { get; set; }	
 
 }

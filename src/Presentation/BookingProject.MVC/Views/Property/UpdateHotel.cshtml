@@ -639,7 +639,7 @@ Steps START -->
 													<div class="row g-3">
 														<!-- New Images -->
 														<div class="col-12">
-															<label class="form-label">Upload new images *</label>
+															<label class="form-label">Upload new images</label>
 															<input class="form-control" id="image" accept="image/jpg, image/jpeg, image/png" multiple asp-for="NewImageFiles">
 															<span asp-validation-for="NewImageFiles" class="text-danger"></span>
 
@@ -649,7 +649,7 @@ Steps START -->
 
 														<!-- Existing Images -->
 														<div class="col-12 mt-4">
-															<h5>Existing Images</h5>
+															<label class="form-label">Existing images</label>
 															<div class="row">
 																@foreach (var image in Model.Images)
 																{

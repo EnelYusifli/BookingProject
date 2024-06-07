@@ -42,6 +42,8 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 		if (existRoom is not null && existRoom.RoomName.ToLower() != room.RoomName.ToLower())
 			throw new BadRequestException("Room name already exist");
 		SaveFileExtension.Initialize(_configuration);
+		if(request.ImageFiles is not null)
+		{
 		foreach (var image in request.ImageFiles)
 		{
 			if (image is null)
@@ -56,7 +58,9 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 			};
 			await _roomImageRepository.CreateAsync(roomImg);
 		}
-
+		}
+		if(request.DeletedImageFileIds is not null)
+		{
 		foreach (var id in request.DeletedImageFileIds)
 		{
 			RoomImage img = await _roomImageRepository.GetByIdAsync(id);
@@ -65,6 +69,7 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 
 			_roomImageRepository.Delete(img);
 			await SaveFileExtension.DeleteFileAsync(img.Url);
+		}
 		}
 		room.ModifiedDate=DateTime.Now;
 		_mapper.Map(request, room);
