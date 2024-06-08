@@ -546,6 +546,13 @@ public class PropertyController : Controller
 				vm.CancelAfterDay = 0;
 				content.Add(new StringContent(vm.CancelAfterDay.Value.ToString()), nameof(vm.CancelAfterDay));
 			}
+			if (vm.DeletedImageFileIds != null)
+			{
+				foreach (var id in vm.DeletedImageFileIds)
+				{
+					content.Add(new StringContent(id.ToString()), nameof(vm.DeletedImageFileIds));
+				}
+			}
 			if (vm.ImageFiles != null)
 			{
 				foreach (var file in vm.ImageFiles)

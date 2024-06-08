@@ -4,7 +4,7 @@
 @model RoomUpdateViewModel
 <section class="pt-0">
 	<div class="container vstack gap-4">
-<form method="post" enctype="multipart/form-data">
+		<form method="post" enctype="multipart/form-data" id="mainForm">
 	<div class="vstack gap-4">
 		<!-- Title -->
 		<h4 class="mb-0">Update Room</h4>
@@ -93,7 +93,7 @@
 											</div>
 										}
 									</div>
-
+									<input type="hidden" name="DeletedImageFileIds" asp-for="@Model.DeletedImageFileIds" id="DeletedImageIds">
 								</div>
 
 						@* 	<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span> *@
@@ -118,3 +118,51 @@
 </form>
 	</div>
 	</section>
+<script>
+	function updateDeletedImageIds() {
+		let selectedImageIds = [];
+		document.querySelectorAll('.form-check-input:checked').forEach(checkbox => {
+			selectedImageIds.push(checkbox.value);
+		});
+
+		// Set the value of the hidden input field
+		document.getElementById('DeletedImageIds').value = selectedImageIds.join(',');
+	}
+
+	// Ensure the hidden field is updated before form submission
+	document.getElementById('mainForm').addEventListener('submit', function(event) {
+		updateDeletedImageIds();
+	});
+</script>
+<style>
+	.form-check-input {
+		display: none;
+	}
+
+	.form-check-label {
+		display: inline-block;
+		padding: 5px 10px;
+		background-color: #dc3545;
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 14px;
+		text-align: center;
+		transition: background-color 0.3s;
+	}
+
+	.form-check-input:checked + .form-check-label {
+		background-color: #c82333;
+		box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	}
+
+	.form-check-label:hover {
+		background-color: #bd2130;
+	}
+
+	.form-check-input:checked + .form-check-label::after {
+		content: ' ✓';
+		font-weight: bold;
+	}
+</style>
