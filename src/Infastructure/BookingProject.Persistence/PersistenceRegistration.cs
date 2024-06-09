@@ -31,6 +31,7 @@ public static class PersistenceRegistration
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IWishlistRepository, WishlistRepository>();
         services.AddScoped<IReviewRepository, ReviewRepository>();
+        services.AddScoped<IMessageRepository, MessageRepository>();
         services.AddScoped<IReviewImageRepository, ReviewImageRepository>();
         services.AddScoped<IRoomImageRepository, RoomImageRepository>();
         services.AddScoped<IDiscountRepository, DiscountRepository>();

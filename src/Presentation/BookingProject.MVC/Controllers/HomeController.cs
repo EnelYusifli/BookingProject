@@ -335,6 +335,28 @@ public class HomeController : Controller
 	{
 		return View();
 	}
+	[HttpPost]
+	public async Task<IActionResult> SendMessage(MessageViewModel vm)
+	{
+		//AppUser user= await GetCurrentUserAsync();
+		//ViewBag.Email=user.Email;
+		//ViewBag.Name=user.FirstName;
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + "/messages/create", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Contact");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return RedirectToAction("Index");
+	}
 	public IActionResult TermsOfService()
 	{
 		return View();

@@ -40,6 +40,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
 	   );
 	}
     public DbSet<Hotel> Hotels { get; set; }    
+    public DbSet<Message> Messages { get; set; }    
     public DbSet<About> About { get; set; }    
     public DbSet<Country> Countries { get; set; }    
     public DbSet<Discount> Discounts { get; set; }    
