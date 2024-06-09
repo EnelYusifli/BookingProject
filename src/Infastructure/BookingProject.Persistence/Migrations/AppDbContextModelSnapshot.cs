@@ -887,6 +887,32 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("StaffLanguages");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.TermsOfService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TermsOfService");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.Type", b =>
                 {
                     b.Property<int>("Id")

@@ -24,7 +24,10 @@ public class AppDbContext : IdentityDbContext<AppUser>
         modelBuilder.Entity<Room>()
         .Property(h => h.PricePerNight)
         .HasColumnType("decimal(18,1)");
-        modelBuilder.Entity<Room>()
+		modelBuilder.Entity<Room>()
+	   .Property(h => h.DiscountedPricePerNight)
+	   .HasColumnType("decimal(18,1)");
+		modelBuilder.Entity<Room>()
         .Property(h => h.Area)
         .HasColumnType("decimal(18,1)");
         modelBuilder.Entity<Room>()
@@ -38,10 +41,19 @@ public class AppDbContext : IdentityDbContext<AppUser>
 			   Story = "Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize."
 		   }
 	   );
+		modelBuilder.Entity<TermsOfService>().HasData(
+		   new TermsOfService
+		   {
+			   Id = 2,
+			   Title = "Role of Booking and Limitation of Liability of Booking",
+               Text="Text"
+		   }
+	   );
 	}
     public DbSet<Hotel> Hotels { get; set; }    
     public DbSet<Message> Messages { get; set; }    
     public DbSet<About> About { get; set; }    
+    public DbSet<TermsOfService> TermsOfService { get; set; }    
     public DbSet<Country> Countries { get; set; }    
     public DbSet<Discount> Discounts { get; set; }    
     public DbSet<Offer> Offers { get; set; }    

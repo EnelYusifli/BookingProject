@@ -26,6 +26,7 @@ public static class PersistenceRegistration
 		services.AddScoped<IActivityRepository, ActivityRepository>();
 		services.AddScoped<IAboutRepository, AboutRepository>();
         services.AddScoped<ICountryRepository, CountryRepository>();
+        services.AddScoped<ITermsOfServiceRepository, TermsOfServiceRepository>();
         services.AddScoped<ICardRepository, CardRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
         services.AddScoped<IUserRepository, UserRepository>();

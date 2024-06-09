@@ -7,6 +7,7 @@ using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Country;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.PaymentMethod;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Service;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.StaffLanguage;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.TermsOfService;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Type;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
@@ -739,6 +740,41 @@ public class AdminController : Controller
 		var dataStr = JsonConvert.SerializeObject(vm);
 		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
 		var response = await _httpClient.PutAsync($"{baseAddress}/about/update", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return View(vm);
+	}
+
+	[HttpGet]
+	public async Task<IActionResult> UpdateTermsOfService()
+	{
+		var response = await _httpClient.GetAsync($"{baseAddress}/termsofservice/getbyid");
+		if (!response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index", "Home");
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<UpdateTermsOfServiceViewModel>(dataStr);
+
+		return View(vm);
+	}
+	[HttpPost]
+	public async Task<IActionResult> UpdateTermsOfService(UpdateTermsOfServiceViewModel vm)
+	{
+		if (!ModelState.IsValid) return View(vm);
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PutAsync($"{baseAddress}/termsofservice/update", stringContent);
 
 		if (response.IsSuccessStatusCode)
 		{

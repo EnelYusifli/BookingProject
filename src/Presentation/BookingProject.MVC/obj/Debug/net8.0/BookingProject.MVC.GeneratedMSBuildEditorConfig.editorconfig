@@ -150,6 +150,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlU3RhZmZMYW5ndWFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateTermsOfService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlVGVybXNPZlNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Admin/UpdateType.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlVHlwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

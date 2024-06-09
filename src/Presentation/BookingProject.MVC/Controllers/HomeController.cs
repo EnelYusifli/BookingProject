@@ -1,6 +1,7 @@
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.TermsOfService;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
@@ -313,6 +314,19 @@ public class HomeController : Controller
 
         return View(vm);
     }
+	public async Task<IActionResult> TermsOfService()
+	{
+		var response = await _httpClient.GetAsync($"{baseAddress}/termsofservice/getbyid");
+		if (!response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index", "Home");
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<UpdateTermsOfServiceViewModel>(dataStr);
+
+		return View(vm);
+	}
 	private async Task<List<AppUser>> GetUsersInRoleAsync(string roleName)
 	{
 		var role = await _roleManager.FindByNameAsync(roleName);
@@ -356,10 +370,6 @@ public class HomeController : Controller
 			Console.WriteLine(responseContent);
 		}
 		return RedirectToAction("Index");
-	}
-	public IActionResult TermsOfService()
-	{
-		return View();
 	}
 	public IActionResult PrivacyPolicy()
 	{
