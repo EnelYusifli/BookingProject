@@ -20,13 +20,15 @@ public class HomeController : Controller
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	private readonly HttpClient _httpClient;
     private readonly UserManager<AppUser> _userManager;
-    private readonly IHttpContextAccessor _httpContextAccessor;
+	private readonly RoleManager<IdentityRole> _roleManager;
+	private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public HomeController(HttpClient httpClient, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
+    public HomeController(HttpClient httpClient, UserManager<AppUser> userManager,RoleManager<IdentityRole> roleManager, IHttpContextAccessor httpContextAccessor)
     {
         _httpClient = httpClient;
         _userManager = userManager;
-        _httpContextAccessor = httpContextAccessor;
+		_roleManager = roleManager;
+		_httpContextAccessor = httpContextAccessor;
         _httpClient.BaseAddress = baseAddress;
     }
     private async Task<AppUser> GetCurrentUserAsync()
@@ -297,5 +299,45 @@ public class HomeController : Controller
 		}
 		return RedirectToAction("Index");
 	}
+	public async Task<IActionResult> About()
+	{
+		ViewBag.CustomerCount = _userManager.Users.Count();
+		var usersWithOwnerRole = await GetUsersInRoleAsync("Owner");
+		ViewBag.OwnerCount = usersWithOwnerRole.Count();
+		return View();
+	}
+	private async Task<List<AppUser>> GetUsersInRoleAsync(string roleName)
+	{
+		var role = await _roleManager.FindByNameAsync(roleName);
+		if (role == null)
+		{
+			return new List<AppUser>();
+		}
 
+		var userIds = await _userManager.GetUsersInRoleAsync(roleName);
+		var users = new List<AppUser>();
+
+		foreach (var user in userIds)
+		{
+			users.Add(await _userManager.FindByIdAsync(user.Id));
+		}
+
+		return users;
+	}
+	public IActionResult Contact()
+	{
+		return View();
+	}
+	public IActionResult TermsOfService()
+	{
+		return View();
+	}
+	public IActionResult PrivacyPolicy()
+	{
+		return View();
+	}
+	public IActionResult FAQs()
+	{
+		return View();
+	}
 }

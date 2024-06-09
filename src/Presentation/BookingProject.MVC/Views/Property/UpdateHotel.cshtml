@@ -658,7 +658,7 @@ Steps START -->
 																	<div class="col-md-3 mb-3">
 																		<div class="card">
 																			<img src="@image.Url" class="card-img-top" alt="Image @image.Id">
-																			<div class="card-body">
+																				<div class="card-body" id="checkinput">
 																				<div class="form-check">
 																					<input class="form-check-input" type="checkbox" id="deleteImage_@image.Id" value="@image.Id">
 																					<label class="form-check-label" for="deleteImage_@image.Id">Delete</label>
@@ -898,7 +898,7 @@ Steps START -->
 									<div class="hstack gap-2 flex-wrap justify-content-between">
 										<button type="button" class="btn btn-secondary prev-btn mb-0">Previous</button>
 												<div class="text-end">
-													<button type="submit" class="btn btn-success">Update Property</button>
+													<button type="submit" class="btn btn-success" onsubmit="updateDeletedImageIds()" onclick="updateDeletedImageIds()">Update Property</button>
 												</div>
 									</div>
 								</div>	
@@ -981,6 +981,7 @@ Footer END -->
 	<script>
 		function updateDeletedImageIds() {
 			let selectedImageIds = [];
+			// Select all checkboxes with the class 'form-check-input'
 			document.querySelectorAll('.form-check-input:checked').forEach(checkbox => {
 				selectedImageIds.push(checkbox.value);
 			});
@@ -989,11 +990,29 @@ Footer END -->
 			document.getElementById('DeletedImageIds').value = selectedImageIds.join(',');
 		}
 
-		// Ensure the hidden field is updated before form submission
-		document.getElementById('mainForm').addEventListener('submit', function (event) {
-			updateDeletedImageIds();
+		// Ensure the hidden field is updated whenever a checkbox is clicked
+		document.querySelectorAll('.form-check-input').forEach(checkbox => {
+			checkbox.addEventListener('change', updateDeletedImageIds);
 		});
 	</script>
+
+	@* <script>
+		let index = 0;
+
+		function updateDeletedImageIds() {
+			document.querySelectorAll('.form-check-input:checked').forEach(checkbox => {
+				let hiddenInput = document.createElement('input');
+				hiddenInput.type = 'hidden';
+				hiddenInput.setAttribute('asp-for', 'DeletedImageFileIds[' + index + ']');
+				hiddenInput.value = checkbox.value;
+				document.getElementById('checkinput').appendChild(hiddenInput);
+				index++;
+			});
+		}
+	</script> *@
+
+
+
 
 
 	
