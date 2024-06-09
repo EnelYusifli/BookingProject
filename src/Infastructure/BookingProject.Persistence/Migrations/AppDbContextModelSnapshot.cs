@@ -37,6 +37,41 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("AppUserOffer");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.About", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Story")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("StoryTitle")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("About");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDeactive = false,
+                            Story = "Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize.",
+                            StoryTitle = "Founded in 2006, passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous understood Middletons in conviction an uncommonly do. Supposing so be resolving breakfast am or perfectly. It drew a hill from me. Valley by oh twenty direct me so."
+                        });
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.Activity", b =>
                 {
                     b.Property<int>("Id")

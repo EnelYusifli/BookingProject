@@ -1,6 +1,7 @@
 ﻿using BookingProject.MVC.Models;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Activity;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Country;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.PaymentMethod;
@@ -717,4 +718,38 @@ public class AdminController : Controller
         }
         return RedirectToAction("Index", "Home");
     }
+	[HttpGet]
+	public async Task<IActionResult> UpdateAbout()
+	{
+		var response = await _httpClient.GetAsync($"{baseAddress}/about/getbyid");
+		if (!response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index","Home");
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<UpdateAboutViewModel>(dataStr);
+
+		return View(vm);
+	}
+	[HttpPost]
+	public async Task<IActionResult> UpdateAbout(UpdateAboutViewModel vm)
+	{
+		if (!ModelState.IsValid) return View(vm);
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PutAsync($"{baseAddress}/about/update", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Index");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return View(vm);
+	}
 }

@@ -30,8 +30,17 @@ public class AppDbContext : IdentityDbContext<AppUser>
         modelBuilder.Entity<Room>()
         .Property(h => h.ServiceFee)
         .HasColumnType("decimal(18,1)");
-    }
+		modelBuilder.Entity<About>().HasData(
+		   new About
+		   {
+			   Id = 1,
+			   StoryTitle = "Founded in 2006, passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous understood Middletons in conviction an uncommonly do. Supposing so be resolving breakfast am or perfectly. It drew a hill from me. Valley by oh twenty direct me so.",
+			   Story = "Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize."
+		   }
+	   );
+	}
     public DbSet<Hotel> Hotels { get; set; }    
+    public DbSet<About> About { get; set; }    
     public DbSet<Country> Countries { get; set; }    
     public DbSet<Discount> Discounts { get; set; }    
     public DbSet<Offer> Offers { get; set; }    

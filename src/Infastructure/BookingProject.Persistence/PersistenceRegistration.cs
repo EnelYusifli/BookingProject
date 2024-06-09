@@ -24,6 +24,7 @@ public static class PersistenceRegistration
     {
 		services.AddHttpContextAccessor();
 		services.AddScoped<IActivityRepository, ActivityRepository>();
+		services.AddScoped<IAboutRepository, AboutRepository>();
         services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddScoped<ICardRepository, CardRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();

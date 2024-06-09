@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model UpdateAboutViewModel
+
+<!-- Page main content START -->
+<div class="page-content-wrapper p-xxl-4">
+    <!-- Title -->
+    <div class="row">
+        <div class="col-12 mb-4 mb-sm-5">
+            <div class="d-sm-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-3 mb-sm-0">Update About</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form START -->
+    <div class="card shadow mt-5">
+        <!-- Card body START -->
+        <div class="card-body">
+            <form asp-action="UpdateAbout" method="post">
+                <div class="mb-3">
+                    <label asp-for="StoryTitle" class="form-label">Story Title</label>
+                    <input asp-for="StoryTitle" class="form-control" />
+                    <span asp-validation-for="StoryTitle" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Story" class="form-label">Story Title</label>
+                    <input asp-for="Story" class="form-control" />
+                    <span asp-validation-for="Story" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Update About</button>
+            </form>
+        </div>
+        <!-- Card body END -->
+    </div>
+    <!-- Form END -->
+</div>
+<!-- Page main content END -->

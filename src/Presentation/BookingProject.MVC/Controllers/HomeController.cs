@@ -1,8 +1,6 @@
-using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
-using BookingProject.MVC.Services;
-using BookingProject.MVC.ViewModels.AccountViewModels;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
@@ -304,8 +302,17 @@ public class HomeController : Controller
 		ViewBag.CustomerCount = _userManager.Users.Count();
 		var usersWithOwnerRole = await GetUsersInRoleAsync("Owner");
 		ViewBag.OwnerCount = usersWithOwnerRole.Count();
-		return View();
-	}
+        var response = await _httpClient.GetAsync($"{baseAddress}/about/getbyid");
+        if (!response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        var dataStr = await response.Content.ReadAsStringAsync();
+        var vm = JsonConvert.DeserializeObject<UpdateAboutViewModel>(dataStr);
+
+        return View(vm);
+    }
 	private async Task<List<AppUser>> GetUsersInRoleAsync(string roleName)
 	{
 		var role = await _roleManager.FindByNameAsync(roleName);
