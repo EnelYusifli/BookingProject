@@ -5,6 +5,7 @@ using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Activity;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Country;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.FAQ;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Message;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.PaymentMethod;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Service;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.StaffLanguage;
@@ -846,17 +847,8 @@ public class AdminController : Controller
 		return View(vm);
 	}
 
-	public async Task<IActionResult> DeleteFAQ(int id)
-	{
-		if (!ModelState.IsValid) return RedirectToAction("FAQs");
-		var response = await _httpClient.DeleteAsync(baseAddress + $"/faqs/delete/{id}");
+	
 
-		if (response.IsSuccessStatusCode)
-		{
-			return RedirectToAction("faqs");
-		}
-		return View();
-	}
 	public async Task<IActionResult> FAQs(int itemPerPage = 5, int page = 1)
 	{
 		var response = await _httpClient.GetAsync(baseAddress + "/faqs/getall");
@@ -868,6 +860,72 @@ public class AdminController : Controller
 			var paginatedDatas = PaginatedList<FAQGetViewModel>.Create(queryableItems, itemPerPage, page);
 
 			return View(paginatedDatas);
+		}
+		return View();
+	}
+
+    //[HttpGet]
+    //public async Task<IActionResult> ReplyMessage(int id)
+    //{
+    //    var response = await _httpClient.GetAsync($"{baseAddress}/messages/getbyid/{id}");
+    //    if (!response.IsSuccessStatusCode)
+    //    {
+    //        return RedirectToAction("index");
+    //    }
+
+    //    var dataStr = await response.Content.ReadAsStringAsync();
+    //    var vm = JsonConvert.DeserializeObject<MessageGetAllViewModel>(dataStr);
+
+    //    return View(vm);
+    //}
+
+    [HttpPost]
+    public async Task<IActionResult> ReplyMessage(int id, MessageReplyViewModel vm)
+    {
+        vm.Id = id;
+        //if (!ModelState.IsValid) return View(vm);
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync($"{baseAddress}/messages/reply/{id}", stringContent);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("messages");
+        }
+        else
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            Console.WriteLine(responseContent);
+        }
+        return RedirectToAction("Index");
+    }
+    public async Task<IActionResult> Messages(int itemPerPage = 5, int page = 1)
+    {
+        var response = await _httpClient.GetAsync(baseAddress + "/messages/getall");
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = await response.Content.ReadAsStringAsync();
+            var act = JsonConvert.DeserializeObject<List<MessageGetAllViewModel>>(responseData);
+            var queryableItems = act.AsQueryable();
+            var paginatedDatas = PaginatedList<MessageGetAllViewModel>.Create(queryableItems, itemPerPage, page);
+			MessagePageViewModel vm = new()
+			{
+				List = paginatedDatas,
+				Reply = new MessageReplyViewModel()
+			};
+            return View(vm);
+        }
+        return View();
+    }
+	public async Task<IActionResult> DeleteMessage(int id)
+	{
+		if (!ModelState.IsValid) return RedirectToAction("Messages");
+		var response = await _httpClient.DeleteAsync(baseAddress + $"/messages/delete/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("messages");
 		}
 		return View();
 	}
