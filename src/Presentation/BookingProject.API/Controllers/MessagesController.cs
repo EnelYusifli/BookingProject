@@ -1,5 +1,6 @@
 ﻿using BookingProject.Application.Features.Commands.ActivityCommands.ActivityCreateCommands;
 using BookingProject.Application.Features.Commands.MessageCommands.MessageCreateCommands;
+using BookingProject.Application.Features.Commands.MessageCommands.MessageReplyCommands;
 using BookingProject.Application.Features.Queries.CountryQueries;
 using BookingProject.Application.Features.Queries.MessageQueries;
 using MediatR;
@@ -20,6 +21,12 @@ public class MessagesController : ControllerBase
 	[HttpPost]
 	public async Task<IActionResult> Create(MessageCreateCommandRequest request)
 	{
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpGet("{id}")]
+	public async Task<IActionResult> Reply(MessageReplyCommandRequest request,int id)
+	{
+		request.Id = id;
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpGet]

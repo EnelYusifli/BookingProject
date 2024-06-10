@@ -52,9 +52,9 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommandRequest
 		if (request.ProfilePhoto is not null)
 		{
 			SaveFileExtension.Initialize(_configuration);
-			string url = await SaveFileExtension.SaveFile(request.ProfilePhoto, "userpps");
-			if(user.ProfilePhotoUrl is not null)
-			    await SaveFileExtension.DeleteFileAsync(user.ProfilePhotoUrl);
+			string url = await SaveFileExtension.SaveFile(request.ProfilePhoto, "/userpps");
+			if (user.ProfilePhotoUrl is not null)
+				await SaveFileExtension.DeleteFileAsync(user.ProfilePhotoUrl);
 			user.ProfilePhotoUrl = url;
 		}
 		user = _mapper.Map(request, user);

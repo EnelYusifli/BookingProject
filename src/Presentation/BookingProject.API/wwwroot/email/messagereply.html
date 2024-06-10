@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Reply</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .message-section, .reply-section {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .message-header, .reply-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .message-text, .reply-text {
+            font-size: 16px;
+            color: #333;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            color: #999;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://cf.bstatic.com/mobile/images/gta/booking-app-logo-128/8c0a29a0f8657ad4d395e725225770a6d2b7904c.png" alt="Booking.com">
+        </div>
+        <div class="content">
+            <h2>Reply to Your Message</h2>
+            <p>Hello,</p>
+            <p>Thank you for reaching out to us. Below is our reply to your message:</p>
+            <div class="message-section">
+                <div class="message-header">Your Message:</div>
+                <div class="message-text">
+                    {{message}}
+                </div>
+            </div>
+            <div class="reply-section">
+                <div class="reply-header">Our Reply:</div>
+                <div class="reply-text">
+                    {{reply}}
+                </div>
+            </div>
+            <p>If you have any further questions or need additional assistance, please don't hesitate to contact us.</p>
+            <p class="footer">Best regards,<br>Booking.com</p>
+        </div>
+    </div>
+</body>
+</html>

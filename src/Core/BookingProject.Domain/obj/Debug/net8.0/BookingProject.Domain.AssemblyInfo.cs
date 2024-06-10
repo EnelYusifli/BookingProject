@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookingProject.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d207a4f887088bcca47733bac89792277c4bdf0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65d5c557360f9b2a4647088f3ddde6ecffb5f127")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookingProject.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookingProject.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

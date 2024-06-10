@@ -579,7 +579,7 @@ public class PropertyController : Controller
 				Console.WriteLine(responseContent);
 			}
 		}
-		return View();
+		return RedirectToAction();
 	}
 
 }
