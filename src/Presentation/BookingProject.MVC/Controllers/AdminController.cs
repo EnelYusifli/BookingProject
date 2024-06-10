@@ -4,6 +4,7 @@ using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Activity;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Country;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.FAQ;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.PaymentMethod;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Service;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.StaffLanguage;
@@ -787,5 +788,87 @@ public class AdminController : Controller
 			Console.WriteLine(responseContent);
 		}
 		return View(vm);
+	}
+
+	public async Task<IActionResult> CreateFAQ()
+	{
+		return View();
+	}
+	[HttpPost]
+	public async Task<IActionResult> CreateFAQ(CreateFAQViewModel vm)
+	{
+		if (!ModelState.IsValid) return View();
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + "/faqs/create", stringContent);
+
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("faqs");
+		}
+		return View();
+	}
+	[HttpGet]
+	public async Task<IActionResult> UpdateFAQ(int id)
+	{
+		var response = await _httpClient.GetAsync($"{baseAddress}/faqs/getbyid/{id}");
+		if (!response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("index");
+		}
+
+		var dataStr = await response.Content.ReadAsStringAsync();
+		var vm = JsonConvert.DeserializeObject<UpdateFAQViewModel>(dataStr);
+
+		return View(vm);
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> UpdateFAQ(int id, UpdateFAQViewModel vm)
+	{
+		if (!ModelState.IsValid) return View(vm);
+		vm.Id = id;
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PutAsync($"{baseAddress}/faqs/update/{id}", stringContent);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("faqs");
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return View(vm);
+	}
+
+	public async Task<IActionResult> DeleteFAQ(int id)
+	{
+		if (!ModelState.IsValid) return RedirectToAction("FAQs");
+		var response = await _httpClient.DeleteAsync(baseAddress + $"/faqs/delete/{id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("faqs");
+		}
+		return View();
+	}
+	public async Task<IActionResult> FAQs(int itemPerPage = 5, int page = 1)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + "/faqs/getall");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var act = JsonConvert.DeserializeObject<List<FAQGetViewModel>>(responseData);
+			var queryableItems = act.AsQueryable();
+			var paginatedDatas = PaginatedList<FAQGetViewModel>.Create(queryableItems, itemPerPage, page);
+
+			return View(paginatedDatas);
+		}
+		return View();
 	}
 }

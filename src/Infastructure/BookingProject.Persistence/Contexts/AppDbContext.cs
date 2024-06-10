@@ -41,16 +41,17 @@ public class AppDbContext : IdentityDbContext<AppUser>
 			   Story = "Water timed folly right aware if oh truth. Imprudence attachment him his for sympathize."
 		   }
 	   );
-		modelBuilder.Entity<TermsOfService>().HasData(
-		   new TermsOfService
-		   {
-			   Id = 2,
-			   Title = "Role of Booking and Limitation of Liability of Booking",
-               Text="Text"
-		   }
-	   );
+		//modelBuilder.Entity<TermsOfService>().HasData(
+		//   new TermsOfService
+		//   {
+		//	   Id = 2,
+		//	   Title = "Role of Booking and Limitation of Liability of Booking",
+  //             Text="Text"
+		//   }
+	 //  );
 	}
     public DbSet<Hotel> Hotels { get; set; }    
+    public DbSet<FAQ> FAQs { get; set; }    
     public DbSet<Message> Messages { get; set; }    
     public DbSet<About> About { get; set; }    
     public DbSet<TermsOfService> TermsOfService { get; set; }    

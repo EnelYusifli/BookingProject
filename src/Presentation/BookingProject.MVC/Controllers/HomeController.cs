@@ -1,6 +1,7 @@
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
+using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.FAQ;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.TermsOfService;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
@@ -375,8 +376,17 @@ public class HomeController : Controller
 	{
 		return View();
 	}
-	public IActionResult FAQs()
+	public async Task<IActionResult> FAQs()
 	{
-		return View();
-	}
+        var response = await _httpClient.GetAsync($"{baseAddress}/faqs/getall");
+        if (!response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        var dataStr = await response.Content.ReadAsStringAsync();
+        var vm = JsonConvert.DeserializeObject<List<FAQGetViewModel>>(dataStr);
+
+        return View(vm);
+    }
 }

@@ -303,6 +303,32 @@ namespace BookingProject.Persistence.Migrations
                     b.ToTable("Discounts");
                 });
 
+            modelBuilder.Entity("BookingProject.Domain.Entities.FAQ", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FAQs");
+                });
+
             modelBuilder.Entity("BookingProject.Domain.Entities.Hotel", b =>
                 {
                     b.Property<int>("Id")
@@ -767,7 +793,7 @@ namespace BookingProject.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("DiscountedPricePerNight")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,1)");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");

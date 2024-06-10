@@ -28,6 +28,7 @@ public static class PersistenceRegistration
         services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddScoped<ITermsOfServiceRepository, TermsOfServiceRepository>();
         services.AddScoped<ICardRepository, CardRepository>();
+        services.AddScoped<IFAQsRepository, FAQsRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IWishlistRepository, WishlistRepository>();
