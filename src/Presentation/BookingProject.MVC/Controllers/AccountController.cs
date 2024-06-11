@@ -77,6 +77,33 @@ public class AccountController : Controller
 	{
 		return View();
 	}
+	[Authorize(Roles = "Customer,Owner")]
+	public async Task<IActionResult> DeleteUser()
+	{
+		var user = await GetCurrentUserAsync();
+
+		if (user == null)
+		{
+			return RedirectToAction("Index", "Home");
+		}
+
+		var result = await _userManager.DeleteAsync(user);
+
+		if (result.Succeeded)
+		{
+			await Logout();
+
+			return RedirectToAction("Index", "Home");
+		}
+		else
+		{
+			foreach (var error in result.Errors)
+			{
+				ModelState.AddModelError("", error.Description);
+			}
+			return RedirectToAction("profile");
+		}
+	}
 	[HttpPost]
     public async Task<IActionResult> Login(LoginViewModel vm)
     {
@@ -144,7 +171,16 @@ public class AccountController : Controller
         //}
 
     }
-    public IActionResult Register()
+	public async Task<IActionResult> Logout()
+	{
+		await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+		Response.Cookies.Delete("token");
+		Response.Cookies.Delete("refreshToken");
+
+		return RedirectToAction("Index", "Home");
+	}
+	public IActionResult Register()
 	{
 		return View();
 	}

@@ -34,8 +34,17 @@ public class OwnerController : Controller
         }
         return null;
     }
-    public IActionResult Dashboard()
+    public async Task<IActionResult> Dashboard()
 	{
+		AppUser user = await GetCurrentUserAsync();
+		var response = await _httpClient.GetAsync(baseAddress + $"/reservations/getallbyowner/{user.Id}");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
+			dtos = dtos.Where(x => x.StartTime > DateTime.Now).ToList();
+			return View(dtos);
+		}
 		return View();
 	}
 	public async Task<IActionResult> Listings()
