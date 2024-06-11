@@ -3,36 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\admin\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\admin\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\admin\\replymessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\admin\\replymessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\admin\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\admin\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\messagecommands\\messagedeletecommands\\messagedeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\messagecommands\\messagedeletecommands\\messagedeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\crudviewmodels\\message\\messagereplyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\crudviewmodels\\message\\messagereplyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\messagepageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\messagepageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\crudviewmodels\\message\\messagegetallviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\crudviewmodels\\message\\messagegetallviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\crudviewmodels\\message\\messagereplyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\viewmodels\\adminviewmodels\\crudviewmodels\\message\\messagereplyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
@@ -52,10 +44,11 @@
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Controllers\\AdminController.cs",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Controllers\\AdminController.cs",
-              "ViewState": "AQIAAG8DAAAAAAAAAAAAAIQDAAAmAAAA",
+              "ViewState": "AQIAAGYDAAAAAAAAAAAgwHEDAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-10T20:30:14.771Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -83,25 +76,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Profile.cshtml",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Account\\Profile.cshtml",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Account\\Profile.cshtml",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Account\\Profile.cshtml",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Account\\Profile.cshtml",
-              "ViewState": "AQIAAGEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "ReplyMessage.cshtml",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\ReplyMessage.cshtml",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\ReplyMessage.cshtml",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\ReplyMessage.cshtml",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\ReplyMessage.cshtml",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAACYAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T21:33:09.242Z"
+              "WhenOpened": "2024-06-11T08:51:42.369Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Messages.cshtml",
               "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\Messages.cshtml",
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\Messages.cshtml",
               "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Admin\\Messages.cshtml",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Admin\\Messages.cshtml",
-              "ViewState": "AQIAADIAAAAAAAAAAAAAADYAAAAiAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAAB8AAAByAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-06-10T21:18:13.453Z",
               "EditorCaption": ""
@@ -114,49 +108,27 @@
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\MessagePageViewModel.cs",
               "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\MessagePageViewModel.cs",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\MessagePageViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAuAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T21:08:49.948Z"
+              "WhenOpened": "2024-06-10T21:08:49.948Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MessageDeleteCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageDeleteCommands\\MessageDeleteCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageDeleteCommands\\MessageDeleteCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageDeleteCommands\\MessageDeleteCommandHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageDeleteCommands\\MessageDeleteCommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T20:56:12.401Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "MessageReplyViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageReplyViewModel.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageReplyViewModel.cs",
               "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageReplyViewModel.cs",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageReplyViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAlAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T20:28:13.119Z"
+              "WhenOpened": "2024-06-10T20:28:13.119Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "MessageGetAllViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageGetAllViewModel.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageGetAllViewModel.cs",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageGetAllViewModel.cs",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\ViewModels\\AdminViewModels\\CRUDViewModels\\Message\\MessageGetAllViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T20:27:52.536Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "AdminLayout.cshtml",
               "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Shared\\AdminLayout.cshtml",
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Shared\\AdminLayout.cshtml",

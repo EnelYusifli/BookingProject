@@ -878,6 +878,12 @@ public class AdminController : Controller
 
     //    return View(vm);
     //}
+    public IActionResult ReplyMessage(int id,string text)
+	{
+		ViewBag.Id = id;
+		ViewBag.Text = text;
+		return View();
+	}
 
     [HttpPost]
     public async Task<IActionResult> ReplyMessage(int id, MessageReplyViewModel vm)
@@ -901,7 +907,8 @@ public class AdminController : Controller
         return RedirectToAction("Index");
     }
     public async Task<IActionResult> Messages(int itemPerPage = 5, int page = 1)
-    {
+    
+	{
         var response = await _httpClient.GetAsync(baseAddress + "/messages/getall");
         if (response.IsSuccessStatusCode)
         {

@@ -1,0 +1,72 @@
+﻿@model MessageReplyViewModel
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int id = ViewBag.Id;
+    string text = ViewBag.Text;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <!-- Original Message -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="message-bubble received mb-3">
+                        <p class="mb-0">@text</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reply Form -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-4">Reply to Message</h4>
+                    <form asp-action="ReplyMessage" method="post">
+                        <input type="hidden" asp-for="@Model.Id" value="@id" />
+                        <div class="form-group">
+                            <textarea class="form-control message-input" id="replyContent" asp-for="@Model.Reply" rows="4" placeholder="Type your reply here..."></textarea>
+                        </div>
+                        </hr>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane mr-2"></i> Send
+                            </button>
+                            <a href="@Url.Action("Messages", "Admin")" class="btn btn-secondary btn-lg ml-2">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .message-bubble {
+        background-color: #f0f0f0;
+        border-radius: 15px;
+        padding: 15px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+
+    .received {
+        background-color: #e9f7fe;
+    }
+
+    .message-input {
+        resize: none;
+        border-radius: 15px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        font-size: 1rem; /* Adjust button font size */
+    }
+
+    .btn-secondary {
+        font-size: 1rem; /* Adjust button font size */
+    }
+</style>
