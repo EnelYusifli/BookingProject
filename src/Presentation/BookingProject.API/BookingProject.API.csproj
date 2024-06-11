@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\email\cancelledreservation.html" />
     <_ContentIncludedByDefault Remove="wwwroot\email\paidreservation.html" />
   </ItemGroup>
 

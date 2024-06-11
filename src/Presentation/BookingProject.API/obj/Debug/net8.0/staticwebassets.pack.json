@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\cancelledreservation.html",
+      "PackagePath": "staticwebassets\\email\\cancelledreservation.html"
+    },
+    {
       "Id": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
       "PackagePath": "staticwebassets\\email\\forgotpassword.html"
     },

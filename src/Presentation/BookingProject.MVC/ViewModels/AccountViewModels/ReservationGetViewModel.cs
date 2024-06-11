@@ -3,6 +3,7 @@
 public class ReservationGetViewModel
 {
 	public int RoomId { get; set; }
+	public int Id { get; set; }
 	public int HotelId { get; set; }
 	public string RoomName { get; set; }
 	public string HotelName { get; set; }

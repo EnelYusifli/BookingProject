@@ -58,62 +58,61 @@
 										}
 										else
 										{
-						
-										<h6>Upcoming reservations (@Model.UpcomingReservations.Count())</h6>
-															@foreach (var item in Model.UpcomingReservations)
-															{
-						
-															<!-- Card item START -->
-											<div class="card border mb-4">
-												<!-- Card header -->
-												<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-													<!-- Icon and Title -->
-													<div class="d-flex align-items-center">
-														<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
-														<!-- Title -->
-														<div class="ms-2">
-															<h6 class="card-title mb-0">Hotel</h6>
-														</div>
-													</div>
 
-													<!-- Hotel, Room and Paid Status -->
-													<div class="ms-3">
-														<ul class="nav nav-divider small">
-															<li class="nav-item">Hotel: @item.HotelName</li>
-															<li class="nav-item">Room: @item.RoomName</li>
-														</ul>
-													</div>
+						<h6>Upcoming reservations (@Model.UpcomingReservations.Count())</h6>
+						@foreach (var item in Model.UpcomingReservations)
+						{
+							<!-- Card item START -->
+							<div class="card border mb-4">
+								<!-- Card header -->
+								<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+									<!-- Icon and Title -->
+									<div class="d-flex align-items-center">
+										<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
+										<!-- Title -->
+										<div class="ms-2">
+											<h6 class="card-title mb-0">Hotel</h6>
+										</div>
+									</div>
 
-													<!-- Buttons -->
-													<div class="mt-2 mt-md-0">
-														<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
-														<a asp-action="cancelreservation" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
-													</div>
-												</div>
+									<!-- Hotel, Room and Paid Status -->
+									<div class="ms-3">
+										<ul class="nav nav-divider small">
+											<li class="nav-item">Hotel: @item.HotelName</li>
+											<li class="nav-item">Room: @item.RoomName</li>
+										</ul>
+									</div>
 
-												<!-- Card body -->
-												<div class="card-body">
-													<div class="row g-3">
-														<div class="col-sm-6 col-md-4">
-															<span>Check-in date</span>
-															<h6 class="mb-0">@item.StartTime.ToString("dd/MM/yyyy")</h6>
-														</div>
+									<!-- Buttons -->
+									<div class="mt-2 mt-md-0">
+										<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
+										<a asp-action="cancelreservation" asp-controller="account" asp-route-reservationid="@item.Id" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
+									</div>
+								</div>
 
-														<div class="col-sm-6 col-md-4">
-															<span>Check-out date</span>
-															<h6 class="mb-0">@item.EndTime.ToString("dd/MM/yyyy")</h6>
-														</div>
+								<!-- Card body -->
+								<div class="card-body">
+									<div class="row g-3">
+										<div class="col-sm-6 col-md-4">
+											<span>Check-in date</span>
+											<h6 class="mb-0">@item.StartTime.ToString("dd/MM/yyyy")</h6>
+										</div>
 
-														<div class="col-md-4">
-															<span>Paid status</span>
-															<h6 class="mb-0">@item.IsPaid</h6>
-														</div>
-													</div>
-												</div>
-											</div>
+										<div class="col-sm-6 col-md-4">
+											<span>Check-out date</span>
+											<h6 class="mb-0">@item.EndTime.ToString("dd/MM/yyyy")</h6>
+										</div>
 
-															<!-- Card item END -->
-															}
+										<div class="col-md-4">
+											<span>Paid status</span>
+											<h6 class="mb-0">@item.IsPaid</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Card item END -->
+						}
+
 										}
 					
 									</div>
@@ -169,7 +168,6 @@
 																		<!-- Buttons -->
 																		<div class="mt-2 mt-md-0">
 																			<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
-																			<a asp-action="cancelreservation" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
 																		</div>
 																	</div>
 

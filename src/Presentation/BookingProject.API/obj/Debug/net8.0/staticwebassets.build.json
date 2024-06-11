@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7O5aaMamE04OQI0yZsE1+inz+rLyGnAezvUKbknBULg=",
+  "Hash": "VaoxoCj5SfddZO5M/g+Q3OrQQW3JA7DMNTU08ozxruQ=",
   "Source": "BookingProject.API",
   "BasePath": "_content/BookingProject.API",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\cancelledreservation.html",
+      "SourceId": "BookingProject.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "BasePath": "_content/BookingProject.API",
+      "RelativePath": "email/cancelledreservation.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\email\\cancelledreservation.html"
+    },
     {
       "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
       "SourceId": "BookingProject.API",

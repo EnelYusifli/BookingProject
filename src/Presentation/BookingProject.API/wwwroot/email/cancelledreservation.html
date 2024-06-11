@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelled Reservation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #dc3545; /* Red color for cancellation */
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .booking-info {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #dc3545; /* Red color for cancellation */
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #c82333; /* Darker red on hover */
+            }
+
+        .footer {
+            color: #999;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://cf.bstatic.com/mobile/images/gta/booking-app-logo-128/8c0a29a0f8657ad4d395e725225770a6d2b7904c.png" alt="Booking.com">
+        </div>
+        <div class="content">
+            <h2>Cancelled Reservation</h2>
+            <p>Hello,</p>
+            <p>We regret to inform you that your reservation has been cancelled.</p>
+            <div class="booking-info">
+                <p><strong>Reservation ID:</strong> #{{id}}</p>
+                <p><strong>Check-in Date:</strong> {{checkin}}</p>
+                <p><strong>Check-out Date:</strong>{{checkout}}</p>
+                <p><strong>Room:</strong>{{room}}</p>
+            </div>
+            <p>If you have any questions or concerns, please contact our support team.</p>
+            <p class="footer">Best regards,<br>Booking.com</p>
+        </div>
+    </div>
+</body>
+</html>

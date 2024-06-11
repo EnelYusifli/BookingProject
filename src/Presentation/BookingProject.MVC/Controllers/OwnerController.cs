@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 
 namespace BookingProject.MVC.Controllers;
-[Authorize(Roles = "Owner,Admin")]
+[Authorize(Roles = "Owner")]
 public class OwnerController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
@@ -60,7 +60,7 @@ public class OwnerController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
-			dtos = dtos.Where(x => x.StartTime > DateTime.Now).ToList();
+			//dtos = dtos.Where(x => x.StartTime > DateTime.Now).ToList();
 			return View(dtos);
 		}
 		return RedirectToAction("Index", "Home");
@@ -91,4 +91,15 @@ public class OwnerController : Controller
         }
         return RedirectToAction("Index", "Home");
     }
+	[Authorize(Roles = "Owner")]
+	public async Task<IActionResult> CancelReservation(int reservationId)
+	{
+		var response = await _httpClient.PutAsync(baseAddress + $"/reservations/cancel/{reservationId}", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("Reservations");
+		}
+		return RedirectToAction("Index", "Home");
+	}
 }

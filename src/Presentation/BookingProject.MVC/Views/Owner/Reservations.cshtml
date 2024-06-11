@@ -69,8 +69,26 @@
 											{
 												<td> <div class="badge bg-warning bg-opacity-10 text-warning">Reserved</div> </td>
 											}
-											<td> <a href="#" class="btn btn-sm btn-light mb-0">View</a> </td>
-											</tr>
+											@if ((!item.IsCancelled)&& item.StartTime>DateTime.Now)
+											{
+												<td> <div class="badge bg-orange bg-opacity-10 text-orange">Upcoming</div> </td>
+											}
+											@if ((!item.IsCancelled) && item.StartTime < DateTime.Now && item.EndTime>DateTime.Now)
+											{
+												<td> <div class="badge bg-info bg-opacity-10 text-info">Current</div> </td>
+											}
+											@if ((!item.IsCancelled) && item.StartTime < DateTime.Now && item.EndTime < DateTime.Now)
+											{
+												<td> <div class="badge bg-secondary bg-opacity-10 text-secondary">Past</div> </td>
+											}
+											@if((item.IsCancelled)){
+												<td> <div class="badge bg-danger bg-opacity-10 text-danger">Cancelled</div> </td>
+											}
+											@if ((!item.IsCancelled) && item.StartTime > DateTime.Now)
+											{
+												<td> <a asp-action="cancelreservation" asp-route-reservationid="@item.Id" class="btn btn-sm btn-danger mb-0">Cancel</a> </td>
+											}
+										</tr>
 										
 									}
 

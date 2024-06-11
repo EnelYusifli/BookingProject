@@ -375,6 +375,17 @@ public class AccountController : Controller
 		return RedirectToAction("Index", "Home");
 	}
     [Authorize(Roles = "Customer,Owner,Admin")]
+    public async Task<IActionResult> CancelReservation(int reservationId)
+    {
+        var response = await _httpClient.PutAsync(baseAddress + $"/reservations/cancel/{reservationId}", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Reservations");
+        }
+        return RedirectToAction("Index","Home");
+    }
+    [Authorize(Roles = "Customer,Owner,Admin")]
     public IActionResult LeaveReview(int hotelid)
 	{
 		ViewBag.Id=hotelid;
@@ -437,6 +448,7 @@ public class AccountController : Controller
 		//}
 		//return RedirectToAction("index","home");
 	}
+
 }
 
 
