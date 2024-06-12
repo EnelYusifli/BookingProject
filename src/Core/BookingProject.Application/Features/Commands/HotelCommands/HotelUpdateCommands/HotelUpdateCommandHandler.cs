@@ -28,7 +28,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
         private readonly IPaymentMethodRepository _paymentMethodRepository;
         private readonly IHotelPaymentMethodRepository _hotelPaymentMethodRepository;
         private readonly IActivityRepository _activityRepository;
-        private readonly IHotelActivityRepository _hotelActivityRepository;
+		private readonly IAdvantageRepository _advantageRepository;
+		private readonly IHotelActivityRepository _hotelActivityRepository;
         private readonly IConfiguration _configuration;
         private readonly IRoomService _roomService;
 		private readonly ITypeRepository _typeRepository;
@@ -44,6 +45,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
             IPaymentMethodRepository paymentMethodRepository,
             IHotelPaymentMethodRepository hotelPaymentMethodRepository,
             IActivityRepository activityRepository,
+			IAdvantageRepository advantageRepository,
 			ICountryRepository countryRepository,
             IHotelActivityRepository hotelActivityRepository,
             IConfiguration configuration,
@@ -60,7 +62,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
             _paymentMethodRepository = paymentMethodRepository;
             _hotelPaymentMethodRepository = hotelPaymentMethodRepository;
             _activityRepository = activityRepository;
-            _hotelActivityRepository = hotelActivityRepository;
+			_advantageRepository = advantageRepository;
+			_hotelActivityRepository = hotelActivityRepository;
             _configuration = configuration;
             _roomService = roomService;
 			_typeRepository = typeRepository;
@@ -191,6 +194,15 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				_hotelImageRepository.Delete(img);
 			}
 			}
+			if (request.DeletedAdvantageIds is not null)
+			{
+				foreach (var id in request.DeletedAdvantageIds)
+				{
+					HotelAdvantage adv = await _advantageRepository.Table.FirstOrDefaultAsync(x => x.HotelId == hotel.Id && x.Id == id);
+					if (adv is null) throw new NotFoundException("Advantage not found in hotel");
+					_advantageRepository.Delete(adv);
+				}
+			}
 			foreach (var languageId in newLanguageIds)
 			{
 				var language = await _staffLanguageRepository.Table.Where(x => x.IsDeactive == false).FirstOrDefaultAsync(x => x.Id == languageId);
@@ -206,6 +218,20 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 					IsDeactive = request.IsDeactive
 				};
 				await _hotelStaffLanguageRepository.CreateAsync(newHotelLang);
+			}
+			if(request.NewAdvantages is not null)
+			{
+			foreach (var adv in request.NewAdvantages)
+			{
+				HotelAdvantage newHotelAdv = new HotelAdvantage()
+				{
+					Hotel = hotel,
+					AdvantageName = adv,
+					IsDeactive = request.IsDeactive
+				};
+				await _advantageRepository.CreateAsync(newHotelAdv);
+			}
+
 			}
 			if(request.NewImageFiles is not null)
 			{

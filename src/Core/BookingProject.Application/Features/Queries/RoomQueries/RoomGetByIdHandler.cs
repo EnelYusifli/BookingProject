@@ -20,7 +20,8 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
 	}
     public async Task<RoomGetByIdResponse> Handle(RoomGetByIdRequest request, CancellationToken cancellationToken)
 	{
-		Room room=await _roomRepository.Table.Include(x=>x.RoomImages).Include(x => x.Hotel)
+		Room room=await _roomRepository.Table.Include(x => x.Reservation)
+			.Include(x=>x.RoomImages).Include(x => x.Hotel)
 		   .ThenInclude(x => x.Rooms).Include(x => x.Hotel)
 		   .ThenInclude(x => x.HotelImages).Include(x=>x.Discounts).FirstOrDefaultAsync(x=>x.Id==request.Id);
 		if (room is null)

@@ -20,6 +20,7 @@ public class HotelMappingProfile:Profile
 			.ForMember(dest => dest.ServiceIds, opt => opt.MapFrom(src => src.HotelServices.Select(hs => hs.ServiceId)))
 			.ForMember(dest => dest.PaymentMethodIds, opt => opt.MapFrom(src => src.HotelPaymentMethods.Select(hpm => hpm.PaymentMethodId)))
 			.ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.HotelImages.Select(hi => new ImageDto { Id = hi.Id, Url = hi.Url })))
+			.ForMember(dest => dest.Advantages, opt => opt.MapFrom(src => src.HotelAdvantages.Select(hi => new AdvantageDto { Id = hi.Id, AdvantageName = hi.AdvantageName })))
 			.ForMember(dest => dest.ActivityIds, opt => opt.MapFrom(src => src.HotelActivities.Select(ha => ha.ActivityId)))
 			.ReverseMap();
 

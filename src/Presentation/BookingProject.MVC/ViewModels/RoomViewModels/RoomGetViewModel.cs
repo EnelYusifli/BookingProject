@@ -1,4 +1,5 @@
 ﻿using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.Application.Features.Queries.ReservationQueries.ReservationGetAllByUserQueries;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 
 namespace BookingProject.MVC.ViewModels.RoomViewModels;
@@ -8,6 +9,7 @@ public class RoomGetViewModel
 	public DateTime CreatedDate { get; set; }
 	public DateTime ModifiedDate { get; set; }
 	public string RoomName { get; set; }
+	public List<ReservationGetAllByUserQueryResponse>? Reservations { get; set; }
 	public int Id { get; set; }
 	public string HotelName { get; set; }
 	public int DiscountPercent { get; set; }

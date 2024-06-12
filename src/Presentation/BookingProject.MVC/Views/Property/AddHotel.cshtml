@@ -888,10 +888,10 @@ Steps START -->
 							<!-- Step 2 content END -->
 
 							<!-- Step 3 content START -->
-							<div id="step-3" role="tabpanel" class="content fade" aria-labelledby="steppertrigger3">
-								<div class="vstack gap-4">
-									<!-- Title -->
-									<h4 class="mb-0">Rooms</h4>
+									<div id="step-3" role="tabpanel" class="content fade" aria-labelledby="steppertrigger3">
+										<div class="vstack gap-4">
+											<!-- Title -->
+											<h4 class="mb-0">Rooms</h4>
 											<!-- Room options START -->
 											<div class="card shadow room-card">
 												<!-- Card header -->
@@ -906,13 +906,12 @@ Steps START -->
 														<div class="col-md-6">
 															<label class="form-label">Room name *</label>
 															<input class="form-control" placeholder="Enter name" asp-for="@Model.RoomCreateDtos[0].RoomName">
-
 														</div>
 
 														<!-- Room images -->
 														<div class="col-md-6">
 															<label class="form-label">Room images *</label>
-															<input class="form-control"  accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.RoomCreateDtos[0].ImageFiles">
+															<input class="form-control" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.RoomCreateDtos[0].ImageFiles">
 														</div>
 
 														<!-- Room Price -->
@@ -954,34 +953,32 @@ Steps START -->
 																<option value="true">Free Cancellation</option>
 															</select>
 
-															<div id="cancelAfterDayCard" style="display: none;">
+															<div class="cancelAfterDayCard" style="display: none;">
 																<label class="form-label">Cancel after x days *</label>
 																<input class="form-control" placeholder="Enter day count" asp-for="@Model.RoomCreateDtos[0].CancelAfterDay">
 															</div>
 															<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span>
-
 														</div>
 													</div>
 												</div>
 												<div class="card-body">
 													<div asp-validation-summary="All" class="text-danger"></div>
 												</div>
-
 												<!-- Card body END -->
 											</div>
 											<div class="col-12">
-											  <a id="addRoomBtn" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-plus-circle me-2"></i>Add New Room</a>
+												<a id="addRoomBtn" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-plus-circle me-2"></i>Add New Room</a>
 											</div>
 											<!-- Room options END -->
-									<!-- Step 3 button -->
-									<div class="d-flex justify-content-between">
+											<!-- Step 3 button -->
+											<div class="d-flex justify-content-between">
 												<button type="button" class="btn btn-secondary prev-btn mb-0">Previous</button>
 												<div class="text-end">
-														<button type="submit" class="btn btn-success">Add Property</button>
+													<button type="submit" class="btn btn-success">Add Property</button>
 												</div>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
 							<!-- Step 3 content END -->
 
 						</form>
@@ -1040,7 +1037,7 @@ Footer END -->
 <script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script>
+	@* <script>
 		$(document).ready(function () {
 			// Add change event listener to the select element
 			$("select.js-choice").change(function () {
@@ -1057,7 +1054,7 @@ Footer END -->
 			});
 		});
 	</script>
-
+ *@
 
 <!-- Vendors -->
 <script src="~/assets/vendor/choices/js/choices.min.js"></script>
@@ -1080,13 +1077,20 @@ Footer END -->
 				// Clone the room card
 				var clonedCard = $(".room-card").first().clone();
 
+				// Clear the inputs in the cloned card
+				clonedCard.find("input").val("");
+				clonedCard.find("select").val("");
+
 				// Update the index in the input field names
 				clonedCard.find("input, select").each(function () {
 					var nameAttr = $(this).attr("name");
 					if (nameAttr) {
-						$(this).attr("name", nameAttr.replace("[0]", "[" + roomCount + "]"));
+						$(this).attr("name", nameAttr.replace(/\[\d+\]/, "[" + roomCount + "]"));
 					}
 				});
+
+				// Remove existing delete button to avoid duplication
+				clonedCard.find(".delete-room-btn").remove();
 
 				// Append delete button to the cloned card
 				var deleteButton = $('<button class="btn btn-danger delete-room-btn"><i class="bi bi-x"></i></button>');
@@ -1101,7 +1105,6 @@ Footer END -->
 
 				// Append the cloned card to the container
 				$(".room-card").last().after(clonedCard);
-				console.log(roomCount)
 			});
 
 			// Function to update roomCount after removing a room card
@@ -1117,30 +1120,58 @@ Footer END -->
 					});
 				});
 			}
+
+			// Delegate event listener to the parent element for dynamically added elements
+			$(document).on("change", "select.js-choice", function () {
+				var selectedValue = $(this).val();
+
+				// Check if the selected value is "true" (Free Cancellation)
+				if (selectedValue === "true") {
+					// Show the cancelAfterDayCard
+					$(this).closest('.col-md-6').find(".cancelAfterDayCard").show();
+				} else {
+					// Hide the cancelAfterDayCard
+					$(this).closest('.col-md-6').find(".cancelAfterDayCard").hide();
+				}
+			});
 		});
 	</script>
 	<script>
 		$(document).ready(function () {
+			// Function to re-index advantage input fields
+			function reIndexAdvantages() {
+				$('#advantage-names-container .advantage-card').each(function (index, element) {
+					$(element).find('input[type="text"]').attr('name', 'HotelAdvantageNames[' + index + ']');
+				});
+			}
+
 			// Add event listener to the "Add New Advantage Name" button
 			$("#add-advantage-name").click(function () {
-				// Create a new advantage name input field
-				var newInput = '<div class="card shadow advantage-card mb-3">' +
-					'<div class="card-body">' +
-					'<label class="form-label">Advantage Name *</label>' +
-					'<input class="form-control" type="text" name="HotelCreateViewModel.HotelAdvantageNames" placeholder="Enter advantage name">' +
-					'</div>' +
-					'<div class="card-footer">' +
-					'<button type="button" class="btn btn-danger delete-advantage-btn">Delete</button>' +
-					'</div>' +
-					'</div>';
+				var currentIndex = $('#advantage-names-container .advantage-card').length; // Get the current count of advantage cards
+
+				// Create a new advantage name input field with unique name attribute
+				var newInput = `
+					<div class="card shadow advantage-card mb-3">
+						<div class="card-body">
+							<label class="form-label">Advantage Name *</label>
+							<input class="form-control" type="text" name="HotelAdvantageNames[` + currentIndex + `]" placeholder="Enter advantage name">
+						</div>
+						<div class="card-footer">
+							<button type="button" class="btn btn-danger delete-advantage-btn">Delete</button>
+						</div>
+					</div>`;
 
 				// Append the new input field to the container
 				$("#advantage-names-container").append(newInput);
 			});
+
 			// Add event listener to dynamically created delete buttons
 			$(document).on("click", ".delete-advantage-btn", function () {
 				// Remove the parent card when the delete button is clicked
 				$(this).closest(".advantage-card").remove();
+
+				// Re-index the remaining advantage input fields
+				reIndexAdvantages();
 			});
 		});
 	</script>

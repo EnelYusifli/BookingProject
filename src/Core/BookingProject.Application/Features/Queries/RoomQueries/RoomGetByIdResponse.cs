@@ -1,5 +1,6 @@
 ﻿using BookingProject.Application.Features.DTOs;
 using BookingProject.Application.Features.Queries.HotelQueries;
+using BookingProject.Application.Features.Queries.ReservationQueries.ReservationGetAllByUserQueries;
 using BookingProject.Domain.Entities;
 
 namespace BookingProject.Application.Features.Queries.RoomQueries;
@@ -10,6 +11,7 @@ public class RoomGetByIdResponse
 	public DateTime ModifiedDate { get; set; }
 	public string RoomName { get; set; }
 	public int Id { get; set; }
+	public List<ReservationGetAllByUserQueryResponse>? Reservations { get; set; }
 	public int DiscountPercent { get; set; }
 	public string HotelName { get; set; }
 	public int HotelId { get; set; }

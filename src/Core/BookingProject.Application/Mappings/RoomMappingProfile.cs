@@ -17,12 +17,14 @@ public class RoomMappingProfile:Profile
         CreateMap<RoomUpdateCommandRequest,Room>().ReverseMap();
         CreateMap<RoomCreateDto,Room>().ReverseMap();
         CreateMap<RoomGetAllQueryResponse, Room>().ReverseMap()
-            .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.RoomImages.Select(a => a.Url))).ReverseMap();
+            .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.RoomImages.Select(a => a.Url)))
+			.ForMember(dest => dest.Reservations, opt => opt.MapFrom(src => src.Reservation)).ReverseMap();
 		CreateMap<Room, RoomGetByIdResponse>()
 		   .ForMember(dest => dest.RoomName, opt => opt.MapFrom(src => src.RoomName))
 		   .ForMember(dest => dest.HotelName, opt => opt.MapFrom(src => src.Hotel.Name))
 		   .ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.Hotel.Id))
 		   .ForMember(dest => dest.AdultCount, opt => opt.MapFrom(src => src.AdultCount))
+		   .ForMember(dest => dest.Reservations, opt => opt.MapFrom(src => src.Reservation))
 		   .ForMember(dest => dest.ChildCount, opt => opt.MapFrom(src => src.ChildCount))
 		   .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.RoomImages.Select(hi => new ImageDto { Id = hi.Id, Url = hi.Url })))
 		   .ForMember(dest => dest.ServiceFee, opt => opt.MapFrom(src => src.ServiceFee))

@@ -484,7 +484,7 @@ Page Banner START -->
 	<div class="container">
 		<div class="row">
 			<div class="col-12 text-center">
-				<h1 class="fs-2 mb-2">Add New Listing</h1>
+				<h1 class="fs-2 mb-2">Update Listing</h1>
 				<p class="mb-0">Praise effects wish change way and any wanted. Lively use looked latter regard had.</p>
 			</div>
 		</div>
@@ -767,15 +767,26 @@ Steps START -->
 														<!-- Advantage Names Container -->
 														<div id="advantage-names-container" class="col-12">
 															<label class="form-label">Add advantages *</label>
-
-															<!-- Initial advantage input field -->
-															<div class="card shadow advantage-card mb-3">
-																<div class="card-body">
-																	<label class="form-label">Advantage Name *</label>
-																	<input class="form-control" type="text" name="HotelAdvantageNames[0]" placeholder="Enter advantage name">
-																	<button type="button" class="btn btn-primary mt-2" id="add-advantage-name">Add New Advantage</button>
+															@foreach (var item in Model.Advantages)
+															{
+																<!-- Initial advantage input field -->
+																<div class="card shadow advantage-card mb-3">
+																	<div class="card-body">
+																		<label class="form-label">Advantage Name *</label>
+																		<p class="form-control">@item.AdvantageName</p>
+																		<input type="hidden" class="advantage-id" value="@item.Id" />
+																		<div class="form-check">
+																			<input class="form-check-input delete-advantage-checkbox" type="checkbox" value="@item.Id" id="deleteAdvantageCheckbox@item.Id">
+																			<label class="form-check-label" for="deleteAdvantageCheckbox@item.Id">
+																				Mark for Deletion
+																			</label>
+																		</div>
+																	</div>
 																</div>
-															</div>
+															}
+															<button type="button" class="btn btn-primary mt-2" id="add-advantage-name">Add New Advantage</button>
+															<!-- Hidden input to store the deleted advantage IDs -->
+															<input type="hidden" id="DeletedAdvantageIds" name="DeletedAdvantageIds" value="" />
 														</div>
 
 													
@@ -995,7 +1006,45 @@ Footer END -->
 			checkbox.addEventListener('change', updateDeletedImageIds);
 		});
 	</script>
+	<script>
+		$(document).ready(function () {
+			// Function to re-index advantage input fields
+			function reIndexAdvantages() {
+				$('#advantage-names-container .advantage-card').each(function (index, element) {
+					$(element).find('input[type="text"]').attr('name', 'NewAdvantages[' + index + ']');
+				});
+			}
 
+			// Add event listener to the "Add New Advantage Name" button
+			$("#add-advantage-name").click(function () {
+				var currentIndex = $('#advantage-names-container .advantage-card').length; // Get the current count of advantage cards
+
+				// Create a new advantage name input field with unique name attribute
+				var newInput = `
+							<div class="card shadow advantage-card mb-3">
+								<div class="card-body">
+									<label class="form-label">Advantage Name *</label>
+									<input class="form-control" type="text" name="NewAdvantages[` + currentIndex + `]" placeholder="Enter advantage name">
+								</div>
+								<div class="card-footer">
+									<button type="button" class="btn btn-danger delete-advantage-btn">Delete</button>
+								</div>
+							</div>`;
+
+				// Append the new input field to the container
+				$("#advantage-names-container").append(newInput);
+			});
+
+			// Add event listener to dynamically created delete buttons
+			$(document).on("click", ".delete-advantage-btn", function () {
+				// Remove the parent card when the delete button is clicked
+				$(this).closest(".advantage-card").remove();
+
+				// Re-index the remaining advantage input fields
+				reIndexAdvantages();
+			});
+		});
+	</script>
 	@* <script>
 		let index = 0;
 
@@ -1055,6 +1104,32 @@ Footer END -->
 			});
 		});
 	</script>
+@* 	<script>
+		$(document).ready(function () {
+			// Initialize an array to store the deleted advantage IDs
+			var deletedAdvantageIds = [];
+
+			// Event listener for the delete checkbox
+			$(".delete-advantage-checkbox").change(function () {
+				var advantageId = $(this).val();
+
+				if ($(this).is(":checked")) {
+					// If the checkbox is checked, add the ID to the array
+					deletedAdvantageIds.push(advantageId);
+				} else {
+					// If the checkbox is unchecked, remove the ID from the array
+					var index = deletedAdvantageIds.indexOf(advantageId);
+					if (index !== -1) {
+						deletedAdvantageIds.splice(index, 1);
+					}
+				}
+
+				// Update the hidden input with the current array of deleted IDs
+				$("#DeletedAdvantageIds").val(deletedAdvantageIds.join(","));
+			});
+		});
+	</script> *@
+
 	<style>
 		.form-check-input {
 			display: none;

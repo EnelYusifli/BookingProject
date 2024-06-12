@@ -15,11 +15,12 @@ public class AdvantageCreateCommandHandler : IRequestHandler<AdvantageCreateComm
     private readonly IHotelRepository _hotelRepository;
     private readonly IMapper _mapper;
 
-    public AdvantageCreateCommandHandler(IAdvantageRepository repository,IMapper mapper)
+    public AdvantageCreateCommandHandler(IAdvantageRepository repository,IMapper mapper,IHotelRepository hotelRepository)
     {
         _repository = repository;
         _mapper = mapper;
-    }
+		_hotelRepository = hotelRepository;
+	}
     public async Task<AdvantageCreateCommandResponse> Handle(AdvantageCreateCommandRequest request, CancellationToken cancellationToken)
     {
         if(request is null)

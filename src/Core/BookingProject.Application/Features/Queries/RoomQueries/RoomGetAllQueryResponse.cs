@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BookingProject.Application.Features.Queries.ReservationQueries.ReservationGetAllByUserQueries;
+using Microsoft.AspNetCore.Http;
 
 namespace BookingProject.Application.Features.Queries.RoomQueries;
 
@@ -7,7 +8,8 @@ public class RoomGetAllQueryResponse
     public string RoomName { get; set; }
     public int Id { get; set; }
     public required int HotelId { get; set; }
-    public bool IsDeactive { get; set; }
+	public List<ReservationGetAllByUserQueryResponse>? Reservations { get; set; }
+	public bool IsDeactive { get; set; }
     public int AdultCount { get; set; }
     public int ChildCount { get; set; }
 	public int DiscountPercent { get; set; }

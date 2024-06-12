@@ -30,6 +30,7 @@ public class HotelGetByIdForUpdateQueryHandler : IRequestHandler<HotelGetByIdFor
 			.Include(x => x.HotelStaffLanguages)
 			.ThenInclude(x => x.StaffLanguage)
 			.Include(x => x.Type)
+			.Include(x => x.Country)
 			.FirstOrDefaultAsync(x => x.Id == request.Id);
 		if (hotel is null) throw new Exception("Hotel not found");
 		HotelGetByIdForUpdateQueryResponse dto = _mapper.Map<HotelGetByIdForUpdateQueryResponse>(hotel);

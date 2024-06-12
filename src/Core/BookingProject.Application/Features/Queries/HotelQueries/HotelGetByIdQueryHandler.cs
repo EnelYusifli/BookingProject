@@ -30,6 +30,7 @@ public class HotelGetByIdQueryHandler : IRequestHandler<HotelGetByIdQueryRequest
 			.Include(x => x.HotelStaffLanguages)
 			.ThenInclude(x => x.StaffLanguage)
 			.Include(x => x.Type)
+			.Include(x => x.Country)
 			.Include(x => x.Rooms)
 			.ThenInclude(x => x.RoomImages)
 			.Include(x => x.Rooms)

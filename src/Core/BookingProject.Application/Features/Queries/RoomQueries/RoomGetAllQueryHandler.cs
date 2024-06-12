@@ -31,6 +31,7 @@ public class RoomGetAllQueryHandler : IRequestHandler<RoomGetAllQueryRequest, IC
 		   .Where(x => x.HotelId == request.HotelId)
 		   .Include(x => x.RoomImages)
 		   .Include(x => x.Discounts)
+		   .Include(x => x.Reservation)
 		   .Include(x => x.Hotel)
 		   .ThenInclude(x => x.Rooms)
 		   .ToListAsync();

@@ -14,9 +14,12 @@ public class HotelUpdateViewModel
     public bool IsDeactive { get; set; }
     public List<IFormFile>? NewImageFiles { get; set; }
 	public List<ImageDto>? Images { get; set; }
+	public List<AdvantageDto>? Advantages { get; set; }
 	public List<int>? StaffLanguageIds { get; set; }
     public List<int>? ServiceIds { get; set; }
     public List<int>? PaymentMethodIds { get; set; }
     public List<int>? ActivityIds { get; set; }
-    public List<int>? DeletedImageFileIds { get; set; }
+	public List<string>? NewAdvantages { get; set; }
+	public List<int>? DeletedAdvantageIds { get; set; }
+	public List<int>? DeletedImageFileIds { get; set; }
 }

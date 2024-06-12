@@ -1,10 +1,12 @@
 using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
+using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.FAQ;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.TermsOfService;
 using BookingProject.MVC.ViewModels.HomeViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
+using BookingProject.MVC.ViewModels.PropertyViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -40,9 +42,26 @@ public class HomeController : Controller
         return null;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
 	{
+		var response = await _httpClient.GetAsync(baseAddress + "/countries/getall");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var countries = JsonConvert.DeserializeObject<List<GetCountryViewModel>>(responseData);
+			ViewBag.Countries = countries;	
+		}
+		var response2 = await _httpClient.GetAsync(baseAddress + "/types/getall");
+
+		if (response2.IsSuccessStatusCode)
+		{
+			var responseData2 = await response2.Content.ReadAsStringAsync();
+			var types = JsonConvert.DeserializeObject<List<GetTypeViewModel>>(responseData2);
+			ViewBag.Types = types;	
+		}
 		return View();
+
 	}
 	[HttpGet]
 	public async Task<IActionResult> HotelDetail([FromRoute]int id)
@@ -121,7 +140,7 @@ public class HomeController : Controller
 	{
 		if (string.IsNullOrEmpty(dateRange))
 		{
-			dateRange = $"{DateTime.Now.ToString("yyyy-MM-dd")} to {DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")}";
+			dateRange = $"{DateTime.Now:yyyy-MM-dd} to {DateTime.Now.AddDays(2):yyyy-MM-dd}";
 		}
 
 		var dates = dateRange.Split(" to ");
@@ -156,69 +175,87 @@ public class HomeController : Controller
 			}
 			if (!string.IsNullOrEmpty(typeName))
 			{
-				queryableHotels = queryableHotels.Where(x => x.Name.ToLower() == typeName.ToLower());
+				queryableHotels = queryableHotels.Where(x => x.TypeName.ToLower() == typeName.ToLower());
 			}
-
 			if (minPrice.HasValue && maxPrice.HasValue)
 			{
 				queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.PricePerNight >= minPrice && r.PricePerNight <= maxPrice));
 			}
-
 			if (starPoint.HasValue)
 			{
 				queryableHotels = queryableHotels.Where(x => x.StarPoint >= starPoint);
 			}
 
-			//if (checkInDate.HasValue && checkOutDate.HasValue)
-			//{
-			//	queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r =>
-			//		!r.Reservations.Any(res =>
-			//			(res.CheckInDate < checkOutDate && res.CheckOutDate > checkInDate))));
-			//}
-
-			if (adultCount.HasValue)
+			if (roomCount.HasValue && (adultCount.HasValue || childCount.HasValue))
 			{
-				queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.AdultCount >= adultCount));
+				int totalAdults = adultCount ?? 0;
+				int totalChildren = childCount ?? 0;
+				int requiredGuests = totalAdults + totalChildren;
+
+				queryableHotels = queryableHotels.Where(hotel => HotelHasRequiredRooms(hotel, roomCount.Value, checkInDate, checkOutDate, requiredGuests));
 			}
 
-			if (childCount.HasValue)
-			{
-				queryableHotels = queryableHotels.Where(x => x.Rooms.Any(r => r.ChildCount >= childCount));
-			}
-
-			if (roomCount.HasValue)
-			{
-				queryableHotels = queryableHotels.Where(x => x.Rooms.Count() >= roomCount);
-			}
 
 			if (!string.IsNullOrEmpty(countryName))
 			{
 				queryableHotels = queryableHotels.Where(x => x.CountryName.ToLower() == countryName.ToLower());
 			}
-
 			if (mostPopular.HasValue && mostPopular.Value)
 			{
 				queryableHotels = queryableHotels.OrderByDescending(x => x.ViewerCount);
 			}
-
 			if (mostRated.HasValue && mostRated.Value)
 			{
 				queryableHotels = queryableHotels.OrderByDescending(x => x.StarPoint);
 			}
 
-				var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, itemPerPage, page);
+			var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, itemPerPage, page);
 
 			return View(paginatedDatas);
 		}
-        else
-        {
-            var responseContent = await response.Content.ReadAsStringAsync();
-            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            Console.WriteLine(responseContent);
-        }
-        return View();
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("Error response from API:");
+			Console.WriteLine(responseContent);
+		}
+		return View();
 	}
-    [Authorize(Roles = "Customer,Owner,Admin")]
+	private bool HotelHasRequiredRooms(HotelGetViewModel hotel, int roomCount, DateTime checkInDate, DateTime checkOutDate, int requiredGuests)
+	{
+		var availableRooms = hotel.Rooms.Where(room =>
+			!room.Reservations.Any(res => res.StartTime < checkOutDate && res.EndTime > checkInDate && !res.IsDeactive)).ToList();
+
+		if (availableRooms.Count < roomCount)
+		{
+			return false;
+		}
+
+		return CanAccommodateGuests(availableRooms, roomCount, requiredGuests);
+	}
+	private bool CanAccommodateGuests(List<RoomGetViewModel> availableRooms, int roomCount, int requiredGuests)
+	{
+		var sortedRooms = availableRooms.OrderByDescending(r => r.AdultCount + r.ChildCount).ToList();
+
+		for (int i = 0; i <= sortedRooms.Count - roomCount; i++)
+		{
+			int currentCapacity = 0;
+			for (int j = 0; j < roomCount; j++)
+			{
+				currentCapacity += sortedRooms[i + j].AdultCount + sortedRooms[i + j].ChildCount;
+			}
+			if (currentCapacity >= requiredGuests)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+
+	[Authorize(Roles = "Customer,Owner,Admin")]
     public async Task<IActionResult> Reservation(int roomid,ReservationViewModel vm)
 	{
 		var roomResponse = await _httpClient.GetAsync(baseAddress + $"/rooms/getbyid/{roomid}");
@@ -389,4 +426,13 @@ public class HomeController : Controller
 
         return View(vm);
     }
+}
+public static class EnumerableExtensions
+{
+	public static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> elements, int k)
+	{
+		return k == 0 ? new[] { new T[0] } :
+			elements.SelectMany((e, i) =>
+				elements.Skip(i + 1).Combinations(k - 1).Select(c => (new[] { e }).Concat(c)));
+	}
 }
