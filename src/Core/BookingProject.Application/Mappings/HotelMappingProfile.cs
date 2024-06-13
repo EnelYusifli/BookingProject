@@ -52,6 +52,7 @@ public class HotelMappingProfile:Profile
 		 .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.Type.TypeName))
 		 .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.CountryName))
 		 .ForMember(dest => dest.StaffLanguageNames, opt => opt.MapFrom(src => src.HotelStaffLanguages.Select(l => l.StaffLanguage.StaffLanguageName)))
+		 .ForMember(dest => dest.Reviews, opt => opt.MapFrom(src => src.CustomerReviews))
 		 .ForMember(dest => dest.Rooms, opt => opt.MapFrom(src => src.Rooms)).ReverseMap();
 	}
 }

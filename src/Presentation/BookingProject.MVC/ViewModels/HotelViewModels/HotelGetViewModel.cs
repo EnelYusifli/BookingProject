@@ -1,4 +1,5 @@
-﻿using BookingProject.Application.Features.Queries.RoomQueries;
+﻿using BookingProject.Application.Features.Queries.ReviewQueries;
+using BookingProject.Application.Features.Queries.RoomQueries;
 using BookingProject.MVC.ViewModels.RoomViewModels;
 
 namespace BookingProject.MVC.ViewModels.HotelViewModels;
@@ -15,6 +16,7 @@ public class HotelGetViewModel
 	public bool IsApproved { get; set; }
 	public bool IsRefused { get; set; }
 	public string AppUserId { get; set; }
+	public List<ReviewGetAllQueryResponse> Reviews { get; set; }
 	public int ViewerCount { get; set; }
 	public decimal StarPoint { get; set; }
 	public string TypeName { get; set; }

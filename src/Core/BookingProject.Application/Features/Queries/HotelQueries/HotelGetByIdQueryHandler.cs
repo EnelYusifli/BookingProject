@@ -20,6 +20,10 @@ public class HotelGetByIdQueryHandler : IRequestHandler<HotelGetByIdQueryRequest
 	{
 		Hotel hotel = await _repository.Table
 			.Include(x => x.HotelImages)
+			.Include(x => x.CustomerReviews)
+			.ThenInclude(x => x.User)
+			.Include(x => x.CustomerReviews)
+			.ThenInclude(x => x.ReviewImages)
 			.Include(x => x.HotelAdvantages)
 			.Include(x => x.HotelActivities)
 			.ThenInclude(x => x.Activity)

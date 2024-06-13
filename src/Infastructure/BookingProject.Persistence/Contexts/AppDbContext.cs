@@ -7,9 +7,10 @@ namespace BookingProject.Persistence.Contexts;
 
 public class AppDbContext : IdentityDbContext<AppUser>
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { 
+    this.Database.SetCommandTimeout(180);
+	}
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 		modelBuilder.Entity<Hotel>()
 		.HasOne(h => h.AppUser)

@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\home\\hotelgrid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\home\\hotelgrid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,20 +15,52 @@
       "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetallbyuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetallbyuserqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\infastructure\\bookingproject.persistence\\persistenceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\persistenceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidforupdatequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidforupdatequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|solutionrelative:src\\presentation\\bookingproject.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\infastructure\\bookingproject.persistence\\contexts\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\contexts\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\viewmodels\\hotelviewmodels\\hotelgetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\viewmodels\\hotelviewmodels\\hotelgetviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\presentation\\bookingproject.mvc\\viewmodels\\hotelviewmodels\\hoteldetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\viewmodels\\hotelviewmodels\\hoteldetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\mappings\\hotelmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\mappings\\hotelmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetbyidqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetallbyuserqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\hotelqueries\\hotelgetallbyuserqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\reviewqueries\\reviewgetallqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\reviewqueries\\reviewgetallqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\enel\\desktop\\bookingproject\\src\\core\\bookingproject.application\\features\\queries\\reviewqueries\\reviewgetallqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\queries\\reviewqueries\\reviewgetallqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 379,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,106 +98,197 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
               "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAAGIBAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAHEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T22:55:42.214Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HotelDetail.cshtml",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
-              "ViewState": "AQIAAIgAAAAAAAAAAAAhwJMAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T22:53:45.487Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HotelGrid.cshtml",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelGrid.cshtml",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelGrid.cshtml",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelGrid.cshtml",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelGrid.cshtml",
-              "ViewState": "AQIAAJcBAAAAAAAAAAAAAKEBAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T22:52:01.109Z",
+              "WhenOpened": "2024-06-13T10:22:54.703Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "HotelGetAllByUserQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryHandler.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAACEAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T22:36:44.812Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HotelGetByIdForUpdateQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdForUpdateQueryHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdForUpdateQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdForUpdateQueryHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdForUpdateQueryHandler.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACAAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T22:36:26.172Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HotelGetByIdQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
-              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
-              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAACAAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T22:36:11.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T22:14:50.465Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\appsettings.json",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAACMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-13T09:52:06.126Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "PersistenceRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:50:54.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\Contexts\\AppDbContext.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:50:48.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAKwAAAAAAAAAAAAAAMEAAAAAAAAA",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAAAFEAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T21:57:03.794Z",
+              "WhenOpened": "2024-06-13T09:44:16.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HotelGetViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelGetViewModel.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelGetViewModel.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelGetViewModel.cs",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelGetViewModel.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAA9wB4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:18:24.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HotelDetail.cshtml",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\Views\\Home\\HotelDetail.cshtml",
+              "ViewState": "AQIAAA4BAAAAAAAAAAAAACIBAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-13T08:26:51.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HotelDetailViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelDetailViewModel.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelDetailViewModel.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelDetailViewModel.cs",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\ViewModels\\HotelViewModels\\HotelDetailViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:18:18.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HotelGetByIdQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryHandler.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAywBQAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:16:09.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HotelGetByIdQueryResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryResponse.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryResponse.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryResponse.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryResponse.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABUAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:15:59.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HotelMappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Mappings\\HotelMappingProfile.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAADYAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:16:57.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HotelGetByIdQueryRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryRequest.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryRequest.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryRequest.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetByIdQueryRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:15:58.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReviewGetAllQueryResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryResponse.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryResponse.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryResponse.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:14:59.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ReviewGetAllQueryRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryRequest.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryRequest.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryRequest.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\ReviewQueries\\ReviewGetAllQueryRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:14:53.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HotelGetAllByUserQueryResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryResponse.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryResponse.cs",
+              "ToolTip": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryResponse.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Queries\\HotelQueries\\HotelGetAllByUserQueryResponse.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAABMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:14:36.766Z",
               "EditorCaption": ""
             }
           ]

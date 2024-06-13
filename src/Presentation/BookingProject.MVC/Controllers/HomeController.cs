@@ -82,6 +82,12 @@ public class HomeController : Controller
             }
             return View(vm);
 		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("Error response from API:");
+			Console.WriteLine(responseContent);
+		}
 		return RedirectToAction("Index");
 	}
 	[HttpGet]

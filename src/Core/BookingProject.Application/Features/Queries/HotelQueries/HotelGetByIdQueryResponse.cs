@@ -1,4 +1,5 @@
-﻿using BookingProject.Application.Features.Queries.RoomQueries;
+﻿using BookingProject.Application.Features.Queries.ReviewQueries;
+using BookingProject.Application.Features.Queries.RoomQueries;
 
 namespace BookingProject.Application.Features.Queries.HotelQueries;
 
@@ -18,6 +19,7 @@ public class HotelGetByIdQueryResponse
 	public decimal StarPoint { get; set; }
 	public string TypeName { get; set; }
 	public List<string> ActivityNames { get; set; }
+	public List<ReviewGetAllQueryResponse> Reviews { get; set; }
 	public List<string> ImageFileUrls { get; set; }
 	public List<string> AdvantageNames { get; set; }
 	public List<string> PaymentMethodNames { get; set; }

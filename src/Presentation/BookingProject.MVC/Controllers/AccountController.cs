@@ -73,8 +73,12 @@ public class AccountController : Controller
 	}
 
 
-	public IActionResult Login()
+	public IActionResult Login(string? returnUrl)
 	{
+		if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+		{
+			HttpContext.Session.SetString("ReturnUrl", returnUrl);
+		}
 		return View();
 	}
 	[Authorize(Roles = "Customer,Owner")]
@@ -105,16 +109,22 @@ public class AccountController : Controller
 		}
 	}
 	[HttpPost]
-    public async Task<IActionResult> Login(LoginViewModel vm)
+    public async Task<IActionResult> Login(LoginViewModel vm, string returnUrl = null)
     {
         if (!ModelState.IsValid)
             return View();
 		try
 		{
-		await _loginService.LoginUser(vm);
-            return RedirectToAction("Index", "Home");
-
-        }
+			await _loginService.LoginUser(vm);
+			if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+			{
+				return Redirect(returnUrl);
+			}
+			else
+			{
+				return RedirectToAction("Index", "Home");
+			}
+		}
 		catch (Exception ex)
 		{
 			Console.WriteLine(ex.Message);

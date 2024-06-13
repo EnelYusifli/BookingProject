@@ -299,7 +299,9 @@
 		</section>
 		<!-- =======================
 		Title and Tabs END -->
-		<!-- =======================
+	@if(Model.Count()>0)
+	{
+	<!-- =======================
 		Hotel grid START -->
 		<section class="pt-0">
 			<div class="container">
@@ -402,41 +404,72 @@
 		</section>
 		<!-- =======================
 		Hotel grid END -->
-
-	</main>
+	}
+	else
+	{
+		<!-- No Data Available START -->
+		<section class="pt-0">
+			<div class="container">
+				<div class="row mb-4">
+					<div class="col-12 text-center">
+						<h2>No Hotels Available</h2>
+						<p>We couldn't find any hotels matching your criteria. Please try adjusting your search filters or come back later.</p>
+						<a asp-action="index" class="btn btn-primary-soft">Go to Home</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- No Data Available END -->
+	}
+</main>
 	<!-- **************** MAIN CONTENT END **************** -->
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main id="hotellist" style="display:none">
+	<!-- Title and button START -->
+	<!-- =======================
+	Title and Tabs START -->
+	<section class="pt-0 pb-4">
+		<div class="container position-relative">
 
-		<!-- =======================
+			<!-- Title and button START -->
+			<div class="row">
+				<div class="col-12">
+					<!-- Meta START -->
+					<div class="d-flex justify-content-between">
+						<!-- Filter collapse button -->
+						<input type="checkbox" class="btn-check" style="visibility: hidden;">
+						<label class="btn btn-primary-soft btn-primary-check mb-0" style="visibility: hidden;">
+							<i class="bi fa-fe bi-sliders me-2"></i>Show Filters
+						</label>
+
+						<!-- tabs -->
+						<ul class="nav nav-pills nav-pills-dark" id="tour-pills-tab" role="tablist">
+							<!-- Tab item -->
+							<li class="nav-item">
+								<button class="nav-link rounded-start rounded-0 mb-0 active hotel-list"><i class="bi fa-fw bi-list-ul"></i></button>
+							</li>
+							<!-- Tab item -->
+							<li class="nav-item">
+								<button class="nav-link rounded-end rounded-0 mb-0  hotel-grid"><i class="bi fa-fw bi-grid-fill"></i></button>
+							</li>
+						</ul>
+					</div>
+					<!-- Meta END -->
+				</div>
+			</div>
+			<!-- Title and button END -->
+
+		</div>
+	</section>
+	<!-- =======================
+	Title and Tabs END -->
+	<!-- Title and button END -->
+	@if (Model.Count() > 0)
+	{
+	<!-- =======================
 		Hotel list START -->
 		<section class="pt-0">
 			<div class="container">
-				<!-- Tabs and alert START -->
-				<div class="row mb-4">
-					<div class="col-12">
-						
-						<!-- Buttons -->
-						<div class="hstack gap-3 justify-content-between justify-content-md-end">
-							<!-- Filter offcanvas button -->
-							<button class="btn btn-primary-soft btn-primary-check mb-0 d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-								<i class="fa-solid fa-sliders-h me-1"></i> Show filters
-							</button>
-							<!-- tabs -->
-							<ul class="nav nav-pills nav-pills-dark" id="tour-pills-tab" role="tablist">
-								<!-- Tab item -->
-								<li class="nav-item">
-									<button class="nav-link rounded-start rounded-0 mb-0 active hotel-list"><i class="bi fa-fw bi-list-ul"></i></button>
-								</li>
-								<!-- Tab item -->
-								<li class="nav-item">
-									<button class="nav-link rounded-end rounded-0 mb-0 hotel-grid" ><i class="bi fa-fw bi-grid-fill"></i></button>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Tabs and alert END -->
 
 				<div class="row">
 					<!-- Left sidebar START -->
@@ -868,6 +901,23 @@
 		</section>
 		<!-- =======================
 		Hotel list END -->
+	}
+	else
+	{
+		<!-- No Data Available START -->
+		<section class="pt-0">
+			<div class="container">
+				<div class="row mb-4">
+					<div class="col-12 text-center">
+						<h2>No Hotels Available</h2>
+						<p>We couldn't find any hotels matching your criteria. Please try adjusting your search filters or come back later.</p>
+						<a asp-action="index" class="btn btn-primary-soft">Go to Home</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- No Data Available END -->
+	}
 
 	</main>
 	<!-- **************** MAIN CONTENT END **************** -->
