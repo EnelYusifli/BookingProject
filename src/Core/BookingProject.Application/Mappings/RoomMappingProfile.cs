@@ -32,7 +32,7 @@ public class RoomMappingProfile:Profile
 		   .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
 		   .ForMember(dest => dest.IsCancellable, opt => opt.MapFrom(src => src.IsCancellable))
 		   .ForMember(dest => dest.CancelAfterDay, opt => opt.MapFrom(src => src.CancelAfterDay))
-		   .ForMember(dest => dest.RoomImageUrls, opt => opt.MapFrom(src => src.RoomImages.Select(ri => ri.Url).ToList()))
+		   .ForMember(dest => dest.ImageUrls, opt => opt.MapFrom(src => src.RoomImages.Select(ri => ri.Url).ToList()))
 		   .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate))
 		   .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => src.ModifiedDate));
 		CreateMap<Discount, DiscountCreateCommandRequest>().ReverseMap();

@@ -30,11 +30,13 @@
 									<div class="col-md-3">
 										<!-- Short by filter -->
 										<form>
-											<select class="form-select js-choice" aria-label=".form-select-sm">
-												<option value="">Sort by</option>
-												<option>Free</option>
-												<option>Newest</option>
-												<option>Oldest</option>
+									<select class="form-select js-choice" aria-label=".form-select-sm" method="get" name="select" onchange="this.form.submit()">
+												<option value="null">Sort by</option>
+												<option value="1">Show all</option>
+												<option value="2">Date</option>
+												<option value="3">Upcoming</option>
+												<option value="4">Current</option>
+												<option value="5">Not Cancelled</option>
 											</select>
 										</form>
 									</div>

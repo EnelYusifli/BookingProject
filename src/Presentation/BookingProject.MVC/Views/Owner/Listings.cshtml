@@ -38,21 +38,8 @@
 										<div class="col-md-9 col-lg-10">
 											<div class="card-body position-relative d-flex flex-column p-0 h-100">
 
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown position-absolute top-0 end-0">
-													<!-- Share button -->
-													<a href="#" class="btn btn-sm btn-round btn-light" role="button" id="dropdownAction2" data-bs-toggle="dropdown" aria-expanded="false">
-														<i class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown button -->
-													<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownAction2">
-														<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle me-1"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i class="bi bi-slash-circle me-1"></i>Disable</a></li>
-													</ul>
-												</div>
-
 												<!-- Title -->
-												<h5 class="card-title mb-0 me-5"><a href="hotel-detail.html">@hotel.Name</a></h5>
+												<h5 class="card-title mb-0 me-5"><a asp-action="hoteldetail" asp-controller="home" asp-route-id="@hotel.Id">@hotel.Name</a></h5>
 												<small><i class="bi bi-geo-alt me-2"></i>@hotel.Address, @hotel.City - @hotel.ViewerCount</small>
 
 												<!-- Price and Button -->
@@ -64,9 +51,10 @@
 													</div>
 													<!-- Price -->
 													<div class="hstack gap-2 mt-3 mt-sm-0">
-														<a asp-action="updatehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-primary mb-0"><i class="bi bi-pencil-square fa-fw me-1"></i>Edit</a>
-													<a asp-action="deletehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-danger mb-0 delete-btn"><i class="bi bi-trash3 fa-fw me-1"></i>Delete</a>
-														<a asp-action="addroom" asp-controller="property" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-success mb-0"><i class="fas fa-plus fa-fw me-1"></i>Add Room</a>
+														<a asp-action="updatehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-pencil-square fa-fw me-1"></i>Edit</a>
+													<a asp-action="deletehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-danger-soft mb-0 delete-btn"><i class="bi bi-trash3 fa-fw me-1"></i>Delete</a>
+														<a asp-action="addroom" asp-controller="property" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-success-soft mb-0"><i class="fas fa-plus fa-fw me-1"></i>Add Room</a>
+													<a asp-action="hotelrooms" asp-controller="owner" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-warning-soft mb-0"><i class="fas fa-wrench fa-fw me-1"></i>Edit Rooms</a>
 													</div>
 												</div>
 											</div>

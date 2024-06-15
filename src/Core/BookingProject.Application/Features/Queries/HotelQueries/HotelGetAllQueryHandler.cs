@@ -36,6 +36,7 @@ public class HotelGetAllQueryHandler : IRequestHandler<HotelGetAllQueryRequest, 
             .ThenInclude(x => x.RoomImages)
 			.Include(x => x.Rooms)
 			.ThenInclude(x => x.Reservation)
+			.AsSplitQuery()
 			.ToListAsync();
         if (act is null) throw new Exception("Hotel not found");
         ICollection<HotelGetAllQueryResponse> dtos = _mapper.Map<ICollection<HotelGetAllQueryResponse>>(act);

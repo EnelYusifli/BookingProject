@@ -10,7 +10,6 @@
 					<div class="col-12 mb-4 mb-sm-5">
 						<div class="d-sm-flex justify-content-between align-items-center">
 							<h1 class="h3 mb-3 mb-sm-0">Owners List</h1>
-							<div class="d-grid"><a href="#" class="btn btn-primary mb-0"><i class="bi bi-filetype-pdf me-2"></i>Generate Report</a>	</div>
 						</div>
 					</div>
 				</div>
@@ -19,22 +18,9 @@
 				<div class="row g-3 align-items-center justify-content-between mb-5">
 					<!-- Search -->
 					<div class="col-md-8">
-						<form class="rounded position-relative">
-							<input class="form-control pe-5" type="search" placeholder="Search" aria-label="Search">
+						<form class="rounded position-relative" method="get" asp-action="ownerslist">
+							<input class="form-control pe-5" type="search" placeholder="Search" aria-label="Search" name="search">
 							<button class="btn border-0 px-3 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i class="fas fa-search fs-6"></i></button>
-						</form>
-					</div>
-
-					<!-- Select option -->
-					<div class="col-md-3">
-						<!-- Short by filter -->
-						<form>
-							<select class="form-select js-choice" aria-label=".form-select-sm">
-								<option value="">Sort by</option>
-								<option>Free</option>
-								<option>Newest</option>
-								<option>Oldest</option>
-							</select>
 						</form>
 					</div>
 				</div>
@@ -65,7 +51,6 @@
 								</div>
 								<!-- Title -->
 								<h5 class="mb-1">@user.FirstName @user.LastName</h5>
-								<small><i class="bi bi-geo-alt me-1"></i>Los Angeles, USA</small>
 								<!-- Info and rating -->
 								<div class="d-flex justify-content-between mt-3">
 									<h6 class="mb-0 small"><span class="fw-light">Total listings:</span>@user.HotelCount</h6>
@@ -74,7 +59,6 @@
 							<!-- card footer -->
 							<div class="card-footer d-flex gap-3 align-items-center">
 								<a asp-action="ownerdetail" asp-route-id="@user.Id" class="btn btn-sm btn-primary-soft mb-0 w-100">View detail</a>
-								<a href="#" class="btn btn-sm btn-light flex-shrink-0 mb-0"><i class="bi bi-envelope"></i></a>
 							</div>
 						</div>
 					</div>

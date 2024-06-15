@@ -1,7 +1,13 @@
-﻿<!DOCTYPE html>
+﻿	@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+@{
+	 var user = await UserManager.GetUserAsync(User);
+	 }
+
+<!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from booking.webestica.com/agent-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 May 2024 09:25:55 GMT -->
+<!-- Mirrored from booking.webestica.com/agent-Index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 May 2024 09:25:55 GMT -->
 <head>
 	<title>Booking - Multipurpose Online Booking Theme</title>
 
@@ -78,6 +84,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
@@ -87,7 +95,39 @@
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
 
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/tiny-slider/tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/glightbox/css/glightbox.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/flatpickr/css/flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/choices/css/choices.min.css">
+
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/overlay-scrollbar/css/overlayscrollbars.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
 </head>
 
 <body>
@@ -151,7 +191,7 @@
 					<li class="nav-item ms-3 dropdown">
 						<!-- Avatar -->
 						<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-							<img class="avatar-img rounded-2" src="~/assets/images/avatar/01.jpg" alt="avatar">
+							<img class="avatar-img rounded-2" src='@(string.IsNullOrEmpty(user.ProfilePhotoUrl) ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : user.ProfilePhotoUrl)' alt="avatar">
 						</a>
 
 						<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
@@ -160,11 +200,11 @@
 								<div class="d-flex align-items-center">
 									<!-- Avatar -->
 									<div class="avatar me-3">
-										<img class="avatar-img rounded-circle shadow" src="~/assets/images/avatar/01.jpg" alt="avatar">
+										<img class="avatar-img rounded-circle shadow" src='@(string.IsNullOrEmpty(user.ProfilePhotoUrl) ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : user.ProfilePhotoUrl)' alt="avatar">
 									</div>
 									<div>
-										<a class="h6 mt-2 mt-sm-0" href="#">Lori Ferguson</a>
-										<p class="small m-0">example@gmail.com</p>
+										<a class="h6 mt-2 mt-sm-0" asp-action="profile" asp-controller="account">@user.FirstName @user.LastName</a>
+										<p class="small m-0">@user.Email</p>
 									</div>
 								</div>
 							</li>
@@ -177,7 +217,7 @@
 							<li><a class="dropdown-item bg-danger-soft-hover" asp-action="logout" asp-controller="account"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
 
 							<li> <hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" asp-action="dashboard" asp-controller="owner"><i class="bi bi-speedometer2 fa-fw me-2"></i>My Dashboard</a></li>
+							<li><a class="dropdown-item" asp-action="Index" asp-controller="owner"><i class="bi bi-speedometer2 fa-fw me-2"></i>My Dashboard</a></li>
 							<li><a class="dropdown-item" asp-action="listings" asp-controller="owner"><i class="bi bi-card-list fa-fw me-2"></i>My Listings</a></li>
 							<li><a class="dropdown-item" asp-action="reservations" asp-controller="owner"><i class="bi bi-calendar-check fa-fw me-2"></i>Listings' Reservations</a></li>
 							<li><a class="dropdown-item" asp-action="reviews" asp-controller="owner"><i class="bi bi-star fa-fw me-2"></i>Listings' Reviews</a></li>
@@ -231,22 +271,22 @@
 					<!-- Avatar and info START -->
 					<div class="d-sm-flex align-items-center">
 						<div class="avatar avatar-xl mb-2 mb-sm-0">
-							<img class="avatar-img rounded-circle" src="~/assets/images/avatar/01.jpg" alt="">
+							<img class="avatar-img rounded-circle" src='@(string.IsNullOrEmpty(user.ProfilePhotoUrl) ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : user.ProfilePhotoUrl)' alt="">
 						</div>
-						<h4 class="mb-2 mb-sm-0 ms-sm-3"><span class="fw-light">Hi</span> Jacqueline Miller</h4>
+						<h4 class="mb-2 mb-sm-0 ms-sm-3"><span class="fw-light">Hi</span> @user.FirstName @user.LastName</h4>
 						<a asp-action="addhotel" asp-controller="property" class="btn btn-sm btn-primary-soft mb-0 ms-auto flex-shrink-0"><i class="bi bi-plus-lg fa-fw me-2"></i>Add New Listing</a>
 					</div>
 					<!-- Avatar and info START -->
 					<!-- Responsive navbar toggler -->
-					<button class="btn btn-primary w-100 d-block d-xl-none mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#dashboardMenu" aria-controls="dashboardMenu">
+					<button class="btn btn-primary w-100 d-block d-xl-none mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#IndexMenu" aria-controls="IndexMenu">
 						<i class="bi bi-list"></i> Dashboard Menu
 					</button>
 
 					<!-- Nav links START -->
-					<div class="offcanvas-xl offcanvas-end mt-xl-3" tabindex="-1" id="dashboardMenu">
+					<div class="offcanvas-xl offcanvas-end mt-xl-3" tabindex="-1" id="IndexMenu">
 						<div class="offcanvas-header border-bottom p-3">
 							<h5 class="offcanvas-title">Menu</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#dashboardMenu" aria-label="Close"></button>
+							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#IndexMenu" aria-label="Close"></button>
 						</div>
 						<!-- Offcanvas body -->
 						<div class="offcanvas-body p-3 p-xl-0">
@@ -254,7 +294,7 @@
 							<div class="navbar navbar-expand-xl">
 								<ul class="navbar-nav navbar-offcanvas-menu">
 
-									<li class="nav-item"> <a class="nav-link"asp-action="dashboard"><i class="bi bi-house-door fa-fw me-1"></i>Dashboard</a>	</li>
+									<li class="nav-item"> <a class="nav-link"asp-action="Index"><i class="bi bi-house-door fa-fw me-1"></i>Dashboard</a>	</li>
 
 									<li class="nav-item"> <a class="nav-link" asp-action="listings"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
 
@@ -330,15 +370,46 @@
 	</script>
 	<!-- Bootstrap JS -->
 	<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Vendors -->
 	<script src="~/assets/vendor/apexcharts/js/apexcharts.min.js"></script>
+	<script src="~/assets/vendor/choices/js/choices.min.js"></script>
+	<script src="~/js/main.js"></script>
+	<!-- ThemeFunctions -->
+	<script src="~/assets/js/functions.js"></script>
+	<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Vendor -->
+	<script src="~/assets/vendor/overlay-scrollbar/js/overlayscrollbars.min.js"></script>
+	<script src="~/js/main.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Vendors -->
+	<script src="~/assets/vendor/tiny-slider/tiny-slider.js"></script>
+	<script src="~/assets/vendor/glightbox/js/glightbox.js"></script>
+	<script src="~/assets/vendor/flatpickr/js/flatpickr.min.js"></script>
 	<script src="~/assets/vendor/choices/js/choices.min.js"></script>
 
 	<!-- ThemeFunctions -->
 	<script src="~/assets/js/functions.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js"></script>
+	<!-- Bootstrap CSS -->
+	@* <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> *@
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+	<!-- ThemeFunctions -->
+	<script src="~/assets/js/functions.js"></script>
 </body>
 
-<!-- Mirrored from booking.webestica.com/agent-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 May 2024 09:25:56 GMT -->
+<!-- Mirrored from booking.webestica.com/agent-Index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 06 May 2024 09:25:56 GMT -->
 </html>

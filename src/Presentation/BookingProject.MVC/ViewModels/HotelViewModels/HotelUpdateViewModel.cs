@@ -1,4 +1,5 @@
 ﻿using BookingProject.Application.Features.DTOs;
+using BookingProject.MVC.ViewModels.RoomViewModels;
 
 namespace BookingProject.MVC.ViewModels.HotelViewModels;
 
@@ -22,4 +23,5 @@ public class HotelUpdateViewModel
 	public List<string>? NewAdvantages { get; set; }
 	public List<int>? DeletedAdvantageIds { get; set; }
 	public List<int>? DeletedImageFileIds { get; set; }
+	public List<RoomGetViewModel> Rooms { get; set; }
 }

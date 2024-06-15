@@ -230,8 +230,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtc09mU2VydmljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Dashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcRGFzaGJvYXJkLmNzaHRtbA==
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/HotelRooms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcSG90ZWxSb29tcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Enel/Desktop/BookingProject/src/Presentation/BookingProject.MVC/Views/Owner/Listings.cshtml]

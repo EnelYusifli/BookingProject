@@ -27,6 +27,8 @@ public class MessageReplyCommandHandler : IRequestHandler<MessageReplyCommandReq
         html = html.Replace("{{message}}", message.MessageText);
         html = html.Replace("{{reply}}",request.Reply);
         await _emailService.SendEmail(message.Email, subject, html);
+        message.IsReplied = true;
+        await _repository.CommitAsync();
         return new MessageReplyCommandResponse();
 
     }

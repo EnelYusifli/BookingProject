@@ -34,6 +34,7 @@ public class HotelGetAllByUserQueryHandler : IRequestHandler<HotelGetAllByUserQu
 		   .Include(x => x.Country)
 		   .Include(x => x.Rooms)
 		   .Where(x=>x.AppUserId==user.Id)
+		   .AsSplitQuery()
 		   .ToListAsync();
 		if (act is null) throw new Exception("Hotel not found");
 		ICollection<HotelGetAllByUserQueryResponse> dtos = _mapper.Map<ICollection<HotelGetAllByUserQueryResponse>>(act);

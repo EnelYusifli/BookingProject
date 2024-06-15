@@ -34,6 +34,7 @@ public class RoomGetAllQueryHandler : IRequestHandler<RoomGetAllQueryRequest, IC
 		   .Include(x => x.Reservation)
 		   .Include(x => x.Hotel)
 		   .ThenInclude(x => x.Rooms)
+		   .AsSplitQuery()
 		   .ToListAsync();
 
 		foreach (var room in act)

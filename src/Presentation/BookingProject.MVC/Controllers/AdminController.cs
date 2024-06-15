@@ -1,4 +1,5 @@
-﻿using BookingProject.MVC.Models;
+﻿using BookingProject.Domain.Entities;
+using BookingProject.MVC.Models;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.About;
@@ -14,6 +15,7 @@ using BookingProject.MVC.ViewModels.AdminViewModels.CRUDViewModels.Type;
 using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Data;
@@ -26,15 +28,29 @@ public class AdminController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	private readonly HttpClient _httpClient;
+	private readonly UserManager<AppUser> _userManager;
 
-	public AdminController(HttpClient httpClient)
+	public AdminController(HttpClient httpClient,UserManager<AppUser> userManager)
 	{
 		_httpClient = httpClient;
+		_userManager = userManager;
 		_httpClient.BaseAddress = baseAddress;
 	}
-	public IActionResult Index()
+	public async Task<IActionResult> Index(AdminIndexViewModel vm)
 	{
-		return View();
+		var response = await _httpClient.GetAsync(baseAddress + "/hotels/getall");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
+			vm.ActiveHotelCount = hotels.Where(x => !x.IsDeactive).Count();
+			vm.SubmittedHotelCount = hotels.Where(x => !x.IsApproved && !x.IsRefused && x.IsDeactive).Count();
+		}
+			var usersInRole = await _userManager.GetUsersInRoleAsync("Customer");
+		var ownersInRole = await _userManager.GetUsersInRoleAsync("Owner");
+		vm.UserCount = usersInRole.Count();
+		vm.OwnerCount = ownersInRole.Count();
+			return View(vm);
 	}
 	public async Task<IActionResult> SubmittedHotels(int itemPerPage=5,int page=1)
 	{
@@ -43,7 +59,7 @@ public class AdminController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
-			var queryableHotels = hotels.Where(x => x.IsDeactive == true && x.IsApproved == false).AsQueryable();
+			var queryableHotels = hotels.Where(x => x.IsDeactive == true && x.IsApproved == false && x.IsRefused==false).AsQueryable();
 			var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, itemPerPage, page);
 
 			return View(paginatedDatas);
@@ -83,7 +99,7 @@ public class AdminController : Controller
 		}
 		return RedirectToAction("Index");
 	}
-	public async Task<IActionResult> OwnersList(int itemPerPage = 5, int page = 1)
+	public async Task<IActionResult> OwnersList(int itemPerPage = 5, int page = 1,string? search=null)
 	{
 		var response = await _httpClient.GetAsync(baseAddress + "/users/getall");
 		if (response.IsSuccessStatusCode)
@@ -91,6 +107,15 @@ public class AdminController : Controller
 			var responseData = await response.Content.ReadAsStringAsync();
 			var users = JsonConvert.DeserializeObject<List<ViewModels.AdminViewModels.UserGetViewModel>>(responseData);
 			var queryableUsers = users.Where(x => x.Roles.Contains("Owner")).AsQueryable();
+			if(search is not null)
+			{
+				queryableUsers = queryableUsers.Where(u =>
+	u.UserName.ToLower().Contains(search.ToLower()) ||
+	u.Email.ToLower().Contains(search.ToLower()) ||
+	u.FirstName.ToLower().Contains(search.ToLower()) ||
+	u.LastName.ToLower().Contains(search.ToLower())
+);
+			}
 			var paginatedDatas = PaginatedList<ViewModels.AdminViewModels.UserGetViewModel>.Create(queryableUsers, itemPerPage, page);
 
 			return View(paginatedDatas);
@@ -906,7 +931,7 @@ public class AdminController : Controller
         }
         return RedirectToAction("Index");
     }
-    public async Task<IActionResult> Messages(int itemPerPage = 5, int page = 1)
+    public async Task<IActionResult> Messages(int itemPerPage = 5, int page = 1, bool? isreplied=null)
     
 	{
         var response = await _httpClient.GetAsync(baseAddress + "/messages/getall");
@@ -915,6 +940,14 @@ public class AdminController : Controller
             var responseData = await response.Content.ReadAsStringAsync();
             var act = JsonConvert.DeserializeObject<List<MessageGetAllViewModel>>(responseData);
             var queryableItems = act.AsQueryable();
+			if(isreplied is not null && isreplied == true)
+			{
+				queryableItems = queryableItems.Where(x => x.IsReplied);
+			}
+			if(isreplied is not null && isreplied == false)
+			{
+				queryableItems = queryableItems.Where(x => !x.IsReplied);
+			}
             var paginatedDatas = PaginatedList<MessageGetAllViewModel>.Create(queryableItems, itemPerPage, page);
 			MessagePageViewModel vm = new()
 			{

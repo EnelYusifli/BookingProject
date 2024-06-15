@@ -221,16 +221,6 @@ About hotel START -->
 							<div class="card-header border-bottom bg-transparent px-0 pt-0">
 								<div class="d-sm-flex justify-content-sm-between align-items-center">
 									<h3 class="mb-2 mb-sm-0">Room Options</h3>
-									<div class="col-sm-4">
-										<form class="form-control-bg-light">
-											<select class="form-select form-select-sm js-choice border-0">
-												<option value="">Select Option</option>
-												<option>Recently search</option>
-												<option>Most popular</option>
-												<option>Top rated</option>
-											</select>
-										</form>
-									</div>
 								</div>
 							</div>
 
@@ -255,7 +245,7 @@ About hotel START -->
 													<!-- Slider START -->
 													<div class="tiny-slider arrow-round arrow-xs arrow-light overflow-hidden rounded-2">
 														<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-															@foreach (var imageUrl in room.RoomImageUrls)
+															@foreach (var imageUrl in room.ImageUrls)
 															{
 																<!-- Image item -->
 																<div><img src="@imageUrl" alt="Room image" class="img-fluid rounded" style="max-height: 200px;"></div>

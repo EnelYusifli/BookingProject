@@ -23,7 +23,9 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
 		Room room=await _roomRepository.Table.Include(x => x.Reservation)
 			.Include(x=>x.RoomImages).Include(x => x.Hotel)
 		   .ThenInclude(x => x.Rooms).Include(x => x.Hotel)
-		   .ThenInclude(x => x.HotelImages).Include(x=>x.Discounts).FirstOrDefaultAsync(x=>x.Id==request.Id);
+		   .ThenInclude(x => x.HotelImages).Include(x=>x.Discounts)
+		   .AsSplitQuery()
+		   .FirstOrDefaultAsync(x=>x.Id==request.Id);
 		if (room is null)
 			throw new NotFoundException("Room not found");
 		UpdateRoomDiscountedPrice(room);

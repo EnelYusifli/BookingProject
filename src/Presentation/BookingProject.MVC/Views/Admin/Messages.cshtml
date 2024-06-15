@@ -12,6 +12,21 @@
             </div>
         </div>
     </div>
+    <div class="row g-3 align-items-center justify-content-between mb-3">
+        <!-- Select option -->
+        <div class="col-md-3">
+            <!-- Short by filter -->
+            <form method="get" asp-action="messages">
+                <select class="form-select js-choice" aria-label=".form-select-sm" name="isreplied" onchange="this.form.submit()">
+                    <option value="null">Sort by</option>
+                    <option value="null">Show all</option>
+                    <option value="true">Replied</option>
+                    <option value="false">Not Replied</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
     <div class="card shadow mt-5">
         <div class="card-body">
             <div class="bg-light rounded p-3 d-none d-lg-block">
@@ -27,14 +42,26 @@
                         <small class="d-block d-lg-none">Message</small>
                         <h6 class="mb-0 fw-normal">@item.MessageText</h6>
                     </div>
+                    <div class="col-auto">
+                        @if (item.IsReplied)
+                        {
+                            <span class="badge bg-success">Replied</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Not Replied</span>
+                        }
+                    </div>
                     <div class="col">
                         <div class="d-flex flex-column gap-2">
-                            <a asp-action="ReplyMessage" asp-route-id="@item.Id" asp-route-text="@item.MessageText"class="btn btn-sm btn-primary-soft mb-0">Reply</a>
+                            <a asp-action="ReplyMessage" asp-route-id="@item.Id" asp-route-text="@item.MessageText" class="btn btn-sm btn-primary-soft mb-0">Reply</a>
                             <a asp-action="DeleteMessage" asp-route-id="@item.Id" class="btn btn-sm delete-btn btn-danger-soft mb-0">Delete</a>
                         </div>
                     </div>
+                    
                 </div>
             }
+
         </div>
         <div class="card-footer pt-0">
             <div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4">

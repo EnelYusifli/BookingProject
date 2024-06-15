@@ -24,7 +24,7 @@
 				<!-- Slider START -->
 				<div class="tiny-slider arrow-round arrow-blur">
 					<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-edge="0" data-dots="false" data-items="2" data-items-sm="1">
-						@foreach (var url in Model.RoomImageUrls)
+						@foreach (var url in Model.ImageUrls)
 					{
 						<!-- Slider item -->
 						<div>
@@ -54,140 +54,65 @@
 				<div class="row">
 
 					<!-- Detail START -->
-					<div class="col-xl-7">
-						<div class="card bg-transparent p-0">
-							<!-- Card header -->
-							<div class="card-header bg-transparent border-bottom d-sm-flex justify-content-sm-between align-items-center p-0 pb-3">
-								<h4 class="mb-2 mb-sm-0">Select Rooms</h4>
+					<!-- Detail START -->
+<div class="col-xl-7">
+    <div class="card bg-transparent p-0">
+        <!-- Card header -->
+        <div class="card-header bg-transparent border-bottom d-sm-flex justify-content-sm-between align-items-center p-0 pb-3">
+            <h4 class="mb-2 mb-sm-0">Room Details</h4>
+        </div>
 
-								<div class="col-sm-4">
-									<form class="form-control-bg-light">
-										<select class="form-select form-select-sm js-choice border-0">
-											<option value="">Select Option</option>
-											<option>Recently search</option>
-											<option>Most popular</option>
-											<option>Top rated</option>
-										</select>
-									</form>
-								</div>
-							</div>
+        <!-- Card body START -->
+        <div class="card-body p-0 pt-3">
+            <div class="vstack gap-5">
+                <!-- Room item START -->
+                <div class="card border bg-transparent p-3">
+                    <div class="row g-3 g-md-4">
+                        <!-- Room detail START -->
+                                        <div class="col-md-8">
+                                            <div class="card-body p-0">
 
-							<!-- Card body START -->
-							<div class="card-body p-0 pt-3">
-								<div class="vstack gap-5">
-									<!-- Room item START -->
-									<div class="card border bg-transparent p-3">
-										<div class="row g-3 g-md-4">
-											<!-- Image and content -->
-											<div class="col-md-4">
-												<!-- Image -->
-												<div class="position-relative">
-													<img src="~/assets/images/category/hotel/4by3/02.jpg" class="card-img" alt="">
-													<!-- Badge -->
-													<div class="card-img-overlay">
-														<a href="~/assets/images/gallery/12.jpg" class="badge bg-dark stretched-link" data-glightbox="" data-gallery="gallery">
-															5 Photos <i class="bi bi-arrow-right"></i>
-														</a>
-													</div>
-													<!-- Popup Images -->
-													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
-													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/15.jpg"></a>
-													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/16.jpg"></a>
-												</div>
-											</div>
+                                                <!-- List -->
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="mb-2">
+                                                        <i class="fa-regular fa-square me-2"></i>Area: @Model.Area sq.ft
+                                                    </li>
+                                                    <li class="mb-2">
+                                                        <i class="fa-solid fa-bed me-2"></i>Adults: @Model.AdultCount
+                                                    </li>
+                                                    <li class="mb-2">
+                                                        <i class="fa-solid fa-child me-2"></i>Children: @Model.ChildCount
+                                                    </li>
+                                                    @if (Model.IsCancellable)
+                                                    {
+                                                        <li class="mb-2">
+                                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                                            Free Cancellation till @DateTime.Now.AddDays(Model.CancelAfterDay.GetValueOrDefault()).ToString("dd/MM/yyyy")
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="mb-2">
+                                                            <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                                            Non Cancellable
+                                                        </li>
+                                                    }
+                                                </ul>
 
-											<!-- Room detail START -->
-											<div class="col-md-8">
-												<div class="card-body d-flex flex-column p-0 h-100">
-													<!-- Title -->
-													<h5 class="card-title">Deluxe Pool View with Breakfast</h5>
+                                              
+                                            </div>
+                                        </div>
+                        <!-- Room detail END -->
+                    </div>
+                </div>
+                <!-- Room item END -->
+            </div>
+        </div>
+        <!-- Card body END -->
+    </div>
+</div>
+<!-- Detail END -->
 
-													<!-- List -->
-													<ul class="nav small nav-divider mb-0">
-														<li class="nav-item mb-0">
-															<i class="fa-regular fa-square me-1"></i>@Model.Area sq.ft
-														</li>
-														<li class="nav-item mb-0">
-															<i class="fa-solid fa-table-cells-large me-1"></i>City view
-														</li>
-														<li class="nav-item mb-0">
-															<i class="fa-solid fa-bed me-1"></i>King Bed
-														</li>
-													</ul>
-
-													<!-- Price and button -->
-													<div class="d-flex justify-content-between align-items-center mt-2 mt-md-auto">
-														<div class="d-flex text-success">
-															<h6 class="h5 mb-0 text-success">$@Model.PricePerNight</h6>
-															<span class="fw-light">/per night</span>
-														</div>
-														<a href="#" class="btn btn-sm btn-dark mb-0">Select room</a>
-													</div>
-												</div>
-											</div>
-											<!-- Room detail START -->
-										</div>
-									</div>
-									<!-- Room item END -->
-									<!-- Room item START -->
-									<div class="card border bg-transparent p-3">
-										<div class="row g-3 g-md-4">
-											<!-- Image and content -->
-											<div class="col-md-4">
-												<!-- Image -->
-												<div class="position-relative">
-													<img src="~/assets/images/category/hotel/4by3/10.jpg" class="card-img" alt="">
-													<!-- Badge -->
-													<div class="card-img-overlay">
-														<a href="~/assets/images/gallery/13.jpg" class="badge bg-dark stretched-link" data-glightbox="" data-gallery="gallery">
-															4 Photos <i class="bi bi-arrow-right"></i>
-														</a>
-													</div>
-													<!-- Popup Images -->
-													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
-													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/15.jpg"></a>
-													<a data-glightbox="" data-gallery="gallery" href="~/assets/images/gallery/16.jpg"></a>
-												</div>
-											</div>
-
-											<!-- Room detail START -->
-											<div class="col-md-8">
-												<div class="card-body d-flex flex-column h-100 p-0">
-													<!-- Title -->
-													<h5 class="card-title">Deluxe Room</h5>
-
-													<!-- List -->
-													<ul class="nav small nav-divider mb-0">
-														<li class="nav-item mb-0">
-															<i class="fa-regular fa-square me-1"></i>458 sq.ft
-														</li>
-														<li class="nav-item mb-0">
-															<i class="fa-solid fa-table-cells-large me-1"></i>City view
-														</li>
-														<li class="nav-item mb-0">
-															<i class="fa-solid fa-bed me-1"></i>King Bed
-														</li>
-													</ul>
-
-													<!-- Price and button -->
-													<div class="d-flex justify-content-between align-items-center mt-2 mt-md-auto">
-														<div class="d-flex text-success">
-															<h6 class="h5 mb-0 text-success">$485</h6>
-															<span class="fw-light">/per night</span>
-														</div>
-														<a href="#" class="btn btn-sm btn-dark mb-0">Select room</a>
-													</div>
-												</div>
-											</div>
-											<!-- Room detail START -->
-										</div>
-									</div>
-									<!-- Room item END -->
-								</div>
-							</div>
-							<!-- Card body END -->
-						</div>
-					</div>
 					<!-- Detail END -->
 					<!-- Right side content START -->
 					<aside class="col-xl-5 d-none d-xl-block">

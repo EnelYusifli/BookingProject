@@ -6,6 +6,7 @@ public class MessageGetAllViewModel
     public DateTime ModifiedDate { get; set; } = DateTime.Now;
     public string Name { get; set; }
     public int Id { get; set; }
-    public string Email { get; set; }
+	public bool IsReplied { get; set; }
+	public string Email { get; set; }
     public string MessageText { get; set; }
 }

@@ -609,6 +609,9 @@ namespace BookingProject.Persistence.Migrations
                     b.Property<bool>("IsDeactive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsReplied")
+                        .HasColumnType("bit");
+
                     b.Property<string>("MessageText")
                         .IsRequired()
                         .HasMaxLength(1000)

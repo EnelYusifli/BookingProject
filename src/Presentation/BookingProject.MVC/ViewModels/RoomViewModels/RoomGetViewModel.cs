@@ -22,5 +22,5 @@ public class RoomGetViewModel
 	public decimal Area { get; set; }
 	public bool IsCancellable { get; set; }
 	public int? CancelAfterDay { get; set; }
-	public List<string> RoomImageUrls { get; set; }
+	public List<string> ImageUrls { get; set; }
 }

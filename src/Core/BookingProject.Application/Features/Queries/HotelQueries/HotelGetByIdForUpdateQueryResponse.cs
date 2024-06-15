@@ -1,4 +1,5 @@
 ﻿using BookingProject.Application.Features.DTOs;
+using BookingProject.Application.Features.Queries.RoomQueries;
 using Microsoft.AspNetCore.Http;
 
 namespace BookingProject.Application.Features.Queries.HotelQueries;
@@ -23,4 +24,5 @@ public class HotelGetByIdForUpdateQueryResponse
 	public List<int>? ActivityIds { get; set; }
 	public List<int>? DeletedImageFileIds { get; set; }
 	public List<int>? DeletedAdvantageIds { get; set; }
+	public List<RoomGetByIdResponse> Rooms { get; set; }
 }

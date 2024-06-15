@@ -56,8 +56,8 @@ public class ReviewGetAllByOwnerQueryHandler:IRequestHandler<ReviewGetAllByOwner
             .Include(r => r.Hotel)
             .ToListAsync();
 
-        if (reviews == null || !reviews.Any())
-            throw new NotFoundException("Reviews not found");
+        if (reviews is null)
+            throw new Exception("Reviews not found");
 
         var dtos = _mapper.Map<ICollection<ReviewGetAllQueryResponse>>(reviews);
 

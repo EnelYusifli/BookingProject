@@ -136,11 +136,11 @@ public class HomeController : Controller
 		bool? mostPopular,
 		bool? mostRated,
 		string? searchStr,
-		int? adultCount,
 		int? roomCount,
-		int? childCount,
 		string? countryName,
 		string? dateRange,
+		int? childCount=0,
+		int? adultCount=1,
 		int page = 1,
 		int itemPerPage = 3)
 	{
@@ -164,6 +164,8 @@ public class HomeController : Controller
 
 		HttpContext.Session.SetString("CheckInDate", checkInDate.ToString("yyyy-MM-dd"));
 		HttpContext.Session.SetString("CheckOutDate", checkOutDate.ToString("yyyy-MM-dd"));
+		HttpContext.Session.SetString("ChildCount", childCount.ToString());
+		HttpContext.Session.SetString("AdultCount", adultCount.ToString());
 
 		if (!ModelState.IsValid) return View();
 
@@ -273,6 +275,8 @@ public class HomeController : Controller
 			vm.Room = room;
 			var checkInDateString = HttpContext.Session.GetString("CheckInDate");
 			var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+			var adultCount = HttpContext.Session.GetString("AdultCount");
+			var childCount = HttpContext.Session.GetString("ChildCount");
 			if (string.IsNullOrEmpty(checkInDateString))
 			{
 				checkInDateString = $"{DateTime.Now.ToString("yyyy-MM-dd")}";
@@ -289,6 +293,8 @@ public class HomeController : Controller
 
 			int numberOfNights = (int)(checkOutDate - checkInDate).TotalDays;
 			vm.Nights = numberOfNights;
+			vm.AdultCount = adultCount;
+			vm.ChildCount = childCount;
 			vm.CheckInDate = checkInDate.ToString("yyyy-MM-dd");
 			vm.CheckOutDate = checkOutDate.ToString("yyyy-MM-dd");
 			var hotelResponse = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{room.HotelId}");
@@ -332,7 +338,7 @@ public class HomeController : Controller
 
 		if (response.IsSuccessStatusCode)
 		{
-			return RedirectToAction("Profile","Account");
+			return RedirectToAction("Reservations","Account");
 		}
 		else
 		{

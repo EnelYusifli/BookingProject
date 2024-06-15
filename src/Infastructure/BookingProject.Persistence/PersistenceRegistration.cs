@@ -14,6 +14,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.Google;
 using BookingProject.Application.Services.Implementations;
 using BookingProject.Application.Services.Interfaces;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 
 namespace BookingProject.Persistence;
@@ -22,9 +23,9 @@ public static class PersistenceRegistration
 {
     public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-		services.AddHttpContextAccessor();
-		services.AddScoped<IActivityRepository, ActivityRepository>();
-		services.AddScoped<IAboutRepository, AboutRepository>();
+        services.AddHttpContextAccessor();
+        services.AddScoped<IActivityRepository, ActivityRepository>();
+        services.AddScoped<IAboutRepository, AboutRepository>();
         services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddScoped<ITermsOfServiceRepository, TermsOfServiceRepository>();
         services.AddScoped<ICardRepository, CardRepository>();
@@ -65,9 +66,14 @@ public static class PersistenceRegistration
             opt.Lockout.MaxFailedAccessAttempts = 5;
         })
         .AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-		services.AddScoped<UserManager<AppUser>>();
+        services.AddScoped<UserManager<AppUser>>();
 		services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(configuration.GetConnectionString("default")));
+		{
+			options.UseSqlServer(configuration.GetConnectionString("default"))
+				   .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.MultipleCollectionIncludeWarning));
+		});
+
+
 		services.AddAuthentication(opt =>
         {
             opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -4,11 +4,15 @@ using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
 using BookingProject.MVC.ViewModels.AdminViewModels;
 using BookingProject.MVC.ViewModels.HotelViewModels;
+using BookingProject.MVC.ViewModels.RoomViewModels;
+using MailKit.Search;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Globalization;
 using System.Net.Http;
+using System.Text;
 
 namespace BookingProject.MVC.Controllers;
 [Authorize(Roles = "Owner")]
@@ -34,7 +38,7 @@ public class OwnerController : Controller
         }
         return null;
     }
-    public async Task<IActionResult> Dashboard()
+    public async Task<IActionResult> Index()
 	{
 		AppUser user = await GetCurrentUserAsync();
 		var response = await _httpClient.GetAsync(baseAddress + $"/reservations/getallbyowner/{user.Id}");
@@ -42,8 +46,21 @@ public class OwnerController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
-			dtos = dtos.Where(x => x.StartTime > DateTime.Now).ToList();
-			return View(dtos);
+			ViewBag.ReservationCount = dtos.Count();
+		}
+		var response2 = await _httpClient.GetAsync(baseAddress + $"/hotels/getallbyuser/{user.Id}");
+		if (response2.IsSuccessStatusCode)
+		{
+			var responseData = await response2.Content.ReadAsStringAsync();
+			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
+			ViewBag.ListingCount = dtos.Count();
+		}
+		var response3 = await _httpClient.GetAsync(baseAddress + $"/reviews/getallbyowner/{user.Id}");
+		if (response3.IsSuccessStatusCode)
+		{
+			var responseData = await response3.Content.ReadAsStringAsync();
+			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
+			ViewBag.ReviewCount = dtos.Count();
 		}
 		return View();
 	}
@@ -58,9 +75,9 @@ public class OwnerController : Controller
 			var hotels = JsonConvert.DeserializeObject<List<OwnerHotelGetViewModel>>(responseData);
 			return View(hotels);
 		}
-		return RedirectToAction("Dashboard");
+		return RedirectToAction("Index");
 	}
-	public async Task<IActionResult> Reservations()
+	public async Task<IActionResult> Reservations(int? select)
 	{
         AppUser user = await GetCurrentUserAsync();
 		var response = await _httpClient.GetAsync(baseAddress + $"/reservations/getallbyowner/{user.Id}");
@@ -69,6 +86,14 @@ public class OwnerController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
+			if(select is not null && select == 2) 
+				dtos=dtos.OrderBy(x=>x.StartTime).ToList();
+			if(select is not null && select == 3) 
+				dtos=dtos.Where(item=> (!item.IsCancelled) && item.StartTime > DateTime.Now).ToList();
+			if(select is not null && select == 4) 
+				dtos=dtos.Where(item=> (!item.IsCancelled) && item.StartTime < DateTime.Now && item.EndTime > DateTime.Now).ToList();
+			if(select is not null && select == 5) 
+				dtos=dtos.Where(item=> (!item.IsCancelled)).ToList();
 			//dtos = dtos.Where(x => x.StartTime > DateTime.Now).ToList();
 			return View(dtos);
 		}
@@ -88,7 +113,13 @@ public class OwnerController : Controller
 			var paginatedDatas = PaginatedList<ReviewGetViewModel>.Create(queryableItems, itemPerPage, page);
 			return View(paginatedDatas);
         }
-        return RedirectToAction("Index", "Home");
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return RedirectToAction("Index", "Home");
     }
     public async Task<IActionResult> ReportReview(int id)
     {
@@ -108,6 +139,45 @@ public class OwnerController : Controller
 		if (response.IsSuccessStatusCode)
 		{
 			return RedirectToAction("Reservations");
+		}
+		return RedirectToAction("Index", "Home");
+	}
+	//[Authorize(Roles = "Owner")]
+	//public IActionResult CreateDiscount()
+	//{
+	//	return View();
+	//}
+	[Authorize(Roles = "Owner")]
+	[HttpPost]
+	public async Task<IActionResult> CreateDiscount(DiscountCreateViewModel vm)
+	{
+		if (!ModelState.IsValid) return View();
+		var dataStr = JsonConvert.SerializeObject(vm);
+		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+		var response = await _httpClient.PostAsync(baseAddress + $"/discounts/create/{vm.RoomId}", stringContent);
+
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("index");
+		}
+		return RedirectToAction("Index", "Home");
+	}
+	public async Task<IActionResult> HotelRooms(int hotelid)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + $"/rooms/getall/{hotelid}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var dtos = JsonConvert.DeserializeObject<List<RoomGetViewModel>>(responseData);
+			return View(dtos);
+		}
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
 		}
 		return RedirectToAction("Index", "Home");
 	}

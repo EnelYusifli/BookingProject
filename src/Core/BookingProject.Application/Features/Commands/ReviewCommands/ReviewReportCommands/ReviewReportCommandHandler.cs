@@ -20,13 +20,23 @@ public class ReviewReportCommandHandler : IRequestHandler<ReviewReportCommandReq
         CustomerReview review= await _reviewRepository.GetByIdAsync(request.Id);
         if (review is null || review.IsDeactive == true) throw new NotFoundException("Review not found");
         //review.IsDeactive = true;
-        if(review.IsReported==false)
+        if (review.IsReported == false)
+        {
         review.IsReported = true;
-        if (review.IsReported == true)
-            review.IsReported = false;
+        
         await _reviewRepository.CommitAsync();
 
         return new ReviewReportCommandResponse();
-    }
+
+        }
+        else
+        {
+			review.IsReported = false;
+
+			await _reviewRepository.CommitAsync();
+
+			return new ReviewReportCommandResponse();
+		}
+	}
 
 }

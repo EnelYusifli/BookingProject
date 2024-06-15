@@ -2,327 +2,363 @@
 	Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 @model HotelGetViewModel
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
 
-
-			<!-- Page main content START -->
-			<div class="page-content-wrapper p-xxl-4">
-
-				<!-- Title -->
-				<div class="row">
-					<div class="col-12 mb-4 mb-sm-5">
-						<div class="d-sm-flex justify-content-around align-items-center">
-							<h1 class="h3 mb-2 mb-sm-0">@Model.Name</h1>
-							<div>
-				<a asp-action="refusehotel" asp-route-id="@Model.Id" class="btn btn-danger-soft text-nowrap mb-0"><i class="bi bi-x-circle-fill"></i> Refuse</a>
-				<a asp-action="approvehotel" asp-route-id="@Model.Id" class="btn btn-success-soft text-nowrap mb-0"><i class="bi bi-check-circle-fill"></i> Approve</a>
-							</div>
+	<section class="py-0 pt-sm-5">
+		<div class="container position-relative">
+			<!-- Title and button START -->
+			<div class="row mb-3">
+				<div class="col-12">
+					<!-- Meta -->
+					<div class="d-lg-flex justify-content-lg-between align-items-center mb-1">
+						<!-- Title -->
+						<div class="mb-2 mb-lg-0">
+							<h1 class="fs-2">@Model.Name</h1>
+							<!-- Location -->
+							<p class="fw-bold mb-0">
+								<i class="bi bi-geo-alt me-2"></i>@Model.Address - @Model.ViewerCount
+							</p>
+						</div>
+						<!-- Action Buttons -->
+						<div>
+							<a asp-action="refusehotel" asp-route-id="@Model.Id" class="btn btn-danger-soft text-nowrap mb-0 me-2">
+								<i class="bi bi-x-circle-fill"></i> Refuse
+							</a>
+							<a asp-action="approvehotel" asp-route-id="@Model.Id" class="btn btn-success-soft text-nowrap mb-0">
+								<i class="bi bi-check-circle-fill"></i> Approve
+							</a>
 						</div>
 					</div>
 				</div>
-
-				<!-- Booking detail START -->
-				<div class="row g-4 g-xl-5">
-					<!-- Image -->
-					<div class="col-xxl-6">
-						<div class="row g-2 g-sm-4">
-							@foreach (var item in Model.ImageFileUrls)
-				{
-							<div class="col-6">
-								<a data-glightbox data-gallery="gallery" href="@item">
+			</div>
+			<!-- Title and button END -->
+		</div>
+	</section>
+	<!-- =======================
+	Main Title END -->
+	<!-- =======================
+	Image gallery START -->
+	<section class="card-grid pt-0">
+		<div class="container">
+			<div class="row g-2">
+				<!-- Slider START -->
+				<div class="tiny-slider arrow-round arrow-blur">
+					<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-edge="0" data-dots="false" data-items="2" data-items-sm="1">
+						@foreach (var url in Model.ImageFileUrls)
+						{
+							<!-- Slider item -->
+							<div>
+								<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="@url">
 									<div class="card card-element-hover card-overlay-hover overflow-hidden">
 										<!-- Image -->
-										<img src="@item" class="rounded-3" alt="">
-										<!-- Full screen button -->
-										<div class="hover-element w-100 h-100">
-											<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-										</div>
+										<img src="@url" class="rounded-3" alt="">
+										@* <!-- Full screen button -->
+									<div class="hover-element w-100 h-100">
+									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+									</div> *@
 									</div>
 								</a>
 							</div>
-				}
-						</div>
+						}
+
 					</div>
-
-					<!-- Content -->
-		<div class="col-xl-7 order-1">
-			<div class="vstack gap-5">
-
-				<!-- About hotel START -->
-				<div class="card bg-transparent">
-					<!-- Card header -->
-					<div class="card-header border-bottom bg-transparent px-0 pt-0">
-						<h3 class="mb-0">About This Hotel</h3>
-					</div>
-
-					<!-- Card body START -->
-					<div class="card-body pt-4 p-0">
-
-						<p class="mb-3">@Model.Desc.Substring(0, Model.Desc.Length / 2)</p>
-
-						<div class="collapse" id="collapseContent">
-							<p class="my-3">@Model.Desc.Substring(Model.Desc.Length / 2)</p>
-						</div>
-
-
-						<a class="p-0 mb-4 mt-2 btn-more d-flex align-items-center collapsed" data-bs-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">
-							See <span class="see-more ms-1">more</span><span class="see-less ms-1">less</span><i class="fa-solid fa-angle-down ms-2"></i>
-						</a>
-
-						<!-- List -->
-						<h5 class="fw-light mb-2">Advantages</h5>
-						<ul class="list-group list-group-borderless mb-0">
-							@foreach (var item in Model.AdvantageNames)
-							{
-								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>@item</li>
-							}
-
-						</ul>
-					</div>
-					<!-- Card body END -->
+					<!-- Slider START -->
 				</div>
-				<!-- About hotel START -->
-				<!-- Amenities START -->
-				<div class="card bg-transparent">
-					<!-- Card header -->
-					<div class="card-header border-bottom bg-transparent px-0 pt-0">
-						<h3 class="card-title mb-0">Amenities</h3>
-					</div>
+			</div>
+	</section>
+	<!-- =======================
+	Image gallery END -->
+	<!-- =======================
+	About hotel START -->
+	<section class="pt-0">
+		<div class="container" data-sticky-container>
 
-					<!-- Card body START -->
-					<div class="card-body pt-4 p-0">
-						<div class="row g-4">
-							<!-- Activities -->
-							<div class="col-sm-6">
-								<h6><i class="fa-solid fa-biking me-2"></i>Activities</h6>
-								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									@foreach (var item in Model.ActivityNames)
-									{
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>@item
-										</li>
-									}
+			<div class="row g-4 g-xl-5">
+				<!-- Content START -->
+				<div class="col-12 order-1">
+					<div class="vstack gap-5">
 
-								</ul>
+						<!-- About hotel START -->
+						<div class="card bg-transparent">
+							<!-- Card header -->
+							<div class="card-header border-bottom bg-transparent px-0 pt-0">
+								<h3 class="mb-0">About This Hotel</h3>
 							</div>
 
-							<!-- Payment Method -->
-							<div class="col-sm-6">
-								<h6><i class="fa-solid fa-credit-card me-2"></i>Payment Method</h6>
-								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									@foreach (var item in Model.PaymentMethodNames)
-									{
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>@item
-										</li>
-									}
-								</ul>
-							</div>
+							<!-- Card body START -->
+							<div class="card-body pt-4 p-0">
 
-							<!-- Staff Language -->
-							<div class="col-sm-6">
-								<h6><i class="fa-solid fa-volume-up me-2"></i>Staff Language</h6>
-								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									@foreach (var item in Model.StaffLanguageNames)
-									{
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>@item
-										</li>
-									}
-								</ul>
-							</div>
+								<p class="mb-3">@Model.Desc.Substring(0, Model.Desc.Length / 2)</p>
 
-
-
-							<!-- Services -->
-							<div class="col-sm-6">
-								<h6><i class="fa-solid fa-concierge-bell me-2"></i>Services</h6>
-								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									@foreach (var item in Model.ServiceNames)
-									{
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>@item
-										</li>
-									}
-								</ul>
-							</div>
-
-
-
-						</div>
-					</div>
-					<!-- Card body END -->
-				</div>
-				<!-- Amenities END -->
-				<!-- Room START -->
-				<div class="card bg-transparent" id="room-options">
-					<!-- Card header -->
-					<div class="card-header border-bottom bg-transparent px-0 pt-0">
-						<div class="d-sm-flex justify-content-sm-between align-items-center">
-							<h3 class="mb-2 mb-sm-0">Room Options</h3>
-
-							<div class="col-sm-4">
-								<form class="form-control-bg-light">
-									<select class="form-select form-select-sm js-choice border-0">
-										<option value="">Select Option</option>
-										<option>Recently search</option>
-										<option>Most popular</option>
-										<option>Top rated</option>
-									</select>
-								</form>
-							</div>
-						</div>
-					</div>
-
-					<!-- Card body START -->
-					<div class="card-body pt-4 p-0">
-						<div class="vstack gap-4">
-							@foreach (var room in Model.Rooms)
-							{
-
-								<!-- Room item START -->
-								<div class="card shadow p-3">
-									<div class="row g-4">
-										<!-- Card img -->
-										<div class="col-md-5 position-relative">
-
-											@* <!-- Overlay item -->
-										<div class="position-absolute top-0 start-0 z-index-1 mt-3 ms-4">
-										<div class="badge text-bg-danger">30% Off</div>
-										</div> *@
-
-											<!-- Slider START -->
-											<div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-												<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-													<!-- Image item -->
-														<div><img src="@room.RoomImageUrls.FirstOrDefault()" alt="Card image"></div>
-
-												</div>
-											</div>
-											<!-- Slider END -->
-											<!-- Button -->
-											<a href="#" class="btn btn-link text-decoration-underline p-0 mb-0 mt-1" data-bs-toggle="modal" data-bs-target="#roomDetail"><i class="bi bi-eye-fill me-1"></i>View more details</a>
-										</div>
-
-										<!-- Card body -->
-										<div class="col-md-7">
-											<div class="card-body d-flex flex-column h-100 p-0">
-
-												<!-- Title -->
-												<h5 class="card-title"><a href="#">@room.RoomName</a></h5>
-
-												@* <!-- Amenities -->
-											<ul class="nav nav-divider mb-2">
-											<li class="nav-item">Air Conditioning</li>
-											<li class="nav-item">Wifi</li>
-											<li class="nav-item">Kitchen</li>
-											<li class="nav-item">
-											<a href="#" class="mb-0 text-primary">More+</a>
-											</li>
-											</ul> *@
-
-												@if (room.IsCancellable)
-												{
-													<p class="text-success mb-0">
-														Free Cancellation till @DateTime.Now.AddDays(room.CancelAfterDay.GetValueOrDefault()).ToString("d MMM yyyy")
-													</p>
-												}
-												else
-												{
-													<p class="text-danger mb-0">Non Cancellable</p>
-												}
-
-												<!-- Price and Button -->
-												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Button -->
-													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1">$@room.PricePerNight</h5>
-														<span class="mb-0 me-2">/night</span>
-														@* <span class="text-decoration-line-through mb-0">$1000</span> *@
-													</div>
-													<!-- Price -->
-													@* <div class="mt-3 mt-sm-0">
-														<a asp-action="roomdetail" asp-route-id="@room.Id" class="btn btn-sm btn-primary mb-0">Select Room</a>
-													</div> *@
-												</div>
-											</div>
-										</div>
-									</div>
+								<div class="collapse" id="collapseContent">
+									<p class="my-3">@Model.Desc.Substring(Model.Desc.Length / 2)</p>
 								</div>
-								<!-- Room item END -->
-							}
+
+
+								<a class="p-0 mb-4 mt-2 btn-more d-flex align-items-center collapsed" data-bs-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">
+									See <span class="see-more ms-1">more</span><span class="see-less ms-1">less</span><i class="fa-solid fa-angle-down ms-2"></i>
+								</a>
+
+								<!-- List -->
+								<h5 class="fw-light mb-2">Advantages</h5>
+								<ul class="list-group list-group-borderless mb-0">
+									@foreach (var item in Model.AdvantageNames)
+									{
+										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>@item</li>
+									}
+
+								</ul>
+							</div>
+							<!-- Card body END -->
 						</div>
+						<!-- About hotel START -->
+						<!-- Amenities START -->
+						<div class="card bg-transparent">
+							<!-- Card header -->
+							<div class="card-header border-bottom bg-transparent px-0 pt-0">
+								<h3 class="card-title mb-0">Amenities</h3>
+							</div>
+
+							<!-- Card body START -->
+							<div class="card-body pt-4 p-0">
+								<div class="row g-4">
+									<!-- Activities -->
+									<div class="col-sm-6">
+										<h6><i class="fa-solid fa-biking me-2"></i>Activities</h6>
+										<!-- List -->
+										<ul class="list-group list-group-borderless mt-2 mb-0">
+											@foreach (var item in Model.ActivityNames)
+											{
+												<li class="list-group-item pb-0">
+													<i class="fa-solid fa-check-circle text-success me-2"></i>@item
+												</li>
+											}
+
+										</ul>
+									</div>
+
+									<!-- Payment Method -->
+									<div class="col-sm-6">
+										<h6><i class="fa-solid fa-credit-card me-2"></i>Payment Method</h6>
+										<!-- List -->
+										<ul class="list-group list-group-borderless mt-2 mb-0">
+											@foreach (var item in Model.PaymentMethodNames)
+											{
+												<li class="list-group-item pb-0">
+													<i class="fa-solid fa-check-circle text-success me-2"></i>@item
+												</li>
+											}
+										</ul>
+									</div>
+
+									<!-- Staff Language -->
+									<div class="col-sm-6">
+										<h6><i class="fa-solid fa-volume-up me-2"></i>Staff Language</h6>
+										<!-- List -->
+										<ul class="list-group list-group-borderless mt-2 mb-0">
+											@foreach (var item in Model.StaffLanguageNames)
+											{
+												<li class="list-group-item pb-0">
+													<i class="fa-solid fa-check-circle text-success me-2"></i>@item
+												</li>
+											}
+										</ul>
+									</div>
+
+
+
+									<!-- Services -->
+									<div class="col-sm-6">
+										<h6><i class="fa-solid fa-concierge-bell me-2"></i>Services</h6>
+										<!-- List -->
+										<ul class="list-group list-group-borderless mt-2 mb-0">
+											@foreach (var item in Model.ServiceNames)
+											{
+												<li class="list-group-item pb-0">
+													<i class="fa-solid fa-check-circle text-success me-2"></i>@item
+												</li>
+											}
+										</ul>
+									</div>
+
+
+
+								</div>
+							</div>
+							<!-- Card body END -->
+						</div>
+						<!-- Amenities END -->
+						<!-- Room START -->
+						<!-- Room START -->
+						<div class="card bg-transparent" id="room-options">
+							<!-- Card header -->
+							<div class="card-header border-bottom bg-transparent px-0 pt-0">
+								<div class="d-sm-flex justify-content-sm-between align-items-center">
+									<h3 class="mb-2 mb-sm-0">Room Options</h3>
+								</div>
+							</div>
+
+							<!-- Card body START -->
+							<div class="card-body pt-3 p-0">
+								<div class="vstack gap-3">
+									@foreach (var room in Model.Rooms)
+									{
+										<!-- Room item START -->
+										<div class="card shadow-sm p-2 mb-3">
+											<div class="row g-0">
+												<!-- Card img -->
+												<div class="col-md-4 position-relative">
+													@if (room.PricePerNight > room.DiscountedPricePerNight && room.DiscountPercent > 0)
+													{
+														<!-- Overlay item -->
+														<div class="position-absolute top-0 start-0 z-index-1 m-2">
+															<div class="badge text-bg-danger">@room.DiscountPercent% Off</div>
+														</div>
+													}
+
+													<!-- Slider START -->
+													<div class="tiny-slider arrow-round arrow-xs arrow-light overflow-hidden rounded-2">
+														<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
+															@foreach (var imageUrl in room.ImageUrls)
+															{
+																<!-- Image item -->
+																<div><img src="@imageUrl" alt="Room image" class="img-fluid rounded" style="max-height: 200px;"></div>
+															}
+														</div>
+													</div>
+													<!-- Slider END -->
+												</div>
+
+												<!-- Card body -->
+												<div class="col-md-8">
+													<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
+														<!-- Title -->
+														<h5 class="card-title mb-1"><a href="#">@room.RoomName</a></h5>
+
+														<!-- Room details -->
+														<div class="mb-1">
+															<ul class="list-inline mb-0">
+																<li class="list-inline-item me-2"><i class="bi bi-people-fill"></i> @room.AdultCount Adults</li>
+																<li class="list-inline-item me-2"><i class="bi bi-people"></i> @room.ChildCount Children</li>
+																<li class="list-inline-item"><i class="bi bi-aspect-ratio"></i> @room.Area m²</li>
+															</ul>
+														</div>
+
+														<!-- Cancellation policy -->
+														@if (room.IsCancellable)
+														{
+															<div class="d-flex align-items-center mb-1">
+																<i class="bi bi-check-circle-fill text-success me-2"></i>
+																<p class="text-success mb-0">
+																	Free Cancellation till @DateTime.Now.AddDays(room.CancelAfterDay.GetValueOrDefault()).ToString("dd/MM/yyyy")
+																</p>
+															</div>
+														}
+														else
+														{
+															<div class="d-flex align-items-center mb-1">
+																<i class="bi bi-x-circle-fill text-danger me-2"></i>
+																<p class="text-danger mb-0">Non Cancellable</p>
+															</div>
+														}
+
+
+														<!-- Price and Button -->
+														<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
+															<!-- Price -->
+															<div class="d-flex align-items-center">
+																<h5 class="fw-bold mb-0 me-1">$@room.DiscountedPricePerNight</h5>
+																<span class="mb-0 me-2">/night</span>
+																@if (room.PricePerNight > room.DiscountedPricePerNight && room.DiscountPercent > 0)
+																{
+																	<span class="text-decoration-line-through mb-0 text-muted">$@room.PricePerNight</span>
+																}
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Room item END -->
+									}
+								</div>
+							</div>
+							<!-- Card body END -->
+						</div>
+
+						<!-- Room END -->
 					</div>
-					<!-- Card body END -->
 				</div>
-				<!-- Room END -->
-				<!-- Hotel Policies START -->
-				<div class="card bg-transparent">
-					<!-- Card header -->
-					<div class="card-header border-bottom bg-transparent px-0 pt-0">
-						<h3 class="mb-0">Hotel Policies</h3>
-					</div>
+				<!-- Content END -->
+				@* 	<!-- Right side content START -->
+				<aside class="col-xl-5 order-xl-2">
+				<div data-sticky data-margin-top="100" data-sticky-for="1199">
+				<!-- Book now START -->
+				<div class="card card-body border">
 
-					<!-- Card body START -->
-					<div class="card-body pt-4 p-0">
-						<!-- List -->
-						<ul class="list-group list-group-borderless mb-2">
-							<li class="list-group-item d-flex">
-								<i class="bi bi-check-circle-fill me-2"></i>This is a family farmhouse, hence we request you to not indulge.
-							</li>
-							<li class="list-group-item d-flex">
-								<i class="bi bi-check-circle-fill me-2"></i>Drinking and smoking within controlled limits are permitted at the farmhouse but please do not create a mess or ruckus at the house.
-							</li>
-							<li class="list-group-item d-flex">
-								<i class="bi bi-check-circle-fill me-2"></i>Drugs and intoxicating illegal products are banned and not to be brought to the house or consumed.
-							</li>
-							<li class="list-group-item d-flex">
-								<i class="bi bi-x-circle-fill me-2"></i>For any update, the customer shall pay applicable cancellation/modification charges.
-							</li>
-						</ul>
-
-						<!-- List -->
-						<ul class="list-group list-group-borderless mb-2">
-							<li class="list-group-item h6 fw-light d-flex mb-0">
-								<i class="bi bi-arrow-right me-2"></i>Check-in: 1:00 pm - 9:00 pm
-							</li>
-							<li class="list-group-item h6 fw-light d-flex mb-0">
-								<i class="bi bi-arrow-right me-2"></i>Check out: 11:00 am
-							</li>
-							<li class="list-group-item h6 fw-light d-flex mb-0">
-								<i class="bi bi-arrow-right me-2"></i>Self-check-in with building staff
-							</li>
-							<li class="list-group-item h6 fw-light d-flex mb-0">
-								<i class="bi bi-arrow-right me-2"></i>No pets
-							</li>
-							<li class="list-group-item h6 fw-light d-flex mb-0">
-								<i class="bi bi-arrow-right me-2"></i>No parties or events
-							</li>
-							<li class="list-group-item h6 fw-light d-flex mb-0">
-								<i class="bi bi-arrow-right me-2"></i>Smoking is allowed
-							</li>
-						</ul>
-
-						<!-- Important note -->
-						<div class="bg-danger bg-opacity-10 rounded-2 p-3 mb-3">
-							<p class="mb-0 text-danger">During the COVID-19 pandemic, all hosts and guests must review and follow Booking social distancing and other COVID-19-related guidelines.</p>
-						</div>
-						<div class="bg-danger bg-opacity-10 rounded-2 p-3">
-							<p class="mb-0 text-danger">Smoke alarm not reported â€” The host hasn't reported a smoke alarm on the property. We suggest bringing a portable detector for your trip.</p>
-						</div>
-					</div>
-					<!-- Card body END -->
+				<!-- Title -->
+				<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
+				<div>
+				<span>Price Start at</span>
+				<h4 class="card-title mb-0">$@Model.Rooms.OrderBy(x=>x.PricePerNight).FirstOrDefault().PricePerNight</h4>
 				</div>
-				<!-- Hotel Policies START -->
-			</div>
+				<div>
+				<h6 class="fw-normal mb-0">1 room per night</h6>
+				<small>+ $@Model.Rooms.OrderBy(x => x.PricePerNight).FirstOrDefault().ServiceFee service fee</small>
+				</div>
+				</div>
+
+				<!-- Rating -->
+				<ul class="list-inline mb-2">
+				<li class="list-inline-item me-1 h6 fw-light mb-0">
+				<i class="bi bi-arrow-right me-2"></i>@Model.StarPoint
+				</li>
+				<li class="list-inline-item me-0 small" id="star-rating">
+				</li>
+				</ul>
+
+				<!-- Button -->
+				<div class="d-grid">
+				<a href="#room-options" class="btn btn-lg btn-primary-soft mb-0">View 10 Rooms Options</a>
+				</div>
+				</div>
+				<!-- Book now END -->
+				</div>
+				</aside>
+				<!-- Right side content END --> *@
+			</div> <!-- Row END -->
 		</div>
-				</div>
-				<!-- Booking detail END -->
+	</section>
+	<!-- =======================
+	About hotel END -->
 
-			</div>
-			<!-- Page main content END -->
-		
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+<script>
+	function generateStars(starPoint, elementId) {
+		const fullStars = Math.floor(starPoint);
+		const halfStar = (starPoint - fullStars) >= 0.5;
+		const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
+		const starContainer = document.getElementById(elementId);
+		starContainer.innerHTML = '';
+
+		for (let i = 0; i < fullStars; i++) {
+			starContainer.innerHTML += '<i class="fa-solid fa-star text-warning"></i>';
+		}
+
+		if (halfStar) {
+			starContainer.innerHTML += '<i class="fa-solid fa-star-half-alt text-warning"></i>';
+		}
+
+		for (let i = 0; i < emptyStars; i++) {
+			starContainer.innerHTML += '<i class="fa-regular fa-star text-warning"></i>';
+		}
+	}
+
+	document.addEventListener("DOMContentLoaded", function () {
+		const starPoint = parseFloat('@Model.StarPoint'); // Replace with actual data if needed
+		generateStars(starPoint, 'star-rating');
+	});
+</script>

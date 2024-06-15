@@ -18,7 +18,7 @@
                 <div class="card border rounded-3">
                     <!-- Card header START -->
                     <div class="card-header border-bottom">
-                        <h5 class="card-header-title">User Reviews</h5>
+                        <h5 class="card-header-title">User Reviews<span class="badge bg-primary bg-opacity-10 text-primary ms-2">@Model.Count()</span></h5>
                     </div>
                     <!-- Card header END -->
                     <!-- Card body START -->
@@ -67,7 +67,7 @@
                                 <!-- Buttons -->
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div class="ms-auto">
-                                        <a asp-action="ReportReview" asp-route-id="@item.Id" class="text-primary-hover text-reset small mb-0">
+                                        <a asp-action="ReportReview" asp-route-id="@item.Id" class="text-primary-hover text-reset  small mb-0">
                                             <i class="bi bi-info-circle me-1"></i>Report
                                         </a>
                                     </div>
