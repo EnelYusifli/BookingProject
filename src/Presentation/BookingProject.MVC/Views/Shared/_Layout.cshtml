@@ -81,12 +81,39 @@
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	<style>
+		.rating-star-group {
+			display: flex;
+			gap: 1rem;
+		}
 
+			.rating-star-group input[type="radio"] {
+				display: none;
+			}
+
+			.rating-star-group label {
+				cursor: pointer;
+				font-size: 1.5rem;
+				color: #ddd;
+			}
+
+			.rating-star-group input[type="radio"]:checked + label,
+			.rating-star-group input[type="radio"]:checked + label ~ label {
+				color: #ffc107;
+			}
+
+			.rating-star-group label:hover,
+			.rating-star-group label:hover ~ label {
+				color: #ffc107;
+			}
+	</style>
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
 
 
 	<!-- Plugins CSS -->
@@ -520,6 +547,93 @@ Footer END -->
 <script src="~/assets/vendor/flatpickr/js/flatpickr.min.js"></script>
 <script src="~/assets/vendor/choices/js/choices.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var slider = document.querySelector('.noui-slider-range');
+			var inputMin = document.querySelector('.input-with-range-min');
+			var inputMax = document.querySelector('.input-with-range-max');
+
+			var rangeMin = parseFloat(slider.getAttribute('data-range-min'));
+			var rangeMax = parseFloat(slider.getAttribute('data-range-max'));
+			var selectedMin = parseFloat(slider.getAttribute('data-range-selected-min'));
+			var selectedMax = parseFloat(slider.getAttribute('data-range-selected-max'));
+
+			noUiSlider.create(slider, {
+				start: [selectedMin, selectedMax],
+				connect: true,
+				range: {
+					'min': rangeMin,
+					'max': rangeMax
+				},
+				tooltips: true,
+				format: {
+					to: function (value) {
+						return value.toFixed(2);
+					},
+					from: function (value) {
+						return parseFloat(value);
+					}
+				}
+			});
+
+			slider.noUiSlider.on('update', function (values, handle) {
+				if (handle === 0) {
+					inputMin.value = values[0];
+				} else {
+					inputMax.value = values[1];
+				}
+			});
+
+			inputMin.addEventListener('change', function () {
+				slider.noUiSlider.set([this.value, null]);
+			});
+
+			inputMax.addEventListener('change', function () {
+				slider.noUiSlider.set([null, this.value]);
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector("form").addEventListener("submit", function (event) {
+				// Prevent default form submission
+				event.preventDefault();
+
+				// Gather checked star points
+				const checkedStarPoints = [];
+				document.querySelectorAll('input[name="starpoint[]"]:checked').forEach(function (checkbox) {
+					checkedStarPoints.push(checkbox.value);
+				});
+
+				// Create a hidden input to send the star points
+				const hiddenInput = document.createElement("input");
+				hiddenInput.type = "hidden";
+				hiddenInput.name = "starpoints";
+				hiddenInput.value = checkedStarPoints.join(",");
+
+				// Append the hidden input to the form
+				this.appendChild(hiddenInput);
+
+				// Now submit the form
+				this.submit();
+			});
+		});
+	</script>
+	<script>
+		function clearForm() {
+			var form = document.getElementById("myForm");
+			form.reset();
+		}
+		function clearForm2() {
+			var form = document.getElementById("myForm2");
+			form.reset();
+		}
+	</script>
+
+
 
 	<script>
 		document.addEventListener('DOMContentLoaded', (event) => {

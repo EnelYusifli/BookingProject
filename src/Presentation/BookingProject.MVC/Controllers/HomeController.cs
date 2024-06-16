@@ -63,6 +63,40 @@ public class HomeController : Controller
 		return View();
 
 	}
+	private async Task PopulatePropertyViewModel(PropertyViewModel propertyViewModel)
+	{
+		var typesResponse = await _httpClient.GetAsync(baseAddress + "/types/getall");
+		if (typesResponse.IsSuccessStatusCode)
+		{
+			var typesData = await typesResponse.Content.ReadAsStringAsync();
+			propertyViewModel.Types = JsonConvert.DeserializeObject<List<TypeGetViewModel>>(typesData);
+		}
+		else
+		{
+			ModelState.AddModelError(string.Empty, "Failed to retrieve types data.");
+		}
+		var countriesResponse = await _httpClient.GetAsync(baseAddress + "/countries/getall");
+		if (countriesResponse.IsSuccessStatusCode)
+		{
+			var countriesData = await countriesResponse.Content.ReadAsStringAsync();
+			propertyViewModel.Countries = JsonConvert.DeserializeObject<List<CountriesGetViewModel>>(countriesData);
+		}
+		else
+		{
+			ModelState.AddModelError(string.Empty, "Failed to retrieve countries data.");
+		}
+
+		var servicesResponse = await _httpClient.GetAsync(baseAddress + "/services/getall");
+		if (servicesResponse.IsSuccessStatusCode)
+		{
+			var servicesData = await servicesResponse.Content.ReadAsStringAsync();
+			propertyViewModel.Services = JsonConvert.DeserializeObject<List<ServiceGetViewModel>>(servicesData);
+		}
+		else
+		{
+			ModelState.AddModelError(string.Empty, "Failed to retrieve services data.");
+		}
+	}
 	[HttpGet]
 	public async Task<IActionResult> HotelDetail([FromRoute]int id)
 	{
@@ -133,8 +167,8 @@ public class HomeController : Controller
 		decimal? maxPrice,
 		decimal? starPoint,
 		string? typeName,
-		bool? mostPopular,
-		bool? mostRated,
+		string[]? serviceNames,
+		int? select,
 		string? searchStr,
 		int? roomCount,
 		string? countryName,
@@ -175,11 +209,11 @@ public class HomeController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
-			var queryableHotels = hotels.Where(x => !x.IsDeactive).AsQueryable();
+			var queryableHotels = hotels.Where(x => (!x.IsDeactive) && x.IsApproved).AsQueryable();
 
 			if (!string.IsNullOrEmpty(searchStr))
 			{
-				queryableHotels = queryableHotels.Where(x => x.Name.Contains(searchStr) || x.Desc.Contains(searchStr) || x.Address.Contains(searchStr));
+				queryableHotels = queryableHotels.Where(x => x.Name.ToLower().Contains(searchStr.ToLower()));
 			}
 			if (!string.IsNullOrEmpty(typeName))
 			{
@@ -208,15 +242,24 @@ public class HomeController : Controller
 			{
 				queryableHotels = queryableHotels.Where(x => x.CountryName.ToLower() == countryName.ToLower());
 			}
-			if (mostPopular.HasValue && mostPopular.Value)
+			if (select.HasValue && select==1)
 			{
 				queryableHotels = queryableHotels.OrderByDescending(x => x.ViewerCount);
 			}
-			if (mostRated.HasValue && mostRated.Value)
+			if (serviceNames is not null && serviceNames.Count() > 0 )
+			{
+				foreach (var item in serviceNames)
+				{
+				queryableHotels = queryableHotels.Where(x => x.ServiceNames.Any(x=> x.ToLower() == item.ToLower()));
+				}
+			}
+			if (select.HasValue && select == 2)
 			{
 				queryableHotels = queryableHotels.OrderByDescending(x => x.StarPoint);
 			}
-
+			PropertyViewModel viewModel = new();
+			await PopulatePropertyViewModel(viewModel);
+			ViewBag.Property = viewModel;
 			var paginatedDatas = PaginatedList<HotelGetViewModel>.Create(queryableHotels, itemPerPage, page);
 
 			return View(paginatedDatas);
