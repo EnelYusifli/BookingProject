@@ -4,6 +4,7 @@ using BookingProject.Application.Features.Commands.OfferCommands.OfferCreateComm
 using BookingProject.Application.Features.Commands.RoomCommands.RoomCreateCommands;
 using BookingProject.Application.Features.Commands.RoomCommands.RoomUpdateCommands;
 using BookingProject.Application.Features.DTOs;
+using BookingProject.Application.Features.Queries.DiscountQueries;
 using BookingProject.Application.Features.Queries.RoomQueries;
 using BookingProject.Domain.Entities;
 
@@ -14,6 +15,7 @@ public class RoomMappingProfile:Profile
     public RoomMappingProfile()
     {
         CreateMap<RoomCreateCommandRequest,Room>().ReverseMap();
+        CreateMap<DiscountGetAllByRoomQueryResponse,Discount>().ReverseMap();
         CreateMap<RoomUpdateCommandRequest,Room>().ReverseMap();
         CreateMap<RoomCreateDto,Room>().ReverseMap();
         CreateMap<RoomGetAllQueryResponse, Room>().ReverseMap()

@@ -21,7 +21,7 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQueryRequest, 
 	}
 		public async Task<GetUserByIdQueryResponse> Handle(GetUserByIdQueryRequest request, CancellationToken cancellationToken)
 	{
-		var user = await _userManager.Users.Include(u => u.Hotels).ThenInclude(x => x.HotelImages).Include(x=>x.Hotels).ThenInclude(x=>x.Country).FirstOrDefaultAsync(x=>x.Id==request.Id);
+		var user = await _userManager.Users.Include(u => u.Hotels).ThenInclude(x => x.HotelImages).Include(x=>x.Hotels).ThenInclude(x=>x.Country).AsSplitQuery().FirstOrDefaultAsync(x=>x.Id==request.Id);
 
 		if (user is null)
 			throw new Exception("User not found");

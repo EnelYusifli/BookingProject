@@ -114,7 +114,9 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
-
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap CSS link -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
@@ -240,7 +242,7 @@
 								<li> <hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" asp-action="profile" asp-controller="account"><i class="bi bi-person-circle fa-fw me-2"></i>My Profile</a></li>
 								<li><a class="dropdown-item" asp-action="reservations" asp-controller="account"><i class="bi bi-bookmark-check fa-fw me-2"></i>My Reservations</a></li>
-								<li><a class="dropdown-item"asp-action="wishlist" asp-controller="account"><i class="bi bi-heart fa-fw me-2"></i>My Wishlist</a></li>
+								<li><a class="dropdown-item" asp-action="wishlist" asp-controller="account"><i class="bi bi-heart fa-fw me-2"></i>My Wishlist</a></li>
 								@if (User.IsInRole("Owner"))
 								{
 									<li> <hr class="dropdown-divider"></li>
@@ -546,9 +548,13 @@ Footer END -->
 <script src="~/assets/vendor/glightbox/js/glightbox.js"></script>
 <script src="~/assets/vendor/flatpickr/js/flatpickr.min.js"></script>
 <script src="~/assets/vendor/choices/js/choices.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap JavaScript link (with Popper.js and Bootstrap Bundle) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {

@@ -36,6 +36,7 @@ public class WishlistGetAllQueryHandler : IRequestHandler<WishlistGetAllQueryReq
 		   .Include(x=>x.Hotel).ThenInclude(x=>x.Type)
 		   .Include(x => x.Hotel).ThenInclude(x => x.HotelImages)
 		   .Include(x => x.Hotel).ThenInclude(x => x.Rooms)
+		   .AsSplitQuery()
 		   .ToListAsync();
 		//if (act is null) throw new Exception("Item not found");
 		ICollection<WishlistGetAllQueryResponse> dtos = _mapper.Map<ICollection<WishlistGetAllQueryResponse>>(act);

@@ -154,7 +154,7 @@
 		</section>
 		<!-- =======================
 		Title and Tabs END -->
-	@if(Model.Count()>0)
+	@if(Model is not null)
 	{
 	<!-- =======================
 		Hotel grid START -->
@@ -189,8 +189,16 @@
 								<!-- Rating and cart -->
 								<div class="d-flex justify-content-between mb-3">
 									<a href="#" class="badge bg-dark text-white"><i class="bi fa-fw bi-star-fill me-2 text-warning"></i>@hotel.StarPoint</a>
-									<a href="#" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"></i></a>
-								</div>
+										@if (!hotel.IsInWishlist)
+										{
+											<a asp-action="addtowishlist" asp-controller="account" asp-route-hotelid="@hotel.Id" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"></i></a>
+										}
+										else
+										{
+											<a asp-action="removefromwishlist" asp-controller="account" asp-route-id="@hotel.WishlistItemId" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark-fill"></i></a>
+											
+										}
+									</div>
 
 								<!-- Title -->
 								<h5 class="card-title"><a href="hotel-detail.html">@hotel.Name</a></h5>
@@ -319,7 +327,7 @@
 	<!-- =======================
 	Title and Tabs END -->
 	<!-- Title and button END -->
-	@if (Model.Count() > 0)
+	@if (Model is not null)
 	{
 	<!-- =======================
 		Hotel list START -->
@@ -491,8 +499,16 @@
 												<ul class="list-inline mb-0 z-index-2">
 													<!-- Heart icon -->
 													<li class="list-inline-item">
-														<a asp-action="addtowishlist" asp-controller="account" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-round btn-light"><i class="fa-solid fa-fw fa-heart"></i></a>
-													</li>
+															@if (!hotel.IsInWishlist)
+															{
+																<a asp-action="addtowishlist" asp-controller="account" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-round btn-light"><i class="fa-regular fa-fw fa-heart"></i></a>
+															}
+															else
+															{
+																<a asp-action="removefromwishlist" asp-controller="account" asp-route-id="@hotel.WishlistItemId" class="btn btn-sm btn-round btn-light"><i class="fa-solid fa-fw fa-heart"></i></a>
+
+															}
+														</li>
 													<!-- Share icon -->
 													<li class="list-inline-item dropdown">
 														<!-- Share button -->

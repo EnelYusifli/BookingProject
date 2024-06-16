@@ -7,6 +7,9 @@ namespace BookingProject.MVC.ViewModels.HotelViewModels;
 public class HotelGetViewModel
 {
 	public int Id { get; set; }
+	public bool IsInWishlist { get; set; } = false;
+	public int? WishlistItemId { get; set; } = null;
+
 	public string Name { get; set; }
 	public string Desc { get; set; }
 	public string Address { get; set; }

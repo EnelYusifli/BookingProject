@@ -121,7 +121,40 @@ public class OwnerController : Controller
 		}
 		return RedirectToAction("Index", "Home");
     }
-    public async Task<IActionResult> ReportReview(int id)
+	public async Task<IActionResult> RoomDiscounts(int roomId,int itemPerPage=10,int page=1)
+    {
+        var response = await _httpClient.GetAsync(baseAddress + $"/discounts/getall/{roomId}");
+		ViewBag.RoomId= roomId;
+        if (response.IsSuccessStatusCode)
+        {
+            var responseData = await response.Content.ReadAsStringAsync();
+            var dtos = JsonConvert.DeserializeObject<List<DiscountGetViewModel>>(responseData);
+			dtos=dtos.Where(x=>x.IsDeactive==false).ToList();
+			var queryableItems = dtos.AsQueryable();
+			var paginatedDatas = PaginatedList<DiscountGetViewModel>.Create(queryableItems, itemPerPage, page);
+			return View(paginatedDatas);
+        }
+		else
+		{
+			var responseContent = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(responseContent);
+		}
+		return RedirectToAction("Index", "Home");
+    }
+	public async Task<IActionResult> DeleteDiscount(int id,int roomId)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.PutAsync(baseAddress + $"/discounts/softdelete/{id}", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("RoomDiscounts", new { roomId = roomId});
+		}
+		return View();
+	}
+
+	public async Task<IActionResult> ReportReview(int id)
     {
         var response = await _httpClient.PutAsync($"{baseAddress}/reviews/report/{id}", null);
 
@@ -159,7 +192,7 @@ public class OwnerController : Controller
 
 		if (response.IsSuccessStatusCode)
 		{
-			return RedirectToAction("index");
+			return RedirectToAction("listings");
 		}
 		return RedirectToAction("Index", "Home");
 	}

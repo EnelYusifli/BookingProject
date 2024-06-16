@@ -28,9 +28,12 @@ public class HotelsController : ControllerBase
 		_hotelService = hotelService;
 	}
 	[HttpGet]
-	public async Task<IActionResult> GetAll()
+	public async Task<IActionResult> GetAll(string? userid=null)
 	{
-		HotelGetAllQueryRequest request = new();
+		HotelGetAllQueryRequest request = new()
+		{
+			UserId = userid
+		};
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpGet("{id}")]
@@ -52,9 +55,9 @@ public class HotelsController : ControllerBase
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpGet("{id}")]
-	public async Task<IActionResult> GetById(int id)
+	public async Task<IActionResult> GetById(int id, string? userid = null)
 	{
-		HotelGetByIdQueryRequest request = new() { Id = id };
+		HotelGetByIdQueryRequest request = new() { Id = id,UserId=userid };
 		return Ok(await _mediator.Send(request));
 	}
 	[HttpPut("{id}")]

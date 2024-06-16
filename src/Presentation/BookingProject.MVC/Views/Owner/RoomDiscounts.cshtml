@@ -1,0 +1,110 @@
+﻿@{
+	Layout = "~/Views/Shared/OwnerLayout.cshtml";
+	int roomId = ViewBag.RoomId;
+}
+@model PaginatedList<DiscountGetViewModel>
+<section class="pt-0">
+	<div class="container vstack gap-4">
+<!-- Page main content START -->
+<div class="page-content-wrapper p-xxl-4">
+
+	<!-- Title -->
+	<div class="row">
+		<div class="col-12 mb-4 mb-sm-5">
+			<div class="d-sm-flex justify-content-between align-items-center">
+				<h1 class="h3 mb-3 mb-sm-0">Discounts List</h1>
+			</div>
+		</div>
+	</div>
+	<!-- Guest list START -->
+	<div class="card shadow mt-5">
+		<!-- Card body START -->
+		<div class="card-body">
+			<!-- Table head -->
+			<div class="bg-light rounded p-3 d-none d-lg-block">
+				<div class="row row-cols-7 g-4">
+					<div class="col"><h6 class="mb-0">Percentage</h6></div>
+					<div class="col"><h6 class="mb-0">Start</h6></div>
+					<div class="col"><h6 class="mb-0">End</h6></div>
+					<div class="col"><h6 class="mb-0">Action</h6></div>
+				</div>
+			</div>
+			@foreach (var item in Model)
+			{
+				<!-- Table data -->
+				<div class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
+
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-lg-none">Percantage:</small>
+						<div class="d-flex align-items-center">
+							<!-- Info -->
+							<div class="ms-2">
+								<h6 class="mb-0 fw-light">@item.Percent</h6>
+							</div>
+						</div>
+					</div>
+
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-lg-none">Start:</small>
+						<h6 class="mb-0 fw-normal">@item.StartTime.ToString("dd/MM/yyy")</h6>
+					</div>
+
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-lg-none">End:</small>
+						<h6 class="mb-0 fw-normal">@item.EndTime.ToString("dd/MM/yyy")</h6>
+					</div>
+
+					<!-- Data item -->
+					<div class="col">
+						<div class="d-flex flex-column gap-2">
+							<a asp-action="DeleteDiscount" asp-route-id="@item.Id" asp-route-roomid="@roomId"class="btn btn-sm btn-danger-soft mb-0">Delete</a>
+						</div>
+					</div>
+
+
+				</div>
+			}
+		</div>
+		<!-- Card body END -->
+		<!-- Card footer START -->
+		<div class="card-footer pt-0">
+			<!-- Pagination and content -->
+			<div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4">
+				<!-- Pagination -->
+				<div class="row">
+					<div class="col-12">
+						<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+							<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+								<li class="page-item @(Model.HasPrev ? "" : "disabled") mb-0">
+									<a class="page-link" asp-action="RoomDiscounts" asp-route-page="@(Model.CurrentPage - 1)" tabindex="-1">
+										<i class="fa-solid fa-angle-left"></i>
+									</a>
+								</li>
+								@for (int i = 1; i <= Model.TotalPageCount; i++)
+								{
+									<li class="page-item @(Model.CurrentPage == i ? "active" : "") mb-0">
+										<a class="page-link" asp-action="RoomDiscounts" asp-route-page="@i">@i</a>
+									</li>
+								}
+								<li class="page-item @(Model.HasNext ? "" : "disabled") mb-0">
+									<a class="page-link" asp-action="RoomDiscounts" asp-route-page="@(Model.CurrentPage + 1)">
+										<i class="fa-solid fa-angle-right"></i>
+									</a>
+								</li>
+							</ul>
+
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Card footer END -->
+	</div>
+	<!-- Guest list END -->
+</div>
+<!-- Page main content END -->
+</div>
+</section>

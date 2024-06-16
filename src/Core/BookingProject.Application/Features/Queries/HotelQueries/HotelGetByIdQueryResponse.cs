@@ -7,6 +7,8 @@ public class HotelGetByIdQueryResponse
 {
 	public int Id { get; set; }
 	public string Name { get; set; }
+	public bool IsInWishlist { get; set; } = false;
+	public int? WishlistItemId { get; set; } = null;
 	public string Desc { get; set; }
 	public string Address { get; set; }
 	public string CountryName { get; set; }

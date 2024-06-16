@@ -102,8 +102,12 @@ public class HomeController : Controller
 	{
 		HotelDetailViewModel vm = new();
 		if (!ModelState.IsValid) return View();
-        var response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
-
+		AppUser user = await GetCurrentUserAsync();
+		HttpResponseMessage response = null;
+		if(user is not null)
+        response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}?userid={user.Id}");
+		else
+        response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
 		if (response.IsSuccessStatusCode)
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
@@ -202,8 +206,16 @@ public class HomeController : Controller
 		HttpContext.Session.SetString("AdultCount", adultCount.ToString());
 
 		if (!ModelState.IsValid) return View();
-
-		var response = await _httpClient.GetAsync(baseAddress + "/hotels/getall");
+		AppUser user = await GetCurrentUserAsync();
+		HttpResponseMessage response = null;
+		if(user is not null)
+		{
+		response = await _httpClient.GetAsync(baseAddress + $"/hotels/getall?userid={user.Id}");
+		}
+		else
+		{
+			response = await _httpClient.GetAsync(baseAddress + "/hotels/getall");
+		}
 
 		if (response.IsSuccessStatusCode)
 		{
@@ -266,6 +278,9 @@ public class HomeController : Controller
 		}
 		else
 		{
+			PropertyViewModel viewModel = new();
+			await PopulatePropertyViewModel(viewModel);
+			ViewBag.Property = viewModel;
 			var responseContent = await response.Content.ReadAsStringAsync();
 			Console.WriteLine("Error response from API:");
 			Console.WriteLine(responseContent);

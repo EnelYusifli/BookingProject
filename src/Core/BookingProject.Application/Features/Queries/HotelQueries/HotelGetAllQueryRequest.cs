@@ -4,5 +4,5 @@ namespace BookingProject.Application.Features.Queries.HotelQueries;
 
 public class HotelGetAllQueryRequest:IRequest<ICollection<HotelGetAllQueryResponse>>
 {
-	public string? Expression {  get; set; }
+	public string? UserId { get; set; }
 }

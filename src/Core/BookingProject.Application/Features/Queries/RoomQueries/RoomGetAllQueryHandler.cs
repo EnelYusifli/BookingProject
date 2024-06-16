@@ -43,6 +43,7 @@ public class RoomGetAllQueryHandler : IRequestHandler<RoomGetAllQueryRequest, IC
 		}
 
 		if (act is null) throw new Exception("Room not found");
+		await _repository.CommitAsync();
 
 		ICollection<RoomGetAllQueryResponse> dtos = _mapper.Map<ICollection<RoomGetAllQueryResponse>>(act);
 

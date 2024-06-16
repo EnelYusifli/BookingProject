@@ -21,7 +21,7 @@ public class AdvantageGetAllQueryHandler : IRequestHandler<AdvantageGetAllQueryR
     }
     public async Task<ICollection<AdvantageGetAllQueryResponse>> Handle(AdvantageGetAllQueryRequest request, CancellationToken cancellationToken)
     {
-        Hotel hotel = await _hotelRepository.Table.Where(x => x.IsDeactive == false).FirstOrDefaultAsync(x => x.Id == request.HotelId);
+        Hotel hotel = await _hotelRepository.Table.FirstOrDefaultAsync(x => x.Id == request.HotelId);
         if (hotel is null)
             throw new NotFoundException("Hotel not found");
         ICollection<HotelAdvantage> adv = await _repository.Table.Where(x=>x.HotelId==request.HotelId).ToListAsync();

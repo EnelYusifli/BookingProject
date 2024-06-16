@@ -79,6 +79,8 @@
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
+	<!-- Bootstrap CSS link -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -86,6 +88,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
@@ -169,19 +172,13 @@
 						</a>
 
 						<!-- Notification dropdown menu START -->
-						<div class="dropdown">
-							@* <button class="text-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-							Profile
-							</button> *@
+						<div class="dropdown" id="dropdown">
 							<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-								
 								<li><a class="dropdown-item" asp-action="About" asp-controller="home">About</a></li>
 								<li><a class="dropdown-item" asp-action="faqs" asp-controller="home">FAQs</a></li>
 								<li><a class="dropdown-item" asp-action="termsofservice" asp-controller="home">Terms</a></li>
 								<li><a class="dropdown-item" asp-action="privacypolicy" asp-controller="home">Privacy Policy</a></li>
 								<li><a class="dropdown-item" asp-action="Contact" asp-controller="home">Contact</a></li>
-
-
 							</ul>
 						</div>
 						<!-- Notification dropdown menu END -->
@@ -395,9 +392,13 @@
 	<script src="~/assets/vendor/glightbox/js/glightbox.js"></script>
 	<script src="~/assets/vendor/flatpickr/js/flatpickr.min.js"></script>
 	<script src="~/assets/vendor/choices/js/choices.min.js"></script>
+	<!-- Bootstrap JavaScript link (with Popper.js and Bootstrap Bundle) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 
 	<!-- ThemeFunctions -->
 	<script src="~/assets/js/functions.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js"></script>
 	<!-- Bootstrap CSS -->

@@ -34,9 +34,9 @@ namespace BookingProject.Application.Features.Commands.DiscountCommands
 			var room=_roomRepository.Table.Include(x=>x.Discounts).FirstOrDefault(x=>x.Id==request.RoomId);
 			if (room is null)
 				throw new NotFoundException("Room not found");
-			if (room.Discounts.Any(x => (x.StartTime <= request.StartTime && x.EndTime >= request.StartTime) ||
+			if (room.Discounts.Any(x => (!x.IsDeactive) && ((x.StartTime <= request.StartTime && x.EndTime >= request.StartTime) ||
 							  (x.StartTime <= request.EndTime && x.EndTime >= request.EndTime) ||
-							  (x.StartTime >= request.StartTime && x.EndTime <= request.EndTime)))
+							  (x.StartTime >= request.StartTime && x.EndTime <= request.EndTime))))
 				throw new BadRequestException("There is already a discount for this room during the specified time range.");
 
 			if (request.Percent < 0 || request.Percent > 100)

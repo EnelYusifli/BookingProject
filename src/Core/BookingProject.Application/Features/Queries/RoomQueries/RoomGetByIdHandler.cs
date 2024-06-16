@@ -28,11 +28,11 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
 		   .FirstOrDefaultAsync(x=>x.Id==request.Id);
 		if (room is null)
 			throw new NotFoundException("Room not found");
-		UpdateRoomDiscountedPrice(room);
+		await UpdateRoomDiscountedPrice(room);
 		RoomGetByIdResponse dto = _mapper.Map<RoomGetByIdResponse>(room);
 		return dto;
 	}
-	private void UpdateRoomDiscountedPrice(Room room)
+	private async Task UpdateRoomDiscountedPrice(Room room)
 	{
 		decimal discountedPrice = room.PricePerNight;
 		int discPercent = 0;
@@ -53,6 +53,7 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
 
 		room.DiscountedPricePerNight = discountedPrice;
 		room.DiscountPercent = discPercent;
+		await _roomRepository.CommitAsync();
 	}
 
 }
