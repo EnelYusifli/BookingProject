@@ -20,7 +20,7 @@ public class HotelUpdateViewModel
     public List<int>? ServiceIds { get; set; }
     public List<int>? PaymentMethodIds { get; set; }
     public List<int>? ActivityIds { get; set; }
-	public List<string>? NewAdvantages { get; set; }
+	public List<string>? HotelAdvantageNames { get; set; }
 	public List<int>? DeletedAdvantageIds { get; set; }
 	public List<int>? DeletedImageFileIds { get; set; }
 	public List<RoomGetViewModel> Rooms { get; set; }

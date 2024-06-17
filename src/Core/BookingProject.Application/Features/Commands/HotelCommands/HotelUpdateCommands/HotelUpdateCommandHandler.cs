@@ -88,6 +88,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 			 .ThenInclude(x => x.StaffLanguage)
 			 .Include(x => x.Type)
 			 .Include(x => x.Country)
+			 .AsSplitQuery()
 			 .FirstOrDefaultAsync(x => x.Id == request.Id);
 			if (hotel is null)
                 throw new NotFoundException($"Hotel with ID {request.Id} not found");
@@ -219,9 +220,9 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				};
 				await _hotelStaffLanguageRepository.CreateAsync(newHotelLang);
 			}
-			if(request.NewAdvantages is not null)
+			if(request.HotelAdvantageNames is not null)
 			{
-			foreach (var adv in request.NewAdvantages)
+			foreach (var adv in request.HotelAdvantageNames)
 			{
 				HotelAdvantage newHotelAdv = new HotelAdvantage()
 				{

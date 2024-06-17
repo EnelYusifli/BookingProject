@@ -1,10 +1,11 @@
 ﻿@{
 	Layout = "~/Views/Shared/OwnerLayout.cshtml";
+	int id = ViewBag.Id;
 }
 @model RoomUpdateViewModel
 <section class="pt-0">
 	<div class="container vstack gap-4">
-		<form method="post" enctype="multipart/form-data" id="mainForm">
+		<form method="post" enctype="multipart/form-data" id="mainForm2" action="updateroom">
 	<div class="vstack gap-4">
 		<!-- Title -->
 		<h4 class="mb-0">Update Room</h4>
@@ -84,7 +85,7 @@
 													<img src="@image.Url" class="card-img-top" alt="Image @image.Id">
 													<div class="card-body">
 														<div class="form-check">
-															<input class="form-check-input" type="checkbox" id="deleteImage_@image.Id" value="@image.Id">
+															<input class="form-check-input" type="checkbox" id="deleteImage_@image.Id" name="imageids" value="@image.Id">
 															<label class="form-check-label" for="deleteImage_@image.Id">Delete</label>
 
 														</div>
@@ -94,12 +95,13 @@
 										}
 									</div>
 									<input type="hidden" name="DeletedImageFileIds" asp-for="@Model.DeletedImageFileIds" id="DeletedImageIds">
+									<input type="hidden" asp-for="@Model.Id" value="@id">
 								</div>
 
 						@* 	<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span> *@
 
 					</div>
-							<div class="col-md-6">
+							@* <div class="col-md-6">
 								<!-- Button trigger modal -->
 								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createDiscountModal">
 									Create Discount
@@ -137,7 +139,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> *@
 
 				</div>
 			</div>
@@ -151,29 +153,14 @@
 		<!-- Step 3 button -->
 		<div class="d-flex justify-content-between">
 			<div class="text-end">
-				<button type="submit" class="btn btn-success">Update Room</button>
+				<button type="submit" class="btn btn-success" >Update Room</button>
 			</div>
 		</div>
 	</div>
 </form>
 	</div>
 	</section>
-<script>
-	function updateDeletedImageIds() {
-		let selectedImageIds = [];
-		document.querySelectorAll('.form-check-input:checked').forEach(checkbox => {
-			selectedImageIds.push(checkbox.value);
-		});
 
-		// Set the value of the hidden input field
-		document.getElementById('DeletedImageIds').value = selectedImageIds.join(',');
-	}
-
-	// Ensure the hidden field is updated before form submission
-	document.getElementById('mainForm').addEventListener('submit', function(event) {
-		updateDeletedImageIds();
-	});
-</script>
 <style>
 	.form-check-input {
 		display: none;

@@ -300,38 +300,32 @@ public class PropertyController : Controller
 
     }
     [HttpPost]
-    public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm)
+    public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm, int[]? imageids, int[]? advantageIds)
     {
-        //AppUser user = await GetCurrentUserAsync();
-        //vm.UserId = user.Id;
-
-        //if (!ModelState.IsValid)
-        //{
-        //    //var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
-
-        //    //if (responseId2.IsSuccessStatusCode)
-        //    //{
-        //    //	var responseData = await responseId2.Content.ReadAsStringAsync();
-        //    //	var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
-        //    //	ViewBag.UserId = dto.User.Id;
-        //    //}
-        //    PropertyViewModel vm2 = new PropertyViewModel();
-        //    await PopulatePropertyViewModel(vm2);
-        //    ViewBag.Property = vm2;
-        //    return View(vm);
-        //}
         using (var content = new MultipartFormDataContent())
         {
             content.Add(new StringContent(vm.TypeId.ToString()), nameof(vm.TypeId));
             content.Add(new StringContent(vm.Id.ToString()), nameof(vm.Id));
-            //content.Add(new StringContent(vm.UserId), nameof(vm.UserId));
             content.Add(new StringContent(vm.Name), nameof(vm.Name));
             content.Add(new StringContent(vm.Desc), nameof(vm.Desc));
             content.Add(new StringContent(vm.Address), nameof(vm.Address));
             content.Add(new StringContent(vm.CountryId.ToString()), nameof(vm.CountryId));
             content.Add(new StringContent(vm.City), nameof(vm.City));
             content.Add(new StringContent(vm.IsDeactive.ToString()), nameof(vm.IsDeactive));
-
+            if(imageids is not null)
+            {
+            foreach (var item in imageids)
+            {
+                    vm.DeletedImageFileIds.Add(item);
+            }
+            } 
+            if(advantageIds is not null)
+            {
+            foreach (var item in advantageIds)
+            {
+                    vm.DeletedAdvantageIds.Add(item);
+            }
+            }
             //if (vm.HotelAdvantageNames != null)
             //{
             //    foreach (var advantageName in vm.HotelAdvantageNames)
@@ -363,6 +357,13 @@ public class PropertyController : Controller
                     content.Add(new StringContent(id.ToString()), nameof(vm.PaymentMethodIds));
                 }
             }
+            if (vm.HotelAdvantageNames != null)
+            {
+                foreach (var id in vm.HotelAdvantageNames)
+                {
+                    content.Add(new StringContent(id.ToString()), nameof(vm.HotelAdvantageNames));
+                }
+            }
 
             if (vm.ActivityIds != null)
             {
@@ -376,6 +377,13 @@ public class PropertyController : Controller
                 foreach (var id in vm.DeletedImageFileIds)
                 {
                     content.Add(new StringContent(id.ToString()), nameof(vm.DeletedImageFileIds));
+                }
+            } 
+            if (vm.DeletedAdvantageIds != null)
+            {
+                foreach (var id in vm.DeletedAdvantageIds)
+                {
+                    content.Add(new StringContent(id.ToString()), nameof(vm.DeletedAdvantageIds));
                 }
             }
 
@@ -433,7 +441,10 @@ public class PropertyController : Controller
             }
             else
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
+				PropertyViewModel viewModel = new PropertyViewModel();
+				await PopulatePropertyViewModel(viewModel);
+				ViewBag.Property = viewModel;
+				var responseContent = await response.Content.ReadAsStringAsync();
                 Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 Console.WriteLine(responseContent);
             }
@@ -519,24 +530,30 @@ public class PropertyController : Controller
 		{
 			return NotFound();
 		}
-
 		var dataStr = await response.Content.ReadAsStringAsync();
 		var vm = JsonConvert.DeserializeObject<RoomUpdateViewModel>(dataStr);
-
+        ViewBag.Id = id;
 		return View(vm);
 	}
     [HttpPost]
-    public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm) {
+    public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm, int[] imageids) {
 		using (var content = new MultipartFormDataContent())
 		{
 			content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));
+			content.Add(new StringContent(vm.Id.ToString()), nameof(vm.Id));
 			content.Add(new StringContent(vm.AdultCount.ToString()), nameof(vm.AdultCount));
 			content.Add(new StringContent(vm.ChildCount.ToString()), nameof(vm.ChildCount));
 			content.Add(new StringContent(vm.ServiceFee.ToString()), nameof(vm.ServiceFee));
 			content.Add(new StringContent(vm.PricePerNight.ToString()), nameof(vm.PricePerNight));
 			content.Add(new StringContent(vm.Area.ToString()), nameof(vm.Area));
 			content.Add(new StringContent(vm.IsCancellable.ToString()), nameof(vm.IsCancellable));
-
+            if(imageids is not null)
+            {
+                foreach (var item in imageids)
+                {
+                    vm.DeletedImageFileIds.Add(item);
+                }
+            }
 			if (vm.CancelAfterDay.HasValue)
 			{
 				content.Add(new StringContent(vm.CancelAfterDay.Value.ToString()), nameof(vm.CancelAfterDay));
