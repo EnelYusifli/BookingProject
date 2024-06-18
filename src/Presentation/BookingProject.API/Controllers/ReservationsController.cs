@@ -5,6 +5,7 @@ using BookingProject.Application.Features.Commands.ReservationCommands.Reservati
 using BookingProject.Application.Features.Queries.CountryQueries;
 using BookingProject.Application.Features.Queries.HotelQueries;
 using BookingProject.Application.Features.Queries.ReservationQueries.ReservationGetAllByUserQueries;
+using BookingProject.Application.Features.Queries.ReservationQueries.ReservationGetByIdQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,6 +51,12 @@ public class ReservationsController : ControllerBase
 		{
 			Id = id
 		};
+		return Ok(await _mediator.Send(request));
+	}
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetById(int id)
+	{
+		ReservationGetByIdQueryRequest request = new() { Id = id };
 		return Ok(await _mediator.Send(request));
 	}
 }

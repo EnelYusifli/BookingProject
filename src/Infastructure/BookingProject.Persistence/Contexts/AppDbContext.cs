@@ -31,6 +31,9 @@ public class AppDbContext : IdentityDbContext<AppUser>
 		modelBuilder.Entity<Room>()
         .Property(h => h.Area)
         .HasColumnType("decimal(18,1)");
+        modelBuilder.Entity<Reservation>()
+        .Property(h => h.TotalPrice)
+        .HasColumnType("decimal(18,1)");
         modelBuilder.Entity<Room>()
         .Property(h => h.ServiceFee)
         .HasColumnType("decimal(18,1)");

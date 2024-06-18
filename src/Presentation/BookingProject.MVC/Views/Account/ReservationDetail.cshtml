@@ -1,0 +1,186 @@
+﻿@model ReservationGetByIdViewModel
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+	<!-- =======================
+	Main Banner START -->
+	<section class="pt-4">
+		<div class="container">
+
+			<!-- Title -->
+			<div class="row">
+				<div class="col-12 mb-4">
+					<h1 class="fs-3">@Model.Room.RoomName</h1>
+					<!-- Location -->
+					<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>@Model.Room.HotelName</p>
+				</div>
+			</div>
+
+			<!-- Slider START -->
+			<div class="tiny-slider arrow-round arrow-blur">
+				<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-edge="0" data-dots="false" data-items="2" data-items-sm="1">
+					@foreach (var item in Model.Room.ImageUrls)
+					{
+						<!-- Slider item -->
+						<div>
+							<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="@item">
+								<div class="card card-element-hover card-overlay-hover overflow-hidden">
+									<!-- Image -->
+									<img src="@item" class="rounded-3" alt="">
+									<!-- Full screen button -->
+									<div class="hover-element w-100 h-100">
+										<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+									</div>
+								</div>
+							</a>
+						</div>
+					}
+				</div>
+			</div>
+	</section>
+	<!-- =======================
+	Main Banner END -->
+	<!-- =======================
+	Room detail START -->
+	<section class="pt-0">
+		<div class="container">
+			<div class="row">
+
+				<!-- Detail START -->
+				<!-- Detail START -->
+				<div class="col-xl-7">
+					<div class="card bg-transparent p-0">
+						<!-- Card header -->
+						<div class="card-header bg-transparent border-bottom d-sm-flex justify-content-sm-between align-items-center p-0 pb-3">
+							<h4 class="mb-2 mb-sm-0">Room Details</h4>
+						</div>
+
+						<!-- Card body START -->
+						<div class="card-body p-0 pt-3">
+							<div class="vstack gap-5">
+								<!-- Room item START -->
+								<div class="card border bg-transparent p-3">
+									<div class="row g-3 g-md-4">
+										<!-- Room detail START -->
+										<div class="col-md-8">
+											<div class="card-body p-0">
+
+												<!-- List -->
+												<ul class="list-unstyled mb-0">
+													<li class="mb-2">
+														<i class="fa-regular fa-square me-2"></i>Area: @Model.Room.Area sq.ft
+													</li>
+													<li class="mb-2">
+														<i class="fa-solid fa-bed me-2"></i>Adults: @Model.Room.AdultCount
+													</li>
+													<li class="mb-2">
+														<i class="fa-solid fa-child me-2"></i>Children: @Model.Room.ChildCount
+													</li>
+													@if (Model.Room.IsCancellable)
+													{
+														<li class="mb-2">
+															<i class="bi bi-check-circle-fill text-success me-2"></i>
+															Free Cancellation till @Model.StartTime.AddDays(Model.Room.CancelAfterDay.GetValueOrDefault()).ToString("dd/MM/yyyy")
+														</li>
+													}
+													else
+													{
+														<li class="mb-2">
+															<i class="bi bi-x-circle-fill text-danger me-2"></i>
+															Non Cancellable
+														</li>
+													}
+												</ul>
+
+
+											</div>
+										</div>
+										<!-- Room detail END -->
+									</div>
+								</div>
+								<!-- Room item END -->
+							</div>
+						</div>
+						<!-- Card body END -->
+					</div>
+				</div>
+				<!-- Detail END -->
+				<!-- Detail END -->
+				<!-- Right side content START -->
+				<aside class="col-xl-5 d-none d-xl-block">
+					<div class="card bg-transparent border">
+						<!-- Card header START -->
+						<div class="card-header bg-transparent border-bottom">
+							<!-- Title -->
+							<h4 class="card-title mb-0">Price Summary</h4>
+						</div>
+						<!-- Card header END -->
+						<!-- Card body START -->
+						<div class="card-body">
+
+							<div class="row g-4 mb-3">
+								<!-- Item -->
+								<div class="col-md-6">
+									<div class="bg-light py-3 px-4 rounded-3">
+										<h6 class="fw-light small mb-1">Check-in</h6>
+										<h6 class="mb-0">@Model.StartTime.ToString("dd-MM-yyyy")</h6>
+									</div>
+								</div>
+
+								<!-- Item -->
+								<div class="col-md-6">
+									<div class="bg-light py-3 px-4 rounded-3">
+										<h6 class="fw-light small mb-1">Check out</h6>
+										<h6 class="mb-0">@Model.EndTime.ToString("dd-MM-yyyy")</h6>
+									</div>
+								</div>
+							</div>
+
+							<!-- List -->
+							<ul class="list-group list-group-borderless mb-3">
+								@if (Model.IsPaid)
+								{
+									<li class="list-group-item px-2 d-flex justify-content-between text-success">
+										<span class="h6 fw-light mb-0"><i class="fas fa-check-circle me-2"></i>Paid</span>
+									</li>
+								}
+								else
+								{
+									<li class="list-group-item px-2 d-flex justify-content-between text-danger">
+										<span class="h6 fw-light mb-0"><i class="fas fa-times-circle me-2"></i>Not Paid (Reserved)</span>
+									</li>
+								}
+								@if (Model.DiscountPercent > 0)
+								{
+									<li class="list-group-item px-2 d-flex justify-content-between text-info">
+										<span class="h6 fw-light mb-0"><i class="fas fa-tag me-2"></i>Discount</span>
+										<span class="h6 fw-light mb-0">@Model.DiscountPercent%</span>
+									</li>
+								}
+								<li class="list-group-item bg-light d-flex justify-content-between rounded-2 px-2 mt-2">
+									<span class="h5 fw-normal mb-0 ps-1"><i class="fas fa-dollar-sign me-2"></i>Total</span>
+									<span class="h5 fw-normal mb-0">$@Model.TotalPrice</span>
+								</li>
+							</ul>
+
+							
+
+
+							<!-- Button -->
+							<div class="d-grid gap-2">
+								<a asp-action="reservations" class="btn btn-dark mb-0">Back to Reservations Page</a>
+							</div>
+						</div>
+						<!-- Card body END -->
+					</div>
+				</aside>
+				<!-- Right side content END -->
+			</div>
+		</div>
+	</section>
+	<!-- =======================
+	Room detail END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->

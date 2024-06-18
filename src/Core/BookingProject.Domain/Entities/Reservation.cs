@@ -14,4 +14,6 @@ public class Reservation : BaseEntity, IBaseAuditable
     public bool IsCancelled { get; set; } = false;
     public Room Room { get; set; }
     public AppUser AppUser { get; set; }
+    public decimal TotalPrice { get; set; }
+    public int DiscountPercent { get; set; }
 }

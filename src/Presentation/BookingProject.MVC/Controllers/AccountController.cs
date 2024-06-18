@@ -358,6 +358,28 @@ public class AccountController : Controller
 		}
 		return RedirectToAction("Index");
 	}
+	public async Task<IActionResult> RemoveAllFromWishlist()
+	{
+		List<WishlistViewModel> vms = new List<WishlistViewModel>();
+		if (!ModelState.IsValid) return View();
+		AppUser user = await GetCurrentUserAsync();
+		var response = await _httpClient.GetAsync(baseAddress + $"/users/WishlistGetAll/{user.Id}");
+
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			vms = JsonConvert.DeserializeObject<List<WishlistViewModel>>(responseData);
+			foreach (var item in vms)
+			{
+				var response2 = await _httpClient.DeleteAsync(baseAddress + $"/users/removefromwishlist/{item.Id}");
+
+				if (!response.IsSuccessStatusCode)
+					return View("NotFound");
+			}
+			return RedirectToAction("Wishlist");
+		}
+		return View();
+	}
     [Authorize(Roles = "Customer,Owner,Admin")]
     public async Task<IActionResult> AddtoWishlist(AddToWishlistViewModel vm)
 	{
@@ -493,6 +515,17 @@ public class AccountController : Controller
 		//	return RedirectToAction("reservations");
 		//}
 		//return RedirectToAction("index","home");
+	}
+	public async Task<IActionResult> ReservationDetail(int id)
+	{
+		var response = await _httpClient.GetAsync(baseAddress + $"/reservations/getbyid/{id}");
+		if (response.IsSuccessStatusCode)
+		{
+			var responseData = await response.Content.ReadAsStringAsync();
+			var dto = JsonConvert.DeserializeObject<ReservationGetByIdViewModel>(responseData);
+			return View(dto);
+		}
+			return View();
 	}
 
 }

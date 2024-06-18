@@ -22,19 +22,9 @@
 
 							<!-- Card body START -->
 							<div class="card-body vstack gap-4">
-								<!-- Select and button -->
-								<form class="d-flex justify-content-between">
-									<div class="col-6 col-xl-3">
-										<select class="form-select form-select-sm js-choice border-0">
-											<option value="">Sort by</option>
-											<option>Recently search</option>
-											<option>Most popular</option>
-											<option>Top rated</option>
-										</select>
-									</div>
-									<!-- Button -->
-									<button class="btn btn-danger-soft mb-0"><i class="fas fa-trash me-2"></i>Remove all</button>
-								</form>
+								<div class="d-flex justify-content-end">
+				<a asp-action="RemoveAllFromWishlist" asp-controller="account" class="btn btn-danger-soft mb-0"><i class="fas fa-trash me-2"></i>Remove all</a>
+								</div>
 								@foreach (var item in Model)
 			{
 				

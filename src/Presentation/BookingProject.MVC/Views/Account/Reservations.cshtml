@@ -85,7 +85,7 @@
 
 									<!-- Buttons -->
 									<div class="mt-2 mt-md-0">
-										<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
+										<a asp-action="reservationdetail" asp-controller="account" asp-route-id="@item.Id" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
 										<a asp-action="cancelreservation" asp-controller="account" asp-route-reservationid="@item.Id" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
 									</div>
 								</div>
@@ -167,7 +167,7 @@
 
 																		<!-- Buttons -->
 																		<div class="mt-2 mt-md-0">
-																			<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
+										<a asp-action="reservationdetail" asp-controller="account" asp-route-id="@item.Id" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
 																		</div>
 																	</div>
 
@@ -248,7 +248,7 @@
 
 														<!-- Buttons -->
 														<div class="mt-2 mt-md-0">
-															<a asp-action="roomdetail" asp-controller="home" asp-route-id="@item.RoomId" class="btn btn-orange-soft mb-0 me-2">Go to detail</a>
+										<a asp-action="reservationdetail" asp-controller="account" asp-route-id="@item.Id" class="btn btn-orange-soft mb-0 me-2">Go to detail</a>
 										<a asp-action="LeaveReview" asp-route-hotelid="@item.HotelId" class="btn btn-success-soft mb-0">
 																Leave Review
 															</a>

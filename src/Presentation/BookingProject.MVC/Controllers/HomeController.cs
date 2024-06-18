@@ -167,24 +167,34 @@ public class HomeController : Controller
 	}
 
 	public async Task<IActionResult> HotelGrid(
-		decimal? minPrice,
-		decimal? maxPrice,
-		decimal? starPoint,
-		string? typeName,
-		string[]? serviceNames,
-		int? select,
-		string? searchStr,
-		int? roomCount,
-		string? countryName,
-		string? dateRange,
-		int? childCount=0,
-		int? adultCount=1,
-		int page = 1,
-		int itemPerPage = 3)
+	decimal? minPrice,
+	decimal? maxPrice,
+	decimal? starPoint,
+	string? typeName,
+	string[]? serviceNames,
+	int? select,
+	string? searchStr,
+	int? roomCount,
+	string? countryName,
+	string? dateRange,
+	int? childCount = 0,
+	int? adultCount = 1,
+	int page = 1,
+	int itemPerPage = 3)
 	{
 		if (string.IsNullOrEmpty(dateRange))
 		{
-			dateRange = $"{DateTime.Now:yyyy-MM-dd} to {DateTime.Now.AddDays(2):yyyy-MM-dd}";
+			var checkInDateStr = HttpContext.Session.GetString("CheckInDate");
+			var checkOutDateStr = HttpContext.Session.GetString("CheckOutDate");
+
+			if (!string.IsNullOrEmpty(checkInDateStr) && !string.IsNullOrEmpty(checkOutDateStr))
+			{
+				dateRange = $"{checkInDateStr} to {checkOutDateStr}";
+			}
+			else
+			{
+				dateRange = $"{DateTime.Now:yyyy-MM-dd} to {DateTime.Now.AddDays(2):yyyy-MM-dd}";
+			}
 		}
 
 		var dates = dateRange.Split(" to ");

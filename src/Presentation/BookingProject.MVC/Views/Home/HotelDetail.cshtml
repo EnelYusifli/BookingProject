@@ -60,28 +60,28 @@ Image gallery START -->
 	<div class="container">
 		<div class="row g-2">
 				<!-- Slider START -->
+				<!-- Slider START -->
 				<div class="tiny-slider arrow-round arrow-blur">
 					<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-edge="0" data-dots="false" data-items="2" data-items-sm="1">
-						@foreach (var url in Model.Hotel.ImageFileUrls)
+						@foreach (var item in Model.Hotel.ImageFileUrls)
 						{
-							<!-- Slider item -->
-							<div>
-								<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="@url">
-									<div class="card card-element-hover card-overlay-hover overflow-hidden">
-										<!-- Image -->
-										<img src="@url" class="rounded-3" alt="">
-										@* <!-- Full screen button -->
-										<div class="hover-element w-100 h-100">
-											<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-										</div> *@
+						<!-- Slider item -->
+						<div>
+							<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="@item">
+								<div class="card card-element-hover card-overlay-hover overflow-hidden">
+									<!-- Image -->
+									<img src="@item" class="rounded-3" alt="">
+									<!-- Full screen button -->
+									<div class="hover-element w-100 h-100">
+										<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
 									</div>
-								</a>
-							</div>
+								</div>
+							</a>
+						</div>
 						}
-
 					</div>
-					<!-- Slider START -->
-		</div>
+				</div>
+				<!-- Slider START -->
 	</div>
 </section>
 <!-- =======================
