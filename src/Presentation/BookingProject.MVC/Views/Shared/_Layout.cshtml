@@ -79,9 +79,7 @@
 		
 	</script>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	
 	<style>
 		.rating-star-group {
 			display: flex;
@@ -108,16 +106,36 @@
 				color: #ffc107;
 			}
 	</style>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
+	<!-- Bootstrap CSS link -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap CSS link -->
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/apexcharts/css/apexcharts.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/choices/css/choices.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
 
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
@@ -126,7 +144,19 @@
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/glightbox/css/glightbox.css">
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/flatpickr/css/flatpickr.min.css">
 	<link rel="stylesheet" type="text/css" href="~/assets/vendor/choices/css/choices.min.css">
-	
+
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="~/assets/vendor/overlay-scrollbar/css/overlayscrollbars.min.css">
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
@@ -195,27 +225,22 @@
 							</a>
 
 							<!-- Notification dropdown menu START -->
-							<div class="dropdown">
-								@* <button class="text-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-									Profile
-								</button> *@
-								<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-									<!-- Links -->
-									<!--
-									<li><a class="dropdown-item" asp-action="login" asp-controller="account">Sign in</a></li>
-									<li><a class="dropdown-item" asp-action="register" asp-controller="account">Sign up</a></li>
-									-->
-									<li><a class="dropdown-item" asp-action="Joinus" asp-controller="property">Join us</a></li>
-									<li><a class="dropdown-item" asp-action="About">About</a></li>
-									<li><a class="dropdown-item" asp-action="faqs">FAQs</a></li>
-									<li><a class="dropdown-item" asp-action="termsofservice">Terms</a></li>
-									<li><a class="dropdown-item" asp-action="privacypolicy">Privacy Policy</a></li>
-									<li><a class="dropdown-item" asp-action="Contact">Contact</a></li>
-									<li><hr class="dropdown-divider"></li>
-								</ul>
-							</div>
+							<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3">
+								<!-- Links -->
+								<!--
+								<li><a class="dropdown-item" asp-action="login" asp-controller="account">Sign in</a></li>
+								<li><a class="dropdown-item" asp-action="register" asp-controller="account">Sign up</a></li>
+								-->
+								<li><a class="dropdown-item" asp-action="Joinus" asp-controller="property">Join us</a></li>
+								<li><a class="dropdown-item" asp-action="About">About</a></li>
+								<li><a class="dropdown-item" asp-action="faqs">FAQs</a></li>
+								<li><a class="dropdown-item" asp-action="termsofservice">Terms</a></li>
+								<li><a class="dropdown-item" asp-action="privacypolicy">Privacy Policy</a></li>
+								<li><a class="dropdown-item" asp-action="Contact">Contact</a></li>
+							</ul>
 							<!-- Notification dropdown menu END -->
 						</li>
+
 						<!-- Notification dropdown END -->
 						<!-- Profile dropdown START -->
 						<li class="nav-item ms-3 dropdown">
@@ -540,24 +565,51 @@ Footer END -->
 	</ul>
 </div>
 <!-- Navbar mobile END -->
+	<!-- Bootstrap JS -->
+	<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-<!-- Bootstrap JS -->
-<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- Vendors -->
-<script src="~/assets/vendor/tiny-slider/tiny-slider.js"></script>
-<script src="~/assets/vendor/glightbox/js/glightbox.js"></script>
-<script src="~/assets/vendor/flatpickr/js/flatpickr.min.js"></script>
-<script src="~/assets/vendor/choices/js/choices.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+	<!-- Vendors -->
+	<script src="~/assets/vendor/apexcharts/js/apexcharts.min.js"></script>
+	<script src="~/assets/vendor/choices/js/choices.min.js"></script>
+	<script src="~/js/main.js"></script>
+	<!-- ThemeFunctions -->
+	<script src="~/assets/js/functions.js"></script>
+	<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Vendor -->
+	<script src="~/assets/vendor/overlay-scrollbar/js/overlayscrollbars.min.js"></script>
+	<script src="~/js/main.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Vendors -->
+	<script src="~/assets/vendor/tiny-slider/tiny-slider.js"></script>
+	<script src="~/assets/vendor/glightbox/js/glightbox.js"></script>
+	<script src="~/assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+	<script src="~/assets/vendor/choices/js/choices.min.js"></script>
 	<!-- Bootstrap JavaScript link (with Popper.js and Bootstrap Bundle) -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-	<script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+	<!-- ThemeFunctions -->
+	<script src="~/assets/js/functions.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js"></script>
+	<!-- Bootstrap CSS -->
+	@* <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> *@
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+	<!-- ThemeFunctions -->
+	<script src="~/assets/js/functions.js"></script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -657,8 +709,7 @@ Footer END -->
 			});
 		});
 	</script>
-<!-- ThemeFunctions -->
-<script src="~/assets/js/functions.js"></script>
+
 
 </body>
 

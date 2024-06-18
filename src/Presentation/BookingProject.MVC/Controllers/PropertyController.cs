@@ -311,7 +311,6 @@ public class PropertyController : Controller
             content.Add(new StringContent(vm.Address), nameof(vm.Address));
             content.Add(new StringContent(vm.CountryId.ToString()), nameof(vm.CountryId));
             content.Add(new StringContent(vm.City), nameof(vm.City));
-            content.Add(new StringContent(vm.IsDeactive.ToString()), nameof(vm.IsDeactive));
             if(imageids is not null)
             {
             foreach (var item in imageids)
@@ -470,7 +469,10 @@ public class PropertyController : Controller
     [HttpPost]
     public async Task<IActionResult> AddRoom(RoomCreateViewModel vm,int hotelid)
     {
-        using (var content = new MultipartFormDataContent())
+		ViewBag.HotelId = vm.HotelId;
+		if (!ModelState.IsValid) return View();
+
+		using (var content = new MultipartFormDataContent())
         {
             content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));
             content.Add(new StringContent(vm.AdultCount.ToString()), nameof(vm.AdultCount));
@@ -537,6 +539,8 @@ public class PropertyController : Controller
 	}
     [HttpPost]
     public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm, int[] imageids) {
+        ViewBag.Id = vm.Id;
+        if (!ModelState.IsValid) return View();
 		using (var content = new MultipartFormDataContent())
 		{
 			content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));

@@ -63,19 +63,20 @@
 					</div>
 
 					<!-- Cancel info -->
-					<div class="col-md-6">
-						<label class="form-label">Cancellation info *</label>
-						<select class="form-select js-choice border-0 z-index-9 bg-transparent" asp-for="@Model.IsCancellable">
-							<option value="">Select item</option>
-							<option value="false">Non Refundable</option>
-							<option value="true">Free Cancellation</option>
-						</select>
+							<div class="col-md-6">
+								<label class="form-label">Cancellation info *</label>
+								<select class="form-select js-choice border-0 z-index-9 bg-transparent" id="isCancellable" asp-for="@Model.IsCancellable">
+									<option value="">Select item</option>
+									<option value="false">Non Refundable</option>
+									<option value="true">Free Cancellation</option>
+								</select>
 
-						<div id="cancelAfterDayCard" style="display: none;">
-							<label class="form-label">Cancel after x days *</label>
-							<input class="form-control" placeholder="Enter day count" asp-for="@Model.CancelAfterDay">
-						</div>
-								<div class="col-12 mt-4">
+								<div id="cancelAfterDayCard" style="display: none;">
+									<label class="form-label">Cancel after x days *</label>
+									<input class="form-control" placeholder="Enter day count" min="0" id="cancelAfterDay" asp-for="@Model.CancelAfterDay">
+								</div>
+							</div>
+							<div class="col-md-6">
 									<label class="form-label">Existing images</label>
 									<div class="row">
 										@foreach (var image in Model.Images)
@@ -97,10 +98,6 @@
 									<input type="hidden" name="DeletedImageFileIds" asp-for="@Model.DeletedImageFileIds" id="DeletedImageIds">
 									<input type="hidden" asp-for="@Model.Id" value="@id">
 								</div>
-
-						@* 	<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span> *@
-
-					</div>
 							@* <div class="col-md-6">
 								<!-- Button trigger modal -->
 								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createDiscountModal">
@@ -160,7 +157,16 @@
 </form>
 	</div>
 	</section>
-
+<script>
+	document.getElementById('isCancellable').addEventListener('change', function () {
+		var cancelAfterDayCard = document.getElementById('cancelAfterDayCard');
+		if (this.value === 'true') {
+			cancelAfterDayCard.style.display = 'block';
+		} else {
+			cancelAfterDayCard.style.display = 'none';
+		}
+	});
+</script>
 <style>
 	.form-check-input {
 		display: none;

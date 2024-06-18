@@ -63,22 +63,19 @@
 					</div>
 
 					<!-- Cancel info -->
-					<div class="col-md-6">
-						<label class="form-label">Cancellation info *</label>
-						<select class="form-select js-choice border-0 z-index-9 bg-transparent" asp-for="@Model.IsCancellable">
-							<option value="">Select item</option>
-							<option value="false">Non Refundable</option>
-							<option value="true">Free Cancellation</option>
-						</select>
+							<div class="col-md-6">
+								<label class="form-label">Cancellation info *</label>
+								<select class="form-select js-choice border-0 z-index-9 bg-transparent" id="isCancellable" asp-for="@Model.IsCancellable">
+									<option value="">Select item</option>
+									<option value="false">Non Refundable</option>
+									<option value="true">Free Cancellation</option>
+								</select>
 
-						<div id="cancelAfterDayCard" style="display: none;">
-							<label class="form-label">Cancel after x days *</label>
-							<input class="form-control" placeholder="Enter day count" asp-for="@Model.CancelAfterDay">
-							<input type="hidden" asp-for="@Model.HotelId" value="@hotelid">
-						</div>
-						@* 	<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span> *@
-
-					</div>
+								<div id="cancelAfterDayCard" style="display: none;">
+									<label class="form-label">Cancel after x days *</label>
+									<input class="form-control" placeholder="Enter day count" min="0" id="cancelAfterDay" asp-for="@Model.CancelAfterDay">
+								</div>
+							</div>
 				</div>
 			</div>
 			<div class="card-body">
@@ -98,3 +95,13 @@
 </form>
 	</div>
 	</section>
+<script>
+	document.getElementById('isCancellable').addEventListener('change', function () {
+		var cancelAfterDayCard = document.getElementById('cancelAfterDayCard');
+		if (this.value === 'true') {
+			cancelAfterDayCard.style.display = 'block';
+		} else {
+			cancelAfterDayCard.style.display = 'none';
+		}
+	});
+</script>

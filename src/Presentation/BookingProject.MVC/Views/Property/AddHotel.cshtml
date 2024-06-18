@@ -537,10 +537,11 @@ Steps START -->
 										<div class="vstack gap-4">
 											<!-- Title -->
 											<h4 class="mb-0">Rooms</h4>
+											<div id="roomcards">
 											<!-- Room options START -->
-											<div class="card shadow room-card">
+											<div class="card shadow room-card" style="margin-bottom:10px">
 												<!-- Card header -->
-												<div class="card-header border-bottom">
+												<div class="card-header border-bottom justify-content-between d-flex" >
 													<h5 class="mb-0">Room Options</h5>
 												</div>
 
@@ -580,16 +581,15 @@ Steps START -->
 														<!-- AdultCount -->
 														<div class="col-md-6">
 															<label class="form-label">Adult Count *</label>
-															<input class="form-control" placeholder="Enter adult count" asp-for="@Model.RoomCreateDtos[0].AdultCount">
+															<input class="form-control" min="1" placeholder="Enter adult count" asp-for="@Model.RoomCreateDtos[0].AdultCount">
 														</div>
 
 														<!-- ChildCount -->
 														<div class="col-md-6">
 															<label class="form-label">Child Count *</label>
-															<input class="form-control" placeholder="Enter child count" asp-for="@Model.RoomCreateDtos[0].ChildCount">
+															<input class="form-control" min="0" placeholder="Enter child count" asp-for="@Model.RoomCreateDtos[0].ChildCount">
 														</div>
 
-														<!-- Cancel info -->
 														<div class="col-md-6">
 															<label class="form-label">Cancellation info *</label>
 															<select class="form-select js-choice border-0 z-index-9 bg-transparent" asp-for="@Model.RoomCreateDtos[0].IsCancellable">
@@ -604,12 +604,14 @@ Steps START -->
 															</div>
 															<span asp-validation-for="@Model.RoomCreateDtos" class="text-danger"></span>
 														</div>
+
 													</div>
 												</div>
 												<div class="card-body">
 													<div asp-validation-summary="All" class="text-danger"></div>
 												</div>
 												<!-- Card body END -->
+											</div>
 											</div>
 											<div class="col-12">
 												<a id="addRoomBtn" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-plus-circle me-2"></i>Add New Room</a>
@@ -719,48 +721,85 @@ Footer END -->
 
 			// Add event listener to the "Add New Room" button
 			$("#addRoomBtn").click(function () {
-				// Clone the room card
-				var clonedCard = $(".room-card").first().clone();
-
-				// Clear the inputs in the cloned card
-				clonedCard.find("input").val("");
-				clonedCard.find("select").val("");
-
-				// Update the index in the input field names
-				clonedCard.find("input, select").each(function () {
-					var nameAttr = $(this).attr("name");
-					if (nameAttr) {
-						$(this).attr("name", nameAttr.replace(/\[\d+\]/, "[" + roomCount + "]"));
-					}
-				});
-
-				// Remove existing delete button to avoid duplication
-				clonedCard.find(".delete-room-btn").remove();
+				// Clone the template string and convert to jQuery object
+				var clonedCard = $(
+					`<div class="card shadow room-card" style="margin-bottom:10px">
+							<div class="card-header border-bottom justify-content-between d-flex">
+								<h5 class="mb-0">Room Options</h5>
+							</div>
+							<div class="card-body">
+								<div class="row g-4">
+									<div class="col-md-6">
+										<label class="form-label">Room name *</label>
+										<input class="form-control" placeholder="Enter name" name="RoomCreateDtos[${roomCount}].RoomName">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Room images *</label>
+										<input class="form-control" type="file" accept="image/jpg, image/jpeg, image/png" multiple name="RoomCreateDtos[${roomCount}].ImageFiles">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Room Price Per Night *</label>
+										<input class="form-control" placeholder="Enter price" name="RoomCreateDtos[${roomCount}].PricePerNight">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Service Fee *</label>
+										<input class="form-control" placeholder="Enter fee" name="RoomCreateDtos[${roomCount}].ServiceFee">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Area *</label>
+										<input class="form-control" placeholder="Enter area" name="RoomCreateDtos[${roomCount}].Area">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Adult Count *</label>
+										<input class="form-control" type="number" min="1" placeholder="Enter adult count" name="RoomCreateDtos[${roomCount}].AdultCount">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Child Count *</label>
+										<input class="form-control" type="number" min="0" placeholder="Enter child count" name="RoomCreateDtos[${roomCount}].ChildCount">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Cancellation info *</label>
+										<select class="form-select js-choice border-0 z-index-9 bg-transparent" name="RoomCreateDtos[${roomCount}].IsCancellable">
+											<option value="">Select item</option>
+											<option value="false">Non Refundable</option>
+											<option value="true">Free Cancellation</option>
+										</select>
+										<div class="cancelAfterDayCard" style="display: none;">
+											<label class="form-label">Cancel after x days *</label>
+											<input class="form-control" placeholder="Enter day count" name="RoomCreateDtos[${roomCount}].CancelAfterDay">
+										</div>
+										<span class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="text-danger"></div>
+							</div>
+						</div>`
+				);
 
 				// Append delete button to the cloned card
-				var deleteButton = $('<button class="btn btn-danger delete-room-btn"><i class="bi bi-x"></i></button>');
+				var deleteButton = $('<button class="btn btn-sm btn-danger delete-room-btn"><i class="bi bi-x"></i></button>');
 				deleteButton.click(function () {
 					$(this).closest(".room-card").remove();
 					updateRoomCount();
 				});
 				clonedCard.find(".card-header").append(deleteButton);
 
-				// Increment the room count
-				roomCount++;
 
 				// Append the cloned card to the container
-				$(".room-card").last().after(clonedCard);
+				$("#roomcards").append(clonedCard);
 			});
 
 			// Function to update roomCount after removing a room card
 			function updateRoomCount() {
-				roomCount = $(".room-card").length;
-				// Update input field names if necessary
 				$(".room-card").each(function (index) {
 					$(this).find("input, select").each(function () {
 						var nameAttr = $(this).attr("name");
 						if (nameAttr) {
-							$(this).attr("name", nameAttr.replace(/\[\d+\]/, "[" + index + "]"));
+							// Update the name attribute to reflect the current index
+							var newNameAttr = nameAttr.replace(/\[\d+\]/, "[" + index + "]");
+							$(this).attr("name", newNameAttr);
 						}
 					});
 				});
@@ -779,8 +818,10 @@ Footer END -->
 					$(this).closest('.col-md-6').find(".cancelAfterDayCard").hide();
 				}
 			});
+
 		});
 	</script>
+
 	<script>
 		$(document).ready(function () {
 			// Function to re-index advantage input fields

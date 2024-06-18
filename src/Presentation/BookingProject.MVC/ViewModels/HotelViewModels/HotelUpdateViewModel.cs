@@ -12,7 +12,6 @@ public class HotelUpdateViewModel
     public string Desc { get; set; }
     public string Address { get; set; }
     public string City { get; set; }
-    public bool IsDeactive { get; set; }
     public List<IFormFile>? NewImageFiles { get; set; }
 	public List<ImageDto>? Images { get; set; }
 	public List<AdvantageDto>? Advantages { get; set; }

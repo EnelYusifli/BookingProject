@@ -147,7 +147,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					ActivityId = activityId,
-					IsDeactive = request.IsDeactive
+					IsDeactive = hotel.IsDeactive
 				};
 				await _hotelActivityRepository.CreateAsync(hotelAct);
 			}
@@ -163,7 +163,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					PaymentMethodId = paymentMethodId,
-					IsDeactive = request.IsDeactive
+					IsDeactive = hotel.IsDeactive
 				};
 				await _hotelPaymentMethodRepository.CreateAsync(paymMethod);
 			}
@@ -180,7 +180,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					ServiceId = serviceId,
-					IsDeactive = request.IsDeactive
+					IsDeactive = hotel.IsDeactive
 				};
 				await _hotelServiceRepository.CreateAsync(hotelServ);
 			}
@@ -216,7 +216,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					StaffLanguage = language,
-					IsDeactive = request.IsDeactive
+					IsDeactive = hotel.IsDeactive
 				};
 				await _hotelStaffLanguageRepository.CreateAsync(newHotelLang);
 			}
@@ -228,7 +228,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					AdvantageName = adv,
-					IsDeactive = request.IsDeactive
+					IsDeactive = hotel.IsDeactive
 				};
 				await _advantageRepository.CreateAsync(newHotelAdv);
 			}
@@ -246,7 +246,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				{
 					Hotel = hotel,
 					Url = url,
-					IsDeactive = request.IsDeactive
+					IsDeactive = hotel.IsDeactive
 				};
 				await _hotelImageRepository.CreateAsync(hotelImg);
 			}

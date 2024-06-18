@@ -39,7 +39,7 @@ public class RoomCreateCommandHandler : IRequestHandler<RoomCreateCommandRequest
         if (request.RoomName.IsNullOrEmpty())
             throw new BadRequestException("Name cannot be null");
 
-        if (await _repository.Table.AnyAsync(x => x.RoomName.ToLower() == request.RoomName.ToLower()))
+        if (await _repository.Table.AnyAsync(x => x.RoomName.ToLower() == request.RoomName.ToLower() && x.HotelId==request.HotelId))
             throw new BadRequestException("Room Name is already exist");
         Hotel hotel = await _hotelRepository.GetByIdAsync(request.HotelId);
         if (hotel is null || hotel.IsDeactive==true)

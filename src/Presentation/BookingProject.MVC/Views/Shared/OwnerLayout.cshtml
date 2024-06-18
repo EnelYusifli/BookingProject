@@ -163,7 +163,12 @@
 
 				<!-- Profile and Notification START -->
 				<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-
+					@if (User.IsInRole("Admin"))
+					{
+						<a class="nav-notification btn btn-light p-0 mb-0" asp-action="index" asp-controller="admin">
+							<i class="bi bi-lock-fill"></i>
+						</a>
+					}
 					<!-- Notification dropdown START -->
 					<li class="nav-item dropdown ms-0 ms-md-3">
 						<!-- Notification button -->
@@ -172,17 +177,22 @@
 						</a>
 
 						<!-- Notification dropdown menu START -->
-						<div class="dropdown" id="dropdown">
-							<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-								<li><a class="dropdown-item" asp-action="About" asp-controller="home">About</a></li>
-								<li><a class="dropdown-item" asp-action="faqs" asp-controller="home">FAQs</a></li>
-								<li><a class="dropdown-item" asp-action="termsofservice" asp-controller="home">Terms</a></li>
-								<li><a class="dropdown-item" asp-action="privacypolicy" asp-controller="home">Privacy Policy</a></li>
-								<li><a class="dropdown-item" asp-action="Contact" asp-controller="home">Contact</a></li>
-							</ul>
-						</div>
+						<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3">
+							<!-- Links -->
+							<!--
+							<li><a class="dropdown-item" asp-action="login" asp-controller="account">Sign in</a></li>
+							<li><a class="dropdown-item" asp-action="register" asp-controller="account">Sign up</a></li>
+							-->
+							<li><a class="dropdown-item" asp-action="Joinus" asp-controller="property">Join us</a></li>
+							<li><a class="dropdown-item" asp-action="About">About</a></li>
+							<li><a class="dropdown-item" asp-action="faqs">FAQs</a></li>
+							<li><a class="dropdown-item" asp-action="termsofservice">Terms</a></li>
+							<li><a class="dropdown-item" asp-action="privacypolicy">Privacy Policy</a></li>
+							<li><a class="dropdown-item" asp-action="Contact">Contact</a></li>
+						</ul>
 						<!-- Notification dropdown menu END -->
 					</li>
+
 					<!-- Notification dropdown END -->
 					<!-- Profile dropdown START -->
 					<li class="nav-item ms-3 dropdown">
@@ -211,15 +221,18 @@
 							<li><a class="dropdown-item" asp-action="profile" asp-controller="account"><i class="bi bi-person-circle fa-fw me-2"></i>My Profile</a></li>
 							<li><a class="dropdown-item" asp-action="reservations" asp-controller="account"><i class="bi bi-bookmark-check fa-fw me-2"></i>My Reservations</a></li>
 							<li><a class="dropdown-item" asp-action="wishlist" asp-controller="account"><i class="bi bi-heart fa-fw me-2"></i>My Wishlist</a></li>
-							<li><a class="dropdown-item bg-danger-soft-hover" asp-action="logout" asp-controller="account"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+							@if (User.IsInRole("Owner"))
+							{
+								<li> <hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" asp-action="index" asp-controller="owner"><i class="bi bi-speedometer2 fa-fw me-2"></i>My Dashboard</a></li>
+								<li><a class="dropdown-item" asp-action="listings" asp-controller="owner"><i class="bi bi-card-list fa-fw me-2"></i>My Listings</a></li>
+								<li><a class="dropdown-item" asp-action="reservations" asp-controller="owner"><i class="bi bi-calendar-check fa-fw me-2"></i>Listings' Reservations</a></li>
+								<li><a class="dropdown-item" asp-action="reviews" asp-controller="owner"><i class="bi bi-star fa-fw me-2"></i>Listings' Reviews</a></li>
 
-							<li> <hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" asp-action="Index" asp-controller="owner"><i class="bi bi-speedometer2 fa-fw me-2"></i>My Dashboard</a></li>
-							<li><a class="dropdown-item" asp-action="listings" asp-controller="owner"><i class="bi bi-card-list fa-fw me-2"></i>My Listings</a></li>
-							<li><a class="dropdown-item" asp-action="reservations" asp-controller="owner"><i class="bi bi-calendar-check fa-fw me-2"></i>Listings' Reservations</a></li>
-							<li><a class="dropdown-item" asp-action="reviews" asp-controller="owner"><i class="bi bi-star fa-fw me-2"></i>Listings' Reviews</a></li>
+							}
 							<li> <hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item bg-danger-soft-hover" asp-action="logout" asp-controller="account"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+							<li> <hr class="dropdown-divider"></li>
 
 							<!-- Dark mode options START -->
 							<li>
