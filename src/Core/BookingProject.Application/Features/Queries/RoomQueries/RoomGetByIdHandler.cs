@@ -23,13 +23,15 @@ public class RoomGetByIdHandler : IRequestHandler<RoomGetByIdRequest, RoomGetByI
 		Room room=await _roomRepository.Table.Include(x => x.Reservation)
 			.Include(x=>x.RoomImages).Include(x => x.Hotel)
 		   .ThenInclude(x => x.Rooms).Include(x => x.Hotel)
-		   .ThenInclude(x => x.HotelImages).Include(x=>x.Discounts)
+		   .ThenInclude(x => x.HotelImages).Include(x => x.Hotel)
+		   .ThenInclude(x => x.AppUser).Include(x=>x.Discounts)
 		   .AsSplitQuery()
 		   .FirstOrDefaultAsync(x=>x.Id==request.Id);
 		if (room is null)
 			throw new NotFoundException("Room not found");
 		await UpdateRoomDiscountedPrice(room);
 		RoomGetByIdResponse dto = _mapper.Map<RoomGetByIdResponse>(room);
+		dto.UserId = room.Hotel.AppUserId;
 		return dto;
 	}
 	private async Task UpdateRoomDiscountedPrice(Room room)

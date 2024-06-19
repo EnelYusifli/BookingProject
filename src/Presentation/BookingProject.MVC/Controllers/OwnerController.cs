@@ -164,7 +164,6 @@ public class OwnerController : Controller
         }
         return RedirectToAction("Index", "Home");
     }
-	[Authorize(Roles = "Owner")]
 	public async Task<IActionResult> CancelReservation(int reservationId)
 	{
 		var response = await _httpClient.PutAsync(baseAddress + $"/reservations/cancel/{reservationId}", null);
@@ -180,7 +179,6 @@ public class OwnerController : Controller
 	//{
 	//	return View();
 	//}
-	[Authorize(Roles = "Owner")]
 	[HttpPost]
 	public async Task<IActionResult> CreateDiscount(DiscountCreateViewModel vm)
 	{

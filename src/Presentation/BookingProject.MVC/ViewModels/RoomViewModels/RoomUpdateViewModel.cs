@@ -5,6 +5,7 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels;
 public class RoomUpdateViewModel
 {
 	public string RoomName { get; set; }
+	public string UserId { get; set; }
 	public List<ImageDto> Images { get; set; }
 	public int Id { get; set; }
 	public bool IsDeactive { get; set; }

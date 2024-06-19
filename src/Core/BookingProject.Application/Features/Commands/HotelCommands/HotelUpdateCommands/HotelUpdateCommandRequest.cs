@@ -7,6 +7,7 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 public class HotelUpdateCommandRequest:IRequest<HotelUpdateCommandResponse>
 {
     public int Id { get; set; }
+    public string UserId { get; set; }
 	public int TypeId { get; set; }
 	public int CountryId { get; set; }
 	public string Name { get; set; }

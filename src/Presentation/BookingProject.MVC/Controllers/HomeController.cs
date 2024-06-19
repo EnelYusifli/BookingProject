@@ -218,6 +218,53 @@ public class HomeController : Controller
 		HttpContext.Session.SetString("CheckOutDate", checkOutDate.ToString("yyyy-MM-dd"));
 		HttpContext.Session.SetString("ChildCount", childCount.ToString());
 		HttpContext.Session.SetString("AdultCount", adultCount.ToString());
+		//if (minPrice.HasValue)
+		//	HttpContext.Session.SetString("MinPrice", minPrice.Value.ToString());
+		//else
+		//	minPrice = decimal.TryParse(HttpContext.Session.GetString("MinPrice"), out decimal minPriceValue) ? minPriceValue : (decimal?)null;
+
+		//if (maxPrice.HasValue)
+		//	HttpContext.Session.SetString("MaxPrice", maxPrice.Value.ToString());
+		//else
+		//	maxPrice = decimal.TryParse(HttpContext.Session.GetString("MaxPrice"), out decimal maxPriceValue) ? maxPriceValue : (decimal?)null;
+
+		//if (starPoint.HasValue)
+		//	HttpContext.Session.SetString("StarPoint", starPoint.Value.ToString());
+		//else
+		//	starPoint = decimal.TryParse(HttpContext.Session.GetString("StarPoint"), out decimal starPointValue) ? starPointValue : (decimal?)null;
+
+		//if (!string.IsNullOrEmpty(typeName))
+		//	HttpContext.Session.SetString("TypeName", typeName);
+		//else
+		//	typeName = HttpContext.Session.GetString("TypeName");
+
+		//if (serviceNames != null && serviceNames.Length > 0)
+		//	HttpContext.Session.SetString("ServiceNames", string.Join(",", serviceNames));
+		//else
+		//{
+		//	var storedServiceNames = HttpContext.Session.GetString("ServiceNames");
+		//	serviceNames = string.IsNullOrEmpty(storedServiceNames) ? null : storedServiceNames.Split(',');
+		//}
+
+		//if (select.HasValue)
+		//	HttpContext.Session.SetInt32("Select", select.Value);
+		//else
+		//	select = HttpContext.Session.GetInt32("Select");
+
+		//if (!string.IsNullOrEmpty(searchStr))
+		//	HttpContext.Session.SetString("SearchStr", searchStr);
+		//else
+		//	searchStr = HttpContext.Session.GetString("SearchStr");
+
+		//if (roomCount.HasValue)
+		//	HttpContext.Session.SetInt32("RoomCount", roomCount.Value);
+		//else
+		//	roomCount = HttpContext.Session.GetInt32("RoomCount");
+
+		//if (!string.IsNullOrEmpty(countryName))
+		//	HttpContext.Session.SetString("CountryName", countryName);
+		//else
+		//	countryName = HttpContext.Session.GetString("CountryName");
 
 		if (!ModelState.IsValid) return View();
 		AppUser user = await GetCurrentUserAsync();
@@ -258,13 +305,13 @@ public class HomeController : Controller
 				queryableHotels = queryableHotels.Where(x => x.StarPoint >= starPoint);
 			}
 
-			if (roomCount.HasValue && (adultCount.HasValue || childCount.HasValue))
+			if (adultCount.HasValue || childCount.HasValue)
 			{
 				int totalAdults = adultCount ?? 0;
 				int totalChildren = childCount ?? 0;
 				int requiredGuests = totalAdults + totalChildren;
 
-				queryableHotels = queryableHotels.Where(hotel => HotelHasRequiredRooms(hotel, roomCount.Value, checkInDate, checkOutDate, requiredGuests));
+				queryableHotels = queryableHotels.Where(hotel => hotel.Rooms.Any(x=>x.AdultCount+x.ChildCount>= requiredGuests));
 			}
 
 
@@ -339,7 +386,7 @@ public class HomeController : Controller
 
 
 
-	[Authorize(Roles = "Customer,Owner,Admin")]
+	[Authorize(Roles = "Customer")]
     public async Task<IActionResult> Reservation(int roomid,ReservationViewModel vm)
 	{
 		var roomResponse = await _httpClient.GetAsync(baseAddress + $"/rooms/getbyid/{roomid}");
@@ -385,7 +432,7 @@ public class HomeController : Controller
 		}
 		return RedirectToAction("Index");
 	}
-    [Authorize(Roles = "Customer,Owner,Admin")]
+    [Authorize(Roles = "Customer")]
     public async Task<IActionResult> ReserveRoom(int roomid, bool ispaid, ReservationCreateViewModel vm)
 	{
 		vm.RoomId=roomid;

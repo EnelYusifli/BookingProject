@@ -10,6 +10,7 @@ public class RoomGetByIdResponse
 	public DateTime CreatedDate { get; set; } 
 	public DateTime ModifiedDate { get; set; }
 	public string RoomName { get; set; }
+	public string UserId { get; set; }
 	public int Id { get; set; }
 	public List<ReservationGetAllByUserQueryResponse>? Reservations { get; set; }
 	public int DiscountPercent { get; set; }

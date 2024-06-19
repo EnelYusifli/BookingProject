@@ -92,6 +92,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 			 .FirstOrDefaultAsync(x => x.Id == request.Id);
 			if (hotel is null)
                 throw new NotFoundException($"Hotel with ID {request.Id} not found");
+			if (hotel.AppUserId != request.UserId)
+				throw new BadRequestException("You cannot update a hotel if it is not yours");
 			if (!await _typeRepository.Table.AnyAsync(x => x.Id == request.TypeId && x.IsDeactive==false))
 				throw new NotFoundException("Type not found");
 			if (!await _countryRepository.Table.AnyAsync(x => x.Id == request.CountryId && x.IsDeactive==false))

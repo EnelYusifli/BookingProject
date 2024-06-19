@@ -6,6 +6,7 @@ namespace BookingProject.MVC.ViewModels.HotelViewModels;
 public class HotelUpdateViewModel
 {
     public int Id { get; set; }
+    public string UserId { get; set; }
     public int TypeId { get; set; }
     public int CountryId { get; set; }
     public string Name { get; set; }

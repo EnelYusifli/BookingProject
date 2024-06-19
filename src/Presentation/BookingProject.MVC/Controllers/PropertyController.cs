@@ -8,6 +8,7 @@ using BookingProject.MVC.ViewModels.HotelViewModels;
 using BookingProject.MVC.ViewModels.ProfileViewModels;
 using BookingProject.MVC.ViewModels.PropertyViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ using System.Security.Claims;
 using System.Text;
 
 namespace BookingProject.MVC.Controllers;
-[Authorize]
+[Authorize(Roles ="Customer,Owner")]
 public class PropertyController : Controller
 {
     Uri baseAddress = new Uri("https://localhost:7197/api");
@@ -296,17 +297,22 @@ public class PropertyController : Controller
 
         var dataStr = await response.Content.ReadAsStringAsync();
         var vm = JsonConvert.DeserializeObject<HotelUpdateViewModel>(dataStr);
-
+        AppUser user = await GetCurrentUserAsync();
+        if (vm.UserId != user.Id)
+            return View("NotFound");
         return View(vm);
 
     }
     [HttpPost]
     public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm, int[]? imageids, int[]? advantageIds)
     {
+        AppUser user = await GetCurrentUserAsync();
+        vm.UserId=user.Id;
         using (var content = new MultipartFormDataContent())
         {
             content.Add(new StringContent(vm.TypeId.ToString()), nameof(vm.TypeId));
             content.Add(new StringContent(vm.Id.ToString()), nameof(vm.Id));
+            content.Add(new StringContent(vm.UserId), nameof(vm.UserId));
             content.Add(new StringContent(vm.Name), nameof(vm.Name));
             content.Add(new StringContent(vm.Desc), nameof(vm.Desc));
             content.Add(new StringContent(vm.Address), nameof(vm.Address));
@@ -462,9 +468,12 @@ public class PropertyController : Controller
         ViewBag.Property = vm3;
         return View(vm);
     }
-    public IActionResult AddRoom(int hotelid)
+    public async Task<IActionResult> AddRoom(int hotelid)
     {
         ViewBag.HotelId = hotelid;
+        AppUser user = await GetCurrentUserAsync();
+        if (user.Hotels is null || user.Hotels?.Any(x => x.Id == hotelid)==false)
+            return View("NotFound");
         return View();
     }
     [HttpPost]
@@ -536,7 +545,10 @@ public class PropertyController : Controller
 		}
 		var dataStr = await response.Content.ReadAsStringAsync();
 		var vm = JsonConvert.DeserializeObject<RoomUpdateViewModel>(dataStr);
-        ViewBag.Id = id;
+		AppUser user = await GetCurrentUserAsync();
+		if (vm.UserId != user.Id)
+			return View("NotFound");
+		ViewBag.Id = id;
 		return View(vm);
 	}
     [HttpPost]
