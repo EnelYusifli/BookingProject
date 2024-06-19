@@ -13,6 +13,7 @@ public class ReservationViewModel
 	public string ChildCount { get; set; } = "0";
 	public string CheckOutDate { get; set; }
 	public int Nights { get; set; }
+	public bool IsDepositNeeded { get; set; }
 
 
 }

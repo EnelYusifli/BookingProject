@@ -37,7 +37,7 @@ public class ReservationCreateCommandHandler : IRequestHandler<ReservationCreate
 
 	public async Task<ReservationCreateCommandResponse> Handle(ReservationCreateCommandRequest request, CancellationToken cancellationToken)
 	{
-		var room = await _roomRepository.Table.Include(x=>x.Hotel).FirstOrDefaultAsync(x=>x.Id==request.RoomId);
+		var room = await _roomRepository.Table.Include(x=>x.Hotel).ThenInclude(x=>x.Rooms).ThenInclude(x=>x.Discounts).AsSplitQuery().FirstOrDefaultAsync(x=>x.Id==request.RoomId);
 		if (room is null || room.IsDeactive)
 		{
 			throw new ArgumentException("Room not found or inactive.");
@@ -56,7 +56,8 @@ public class ReservationCreateCommandHandler : IRequestHandler<ReservationCreate
 		Reservation reservation=_mapper.Map<Reservation>(request);
 		int nights=(request.EndTime - request.StartTime).Days;
 		object[] price = await UpdateRoomDiscountedPrice(room);
-		reservation.TotalPrice = (decimal)price[0];
+		decimal roomDiscountedPricePerNight = (decimal)price[0];
+		reservation.TotalPrice = roomDiscountedPricePerNight*((int)(reservation.EndTime-reservation.StartTime).TotalDays)+room.ServiceFee;
 		reservation.DiscountPercent = (int)price[1];
 		reservation.IsCancelled = false;
 		reservation.IsPaid = request.IsPaid;
@@ -89,7 +90,10 @@ public class ReservationCreateCommandHandler : IRequestHandler<ReservationCreate
 			await _emailService.SendEmail(user.Email, subject, html);
 		}
 		await _reservationRepository.CommitAsync();
-		return new ReservationCreateCommandResponse();
+		return new ReservationCreateCommandResponse()
+		{
+			TotalPrice=reservation.TotalPrice
+		};
 	}
 	private async Task<object[]> UpdateRoomDiscountedPrice(Room room)
 	{

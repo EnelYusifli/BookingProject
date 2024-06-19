@@ -18,6 +18,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddSession();
 builder.Services.AddScoped<ILoginService,LoginService>();
+builder.Services.AddScoped<IPayPalService,PayPalService>();
 builder.Services.AddScoped<IRoomRepository,RoomRepository>();
 
 builder.Services.AddAuthentication(opt =>

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "solid-skill-421514",
+  "private_key_id": "d0ccbf790aba26da04f8dae11c4d04a39ab288fb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDWmkxHwNz0jJ3y\nCt0J+O0DkHuHVo6XobgWm8rNv2k8/HrAWQ69ccgYyCNFQ4qQ/sz6yMOPZcgZaJWK\nukoSjZbBfH7pGOIH8tgJNvwfXx9Fp3NrfHVLefMVpxUnOzVUEc/VKTCn2JvdmHlo\nnxVaK0xra+jRdOzYTgIaqy44wqmQ3s9a7XwzzBsDBtPHmrH7aBBE314t2IBji2gc\nxFQ55Zo09iUMTknzr2DsmiKtm6AYoTMDqovVLKIaqpDQfzpEBqG2aBI+R0gmhc7p\nVqcDyqHq5ZRyaWthc5F4FzgZTXik7MVg42DojXjgsfff27NvAgdz44oLUwVZc7E8\nxvbjLNKXAgMBAAECggEATI6L4tcTG+ykFeo5M2sJhol+/+dpg/9tsCcQwLhlnxuE\n4OSEZSHXm7ueFYIERziWwGpplVjeeu371xsg/KBlJQ44Kgi17db8qcDjTX++JLeZ\nbcFfCLdu+Az8d1vgaObXyTfiAya7Z+CSgzepQtsKbpH24u3+5iViC8iAe0A6hJLI\nJ3HNwOG2d2afhBvAJDWXao6s8+Jv9OhcpGJyroC5++CZaztHuv9y+GHPgE3rWjlA\nK6Cl68M6+C2CjDvR72FHuj5/D69A5JAj1jYF0mGl+aUbpehHQ1mouN059QaS6wu/\noPEUDtlUTIkklijttiGNVTSsWniv/rrJigmsaqSRHQKBgQD7o51lCWIw9kLMxG/M\n6VaHaCno2AJclvVO95AgXJIKmxEmWledeTmTsRjBnc1WWFB484O37GH3xivPYaxj\n9u5IJ0uEz1paqT+ENUDWI4rmx4gLXjxpAC+IHtx1d6gqpDKsujgHTl553ESo3b1g\nfeY5hbKTr+yoIG9Ve7z19r8VOwKBgQDaUl93nr/28ouort+UYHHBGTdZjLOUIm3R\nqDeDoO8aPCcVnWifdL92CpQqLL81Y3oE/8c9xGSbBI/lHZKCyP1FF/nEZ5SKVI65\nwIrH64ynmFc92pB/Ok1IZaRDYaero3BIMsTwikOMGHRp5y6O9PL3uQ1PK0I/KTrX\nbC/hHGvyVQKBgQDO4VztTCGmD1Ar+PPRi6TP/hs2iyCl7pYPLgkYEgMfJQ2ccnnF\nxXxIqDiqNYozirfeOJX6CCUjB5HNFYgdR03vlB7KOY8XKj5F+2Iqq13vDewTLI6N\n5NEvH/AvwwhGxmfDCfY2S3/wv97S1jpzsg4tDHYcZW4zazcdGHXp4cqHMQKBgQCP\nSp1KH7GS3WJ4lj48XoiK2ogPiF+dDHPTtXqqNAh6yZxFfYjbj37SdOMGQ1REMEQ3\n38Dfc3UsoXPoRt6QZGaG4NOX6vv9Rr5egFcWHC23Gi+4cyl/t75dlAiaCRBJgP4D\nBP9pePYYjzxo/cj7Hx4RJS3tFlFmryLlnSZXs5XN+QKBgQCj3PupMNmHlhffijuU\n3u2X1oA3jukFm3gmjV2aweXrOWM1H5S93v+WzLZsdVERVfHONWO5YrTcN5OgAmU0\nbT9z4HOmIbh6eSKxpZ6OZLaeeQtbIXRiBrcIISS3WKhTk68uewEVBnRHZOwdRE3l\nlePTkOcerf4o8h4ymKQ4xWUWIw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "bookingproject@solid-skill-421514.iam.gserviceaccount.com",
+  "client_id": "113323443930172931397",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bookingproject%40solid-skill-421514.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

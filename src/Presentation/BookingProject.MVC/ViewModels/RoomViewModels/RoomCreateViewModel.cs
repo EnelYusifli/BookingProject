@@ -8,6 +8,7 @@ public class RoomCreateViewModel
 	public int ChildCount { get; set; }
 	public decimal ServiceFee { get; set; }
 	public decimal PricePerNight { get; set; }
+	public bool IsDepositNeeded { get; set; }
 	public decimal Area { get; set; }
 	public bool IsCancellable { get; set; }
 	public int? CancelAfterDay { get; set; } = 0;

@@ -20,6 +20,7 @@ public class Room : BaseEntity, IBaseAuditable
     public bool IsCancellable { get; set; }
     public int? CancelAfterDay { get; set; }
     public bool IsReserved { get; set; }
+    public bool IsDepositNeeded { get; set; } = false;
     public List<Reservation>? Reservation { get; set; }
     public List<Discount>? Discounts { get; set; } = null;
     public List<RoomImage> RoomImages { get; set; }

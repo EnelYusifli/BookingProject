@@ -13,7 +13,8 @@ public class RoomCreateCommandRequest:IRequest<RoomCreateCommandResponse>
     public int ChildCount { get; set; }
     public decimal ServiceFee { get; set; }
     public decimal PricePerNight { get; set; }
-    public decimal Area { get; set; }
+	public bool IsDepositNeeded { get; set; } = false;
+	public decimal Area { get; set; }
     public bool IsCancellable { get; set; }
     public int? CancelAfterDay { get; set; }
     public List<IFormFile> ImageFiles { get; set; }

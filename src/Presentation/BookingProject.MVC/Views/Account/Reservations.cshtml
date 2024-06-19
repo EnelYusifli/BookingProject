@@ -2,6 +2,57 @@
 @{
 	Layout = "~/Views/Shared/AccountLayout.cshtml";
 }
+<style>
+	/* Style the button */
+#cancelBtn {
+    cursor: pointer;
+}
+
+#cancelBtn:hover {
+    background-color: #d32f2f;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+</style>
 					<!-- Main content START -->
 					<div class="col-lg-8 col-xl-9 ps-xl-5">
 
@@ -78,18 +129,26 @@
 									<!-- Hotel, Room and Paid Status -->
 									<div class="ms-3">
 										<ul class="nav nav-divider small">
-											<li class="nav-item">Hotel: @item.HotelName</li>
-											<li class="nav-item">Room: @item.RoomName</li>
+											<li class="nav-item">@item.HotelName</li>
+											<li class="nav-item">@item.RoomName</li>
 										</ul>
 									</div>
 
 									<!-- Buttons -->
 									<div class="mt-2 mt-md-0">
 										<a asp-action="reservationdetail" asp-controller="account" asp-route-id="@item.Id" class="btn btn-primary-soft mb-0 me-2">Go to detail</a>
+										<button id="cancelBtn" class="btn btn-danger-soft mb-0">Cancel Reservation</button>
+
+									</div>
+								</div>
+								@* @if(item.IsCancelled) *@
+								<div id="myModal" class="modal">
+									<div class="modal-content">
+										<span class="close">&times;</span>
+										<p>Your reservation is non-refundable. Even if you cancel the reservation, you will be charged. If you have already paid, the amount will not be refunded.</p>
 										<a asp-action="cancelreservation" asp-controller="account" asp-route-reservationid="@item.Id" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
 									</div>
 								</div>
-
 								<!-- Card body -->
 								<div class="card-body">
 									<div class="row g-3">
@@ -324,4 +383,31 @@
 
 					</div>
 					<!-- Main content END -->
-			
+			<script>
+	// Get the modal
+	var modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("cancelBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on the button, open the modal
+	btn.onclick = function () {
+		modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+
+			</script>

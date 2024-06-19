@@ -122,6 +122,7 @@ C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Deb
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\BookingProject.API.runtimeconfig.json
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\bookingproject-422317-c3b5dbef4ab0.json
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\polynomial-land-425014-g3-4bad66e44b5f.json
+C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\solid-skill-421514-d0ccbf790aba.json
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\BookingProject.API.staticwebassets.runtime.json
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\BookingProject.API.exe
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\appsettings.Development.json
@@ -151,6 +152,7 @@ C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Deb
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\MediatR.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\MediatR.Contracts.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\System.Net.Http.Formatting.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -198,6 +200,7 @@ C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Deb
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\MimeKit.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\NuGet.Common.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\NuGet.Configuration.dll
 C:\Users\Enel\Desktop\BookingProject\src\Presentation\BookingProject.MVC\bin\Debug\net8.0\NuGet.DependencyResolver.Core.dll

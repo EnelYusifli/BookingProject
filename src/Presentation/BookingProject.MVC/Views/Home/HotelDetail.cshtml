@@ -1,5 +1,14 @@
 ﻿@model HotelDetailViewModel
+@{
+	string checkin = ViewBag.Checkin;
+	string checkout = ViewBag.Checkout;
 
+	DateTime checkInTime;
+	DateTime checkOutTime;
+
+	bool isCheckInValid = DateTime.TryParse(checkin, out checkInTime);
+	bool isCheckOutValid = DateTime.TryParse(checkout, out checkOutTime);
+}
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 	
@@ -280,6 +289,21 @@ About hotel START -->
 																<i class="bi bi-x-circle-fill text-danger me-2"></i>
 																<p class="text-danger mb-0">Non Cancellable</p>
 															</div>
+														}@if (!room.IsDepositNeeded)
+														{
+															<div class="d-flex align-items-center mb-1">
+																<i class="bi bi-check-circle-fill text-success me-2"></i>
+																<p class="text-success mb-0">
+																	Pre-payment(deposit) is not required
+																</p>
+															</div>
+														}
+														else
+														{
+															<div class="d-flex align-items-center mb-1">
+																<i class="bi bi-x-circle-fill text-danger me-2"></i>
+																<p class="text-danger mb-0">Pre-payment(deposit) is required</p>
+															</div>
 														}
 
 
@@ -294,10 +318,18 @@ About hotel START -->
 																	<span class="text-decoration-line-through mb-0 text-muted">$@room.PricePerNight</span>
 																}
 															</div>
-															<!-- Button -->
-															<div class="mt-3 mt-sm-0">
-																<a asp-action="roomdetail" asp-route-id="@room.Id" class="btn btn-sm btn-primary mb-0">Select Room</a>
-															</div>
+															@if (isCheckInValid && isCheckOutValid && room.Reservations.All(x => x.EndTime <= checkInTime || x.StartTime >= checkOutTime))
+															{
+																<!-- Button -->
+																<div class="mt-3 mt-sm-0">
+																	<a asp-action="roomdetail" asp-route-id="@room.Id" class="btn btn-sm btn-primary mb-0">Select Room</a>
+																</div>
+															}
+															else
+															{
+																<p>Room is not available in those dates.</p>
+															}
+															
 														</div>
 													</div>
 												</div>
@@ -422,12 +454,6 @@ About hotel START -->
 										<hr class="my-4">
 										<!-- Review item END -->
 									}
-
-
-							<!-- Button -->
-							<div class="text-center">
-								<a href="#" class="btn btn-primary-soft mb-0">Load more</a>
-							</div>
 						</div>
 						<!-- Card body END -->
 					</div>

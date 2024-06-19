@@ -571,6 +571,11 @@ Steps START -->
 															<label class="form-label">Service Fee *</label>
 															<input class="form-control" placeholder="Enter fee" asp-for="@Model.RoomCreateDtos[0].ServiceFee">
 														</div>
+														<!-- Deposit -->
+														<div class="col-md-6">
+															<label class="form-label">Deposit needed(10%) *</label>
+																<input  asp-for="@Model.RoomCreateDtos[0].IsDepositNeeded">
+														</div>
 
 														<!-- Area -->
 														<div class="col-md-6">
@@ -744,6 +749,10 @@ Footer END -->
 									<div class="col-md-6">
 										<label class="form-label">Service Fee *</label>
 										<input class="form-control" placeholder="Enter fee" name="RoomCreateDtos[${roomCount}].ServiceFee">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Deposit needed *</label>
+												<input type="checkbox"  name="RoomCreateDtos[${roomCount}].IsDepositNeeded">
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Area *</label>

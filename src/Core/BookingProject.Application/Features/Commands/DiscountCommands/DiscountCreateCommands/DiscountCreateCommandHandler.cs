@@ -44,7 +44,7 @@ namespace BookingProject.Application.Features.Commands.DiscountCommands
 
 			if (request.StartTime >= request.EndTime)
 				throw new BadRequestException("End time must be greater than start time");
-			if (request.StartTime < DateTime.Now)
+			if (request.StartTime.AddMinutes(10) < DateTime.Now)
 				throw new BadRequestException("Start time must be in the future");
 
 			var discount = _mapper.Map<Discount>(request);

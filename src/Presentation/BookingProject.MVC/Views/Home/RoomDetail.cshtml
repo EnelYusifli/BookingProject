@@ -94,6 +94,19 @@
                                                             <i class="bi bi-x-circle-fill text-danger me-2"></i>
                                                             Non Cancellable
                                                         </li>
+                                                    }  @if (!Model.IsDepositNeeded)
+                                                    {
+                                                        <li class="mb-2">
+                                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+															Pre-payment(deposit) is not required
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="mb-2">
+                                                            <i class="bi bi-x-circle-fill text-danger me-2"></i>
+															Pre-payment(deposit) is required
+                                                        </li>
                                                     }
                                                 </ul>
 

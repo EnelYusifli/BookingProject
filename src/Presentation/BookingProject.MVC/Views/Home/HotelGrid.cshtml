@@ -393,7 +393,6 @@
 										<h6 class="mb-2">Popular Type</h6>
 										<!-- Popular Type group -->
 										<div class="form-size-lg form-control-borderless">
-											<label class="form-label">Popular Filters</label>
 											<select class="form-select js-choice border-0" name="select">
 												<option value="0">Select Option</option>
 												<option value="1">Most popular</option>
@@ -507,26 +506,12 @@
 
 															}
 														</li>
-													<!-- Share icon -->
-													<li class="list-inline-item dropdown">
-														<!-- Share button -->
-														<a href="#" class="btn btn-sm btn-round btn-light" role="button" id="dropdownShare" data-bs-toggle="dropdown" aria-expanded="false">
-															<i class="fa-solid fa-fw fa-share-alt"></i>
-														</a>
-														<!-- dropdown button -->
-														<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare">
-															<li><a class="dropdown-item" href="#"><i class="fab fa-twitter-square me-2"></i>Twitter</a></li>
-															<li><a class="dropdown-item" href="#"><i class="fab fa-facebook-square me-2"></i>Facebook</a></li>
-															<li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
-															<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
-														</ul>
-													</li>
 												</ul>
 											</div>
 
 											<!-- Title -->
-											<h5 class="card-title mb-1"><a href="hotel-detail.html">Courtyard by Marriott New York </a></h5>
-											<small><i class="bi bi-geo-alt me-2"></i>5855 W Century Blvd, Los Angeles - 90045</small>
+											<h5 class="card-title mb-1"><a href="hotel-detail.html">@hotel.Name </a></h5>
+											<small><i class="bi bi-geo-alt me-2"></i>@hotel.Address,@hotel.City - @hotel.ViewerCount</small>
 											<!-- Amenities -->
 											<ul class="nav nav-divider mt-3">
 												@foreach (var item in hotel.ServiceNames)

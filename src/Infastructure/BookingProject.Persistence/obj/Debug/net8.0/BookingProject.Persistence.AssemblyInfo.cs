@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookingProject.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2909d4f3a36f3c7daf12b2cf781a9361f0da02e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55a6423dd93ed671c1d73034938e4249dadd8ffd")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookingProject.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookingProject.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

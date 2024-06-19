@@ -14,6 +14,7 @@ public class RoomGetByIdResponse
 	public List<ReservationGetAllByUserQueryResponse>? Reservations { get; set; }
 	public int DiscountPercent { get; set; }
 	public string HotelName { get; set; }
+	public bool IsDepositNeeded { get; set; }
 	public int HotelId { get; set; }
 	public int AdultCount { get; set; }
 	public int ChildCount { get; set; }

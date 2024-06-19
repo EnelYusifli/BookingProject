@@ -813,6 +813,9 @@ namespace BookingProject.Persistence.Migrations
                     b.Property<bool>("IsDeactive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDepositNeeded")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsReserved")
                         .HasColumnType("bit");
 

@@ -108,6 +108,10 @@ public class HomeController : Controller
         response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}?userid={user.Id}");
 		else
         response = await _httpClient.GetAsync(baseAddress + $"/hotels/getbyid/{id}");
+		var checkInDateString = HttpContext.Session.GetString("CheckInDate");
+		var checkOutDateString = HttpContext.Session.GetString("CheckOutDate");
+		ViewBag.Checkin=checkInDateString;
+		ViewBag.Checkout=checkOutDateString;
 		if (response.IsSuccessStatusCode)
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
@@ -232,7 +236,11 @@ public class HomeController : Controller
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotels = JsonConvert.DeserializeObject<List<HotelGetViewModel>>(responseData);
 			var queryableHotels = hotels.Where(x => (!x.IsDeactive) && x.IsApproved).AsQueryable();
-
+				queryableHotels = queryableHotels.Where(hotel => hotel.Rooms.Any(room =>
+					!room.Reservations.Any(reservation =>
+						(reservation.StartTime < checkOutDate && reservation.EndTime > checkInDate)
+					)
+				));
 			if (!string.IsNullOrEmpty(searchStr))
 			{
 				queryableHotels = queryableHotels.Where(x => x.Name.ToLower().Contains(searchStr.ToLower()));
@@ -360,6 +368,7 @@ public class HomeController : Controller
 			}
 
 			int numberOfNights = (int)(checkOutDate - checkInDate).TotalDays;
+			vm.IsDepositNeeded = room.IsDepositNeeded;
 			vm.Nights = numberOfNights;
 			vm.AdultCount = adultCount;
 			vm.ChildCount = childCount;

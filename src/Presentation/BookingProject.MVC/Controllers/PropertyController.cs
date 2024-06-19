@@ -225,6 +225,7 @@ public class PropertyController : Controller
                     content.Add(new StringContent(room.RoomName), $"RoomCreateDtos[{i}].RoomName");
                     content.Add(new StringContent(room.AdultCount.ToString()), $"RoomCreateDtos[{i}].AdultCount");
                     content.Add(new StringContent(room.ChildCount.ToString()), $"RoomCreateDtos[{i}].ChildCount");
+                    content.Add(new StringContent(room.IsDepositNeeded.ToString()), $"RoomCreateDtos[{i}].IsDepositNeeded");
                     content.Add(new StringContent(room.ServiceFee.ToString()), $"RoomCreateDtos[{i}].ServiceFee");
                     content.Add(new StringContent(room.PricePerNight.ToString()), $"RoomCreateDtos[{i}].PricePerNight");
                     content.Add(new StringContent(room.Area.ToString()), $"RoomCreateDtos[{i}].Area");
@@ -476,6 +477,7 @@ public class PropertyController : Controller
         {
             content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));
             content.Add(new StringContent(vm.AdultCount.ToString()), nameof(vm.AdultCount));
+            content.Add(new StringContent(vm.IsDepositNeeded.ToString()), nameof(vm.IsDepositNeeded));
             if (vm.HotelId.HasValue)
             {
                 content.Add(new StringContent(vm.HotelId.ToString()), nameof(vm.HotelId));
@@ -540,7 +542,7 @@ public class PropertyController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm, int[] imageids) {
         ViewBag.Id = vm.Id;
-        if (!ModelState.IsValid) return View();
+        //if (!ModelState.IsValid) return View();
 		using (var content = new MultipartFormDataContent())
 		{
 			content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));
@@ -548,6 +550,7 @@ public class PropertyController : Controller
 			content.Add(new StringContent(vm.AdultCount.ToString()), nameof(vm.AdultCount));
 			content.Add(new StringContent(vm.ChildCount.ToString()), nameof(vm.ChildCount));
 			content.Add(new StringContent(vm.ServiceFee.ToString()), nameof(vm.ServiceFee));
+			content.Add(new StringContent(vm.IsDepositNeeded.ToString()), nameof(vm.IsDepositNeeded));
 			content.Add(new StringContent(vm.PricePerNight.ToString()), nameof(vm.PricePerNight));
 			content.Add(new StringContent(vm.Area.ToString()), nameof(vm.Area));
 			content.Add(new StringContent(vm.IsCancellable.ToString()), nameof(vm.IsCancellable));

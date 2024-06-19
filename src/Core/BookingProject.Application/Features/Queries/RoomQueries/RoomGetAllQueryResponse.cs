@@ -11,7 +11,8 @@ public class RoomGetAllQueryResponse
 	public List<ReservationGetAllByUserQueryResponse>? Reservations { get; set; }
 	public bool IsDeactive { get; set; }
     public int AdultCount { get; set; }
-    public int ChildCount { get; set; }
+	public bool IsDepositNeeded { get; set; }
+	public int ChildCount { get; set; }
 	public int DiscountPercent { get; set; }
 	public decimal ServiceFee { get; set; }
     public decimal PricePerNight { get; set; }
