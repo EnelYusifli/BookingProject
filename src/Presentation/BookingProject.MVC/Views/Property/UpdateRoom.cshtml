@@ -5,8 +5,9 @@
 @model RoomUpdateViewModel
 <section class="pt-0">
 	<div class="container vstack gap-4">
-		<form method="post" enctype="multipart/form-data" id="mainForm2" action="updateroom">
+		<form method="post" enctype="multipart/form-data" id="mainForm2"  asp-action="updateroom" asp-route-imagecount="@Model.Images.Count()">
 	<div class="vstack gap-4">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 		<!-- Title -->
 		<h4 class="mb-0">Update Room</h4>
 		<!-- Room options START -->

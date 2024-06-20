@@ -285,9 +285,7 @@ public class PropertyController : Controller
     }
     public async Task<IActionResult> UpdateHotel(int id)
     {
-        PropertyViewModel viewModel = new PropertyViewModel();
-        await PopulatePropertyViewModel(viewModel);
-        ViewBag.Property = viewModel;
+      
         //GetByIdForUpdate
         var response = await _httpClient.GetAsync($"{baseAddress}/hotels/getbyidforupdate/{id}");
         if (!response.IsSuccessStatusCode)
@@ -297,15 +295,33 @@ public class PropertyController : Controller
 
         var dataStr = await response.Content.ReadAsStringAsync();
         var vm = JsonConvert.DeserializeObject<HotelUpdateViewModel>(dataStr);
-        AppUser user = await GetCurrentUserAsync();
+		PropertyViewModel viewModel = new PropertyViewModel();
+		await PopulatePropertyViewModel(viewModel);
+		vm.Property = viewModel;
+		AppUser user = await GetCurrentUserAsync();
         if (vm.UserId != user.Id)
             return View("NotFound");
         return View(vm);
 
     }
     [HttpPost]
-    public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm, int[]? imageids, int[]? advantageIds)
+    public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm, int[]? imageids, int[]? advantageIds,int imagecount)
     {
+        if (imageids is not null)
+        {
+            foreach (var item in imageids)
+            {
+                vm.DeletedImageFileIds.Add(item);
+            }
+        }
+        //      if (imagecount - vm.DeletedImageFileIds.Count() + vm.NewImageFiles.Count() < 4)
+        //      {
+        //          PropertyViewModel viewModel = new PropertyViewModel();
+        //          await PopulatePropertyViewModel(viewModel);
+        //          vm.Property = viewModel;
+        //          ModelState.AddModelError("NewImageFiles", "Total image count must me at least 4");
+        //          return View(vm);
+        //      }
         AppUser user = await GetCurrentUserAsync();
         vm.UserId=user.Id;
         using (var content = new MultipartFormDataContent())
@@ -318,13 +334,7 @@ public class PropertyController : Controller
             content.Add(new StringContent(vm.Address), nameof(vm.Address));
             content.Add(new StringContent(vm.CountryId.ToString()), nameof(vm.CountryId));
             content.Add(new StringContent(vm.City), nameof(vm.City));
-            if(imageids is not null)
-            {
-            foreach (var item in imageids)
-            {
-                    vm.DeletedImageFileIds.Add(item);
-            }
-            } 
+          
             if(advantageIds is not null)
             {
             foreach (var item in advantageIds)
@@ -449,7 +459,7 @@ public class PropertyController : Controller
             {
 				PropertyViewModel viewModel = new PropertyViewModel();
 				await PopulatePropertyViewModel(viewModel);
-				ViewBag.Property = viewModel;
+				vm.Property = viewModel;
 				var responseContent = await response.Content.ReadAsStringAsync();
                 Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 Console.WriteLine(responseContent);
@@ -465,7 +475,7 @@ public class PropertyController : Controller
         //}
         PropertyViewModel vm3 = new PropertyViewModel();
         await PopulatePropertyViewModel(vm3);
-        ViewBag.Property = vm3;
+		vm.Property = vm3;
         return View(vm);
     }
     public async Task<IActionResult> AddRoom(int hotelid)
@@ -552,9 +562,16 @@ public class PropertyController : Controller
 		return View(vm);
 	}
     [HttpPost]
-    public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm, int[] imageids) {
+    public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm, int[] imageids,int imagecount) {
         ViewBag.Id = vm.Id;
-        //if (!ModelState.IsValid) return View();
+		if (imageids is not null)
+		{
+			foreach (var item in imageids)
+			{
+				vm.DeletedImageFileIds.Add(item);
+			}
+		}
+		//if (!ModelState.IsValid) return View();
 		using (var content = new MultipartFormDataContent())
 		{
 			content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));
@@ -566,13 +583,7 @@ public class PropertyController : Controller
 			content.Add(new StringContent(vm.PricePerNight.ToString()), nameof(vm.PricePerNight));
 			content.Add(new StringContent(vm.Area.ToString()), nameof(vm.Area));
 			content.Add(new StringContent(vm.IsCancellable.ToString()), nameof(vm.IsCancellable));
-            if(imageids is not null)
-            {
-                foreach (var item in imageids)
-                {
-                    vm.DeletedImageFileIds.Add(item);
-                }
-            }
+           
 			if (vm.CancelAfterDay.HasValue)
 			{
 				content.Add(new StringContent(vm.CancelAfterDay.Value.ToString()), nameof(vm.CancelAfterDay));

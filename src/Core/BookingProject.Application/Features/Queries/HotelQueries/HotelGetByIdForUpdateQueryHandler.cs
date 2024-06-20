@@ -20,6 +20,7 @@ public class HotelGetByIdForUpdateQueryHandler : IRequestHandler<HotelGetByIdFor
 	{
 		Hotel hotel = await _repository.Table
 			.Include(x => x.HotelImages)
+			.Include(x => x.AppUser)
 			.Include(x => x.HotelAdvantages)
 			.Include(x => x.HotelActivities)
 			.ThenInclude(x => x.Activity)
@@ -39,6 +40,7 @@ public class HotelGetByIdForUpdateQueryHandler : IRequestHandler<HotelGetByIdFor
 			.FirstOrDefaultAsync(x => x.Id == request.Id);
 		if (hotel is null) throw new Exception("Hotel not found");
 		HotelGetByIdForUpdateQueryResponse dto = _mapper.Map<HotelGetByIdForUpdateQueryResponse>(hotel);
+		dto.UserId = hotel.AppUserId;
 		return dto;
 	}
 

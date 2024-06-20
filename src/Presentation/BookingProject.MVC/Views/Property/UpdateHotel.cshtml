@@ -1,7 +1,8 @@
 ﻿@{
 	Layout = null;
-	PropertyViewModel vm = ViewBag.Property;
+	// PropertyViewModel Model.Property = ViewBag.Property;
 }
+
 @model HotelUpdateViewModel
 
 <!DOCTYPE html>
@@ -173,7 +174,7 @@ Steps START -->
 
 					<!-- Main content START -->
 					<div class="col-12">
-								<form enctype="multipart/form-data" method="post" id="mainForm">
+								<form enctype="multipart/form-data" method="post" id="mainForm" asp-route-imagecount="@Model.Images.Count()">
 
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
@@ -197,7 +198,7 @@ Steps START -->
 															<label class="form-label">Choose property type *</label>
 															<select class="form-select js-choice" asp-for="@Model.TypeId">
 																<option value="">Select type</option>
-																@foreach (var item in vm.Types)
+																@foreach (var item in Model.Property.Types)
 																{
 																<option value="@item.Id">@item.TypeName</option>
 																}
@@ -238,7 +239,7 @@ Steps START -->
 															<label class="form-label">Choose property country *</label>
 															<select class="form-select js-choice" asp-for="@Model.CountryId">
 																<option value="">Select country</option>
-																@foreach (var item in vm.Countries)
+																@foreach (var item in Model.Property.Countries)
 																{
 																	<option value="@item.Id">@item.CountryName</option>
 																}
@@ -352,7 +353,7 @@ Steps START -->
 															<label class="form-label">Select activities *</label>
 															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.ActivityIds">
 																<option value="">Select activities</option>
-																@foreach (var item in vm.Activities)
+																@foreach (var item in Model.Property.Activities)
 																{
 																<option value="@item.Id">@item.ActivityName</option>
 																}
@@ -367,7 +368,7 @@ Steps START -->
 															<label class="form-label">Select payment methods *</label>
 															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.PaymentMethodIds">
 																<option value="">Select payment methods</option>
-																@foreach (var item in vm.PaymentMethods)
+																@foreach (var item in Model.Property.PaymentMethods)
 																{
 																	<option value="@item.Id">@item.PaymentMethodName</option>
 																}
@@ -382,7 +383,7 @@ Steps START -->
 															<label class="form-label">Select staff languages *</label>
 															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.StaffLanguageIds">
 																<option value="">Select staff languages</option>
-																@foreach (var item in @vm.StaffLanguages)
+																@foreach (var item in @Model.Property.StaffLanguages)
 																{
 																	<option value="@item.Id">@item.staffLanguageName</option>
 																}
@@ -397,7 +398,7 @@ Steps START -->
 															<label class="form-label">Select services *</label>
 															<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true" asp-for="@Model.ServiceIds">
 																<option value="">Select services</option>
-																@foreach (var item in vm.Services)
+																@foreach (var item in Model.Property.Services)
 																{
 																	<option value="@item.Id">@item.ServiceName</option>
 																}

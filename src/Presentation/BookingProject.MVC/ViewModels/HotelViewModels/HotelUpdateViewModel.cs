@@ -1,27 +1,89 @@
 ﻿using BookingProject.Application.Features.DTOs;
+using BookingProject.MVC.ViewModels.PropertyViewModels;
 using BookingProject.MVC.ViewModels.RoomViewModels;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace BookingProject.MVC.ViewModels.HotelViewModels;
-
-public class HotelUpdateViewModel
+namespace BookingProject.MVC.ViewModels.HotelViewModels
 {
-    public int Id { get; set; }
-    public string UserId { get; set; }
-    public int TypeId { get; set; }
-    public int CountryId { get; set; }
-    public string Name { get; set; }
-    public string Desc { get; set; }
-    public string Address { get; set; }
-    public string City { get; set; }
-    public List<IFormFile>? NewImageFiles { get; set; }
-	public List<ImageDto>? Images { get; set; }
-	public List<AdvantageDto>? Advantages { get; set; }
-	public List<int>? StaffLanguageIds { get; set; }
-    public List<int>? ServiceIds { get; set; }
-    public List<int>? PaymentMethodIds { get; set; }
-    public List<int>? ActivityIds { get; set; }
-	public List<string>? HotelAdvantageNames { get; set; }
-	public List<int>? DeletedAdvantageIds { get; set; }
-	public List<int>? DeletedImageFileIds { get; set; }
-	public List<RoomGetViewModel> Rooms { get; set; }
+	public class HotelUpdateViewModel
+	{
+		public int Id { get; set; }
+
+		public string UserId { get; set; }
+
+		[Required(ErrorMessage = "TypeId is required.")]
+		public int TypeId { get; set; }
+
+		[Required(ErrorMessage = "CountryId is required.")]
+		public int CountryId { get; set; }
+
+		[Required(ErrorMessage = "Name is required.")]
+		[StringLength(50, MinimumLength = 2, ErrorMessage = "Name must be between 2 and 50 characters.")]
+		public string Name { get; set; }
+
+		[Required(ErrorMessage = "Desc is required.")]
+		[StringLength(1000, MinimumLength = 20, ErrorMessage = "Desc must be between 20 and 1000 characters.")]
+		public string Desc { get; set; }
+
+		[Required(ErrorMessage = "Address is required.")]
+		[StringLength(500, ErrorMessage = "Address cannot exceed 500 characters.")]
+		public string Address { get; set; }
+
+		[Required(ErrorMessage = "City is required.")]
+		[StringLength(50, ErrorMessage = "City cannot exceed 50 characters.")]
+		public string City { get; set; }
+
+		public List<IFormFile>? NewImageFiles { get; set; }
+
+		public List<ImageDto>? Images { get; set; }
+
+		public List<AdvantageDto>? Advantages { get; set; }
+
+		public List<int>? StaffLanguageIds { get; set; }
+
+		public List<int>? ServiceIds { get; set; }
+
+		public List<int>? PaymentMethodIds { get; set; }
+
+		public List<int>? ActivityIds { get; set; }
+		[MaxStringLengthInList(200, ErrorMessage = "Each item in HotelAdvantageNames must not exceed 200 characters.")]
+
+		public List<string>? HotelAdvantageNames { get; set; }
+
+		public List<int>? DeletedAdvantageIds { get; set; }
+
+		public List<int>? DeletedImageFileIds { get; set; }
+
+		public List<RoomGetViewModel> Rooms { get; set; }
+
+		public PropertyViewModel? Property { get; set; }
+	}
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
+	public class MaxStringLengthInListAttribute : ValidationAttribute
+	{
+		private readonly int _maxLength;
+
+		public MaxStringLengthInListAttribute(int maxLength)
+		{
+			_maxLength = maxLength;
+		}
+
+		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+		{
+			if (value is List<string> list)
+			{
+				foreach (var item in list)
+				{
+					if (item != null && item.Length > _maxLength)
+					{
+						return new ValidationResult($"Each item in {validationContext.DisplayName} must not exceed {_maxLength} characters.");
+					}
+				}
+			}
+
+			return ValidationResult.Success;
+		}
+	}
 }
