@@ -184,21 +184,35 @@ public class OwnerController : Controller
 	//	return View();
 	//}
 	[HttpPost]
-	public async Task<IActionResult> CreateDiscount(DiscountCreateViewModel vm)
-	{
-		if (!ModelState.IsValid) return View();
-		var dataStr = JsonConvert.SerializeObject(vm);
-		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
-		var response = await _httpClient.PostAsync(baseAddress + $"/discounts/create/{vm.RoomId}", stringContent);
+    public async Task<IActionResult> CreateDiscount(DiscountCreateViewModel vm)
+    {
+        if (!ModelState.IsValid)
+        {
+            var errors = ModelState.Where(x => x.Value.Errors.Count > 0)
+                                   .Select(x => new { x.Key, x.Value.Errors.First().ErrorMessage })
+                                   .ToList();
+            return Json(new { success = false, errors });
+        }
+
+        var dataStr = JsonConvert.SerializeObject(vm);
+        var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync(baseAddress + $"/discounts/create/{vm.RoomId}", stringContent);
+
+        if (!response.IsSuccessStatusCode)
+        {
+                ModelState.AddModelError("StartTime", "There is already a discount between these dates.");
+                var errors = ModelState.Where(x => x.Value.Errors.Count > 0)
+                                       .Select(x => new { x.Key, x.Value.Errors.First().ErrorMessage })
+                                       .ToList();
+                return Json(new { success = false, errors });
+           
+        }
+
+        return Json(new { success = true, redirectUrl = Url.Action("Listings") });
+    }
 
 
-		if (response.IsSuccessStatusCode)
-		{
-			return RedirectToAction("listings");
-		}
-		return RedirectToAction("Index", "Home");
-	}
-	public async Task<IActionResult> HotelRooms(int hotelid)
+    public async Task<IActionResult> HotelRooms(int hotelid)
 	{
 		var response = await _httpClient.GetAsync(baseAddress + $"/rooms/getall/{hotelid}");
 

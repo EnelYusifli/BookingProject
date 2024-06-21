@@ -174,33 +174,23 @@
                                         <div class="form-group">
                                             <label for="percent">Percent:</label>
                                             <input type="number" class="form-control" id="percent-@room.Id" name="Percent" min="1" required>
-                                            @if (ViewData.ModelState.TryGetValue("Percent", out var percentModelState) && percentModelState.Errors.Any())
-                                            {
-                                                <span class="text-danger">@percentModelState.Errors.FirstOrDefault().ErrorMessage</span>
-                                            }
+                                            <span class="text-danger"></span>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="startTime">Start Time:</label>
                                             <input type="datetime-local" class="form-control" id="startTime-@room.Id" name="StartTime" required>
-                                            @if (ViewData.ModelState.TryGetValue("StartTime", out var startTimeModelState) && startTimeModelState.Errors.Any())
-                                            {
-                                                <span class="text-danger">@startTimeModelState.Errors.FirstOrDefault().ErrorMessage</span>
-                                            }
+                                            <span class="text-danger"></span>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="endTime">End Time:</label>
                                             <input type="datetime-local" class="form-control" id="endTime-@room.Id" name="EndTime" required>
-                                            @if (ViewData.ModelState.TryGetValue("EndTime", out var endTimeModelState) && endTimeModelState.Errors.Any())
-                                            {
-                                                <span class="text-danger">@endTimeModelState.Errors.FirstOrDefault().ErrorMessage</span>
-                                            }
+                                            <span class="text-danger"></span>
                                         </div>
 
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
@@ -244,3 +234,32 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('form[id^="createDiscountForm-"]').submit(function (event) {
+            event.preventDefault();
+            var form = $(this);
+            var formData = form.serialize();
+
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        // Handle successful form submission
+                        window.location.href = response.redirectUrl;
+                    } else {
+                        // Handle validation errors
+                        form.find('.text-danger').text(''); // Clear previous errors
+                        $.each(response.errors, function (index, error) {
+                            var errorElement = form.find(`[name="${error.key}"]`).siblings('.text-danger');
+                            errorElement.text(error.errorMessage);
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
