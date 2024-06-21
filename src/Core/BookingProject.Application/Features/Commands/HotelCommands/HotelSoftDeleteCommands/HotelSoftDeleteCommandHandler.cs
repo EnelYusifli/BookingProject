@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
 using BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDeleteCommands;
+using BookingProject.Application.Features.Commands.ReservationCommands.ReservationCancelCommands;
 using BookingProject.Application.Repositories;
 using BookingProject.Domain.Entities;
 using MediatR;
@@ -13,30 +14,35 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelSoftDe
 public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteCommandRequest, HotelSoftDeleteCommandResponse>
 {
 	private readonly IHotelRepository _repository;
+	private readonly IMediator _mediator;
 
-	public HotelSoftDeleteCommandHandler(IHotelRepository repository)
+	public HotelSoftDeleteCommandHandler(IHotelRepository repository,IMediator mediator)
 	{
 		_repository = repository;
+		_mediator = mediator;
 	}
 	public async Task<HotelSoftDeleteCommandResponse> Handle(HotelSoftDeleteCommandRequest request, CancellationToken cancellationToken)
 	{
 		string text = String.Empty;
 		Hotel hotel = await _repository.Table
 			.Include(x => x.HotelActivities)
-			.ThenInclude(x=>x.Activity)
+			.ThenInclude(x => x.Activity)
 			.Include(x => x.HotelAdvantages)
 			.Include(x => x.HotelImages)
 			.Include(x => x.HotelPaymentMethods)
-			.ThenInclude(x=>x.PaymentMethod)
+			.ThenInclude(x => x.PaymentMethod)
 			.Include(x => x.HotelServices)
-			.ThenInclude(x=>x.Service)
+			.ThenInclude(x => x.Service)
 			.Include(x => x.HotelStaffLanguages)
-			.ThenInclude(x=>x.StaffLanguage)
+			.ThenInclude(x => x.StaffLanguage)
 			.Include(x => x.Rooms)
 			.ThenInclude(x => x.RoomImages)
+			.Include(x => x.Rooms)
+			.ThenInclude(x => x.Reservation)
 			.Include(x => x.CustomerReviews)
 			.ThenInclude(x => x.ReviewImages)
-			.Include(x=>x.UserWishlistHotel)
+			.Include(x => x.UserWishlistHotel)
+			.AsSplitQuery()
 			.FirstOrDefaultAsync(x => x.Id == request.Id);
 		if (hotel is null) throw new NotFoundException("Hotel not found");
 		if (hotel.IsDeactive == true)
@@ -72,6 +78,7 @@ public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteComm
 			{
 				item.IsDeactive = false;
 			}
+			
 			foreach (var item in hotel.HotelActivities)
 			{
 				if (item.Activity.IsDeactive == false)
@@ -112,6 +119,22 @@ public class HotelSoftDeleteCommandHandler : IRequestHandler<HotelSoftDeleteComm
 				{
 					img.IsDeactive = true;
 				}
+			}
+			foreach (var item in hotel.Rooms)
+			{
+				if (item.Reservation.Any())
+				{
+					foreach (var reservation in item.Reservation.Where(x=>x.StartTime>DateTime.Now && !x.IsDeactive && !x.IsCancelled) )
+					{
+						ReservationCancelCommandRequest reservRequest = new()
+						{
+							ReservationId = reservation.Id
+						};
+						await _mediator.Send(reservRequest);
+					}
+
+				}
+				item.IsDeactive = true;
 			}
 			foreach (var item in hotel.CustomerReviews)
 			{

@@ -9,6 +9,7 @@ public class OwnerHotelGetViewModel
 	public string Address { get; set; }
 	public string City { get; set; }
 	public bool IsDeactive { get; set; }
+	public bool IsApproved { get; set; }
 	public string AppUserId { get; set; }
 	public int ViewerCount { get; set; }
 	public decimal StarPoint { get; set; }

@@ -1,4 +1,5 @@
-﻿using BookingProject.Domain.Entities;
+﻿using BookingProject.Application.Repositories;
+using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
 using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
@@ -25,14 +26,16 @@ public class AccountController : Controller
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	
 	private readonly HttpClient _httpClient;
-    private readonly UserManager<AppUser> _userManager;
+	private readonly IRoomRepository _roomRepository;
+	private readonly UserManager<AppUser> _userManager;
     private readonly ILoginService _loginService;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public AccountController(HttpClient httpClient,UserManager<AppUser> userManager,ILoginService loginService,IHttpContextAccessor httpContextAccessor)
+    public AccountController(HttpClient httpClient,IRoomRepository roomRepository,UserManager<AppUser> userManager,ILoginService loginService,IHttpContextAccessor httpContextAccessor)
 	{
 		_httpClient = httpClient;
-        _userManager = userManager;
+		_roomRepository = roomRepository;
+		_userManager = userManager;
         _loginService = loginService;
         _httpContextAccessor = httpContextAccessor;
         _httpClient.BaseAddress = baseAddress;
@@ -253,7 +256,7 @@ public class AccountController : Controller
     [Authorize(Roles = "Customer,Owner,Admin")]
     public async Task<IActionResult> Profile()
 	{
-		//if (!ModelState.IsValid) return View();
+		if (!ModelState.IsValid) return View();
 		ProfileViewModel profileViewModel = new();
 		profileViewModel.PersonalInfo = new();
 		profileViewModel.Password = new();
@@ -281,8 +284,23 @@ public class AccountController : Controller
         {
             AppUser user = await GetCurrentUserAsync();
 			vm.PersonalInfo.Id = user.Id;
-            // Add individual properties as StringContent
-            content.Add(new StringContent(vm.PersonalInfo.Id), nameof(vm.PersonalInfo.Id));
+			vm.User = null;
+			vm.Password = null;
+			if (!ModelState.IsValid)
+			{
+				var profileResponse = await _httpClient.GetAsync(baseAddress + $"/users/getbyid/{user.Id}");
+
+				if (profileResponse.IsSuccessStatusCode)
+				{
+					var responseData = await profileResponse.Content.ReadAsStringAsync();
+					var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+					vm.User = dto;
+					return View("Profile", vm);
+				}
+
+			}
+			// Add individual properties as StringContent
+			content.Add(new StringContent(vm.PersonalInfo.Id), nameof(vm.PersonalInfo.Id));
             content.Add(new StringContent(vm.PersonalInfo.FirstName), nameof(vm.PersonalInfo.FirstName));
             content.Add(new StringContent(vm.PersonalInfo.LastName), nameof(vm.PersonalInfo.LastName));
             content.Add(new StringContent(vm.PersonalInfo.Email), nameof(vm.PersonalInfo.Email));
@@ -311,7 +329,7 @@ public class AccountController : Controller
             // Check if the response indicates success
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Profile");
             }
             else
             {
@@ -321,14 +339,29 @@ public class AccountController : Controller
                 Console.WriteLine(responseContent);
             }
         }
-
-        // If the request failed, return the view with the original model to display validation errors
-        return View(vm);
+        return View("Profile",vm);
     }
     [Authorize(Roles = "Customer,Owner,Admin")]
     [HttpPost]
 	public async Task<IActionResult> UpdatePassword(ProfileViewModel vm)
 	{
+			AppUser user = await GetCurrentUserAsync();
+		vm.PersonalInfo = null;
+		vm.User = null;
+		if (!ModelState.IsValid)
+		{
+			var profileResponse = await _httpClient.GetAsync(baseAddress + $"/users/getbyid/{user.Id}");
+
+			if (profileResponse.IsSuccessStatusCode)
+			{
+				var responseData = await profileResponse.Content.ReadAsStringAsync();
+				var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+				vm.User = dto;
+				return View("Profile", vm);
+			}
+
+		}
+		vm.Password.Id = user.Id;
 		var dataStr = JsonConvert.SerializeObject(vm.Password);
 		var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
 		var response = await _httpClient.PutAsync(baseAddress + "/acc/changepassword", stringContent);
@@ -336,8 +369,20 @@ public class AccountController : Controller
 
 		if (response.IsSuccessStatusCode)
 		{
-			return RedirectToAction("Index", "Home");
+			TempData["SuccessMessage"] = "Password changed successfully.";
+			var profileResponse = await _httpClient.GetAsync(baseAddress + $"/users/getbyid/{user.Id}");
+
+			if (profileResponse.IsSuccessStatusCode)
+			{
+				var responseData = await profileResponse.Content.ReadAsStringAsync();
+				var dto = JsonConvert.DeserializeObject<UserViewModel>(responseData);
+				vm.User = dto;
+				return View("Profile", vm);
+			}
 		}
+		var responseContent = await response.Content.ReadAsStringAsync();
+		Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		Console.WriteLine(responseContent);
 		return RedirectToAction("Profile");
 	}
     [Authorize(Roles = "Customer,Owner,Admin")]
@@ -352,7 +397,7 @@ public class AccountController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			vms = JsonConvert.DeserializeObject<List<WishlistViewModel>>(responseData);
-			var queryableItems = vms.AsQueryable();
+			var queryableItems = vms.Where(x=>!x.Hotel.IsDeactive).AsQueryable();
 			var paginatedDatas = PaginatedList<WishlistViewModel>.Create(queryableItems, itemPerPage, page);
 			return View(paginatedDatas);
 		}

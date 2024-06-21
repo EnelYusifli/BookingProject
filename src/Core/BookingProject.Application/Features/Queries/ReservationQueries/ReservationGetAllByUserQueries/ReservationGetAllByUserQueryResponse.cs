@@ -14,4 +14,6 @@ public class ReservationGetAllByUserQueryResponse
 	public bool IsPaid { get; set; } = false;
 	public bool IsDeactive { get; set; } = false;
 	public bool IsCancelled { get; set; } = false;
+	public bool? IsCancellable { get; set; } = false;
+	public int? CancelAfterDay { get; set; } = 0;
 }

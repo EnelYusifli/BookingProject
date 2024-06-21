@@ -175,7 +175,7 @@ Steps START -->
 					<!-- Main content START -->
 					<div class="col-12">
 								<form enctype="multipart/form-data" method="post" id="mainForm" asp-route-imagecount="@Model.Images.Count()">
-
+									<input type="hidden" asp-for="@Model.Images" value="@Model.Images"></input>
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
 								<div class="vstack gap-4">
@@ -429,10 +429,10 @@ Steps START -->
 																		</div>
 																	</div>
 																}
-																<!-- Hidden input to store the deleted advantage IDs -->
-																<input type="hidden" id="DeletedAdvantageIds" asp-for="@Model.DeletedAdvantageIds" />
 															</div>
 														}
+																<!-- Hidden input to store the deleted advantage IDs -->
+																<input type="hidden" id="DeletedAdvantageIds" asp-for="@Model.DeletedAdvantageIds" />
 																<div id="advantage-cards-container" class="mt-3"></div>
 																<button type="button" class="btn btn-primary mt-2" id="add-advantage-name">Add New Advantage</button>
 														<!-- Descriptions -->

@@ -1,4 +1,5 @@
-﻿using BookingProject.Domain.Entities;
+﻿using BookingProject.Application.Repositories;
+using BookingProject.Domain.Entities;
 using BookingProject.MVC.Models;
 using BookingProject.MVC.Services;
 using BookingProject.MVC.ViewModels.AccountViewModels;
@@ -20,13 +21,15 @@ public class OwnerController : Controller
 {
 	Uri baseAddress = new Uri("https://localhost:7197/api");
 	private readonly HttpClient _httpClient;
-    private readonly UserManager<AppUser> _userManager;
+	private readonly IRoomRepository _roomRepository;
+	private readonly UserManager<AppUser> _userManager;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public OwnerController(HttpClient httpClient, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
+    public OwnerController(HttpClient httpClient,IRoomRepository roomRepository, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
     {
         _httpClient = httpClient;
-        _userManager = userManager;
+		_roomRepository = roomRepository;
+		_userManager = userManager;
         _httpContextAccessor = httpContextAccessor;
         _httpClient.BaseAddress = baseAddress;
     }
@@ -73,6 +76,7 @@ public class OwnerController : Controller
 		{
 			var responseData = await response.Content.ReadAsStringAsync();
 			var hotels = JsonConvert.DeserializeObject<List<OwnerHotelGetViewModel>>(responseData);
+			hotels = hotels.Where(x => x.IsApproved).ToList();
 			return View(hotels);
 		}
 		return RedirectToAction("Index");

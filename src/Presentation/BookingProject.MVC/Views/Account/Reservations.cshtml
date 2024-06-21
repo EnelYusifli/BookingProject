@@ -141,7 +141,8 @@
 
 									</div>
 								</div>
-								@* @if(item.IsCancelled) *@
+								@if((!item.IsCancelled) && (!item.IsCancellable))
+								{
 								<div id="myModal" class="modal">
 									<div class="modal-content">
 										<span class="close">&times;</span>
@@ -149,6 +150,25 @@
 										<a asp-action="cancelreservation" asp-controller="account" asp-route-reservationid="@item.Id" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
 									</div>
 								</div>
+								}@if((!item.IsCancelled) && item.IsCancellable && item.CreatedDate.AddDays((double)item.CancelAfterDay)<DateTime.Now)
+								{
+								<div id="myModal" class="modal">
+									<div class="modal-content">
+										<span class="close">&times;</span>
+											<p>Your reservation was free cancellable, but the cancellation period has expired. Even if you cancel the reservation now, you will be charged.</p>
+										<a asp-action="cancelreservation" asp-controller="account" asp-route-reservationid="@item.Id" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
+									</div>
+								</div>
+								}@if ((!item.IsCancelled) && item.IsCancellable && item.CreatedDate.AddDays((double)item.CancelAfterDay) > DateTime.Now)
+								{
+								<div id="myModal" class="modal">
+									<div class="modal-content">
+										<span class="close">&times;</span>
+											<p>Your reservation is free cancellable. So if you cancel the reservation now, you will not be charged.</p>
+										<a asp-action="cancelreservation" asp-controller="account" asp-route-reservationid="@item.Id" class="btn btn-danger-soft mb-0">Cancel Reservation</a>
+									</div>
+								</div>
+								}
 								<!-- Card body -->
 								<div class="card-body">
 									<div class="row g-3">

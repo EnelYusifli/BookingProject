@@ -184,11 +184,11 @@
 							<li><a class="dropdown-item" asp-action="register" asp-controller="account">Sign up</a></li>
 							-->
 							<li><a class="dropdown-item" asp-action="Joinus" asp-controller="property">Join us</a></li>
-							<li><a class="dropdown-item" asp-action="About">About</a></li>
-							<li><a class="dropdown-item" asp-action="faqs">FAQs</a></li>
-							<li><a class="dropdown-item" asp-action="termsofservice">Terms</a></li>
-							<li><a class="dropdown-item" asp-action="privacypolicy">Privacy Policy</a></li>
-							<li><a class="dropdown-item" asp-action="Contact">Contact</a></li>
+							<li><a class="dropdown-item" asp-action="About" asp-controller="home">About</a></li>
+							<li><a class="dropdown-item" asp-action="faqs" asp-controller="home">FAQs</a></li>
+							<li><a class="dropdown-item" asp-action="termsofservice" asp-controller="home">Terms</a></li>
+							<li><a class="dropdown-item" asp-action="privacypolicy" asp-controller="home">Privacy Policy</a></li>
+							<li><a class="dropdown-item" asp-action="Contact" asp-controller="home">Contact</a></li>
 						</ul>
 						<!-- Notification dropdown menu END -->
 					</li>
@@ -304,13 +304,13 @@
 							<div class="navbar navbar-expand-xl">
 								<ul class="navbar-nav navbar-offcanvas-menu">
 
-									<li class="nav-item"> <a class="nav-link"asp-action="Index"><i class="bi bi-house-door fa-fw me-1"></i>Dashboard</a>	</li>
+									<li class="nav-item"> <a class="nav-link" asp-action="Index" asp-controller="owner"><i class="bi bi-house-door fa-fw me-1"></i>Dashboard</a>	</li>
 
-									<li class="nav-item"> <a class="nav-link" asp-action="listings"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
+									<li class="nav-item"> <a class="nav-link" asp-action="listings" asp-controller="owner"><i class="bi bi-journals fa-fw me-1"></i>Listings</a> </li>
 
-									<li class="nav-item"> <a class="nav-link" asp-action="reservations"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Reservations</a> </li>
+									<li class="nav-item"> <a class="nav-link" asp-action="reservations" asp-controller="owner"><i class="bi bi-bookmark-heart fa-fw me-1"></i>Reservations</a> </li>
 
-									<li class="nav-item"> <a class="nav-link"asp-action="reviews"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
+									<li class="nav-item"> <a class="nav-link"asp-action="reviews" asp-controller="owner"><i class="bi bi-star fa-fw me-1"></i>Reviews</a></li>
 
 									@* <li> <a class="nav-link" href="agent-settings.html"><i class="bi bi-gear fa-fw me-1"></i>Settings</a></li> *@
 
@@ -336,7 +336,7 @@
 				<!-- Widget -->
 				<div class="col-md-4">
 					<div class="text-center text-md-start mb-3 mb-md-0">
-						<a href="index.html"> <img class="h-30px" src="~/assets/images/logo-light.svg" alt="logo"> </a>
+						<a asp-action="index" asp-controller="home"> <img class="h-30px" src="~/assets/images/logo-light.svg" alt="logo"> </a>
 					</div>
 				</div>
 
@@ -348,10 +348,10 @@
 				<!-- Widget -->
 				<div class="col-md-4">
 					<ul class="list-inline mb-0 text-center text-md-end">
-						<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-facebook"></i></a></li>
-						<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-instagram"></i></a></li>
-						<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-linkedin-in"></i></a></li>
-						<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-twitter"></i></a></li>
+						<li class="list-inline-item ms-2"><a href="https://www.instagram.com/bookingcom/"><i class="text-white fab fa-facebook"></i></a></li>
+						<li class="list-inline-item ms-2"><a href="https://www.instagram.com/bookingcom/"><i class="text-white fab fa-instagram"></i></a></li>
+						<li class="list-inline-item ms-2"><a href="https://www.instagram.com/bookingcom/"><i class="text-white fab fa-linkedin-in"></i></a></li>
+						<li class="list-inline-item ms-2"><a href="https://www.instagram.com/bookingcom/"><i class="text-white fab fa-twitter"></i></a></li>
 					</ul>
 				</div>
 			</div>

@@ -11,9 +11,9 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels
 		[StringLength(50, ErrorMessage = "RoomName cannot exceed 50 characters.")]
 		public string RoomName { get; set; }
 
-		public string UserId { get; set; }
+		public string? UserId { get; set; }
 
-		public List<ImageDto> Images { get; set; }
+		public List<ImageDto>? Images { get; set; }
 
 		[Required(ErrorMessage = "Id is required.")]
 		public int Id { get; set; }
@@ -51,7 +51,32 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels
 		public int? CancelAfterDay { get; set; }
 
 		public List<IFormFile>? ImageFiles { get; set; }
-
+		[EnsureMinimumImages(ErrorMessage = "At least 2 images must remain after deletions.")]
 		public List<int>? DeletedImageFileIds { get; set; }
+	}
+	public class EnsureMinimumImagesAttribute : ValidationAttribute
+	{
+		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+		{
+			var viewModel = validationContext.ObjectInstance as RoomUpdateViewModel;
+
+			if (viewModel != null)
+			{
+				int currentImageCount = viewModel.Images?.Count ?? 0;
+				int deletedImageCount = (value as List<int>)?.Count ?? 0;
+				int newImageCount = viewModel.ImageFiles?.Count ?? 0;
+
+				// Calculate total images after considering deletions and additions
+				int totalImages = currentImageCount - deletedImageCount + newImageCount;
+
+				// Check if at least 2 images will remain
+				if (totalImages < 2)
+				{
+					return new ValidationResult("At least 2 images must remain after deletions.");
+				}
+			}
+
+			return ValidationResult.Success;
+		}
 	}
 }

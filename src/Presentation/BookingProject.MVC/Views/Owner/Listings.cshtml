@@ -52,8 +52,52 @@
 													<!-- Price -->
 													<div class="hstack gap-2 mt-3 mt-sm-0">
 														<a asp-action="updatehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-pencil-square fa-fw me-1"></i>Edit</a>
-													<a asp-action="deletehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-danger-soft mb-0 delete-btn"><i class="bi bi-trash3 fa-fw me-1"></i>Delete</a>
-														<a asp-action="addroom" asp-controller="property" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-success-soft mb-0"><i class="fas fa-plus fa-fw me-1"></i>Add Room</a>
+													@if (hotel.IsDeactive && hotel.IsApproved)
+													{
+														<a asp-action="softdeletehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-orange-soft mb-0"><i class="bi bi-trash3 fa-fw me-1"></i>Activate</a>
+													}
+													@if (!hotel.IsDeactive && hotel.IsApproved)
+													{
+														var modalId = "deactivateModal" + hotel.Id;
+													var buttonId = "softDeleteButton" + hotel.Id;
+													var linkId = "deactivateAnyway" + hotel.Id;
+
+													<a asp-action="softdeletehotel" asp-controller="property" asp-route-id="@hotel.Id" class="btn btn-sm btn-danger-soft mb-0 hotel-softdelete-btn" id="@buttonId">
+														<i class="bi bi-trash3 fa-fw me-1"></i>Deactivate
+													</a>
+
+													<!-- Modal -->
+													<div class="modal fade" id="@modalId" tabindex="-1" role="dialog" aria-labelledby="deactivateModalLabel" aria-hidden="true">
+														<div class="modal-dialog" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="deactivateModalLabel">Confirm Deactivation</h5>
+																
+																</div>
+																<div class="modal-body">
+																	Deactivating the hotel will automatically cancel all the upcoming reservations. Are you sure you want to proceed?
+																</div>
+																<div class="modal-footer">
+																	<a id="@linkId" class="btn btn-danger">Deactivate Anyway</a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<script>
+														document.addEventListener('DOMContentLoaded', function () {
+															const softDeleteButton = document.getElementById('@buttonId');
+															const deactivateAnywayButton = document.getElementById('@linkId');
+
+															softDeleteButton.addEventListener('click', function (event) {
+																event.preventDefault();
+																deactivateAnywayButton.setAttribute('href', '/property/softdeletehotel/@hotel.Id');
+																$('#@modalId').modal('show');
+															});
+														});
+													</script>
+													}
+													<a asp-action="addroom" asp-controller="property" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-success-soft mb-0"><i class="fas fa-plus fa-fw me-1"></i>Add Room</a>
 													<a asp-action="hotelrooms" asp-controller="owner" asp-route-hotelid="@hotel.Id" class="btn btn-sm btn-warning-soft mb-0"><i class="fas fa-wrench fa-fw me-1"></i>Edit Rooms</a>
 													</div>
 												</div>

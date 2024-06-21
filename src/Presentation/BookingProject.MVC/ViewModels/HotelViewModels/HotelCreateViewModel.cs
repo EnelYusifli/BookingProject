@@ -6,12 +6,12 @@ namespace BookingProject.MVC.ViewModels.HotelViewModels;
 
 public class HotelCreateViewModel
 {
-	[Required]
+	[Required(ErrorMessage ="Type Id is required")]
 	public int TypeId { get; set; }
 
 	public string? UserId { get; set; }
 
-	[Required]
+	[Required(ErrorMessage = "Country Id is required")]
 	public int CountryId { get; set; }
 
 	[Required]
@@ -39,10 +39,17 @@ public class HotelCreateViewModel
 	[Required]
 	[MinLength(4, ErrorMessage = "At least 4 images are required.")]
 	public List<IFormFile> ImageFiles { get; set; }
-	public List<int>? StaffLanguageIds { get; set; }
-	public List<int>? ServiceIds { get; set; }
-	public List<int>? PaymentMethodIds { get; set; }
-	public List<int>? ActivityIds { get; set; }
+	[Required(ErrorMessage ="At least 1 language is required")]
+	public List<int> StaffLanguageIds { get; set; }
+	[Required(ErrorMessage = "At least 1 service is required")]
+
+	public List<int> ServiceIds { get; set; }
+	[Required(ErrorMessage = "At least 1 payment method is required")]
+
+	public List<int> PaymentMethodIds { get; set; }
+	[Required(ErrorMessage = "At least 1 activity is required")]
+
+	public List<int> ActivityIds { get; set; }
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
 	public class MaxStringLengthInListAttribute : ValidationAttribute
 	{

@@ -45,6 +45,7 @@ public class HotelApproveCommandHandler : IRequestHandler<HotelApproveCommandReq
 					.ThenInclude(x => x.RoomImages)
 				.Include(x => x.CustomerReviews)
 					.ThenInclude(x => x.ReviewImages)
+					.AsSplitQuery()
 		 .FirstOrDefaultAsync(x => x.Id == request.Id);
 		if (hotel.IsApproved == true && hotel.IsRefused == false)
 			throw new BadRequestException("Hotel already approved");

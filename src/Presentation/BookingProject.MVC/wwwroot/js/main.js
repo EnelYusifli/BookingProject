@@ -50,3 +50,30 @@ reportBtns.forEach(btn => {
         });
     })
 })
+
+let softDeleteBtns = document.querySelectorAll(".hotel-softdelete-btn");
+
+softDeleteBtns.forEach(btn => {
+    let url = btn.getAttribute("href");
+    btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "This will only mark the hotel as deleted.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, mark as deleted!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(url)
+                    .then(response => {
+                        if (response.status == 200) {
+                            window.location.reload(true);
+                        } else alert("Cannot be marked as deleted");
+                    })
+            }
+        });
+    });
+});

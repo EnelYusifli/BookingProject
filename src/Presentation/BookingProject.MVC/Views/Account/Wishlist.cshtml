@@ -19,12 +19,15 @@
 							<div class="card-header bg-transparent border-bottom">
 								<h4 class="card-header-title">My Wishlist</h4>
 							</div>
-
-							<!-- Card body START -->
+		
+		<!-- Card body START -->
 							<div class="card-body vstack gap-4">
+			@if (Model.Any())
+			{
 								<div class="d-flex justify-content-end">
 				<a asp-action="RemoveAllFromWishlist" asp-controller="account" class="btn btn-danger-soft mb-0"><i class="fas fa-trash me-2"></i>Remove all</a>
 								</div>
+			}
 								@foreach (var item in Model)
 			{
 				

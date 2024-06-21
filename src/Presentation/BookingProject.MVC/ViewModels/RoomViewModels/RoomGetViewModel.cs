@@ -16,6 +16,7 @@ public class RoomGetViewModel
 	public int DiscountPercent { get; set; }
 	public int HotelId { get; set; }
 	public int AdultCount { get; set; }
+	public bool IsDeactive { get; set; }
 	public int ChildCount { get; set; }
 	public decimal ServiceFee { get; set; }
 	public decimal PricePerNight { get; set; }

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -40,7 +41,7 @@ public class PropertyController : Controller
     {
         if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
         {
-            return await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+            return await _userManager.Users.Include(x=>x.Hotels).ThenInclude(x=>x.Rooms).ThenInclude(x=>x.Reservation).AsSplitQuery().FirstOrDefaultAsync(x=>x.UserName.ToLower()== _httpContextAccessor.HttpContext.User.Identity.Name.ToLower());
         }
         return null;
     }
@@ -282,6 +283,15 @@ public class PropertyController : Controller
     public IActionResult HotelAdded()
     {
         return View();
+    }public IActionResult HotelUpdated()
+    {
+        return View();
+    }public IActionResult RoomAdded()
+    {
+        return View();
+    }public IActionResult RoomUpdated()
+    {
+        return View();
     }
     public async Task<IActionResult> UpdateHotel(int id)
     {
@@ -307,21 +317,34 @@ public class PropertyController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm, int[]? imageids, int[]? advantageIds,int imagecount)
     {
-        if (imageids is not null)
+		ModelState.Remove("DeletedAdvantageIds");
+		ModelState.Remove("DeletedImageFileIds");
+		if (imageids is not null)
         {
             foreach (var item in imageids)
             {
                 vm.DeletedImageFileIds.Add(item);
             }
         }
-        //      if (imagecount - vm.DeletedImageFileIds.Count() + vm.NewImageFiles.Count() < 4)
-        //      {
-        //          PropertyViewModel viewModel = new PropertyViewModel();
-        //          await PopulatePropertyViewModel(viewModel);
-        //          vm.Property = viewModel;
-        //          ModelState.AddModelError("NewImageFiles", "Total image count must me at least 4");
-        //          return View(vm);
-        //      }
+		if (advantageIds is not null)
+		{
+			foreach (var item in advantageIds)
+			{
+				vm.DeletedAdvantageIds.Add(item);
+			}
+		}
+		//if (!ModelState.IsValid)
+  //      {
+		//	return View();
+		//}
+        //if (imagecount - vm.DeletedImageFileIds.Count() + vm.NewImageFiles.Count() < 4)
+        //{
+        //    PropertyViewModel viewModel = new PropertyViewModel();
+        //    await PopulatePropertyViewModel(viewModel);
+        //    vm.Property = viewModel;
+        //    ModelState.AddModelError("NewImageFiles", "Total image count must me at least 4");
+        //    return View(vm);
+        //}
         AppUser user = await GetCurrentUserAsync();
         vm.UserId=user.Id;
         using (var content = new MultipartFormDataContent())
@@ -335,13 +358,6 @@ public class PropertyController : Controller
             content.Add(new StringContent(vm.CountryId.ToString()), nameof(vm.CountryId));
             content.Add(new StringContent(vm.City), nameof(vm.City));
           
-            if(advantageIds is not null)
-            {
-            foreach (var item in advantageIds)
-            {
-                    vm.DeletedAdvantageIds.Add(item);
-            }
-            }
             //if (vm.HotelAdvantageNames != null)
             //{
             //    foreach (var advantageName in vm.HotelAdvantageNames)
@@ -453,7 +469,7 @@ public class PropertyController : Controller
 
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("HotelAdded");
+                return RedirectToAction("HotelUpdated");
             }
             else
             {
@@ -534,7 +550,7 @@ public class PropertyController : Controller
 		if (response.IsSuccessStatusCode)
 		{
             await _roomRepository.CommitAsync();
-			return RedirectToAction("HotelAdded");
+			return RedirectToAction("RoomAdded");
 		}
 		else
 		{
@@ -571,7 +587,7 @@ public class PropertyController : Controller
 				vm.DeletedImageFileIds.Add(item);
 			}
 		}
-		//if (!ModelState.IsValid) return View();
+		//if (!ModelState.IsValid) return View(vm);
 		using (var content = new MultipartFormDataContent())
 		{
 			content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));
@@ -617,7 +633,7 @@ public class PropertyController : Controller
 
 			if (response.IsSuccessStatusCode)
 			{
-				return RedirectToAction("HotelAdded");
+				return RedirectToAction("RoomUpdated");
 			}
 			else
 			{
@@ -628,6 +644,26 @@ public class PropertyController : Controller
 		}
 		return RedirectToAction();
 	}
+	public async Task<IActionResult> SoftDeleteHotel(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.PutAsync(baseAddress + $"/hotels/softdelete/{id}", null);
 
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("listings","owner");
+		}
+		return View();
+	}public async Task<IActionResult> SoftDeleteRoom(int id)
+	{
+		if (!ModelState.IsValid) return View();
+		var response = await _httpClient.PutAsync(baseAddress + $"/rooms/softdelete/{id}", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			return RedirectToAction("hotelrooms","owner");
+		}
+		return View();
+	}
 }
 

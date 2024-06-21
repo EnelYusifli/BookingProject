@@ -13,6 +13,8 @@ public class ReservationGetViewModel
 	public bool IsPaid { get; set; }
 	public bool IsDeactive { get; set; }
 	public bool IsCancelled { get; set; }
+	public bool IsCancellable { get; set; } = false;
+	public int CancelAfterDay { get; set; } = 0;
 	public DateTime CreatedDate { get; set; }
 
 }

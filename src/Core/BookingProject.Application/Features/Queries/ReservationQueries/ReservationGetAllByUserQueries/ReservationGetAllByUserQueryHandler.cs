@@ -29,10 +29,9 @@ public class ReservationGetAllByUserQueryHandler : IRequestHandler<ReservationGe
 		AppUser user = await _userManager.FindByIdAsync(request.Id);
 		if (user is null)
 			throw new NotFoundException("User not found");
-		ICollection<Reservation> act = await _reservationRepository.Table.Include(x=>x.Room).ThenInclude(x=>x.Hotel).Where(x=>x.AppUserId==user.Id).ToListAsync();
+		ICollection<Reservation> act = await _reservationRepository.Table.Include(x=>x.Room).ThenInclude(x=>x.Hotel).Where(x=>x.AppUserId==user.Id).AsSplitQuery().ToListAsync();
 		if (act is null) throw new Exception("Reservation not found");
 		ICollection<ReservationGetAllByUserQueryResponse> dtos = _mapper.Map<ICollection<ReservationGetAllByUserQueryResponse>>(act);
-
 		return dtos;
 	}
 }

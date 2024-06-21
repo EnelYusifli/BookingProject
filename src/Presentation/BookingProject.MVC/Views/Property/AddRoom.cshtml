@@ -23,6 +23,8 @@
 					<div class="col-md-6">
 						<label class="form-label">Room name *</label>
 						<input class="form-control" placeholder="Enter name" asp-for="@Model.RoomName">
+								<span class="text-danger" asp-validation-for="@Model.RoomName"></span>
+
 
 					</div>
 
@@ -30,41 +32,55 @@
 					<div class="col-md-6">
 						<label class="form-label">Room images *</label>
 						<input class="form-control" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.ImageFiles">
+								<span class="text-danger" asp-validation-for="@Model.ImageFiles"></span>
+
 					</div>
 
 					<!-- Room Price -->
 					<div class="col-md-6">
 						<label class="form-label">Room Price Per Night *</label>
 						<input class="form-control" placeholder="Enter price" asp-for="@Model.PricePerNight">
+								<span class="text-danger" asp-validation-for="@Model.PricePerNight"></span>
+
 					</div>
 
 					<!-- ServiceFee -->
 					<div class="col-md-6">
 						<label class="form-label">Service Fee *</label>
 						<input class="form-control" placeholder="Enter fee" asp-for="@Model.ServiceFee">
+								<span class="text-danger" asp-validation-for="@Model.ServiceFee"></span>
+
 					</div>
 					<!-- Deposit -->
 					<div class="col-md-6">
 						<label class="form-label">Deposit needed(10%) *</label>
 								<input  asp-for="@Model.IsDepositNeeded">
+								<span class="text-danger" asp-validation-for="@Model.IsDepositNeeded"></span>
+
 					</div>
 
 					<!-- Area -->
 					<div class="col-md-6">
 						<label class="form-label">Area *</label>
 						<input class="form-control" placeholder="Enter area" asp-for="@Model.Area">
+								<span class="text-danger" asp-validation-for="@Model.Area"></span>
+
 					</div>
 
 					<!-- AdultCount -->
 					<div class="col-md-6">
 						<label class="form-label">Adult Count *</label>
 						<input class="form-control" placeholder="Enter adult count" asp-for="@Model.AdultCount">
+								<span class="text-danger" asp-validation-for="@Model.AdultCount"></span>
+
 					</div>
 
 					<!-- ChildCount -->
 					<div class="col-md-6">
 						<label class="form-label">Child Count *</label>
 						<input class="form-control" placeholder="Enter child count" asp-for="@Model.ChildCount">
+								<span class="text-danger" asp-validation-for="@Model.ChildCount"></span>
+
 					</div>
 
 					<!-- Cancel info -->
@@ -75,16 +91,16 @@
 									<option value="false">Non Refundable</option>
 									<option value="true">Free Cancellation</option>
 								</select>
+								<span class="text-danger" asp-validation-for="@Model.IsCancellable"></span>
+
 
 								<div id="cancelAfterDayCard" style="display: none;">
 									<label class="form-label">Cancel after x days *</label>
 									<input class="form-control" placeholder="Enter day count" min="0" id="cancelAfterDay" asp-for="@Model.CancelAfterDay">
+									<span class="text-danger"asp-validation-for="@Model.CancelAfterDay"></span>
 								</div>
 							</div>
 				</div>
-			</div>
-			<div class="card-body">
-				<div asp-validation-summary="All" class="text-danger"></div>
 			</div>
 
 			<!-- Card body END -->

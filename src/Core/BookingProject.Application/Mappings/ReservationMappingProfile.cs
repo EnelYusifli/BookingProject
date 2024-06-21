@@ -15,6 +15,8 @@ public class ReservationMappingProfile:Profile
 	.ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.Room.HotelId))
 	.ForMember(dest => dest.HotelName, opt => opt.MapFrom(src => src.Room.Hotel.Name))
 	.ForMember(dest => dest.RoomName, opt => opt.MapFrom(src => src.Room.RoomName))
+	.ForMember(dest => dest.IsCancellable, opt => opt.MapFrom(src => src.Room.IsCancellable))
+	.ForMember(dest => dest.CancelAfterDay, opt => opt.MapFrom(src => src.Room.CancelAfterDay))
 	.ReverseMap();
 		CreateMap<Reservation, ReservationGetByIdQueryResponse>()
 	.ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room))
