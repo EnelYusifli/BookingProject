@@ -14,6 +14,7 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels
 		public string? UserId { get; set; }
 
 		public List<ImageDto>? Images { get; set; }
+		public int? ImageCount { get; set; }
 
 		[Required(ErrorMessage = "Id is required.")]
 		public int Id { get; set; }
@@ -50,8 +51,8 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels
 		[Range(0, int.MaxValue, ErrorMessage = "CancelAfterDay must be greater than or equal to 0.")]
 		public int? CancelAfterDay { get; set; }
 
+		//[EnsureMinimumImages(ErrorMessage = "At least 2 images must remain after deletions.")]
 		public List<IFormFile>? ImageFiles { get; set; }
-		[EnsureMinimumImages(ErrorMessage = "At least 2 images must remain after deletions.")]
 		public List<int>? DeletedImageFileIds { get; set; }
 	}
 	public class EnsureMinimumImagesAttribute : ValidationAttribute
@@ -62,8 +63,8 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels
 
 			if (viewModel != null)
 			{
-				int currentImageCount = viewModel.Images?.Count ?? 0;
-				int deletedImageCount = (value as List<int>)?.Count ?? 0;
+				int currentImageCount = viewModel.ImageCount ?? 0;
+				int deletedImageCount = viewModel.DeletedImageFileIds?.Count ?? 0;
 				int newImageCount = viewModel.ImageFiles?.Count ?? 0;
 
 				// Calculate total images after considering deletions and additions

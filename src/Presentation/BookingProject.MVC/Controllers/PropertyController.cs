@@ -294,8 +294,6 @@ public class PropertyController : Controller
     }
     public async Task<IActionResult> UpdateHotel(int id)
     {
-      
-        //GetByIdForUpdate
         var response = await _httpClient.GetAsync($"{baseAddress}/hotels/getbyidforupdate/{id}");
         if (!response.IsSuccessStatusCode)
         {
@@ -316,6 +314,8 @@ public class PropertyController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm, int[]? imageids, int[]? advantageIds,int imagecount)
     {
+		ModelState.Remove(nameof(vm.DeletedAdvantageIds));
+		ModelState.Remove(nameof(vm.DeletedImageFileIds));
 		if (imageids is not null)
         {
             foreach (var item in imageids)
@@ -578,8 +578,10 @@ public class PropertyController : Controller
 		return View(vm);
 	}
     [HttpPost]
-    public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm, int[] imageids,int imagecount) {
+    public async Task<IActionResult> UpdateRoom(RoomUpdateViewModel vm, int[] imageids) {
         ViewBag.Id = vm.Id;
+		ModelState.Remove(nameof(vm.DeletedImageFileIds));
+
 		if (imageids is not null)
 		{
 			foreach (var item in imageids)
@@ -587,7 +589,20 @@ public class PropertyController : Controller
 				vm.DeletedImageFileIds.Add(item);
 			}
 		}
-		//if (!ModelState.IsValid) return View(vm);
+        if (!ModelState.IsValid) {
+			var response = await _httpClient.GetAsync($"{baseAddress}/rooms/getbyid/{vm.Id}");
+			if (!response.IsSuccessStatusCode)
+			{
+				return NotFound();
+			}
+			var dataStr = await response.Content.ReadAsStringAsync();
+			var vm1 = JsonConvert.DeserializeObject<RoomUpdateViewModel>(dataStr);
+			AppUser user = await GetCurrentUserAsync();
+			if (vm1.UserId != user.Id)
+				return View("NotFound");
+			ViewBag.Id = vm.Id;
+			return View(vm1);
+		}
 		using (var content = new MultipartFormDataContent())
 		{
 			content.Add(new StringContent(vm.RoomName), nameof(vm.RoomName));

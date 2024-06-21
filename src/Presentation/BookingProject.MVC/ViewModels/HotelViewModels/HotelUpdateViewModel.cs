@@ -34,7 +34,7 @@ namespace BookingProject.MVC.ViewModels.HotelViewModels
 		[Required(ErrorMessage = "City is required.")]
 		[StringLength(50, ErrorMessage = "City cannot exceed 50 characters.")]
 		public string City { get; set; }
-		[EnsureMinimumImages(ErrorMessage = "At least 4 images must remain after deletions.")]
+		//[EnsureMinimumImages(ErrorMessage = "At least 4 images must remain after deletions.")]
 
 		public List<IFormFile>? NewImageFiles { get; set; }
 
@@ -56,13 +56,21 @@ namespace BookingProject.MVC.ViewModels.HotelViewModels
 		[MaxStringLengthInList(200, ErrorMessage = "Each item in HotelAdvantageNames must not exceed 200 characters.")]
 
 		public List<string>? HotelAdvantageNames { get; set; }
-
+		[ExcludeFromValidation]
 		public List<int>? DeletedAdvantageIds { get; set; }
+		[ExcludeFromValidation]
 		public List<int>? DeletedImageFileIds { get; set; }
 
 		public List<RoomGetViewModel>? Rooms { get; set; }
 
 		public PropertyViewModel? Property { get; set; }
+	}
+	public class ExcludeFromValidationAttribute : ValidationAttribute
+	{
+		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+		{
+			return ValidationResult.Success;
+		}
 	}
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
 	public class MaxStringLengthInListAttribute : ValidationAttribute

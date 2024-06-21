@@ -5,9 +5,8 @@
 @model RoomUpdateViewModel
 <section class="pt-0">
 	<div class="container vstack gap-4">
-		<form method="post" enctype="multipart/form-data" id="mainForm2"  asp-action="updateroom" asp-route-imagecount="@Model.Images.Count()">
+		<form method="post" enctype="multipart/form-data" id="mainForm2"  asp-action="updateroom" >
 	<div class="vstack gap-4">
-				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 		<!-- Title -->
 		<h4 class="mb-0">Update Room</h4>
 		<!-- Room options START -->
@@ -24,6 +23,7 @@
 					<div class="col-md-6">
 						<label class="form-label">Room name *</label>
 						<input class="form-control" placeholder="Enter name" asp-for="@Model.RoomName">
+								<span asp-validation-for="@Model.RoomName" class="text-danger"></span>
 
 					</div>
 
@@ -31,18 +31,21 @@
 					<div class="col-md-6">
 						<label class="form-label">Upload new images</label>
 						<input class="form-control" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.ImageFiles">
+								<span asp-validation-for="@Model.ImageFiles" class="text-danger"></span>
 					</div>
 							
 					<!-- Room Price -->
 					<div class="col-md-6">
 						<label class="form-label">Room Price Per Night *</label>
 						<input class="form-control" placeholder="Enter price" asp-for="@Model.PricePerNight">
+								<span asp-validation-for="@Model.PricePerNight" class="text-danger"></span>
 					</div>
 
 					<!-- ServiceFee -->
 					<div class="col-md-6">
 						<label class="form-label">Service Fee *</label>
 						<input class="form-control" placeholder="Enter fee" asp-for="@Model.ServiceFee">
+								<span asp-validation-for="@Model.ServiceFee" class="text-danger"></span>
 					</div>
 					<!-- Deposit -->
 					<div class="col-md-6">
@@ -54,18 +57,21 @@
 					<div class="col-md-6">
 						<label class="form-label">Area *</label>
 						<input class="form-control" placeholder="Enter area" asp-for="@Model.Area">
+								<span asp-validation-for="@Model.Area" class="text-danger"></span>
 					</div>
 
 					<!-- AdultCount -->
 					<div class="col-md-6">
 						<label class="form-label">Adult Count *</label>
 						<input class="form-control" placeholder="Enter adult count" asp-for="@Model.AdultCount">
+								<span asp-validation-for="@Model.AdultCount" class="text-danger"></span>
 					</div>
 
 					<!-- ChildCount -->
 					<div class="col-md-6">
 						<label class="form-label">Child Count *</label>
 						<input class="form-control" placeholder="Enter child count" asp-for="@Model.ChildCount">
+								<span asp-validation-for="@Model.ChildCount" class="text-danger"></span>
 					</div>
 
 					<!-- Cancel info -->
@@ -76,10 +82,11 @@
 									<option value="false">Non Refundable</option>
 									<option value="true">Free Cancellation</option>
 								</select>
-
+								<span asp-validation-for="@Model.IsCancellable" class="text-danger"></span>
 								<div id="cancelAfterDayCard" style="display: none;">
 									<label class="form-label">Cancel after x days *</label>
 									<input class="form-control" placeholder="Enter day count" min="0" id="cancelAfterDay" asp-for="@Model.CancelAfterDay">
+									<span asp-validation-for="@Model.CancelAfterDay" class="text-danger"></span>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -101,8 +108,10 @@
 											</div>
 										}
 									</div>
+								<span asp-validation-for="@Model.Images" class="text-danger"></span>
 									<input type="hidden" name="DeletedImageFileIds" asp-for="@Model.DeletedImageFileIds" id="DeletedImageIds">
 									<input type="hidden" asp-for="@Model.Id" value="@id">
+									<input type="hidden" asp-for="@Model.ImageCount" value="@Model.Images.Count()">
 								</div>
 							@* <div class="col-md-6">
 								<!-- Button trigger modal -->
@@ -147,7 +156,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<div asp-validation-summary="All" class="text-danger"></div>
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			</div>
 
 			<!-- Card body END -->
