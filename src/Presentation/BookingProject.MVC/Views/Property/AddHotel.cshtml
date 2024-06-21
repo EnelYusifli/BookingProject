@@ -552,47 +552,55 @@ Steps START -->
 														<div class="col-md-6">
 															<label class="form-label">Room name *</label>
 															<input class="form-control" placeholder="Enter name" asp-for="@Model.RoomCreateDtos[0].RoomName">
+																<span class="text-danger"asp-validation-for="@Model.RoomCreateDtos[0].RoomName"></span>
 														</div>
 
 														<!-- Room images -->
 														<div class="col-md-6">
 															<label class="form-label">Room images *</label>
 															<input class="form-control" accept="image/jpg, image/jpeg, image/png" multiple asp-for="@Model.RoomCreateDtos[0].ImageFiles">
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].ImageFiles"></span>
 														</div>
 
 														<!-- Room Price -->
 														<div class="col-md-6">
 															<label class="form-label">Room Price Per Night *</label>
 															<input class="form-control" placeholder="Enter price" asp-for="@Model.RoomCreateDtos[0].PricePerNight">
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].PricePerNight"></span>
 														</div>
 
 														<!-- ServiceFee -->
 														<div class="col-md-6">
 															<label class="form-label">Service Fee *</label>
 															<input class="form-control" placeholder="Enter fee" asp-for="@Model.RoomCreateDtos[0].ServiceFee">
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].ServiceFee"></span>
 														</div>
 														<!-- Deposit -->
 														<div class="col-md-6">
 															<label class="form-label">Deposit needed(10%) *</label>
 																<input  asp-for="@Model.RoomCreateDtos[0].IsDepositNeeded">
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].IsDepositNeeded"></span>
 														</div>
 
 														<!-- Area -->
 														<div class="col-md-6">
 															<label class="form-label">Area *</label>
 															<input class="form-control" placeholder="Enter area" asp-for="@Model.RoomCreateDtos[0].Area">
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].Area"></span>
 														</div>
 
 														<!-- AdultCount -->
 														<div class="col-md-6">
 															<label class="form-label">Adult Count *</label>
 															<input class="form-control" min="1" placeholder="Enter adult count" asp-for="@Model.RoomCreateDtos[0].AdultCount">
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].AdultCount"></span>
 														</div>
 
 														<!-- ChildCount -->
 														<div class="col-md-6">
 															<label class="form-label">Child Count *</label>
 															<input class="form-control" min="0" placeholder="Enter child count" asp-for="@Model.RoomCreateDtos[0].ChildCount">
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].ChildCount"></span>
 														</div>
 
 														<div class="col-md-6">
@@ -602,7 +610,7 @@ Steps START -->
 																<option value="false">Non Refundable</option>
 																<option value="true">Free Cancellation</option>
 															</select>
-
+																<span class="text-danger" asp-validation-for="@Model.RoomCreateDtos[0].IsCancellable"></span>
 															<div class="cancelAfterDayCard" style="display: none;">
 																<label class="form-label">Cancel after x days *</label>
 																<input class="form-control" placeholder="Enter day count" asp-for="@Model.RoomCreateDtos[0].CancelAfterDay">
@@ -734,18 +742,22 @@ Footer END -->
 									<div class="col-md-6">
 										<label class="form-label">Room name *</label>
 										<input class="form-control" placeholder="Enter name" name="RoomCreateDtos[${roomCount}].RoomName">
+												<span class="text-danger"asp-validation-for="RoomCreateDtos[${ roomCount}].RoomName"></span>
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Room images *</label>
 										<input class="form-control" type="file" accept="image/jpg, image/jpeg, image/png" multiple name="RoomCreateDtos[${roomCount}].ImageFiles">
+												<span class="text-danger"asp-validation-for="RoomCreateDtos[${roomCount}].ImageFiles"></span>
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Room Price Per Night *</label>
 										<input class="form-control" placeholder="Enter price" name="RoomCreateDtos[${roomCount}].PricePerNight">
+												<span class="text-danger"asp-validation-for="RoomCreateDtos[${roomCount}].PricePerNight"></span>
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Service Fee *</label>
 										<input class="form-control" placeholder="Enter fee" name="RoomCreateDtos[${roomCount}].ServiceFee">
+												<span class="text-danger"asp-validation-for="RoomCreateDtos[${roomCount}].ServiceFee"></span>
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Deposit needed *</label>
@@ -754,14 +766,17 @@ Footer END -->
 									<div class="col-md-6">
 										<label class="form-label">Area *</label>
 										<input class="form-control" placeholder="Enter area" name="RoomCreateDtos[${roomCount}].Area">
+												<span class="text-danger"asp-validation-for="RoomCreateDtos[${roomCount}].Area"></span>
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Adult Count *</label>
 										<input class="form-control" type="number" min="1" placeholder="Enter adult count" name="RoomCreateDtos[${roomCount}].AdultCount">
+												<span class="text-danger"asp-validation-for="RoomCreateDtos[${roomCount}].AdultCount"></span>
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Child Count *</label>
 										<input class="form-control" type="number" min="0" placeholder="Enter child count" name="RoomCreateDtos[${roomCount}].ChildCount">
+												<span class="text-danger"asp-validation-for="RoomCreateDtos[${roomCount}].ChildCount"></span>
 									</div>
 									<div class="col-md-6">
 										<label class="form-label">Cancellation info *</label>
@@ -770,6 +785,7 @@ Footer END -->
 											<option value="false">Non Refundable</option>
 											<option value="true">Free Cancellation</option>
 										</select>
+										<span class="text-danger"asp-validation-for="RoomCreateDtos[${ roomCount}].IsCancellable"></span>
 										<div class="cancelAfterDayCard" style="display: none;">
 											<label class="form-label">Cancel after x days *</label>
 											<input class="form-control" placeholder="Enter day count" name="RoomCreateDtos[${roomCount}].CancelAfterDay">

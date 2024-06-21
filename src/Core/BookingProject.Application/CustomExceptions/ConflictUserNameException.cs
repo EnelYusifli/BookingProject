@@ -2,11 +2,11 @@
 
 namespace BookingProject.Application.CustomExceptions;
 
-public class ConflictException : Exception, IBaseException
+public class ConflictUserNameException : Exception, IBaseException
 {
     public int StatusCode { get; }
     public string? Message { get; }
-    public ConflictException(string? message = null) : base(message)
+    public ConflictUserNameException(string? message = null) : base(message)
     {
         Message = message;
         StatusCode = 409;

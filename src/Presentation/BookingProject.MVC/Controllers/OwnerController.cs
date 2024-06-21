@@ -56,7 +56,7 @@ public class OwnerController : Controller
 		{
 			var responseData = await response2.Content.ReadAsStringAsync();
 			var dtos = JsonConvert.DeserializeObject<List<ReservationGetViewModel>>(responseData);
-			ViewBag.ListingCount = dtos.Count();
+			ViewBag.ListingCount = dtos.Where(x=>!x.IsDeactive).Count();
 		}
 		var response3 = await _httpClient.GetAsync(baseAddress + $"/reviews/getallbyowner/{user.Id}");
 		if (response3.IsSuccessStatusCode)

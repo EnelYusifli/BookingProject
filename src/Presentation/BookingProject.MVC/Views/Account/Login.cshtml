@@ -118,7 +118,7 @@
 								<div class="col-lg-6 order-1">
 									<div class="p-4 p-sm-7">
 										<!-- Logo -->
-										<a href="index.html">
+										<a asp-action="index" asp-controller="home">
 											<img class="h-50px mb-4" src="~/assets/images/logo-icon.svg" alt="logo">
 										</a>
 										<!-- Title -->
@@ -144,6 +144,12 @@
 												<span asp-validation-for="@Model.Password" class="text-danger"></span>
 
 											</div>
+											@if (TempData["SuccessMessage"] != null)
+											{
+												<div style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; color: darkred; background-color: palevioletred; border-color: #d6e9c6;">
+													@TempData["SuccessMessage"]
+												</div>
+											}
 											<!-- Remember me -->
 											<div class="mb-3 d-sm-flex justify-content-end">
 												<a asp-action="forgotpassword" asp-controller="account">Forgot password?</a>

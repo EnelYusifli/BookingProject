@@ -140,8 +140,7 @@ public class PropertyController : Controller
     {
         AppUser user = await GetCurrentUserAsync();
         hotelCreateViewModel.UserId = user.Id;
-
-        if (!ModelState.IsValid)
+		if (!ModelState.IsValid)
         {
             //var responseId2 = await _httpClient.GetAsync(baseAddress + "/acc/getauthuser");
 
@@ -317,8 +316,6 @@ public class PropertyController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateHotel(HotelUpdateViewModel vm, int[]? imageids, int[]? advantageIds,int imagecount)
     {
-		ModelState.Remove("DeletedAdvantageIds");
-		ModelState.Remove("DeletedImageFileIds");
 		if (imageids is not null)
         {
             foreach (var item in imageids)
@@ -333,19 +330,22 @@ public class PropertyController : Controller
 				vm.DeletedAdvantageIds.Add(item);
 			}
 		}
-		//if (!ModelState.IsValid)
-  //      {
-		//	return View();
+        if (!ModelState.IsValid)
+        {
+			PropertyViewModel viewModel = new PropertyViewModel();
+            await PopulatePropertyViewModel(viewModel);
+            vm.Property = viewModel;
+            return View(vm);
+        }
+		//if (imagecount - vm.DeletedImageFileIds.Count() + vm.NewImageFiles.Count() < 4)
+		//{
+		//    PropertyViewModel viewModel = new PropertyViewModel();
+		//    await PopulatePropertyViewModel(viewModel);
+		//    vm.Property = viewModel;
+		//    ModelState.AddModelError("NewImageFiles", "Total image count must me at least 4");
+		//    return View(vm);
 		//}
-        //if (imagecount - vm.DeletedImageFileIds.Count() + vm.NewImageFiles.Count() < 4)
-        //{
-        //    PropertyViewModel viewModel = new PropertyViewModel();
-        //    await PopulatePropertyViewModel(viewModel);
-        //    vm.Property = viewModel;
-        //    ModelState.AddModelError("NewImageFiles", "Total image count must me at least 4");
-        //    return View(vm);
-        //}
-        AppUser user = await GetCurrentUserAsync();
+		AppUser user = await GetCurrentUserAsync();
         vm.UserId=user.Id;
         using (var content = new MultipartFormDataContent())
         {

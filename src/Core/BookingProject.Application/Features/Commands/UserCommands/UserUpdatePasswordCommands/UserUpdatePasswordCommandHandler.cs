@@ -24,6 +24,7 @@ public class UserUpdatePasswordCommandHandler : IRequestHandler<UserUpdatePasswo
 		var result=await _userManager.ChangePasswordAsync(user,request.OldPassword,request.NewPassword);
 		if(!result.Succeeded)
 		{
+			throw new NotFoundException();
 			var errors = new List<string>();	
 			foreach (var error in result.Errors)
 			{

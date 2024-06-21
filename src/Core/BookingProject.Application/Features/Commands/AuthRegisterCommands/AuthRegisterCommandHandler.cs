@@ -32,13 +32,13 @@ public class AuthRegisterCommandHandler : IRequestHandler<AuthRegisterCommandReq
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (user != null)
             {
-                throw new ConflictException("Username already exists");
+                throw new ConflictUserNameException("Username already exists");
             }
 
             user = await _userManager.FindByEmailAsync(request.Email);
             if (user != null)
             {
-                throw new ConflictException("Email already exists");
+                throw new ConflictEmailException("Email already exists");
             }
 
             var passwordRequirements = _userManager.Options.Password;
@@ -101,7 +101,7 @@ public class AuthRegisterCommandHandler : IRequestHandler<AuthRegisterCommandReq
         }
         catch (Exception ex)
         {
-            if (ex is BadRequestException || ex is ConflictException)
+            if (ex is BadRequestException || ex is ConflictUserNameException || ex is ConflictEmailException)
             {
                 throw;
             }

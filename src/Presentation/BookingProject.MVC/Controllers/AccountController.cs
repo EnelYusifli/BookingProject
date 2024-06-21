@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
@@ -130,6 +131,8 @@ public class AccountController : Controller
 		}
 		catch (Exception ex)
 		{
+			TempData["SuccessMessage"] = "Invalid credentials";
+
 			Console.WriteLine(ex.Message);
 			return View();
 		}
@@ -210,6 +213,10 @@ public class AccountController : Controller
 		{
 			return RedirectToAction("Login");
 		}
+		else if(response.StatusCode == HttpStatusCode.Conflict)
+			ModelState.AddModelError("username", "Username already exists.");
+		else if(response.StatusCode == HttpStatusCode.Gone)
+			ModelState.AddModelError("email", "Email already exists.");
 		return View();
 	}
 	public IActionResult ForgotPassword()
@@ -380,6 +387,7 @@ public class AccountController : Controller
 				return View("Profile", vm);
 			}
 		}
+		TempData["SuccessMessage"] = "Password  cannot be changed. Old password is not valid";
 		var responseContent = await response.Content.ReadAsStringAsync();
 		Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		Console.WriteLine(responseContent);

@@ -44,11 +44,11 @@ public class UserUpdateCommandHandler : IRequestHandler<UserUpdateCommandRequest
 			throw new NotFoundException("User not found");
 		AppUser existUser = await _userManager.FindByEmailAsync(request.Email);
 		if (existUser is not null && existUser.Email.ToLower() != user.Email.ToLower())
-			throw new ConflictException("Email already exists");
+			throw new ConflictEmailException("Email already exists");
 		string email = user.Email;
 		AppUser existUser2 = await _userManager.FindByNameAsync(request.UserName);
 		if (existUser2 is not null && existUser2.UserName.ToLower() != user.UserName.ToLower())
-			throw new ConflictException("Username already exists");
+			throw new ConflictUserNameException("Username already exists");
 		if (request.ProfilePhoto is not null)
 		{
 			SaveFileExtension.Initialize(_configuration);

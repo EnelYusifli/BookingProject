@@ -1,5 +1,6 @@
 ﻿using BookingProject.Application.Features.DTOs;
 using BookingProject.MVC.ViewModels.RoomViewModels;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookingProject.MVC.ViewModels.HotelViewModels;
@@ -76,4 +77,12 @@ public class HotelCreateViewModel
 			return ValidationResult.Success;
 		}
 	}
+	public class IgnorePropertyAttribute : ValidationAttribute
+	{
+		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+		{
+			return ValidationResult.Success;
+		}
+	}
+
 }

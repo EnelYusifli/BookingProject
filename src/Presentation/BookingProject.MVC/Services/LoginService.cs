@@ -107,7 +107,7 @@ public class LoginService:ILoginService
 		var user = await _userManager.FindByEmailAsync(email);
 		if (user != null)
 		{
-			throw new ConflictException("Email already exists");
+			throw new ConflictEmailException("Email already exists");
 		}
 
 		var newUser = new AppUser

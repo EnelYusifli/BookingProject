@@ -10,7 +10,7 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels
 		[StringLength(50, ErrorMessage = "RoomName cannot exceed 50 characters.")]
 		public string RoomName { get; set; }
 
-		[Required(ErrorMessage = "HotelId is required.")]
+		//[Required(ErrorMessage = "HotelId is required.")]
 		[Range(1, int.MaxValue, ErrorMessage = "HotelId must be greater than or equal to 1.")]
 		public int? HotelId { get; set; }
 
@@ -34,7 +34,7 @@ namespace BookingProject.MVC.ViewModels.RoomViewModels
 		[Range(1, double.MaxValue, ErrorMessage = "Area must be greater than or equal to 1.")]
 		public decimal Area { get; set; }
 
-		[Required(ErrorMessage = "CancelAfterDay is required.")]
+		//[Required(ErrorMessage = "CancelAfterDay is required.")]
 		[Range(0, int.MaxValue, ErrorMessage = "CancelAfterDay must be greater than or equal to 0.")]
 		public int? CancelAfterDay { get; set; } = 0;
 

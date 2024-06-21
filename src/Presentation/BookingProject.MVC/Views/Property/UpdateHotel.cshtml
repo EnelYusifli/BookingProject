@@ -175,7 +175,7 @@ Steps START -->
 					<!-- Main content START -->
 					<div class="col-12">
 								<form enctype="multipart/form-data" method="post" id="mainForm" asp-route-imagecount="@Model.Images.Count()">
-									<input type="hidden" asp-for="@Model.Images" value="@Model.Images"></input>
+									<input type="hidden" name="Images" value="@Model.Images">
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
 								<div class="vstack gap-4">
