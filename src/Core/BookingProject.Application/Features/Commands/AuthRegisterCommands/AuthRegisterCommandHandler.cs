@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
@@ -30,7 +29,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
         private readonly IActivityRepository _activityRepository;
 		private readonly IAdvantageRepository _advantageRepository;
 		private readonly IHotelActivityRepository _hotelActivityRepository;
-        private readonly IConfiguration _configuration;
+        //private readonly IConfiguration _configuration;
+		private readonly ICloudinaryService _cloudinaryService;
         private readonly IRoomService _roomService;
 		private readonly ITypeRepository _typeRepository;
 		private readonly ICountryRepository _countryRepository;
@@ -48,7 +48,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 			IAdvantageRepository advantageRepository,
 			ICountryRepository countryRepository,
             IHotelActivityRepository hotelActivityRepository,
-            IConfiguration configuration,
+            //IConfiguration configuration,
+			ICloudinaryService cloudinaryService,
             IRoomService roomService,
 			ITypeRepository typeRepository)
         {
@@ -64,7 +65,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
             _activityRepository = activityRepository;
 			_advantageRepository = advantageRepository;
 			_hotelActivityRepository = hotelActivityRepository;
-            _configuration = configuration;
+			//_configuration = configuration;
+			_cloudinaryService = cloudinaryService;
             _roomService = roomService;
 			_typeRepository = typeRepository;
 			_countryRepository = countryRepository;
@@ -186,14 +188,15 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 				};
 				await _hotelServiceRepository.CreateAsync(hotelServ);
 			}
-			SaveFileExtension.Initialize(_configuration);
+			//SaveFileExtension.Initialize(_configuration);
 			if(request.DeletedImageFileIds is not null)
 			{
 			foreach (var id in request.DeletedImageFileIds)
 			{
 				HotelImage img = await _hotelImageRepository.Table.FirstOrDefaultAsync(x => x.HotelId == hotel.Id && x.Id == id);
 				if (img is null) throw new NotFoundException("Image not found in hotel");
-				await SaveFileExtension.DeleteFileAsync(img.Url);
+					//await SaveFileExtension.DeleteFileAsync(img.Url);
+					await _cloudinaryService.FileDeleteAsync(img.Url);
 				_hotelImageRepository.Delete(img);
 			}
 			}
@@ -243,7 +246,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelUpdate
 			{
 				if (image is null)
 					throw new NotFoundException($"Image not found");
-				string url = await SaveFileExtension.SaveFile(image, "hotels");
+				//string url = await SaveFileExtension.SaveFile(image, "hotels");
+				string url = await _cloudinaryService.FileCreateAsync(image);
 				HotelImage hotelImg = new()
 				{
 					Hotel = hotel,

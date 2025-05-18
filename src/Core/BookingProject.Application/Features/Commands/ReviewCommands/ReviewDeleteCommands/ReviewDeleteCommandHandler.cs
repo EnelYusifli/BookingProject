@@ -1,7 +1,7 @@
 ﻿using BookingProject.Application.CustomExceptions;
 using BookingProject.Application.Features.Commands.ReviewCommands.ReviewDeleteCommands;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
+using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -12,13 +12,15 @@ namespace BookingProject.Application.Features.Commands.ReviewCommands.ReviewDele
 public class ReviewDeleteCommandHandler : IRequestHandler<ReviewDeleteCommandRequest, ReviewDeleteCommandResponse>
 {
 	private readonly IReviewRepository _repository;
-	private readonly IConfiguration _configuration;
+	//private readonly IConfiguration _configuration;
+	private readonly ICloudinaryService _cloudinaryService;
 	private readonly IHotelRepository _hotelRepository;
 
-	public ReviewDeleteCommandHandler(IReviewRepository repository, IConfiguration configuration,IHotelRepository hotelRepository)
+	public ReviewDeleteCommandHandler(IReviewRepository repository,/* IConfiguration configuration,*/ ICloudinaryService cloudinaryService, IHotelRepository hotelRepository)
 	{
 		_repository = repository;
-		_configuration = configuration;
+		//_configuration = configuration;
+		_cloudinaryService = cloudinaryService;
 		_hotelRepository = hotelRepository;
 	}
 	public async Task<ReviewDeleteCommandResponse> Handle(ReviewDeleteCommandRequest request, CancellationToken cancellationToken)
@@ -27,10 +29,11 @@ public class ReviewDeleteCommandHandler : IRequestHandler<ReviewDeleteCommandReq
 		if (review is null) throw new NotFoundException("Review not found");
 		if(review.ReviewImages is not null)
 		{
-		    SaveFileExtension.Initialize(_configuration);
+		    //SaveFileExtension.Initialize(_configuration);
 			foreach (var image in review.ReviewImages)
 			{
-				await SaveFileExtension.DeleteFileAsync(image.Url);
+				//await SaveFileExtension.DeleteFileAsync(image.Url);
+				await _cloudinaryService.FileDeleteAsync(image.Url);
 			}
 		}
 		review.Hotel.StarPoint =

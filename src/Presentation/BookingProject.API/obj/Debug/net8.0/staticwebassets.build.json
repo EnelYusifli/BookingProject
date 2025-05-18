@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VaoxoCj5SfddZO5M/g+Q3OrQQW3JA7DMNTU08ozxruQ=",
+  "Hash": "Y0R3K2YGKVYDIqwDFwnvKEn3+IG7MmtIdy0Ad9lx24I=",
   "Source": "BookingProject.API",
   "BasePath": "_content/BookingProject.API",
   "Mode": "Default",
@@ -10,144 +10,734 @@
     {
       "Name": "BookingProject.API\\wwwroot",
       "Source": "BookingProject.API",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\cancelledreservation.html",
+      "Identity": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\cancelledreservation.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
-      "RelativePath": "email/cancelledreservation.html",
+      "RelativePath": "email/cancelledreservation#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "08o52emw24",
+      "Integrity": "IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu+S7THy8TI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\cancelledreservation.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
+      "Identity": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
-      "RelativePath": "email/forgotpassword.html",
+      "RelativePath": "email/forgotpassword#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "vfx5qs7jij",
+      "Integrity": "i7I+MZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\forgotpassword.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
+      "Identity": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
-      "RelativePath": "email/nonpaidreservation.html",
+      "RelativePath": "email/nonpaidreservation#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "rjsed1qj3j",
+      "Integrity": "B7l3tEV+LLJ21SfDKZZeNR7rk8rJwOM+WQ7J+Z9eCIU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\nonpaidreservation.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
+      "Identity": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
-      "RelativePath": "email/paidreservation.html",
+      "RelativePath": "email/paidreservation#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "w4n6mtjd5d",
+      "Integrity": "oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\paidreservation.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
+      "Identity": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
-      "RelativePath": "email/requestapproved.html",
+      "RelativePath": "email/requestapproved#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "h55yt769ib",
+      "Integrity": "laeiganGUvt+FliKM0OPMzWF908On7eG/JZTAWrXXoI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\requestapproved.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
+      "Identity": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
-      "RelativePath": "email/requestrefused.html",
+      "RelativePath": "email/requestrefused#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "w7dddkrjn4",
+      "Integrity": "1A4YCoXe6cW+fSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\requestrefused.html"
     },
     {
-      "Identity": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
+      "Identity": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
       "SourceId": "BookingProject.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\",
       "BasePath": "_content/BookingProject.API",
-      "RelativePath": "email/updatedemail.html",
+      "RelativePath": "email/updatedemail#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ldrttgf92h",
+      "Integrity": "2dzO2bfRuqES0hB84Fy+EmSvSkGmMg4jt87qc2d3Bns=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\email\\updatedemail.html"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "email/cancelledreservation.08o52emw24.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\cancelledreservation.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2807"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu+S7THy8TI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "08o52emw24"
+        },
+        {
+          "Name": "label",
+          "Value": "email/cancelledreservation.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu+S7THy8TI="
+        }
+      ]
+    },
+    {
+      "Route": "email/cancelledreservation.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\cancelledreservation.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2807"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu+S7THy8TI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu+S7THy8TI="
+        }
+      ]
+    },
+    {
+      "Route": "email/forgotpassword.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2694"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i7I+MZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-i7I+MZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4="
+        }
+      ]
+    },
+    {
+      "Route": "email/forgotpassword.vfx5qs7jij.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\forgotpassword.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2694"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i7I+MZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vfx5qs7jij"
+        },
+        {
+          "Name": "label",
+          "Value": "email/forgotpassword.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-i7I+MZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4="
+        }
+      ]
+    },
+    {
+      "Route": "email/nonpaidreservation.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B7l3tEV+LLJ21SfDKZZeNR7rk8rJwOM+WQ7J+Z9eCIU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B7l3tEV+LLJ21SfDKZZeNR7rk8rJwOM+WQ7J+Z9eCIU="
+        }
+      ]
+    },
+    {
+      "Route": "email/nonpaidreservation.rjsed1qj3j.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\nonpaidreservation.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B7l3tEV+LLJ21SfDKZZeNR7rk8rJwOM+WQ7J+Z9eCIU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rjsed1qj3j"
+        },
+        {
+          "Name": "label",
+          "Value": "email/nonpaidreservation.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B7l3tEV+LLJ21SfDKZZeNR7rk8rJwOM+WQ7J+Z9eCIU="
+        }
+      ]
+    },
+    {
+      "Route": "email/paidreservation.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2959"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q="
+        }
+      ]
+    },
+    {
+      "Route": "email/paidreservation.w4n6mtjd5d.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\paidreservation.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2959"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w4n6mtjd5d"
+        },
+        {
+          "Name": "label",
+          "Value": "email/paidreservation.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q="
+        }
+      ]
+    },
+    {
+      "Route": "email/requestapproved.h55yt769ib.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2121"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"laeiganGUvt+FliKM0OPMzWF908On7eG/JZTAWrXXoI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h55yt769ib"
+        },
+        {
+          "Name": "label",
+          "Value": "email/requestapproved.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-laeiganGUvt+FliKM0OPMzWF908On7eG/JZTAWrXXoI="
+        }
+      ]
+    },
+    {
+      "Route": "email/requestapproved.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestapproved.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2121"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"laeiganGUvt+FliKM0OPMzWF908On7eG/JZTAWrXXoI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-laeiganGUvt+FliKM0OPMzWF908On7eG/JZTAWrXXoI="
+        }
+      ]
+    },
+    {
+      "Route": "email/requestrefused.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2556"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1A4YCoXe6cW+fSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1A4YCoXe6cW+fSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc="
+        }
+      ]
+    },
+    {
+      "Route": "email/requestrefused.w7dddkrjn4.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\requestrefused.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2556"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1A4YCoXe6cW+fSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w7dddkrjn4"
+        },
+        {
+          "Name": "label",
+          "Value": "email/requestrefused.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1A4YCoXe6cW+fSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc="
+        }
+      ]
+    },
+    {
+      "Route": "email/updatedemail.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2529"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2dzO2bfRuqES0hB84Fy+EmSvSkGmMg4jt87qc2d3Bns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2dzO2bfRuqES0hB84Fy+EmSvSkGmMg4jt87qc2d3Bns="
+        }
+      ]
+    },
+    {
+      "Route": "email/updatedemail.ldrttgf92h.html",
+      "AssetFile": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Presentation\\BookingProject.API\\wwwroot\\email\\updatedemail.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2529"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2dzO2bfRuqES0hB84Fy+EmSvSkGmMg4jt87qc2d3Bns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 21:22:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ldrttgf92h"
+        },
+        {
+          "Name": "label",
+          "Value": "email/updatedemail.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2dzO2bfRuqES0hB84Fy+EmSvSkGmMg4jt87qc2d3Bns="
+        }
+      ]
     }
   ]
 }

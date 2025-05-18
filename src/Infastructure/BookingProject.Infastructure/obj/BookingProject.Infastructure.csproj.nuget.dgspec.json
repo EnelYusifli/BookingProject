@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj": {}
+    "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj": {
+    "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
         "projectName": "BookingProject.Application",
-        "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
-        "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
-                "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj"
+              "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj"
               }
             }
           }
@@ -44,7 +47,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -53,6 +57,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.27.5, )"
             },
             "FluentValidation": {
               "target": "Package",
@@ -118,21 +126,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
+    "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
         "projectName": "BookingProject.Domain",
-        "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
-        "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -140,7 +152,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -158,7 +169,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -193,21 +205,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj": {
+    "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj",
         "projectName": "BookingProject.Infastructure",
-        "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj",
-        "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\BookingProject.Infastructure.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Infastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -215,15 +231,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj": {
-                "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj"
+              "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj"
               }
             }
           }
@@ -237,7 +252,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -258,21 +274,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj": {
+    "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
         "projectName": "BookingProject.Persistence",
-        "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
-        "packagesPath": "C:\\Users\\Enel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Enel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -280,15 +300,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj": {
-                "projectPath": "C:\\Users\\Enel\\Desktop\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj"
+              "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Application\\BookingProject.Application.csproj"
               }
             }
           }
@@ -302,7 +321,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -350,7 +370,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

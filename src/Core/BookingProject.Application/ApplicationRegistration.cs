@@ -16,6 +16,7 @@ public static class ApplicationRegistration
         services.AddScoped<IHotelService, HotelService>();
 		services.AddScoped<ITokenService, TokenService>();
 		services.AddScoped<IRoomService, RoomService>();
+		services.AddScoped<ICloudinaryService, CloudinaryService>();
 
         services.AddMediatR(opt =>
         {

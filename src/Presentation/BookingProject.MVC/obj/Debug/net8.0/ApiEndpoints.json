@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "BookingProject.API.Controllers.AboutController",
+    "Method": "GetById",
+    "RelativePath": "api/About/GetById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.AboutController",
+    "Method": "Update",
+    "RelativePath": "api/About/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.AboutCommands.AboutUpdateCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BookingProject.API.Controllers.AccController",
     "Method": "ChangePassword",
     "RelativePath": "api/Acc/ChangePassword",
@@ -119,6 +145,11 @@
         "IsRequired": false
       },
       {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "LastName",
         "Type": "System.String",
         "IsRequired": false
@@ -191,6 +222,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ActivitiesController",
+    "Method": "GetById",
+    "RelativePath": "api/Activities/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -359,6 +406,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.CountriesController",
+    "Method": "GetById",
+    "RelativePath": "api/Countries/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.CountriesController",
     "Method": "SoftDelete",
     "RelativePath": "api/Countries/SoftDelete/{id}",
     "HttpMethod": "PUT",
@@ -395,16 +458,132 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BookingProject.API.Controllers.HotelsController",
-    "Method": "AddToWishlist",
-    "RelativePath": "api/Hotels/AddToWishlist",
+    "ContainingType": "BookingProject.API.Controllers.DiscountsController",
+    "Method": "Create",
+    "RelativePath": "api/Discounts/Create/{roomid}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "BookingProject.Application.Features.Commands.WishlistCommands.WishlistAddCommands.WishlistAddCommandRequest",
+        "Type": "BookingProject.Application.Features.Commands.DiscountCommands.DiscountCreateCommands.DiscountCreateCommandRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "roomid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.DiscountsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Discounts/GetAll/{roomId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roomId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.DiscountsController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Discounts/SoftDelete/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.FAQsController",
+    "Method": "Create",
+    "RelativePath": "api/FAQs/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.FAQCommands.FAQCreateCommands.FAQCreateCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.FAQsController",
+    "Method": "Delete",
+    "RelativePath": "api/FAQs/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.FAQsController",
+    "Method": "GetAll",
+    "RelativePath": "api/FAQs/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.FAQsController",
+    "Method": "GetById",
+    "RelativePath": "api/FAQs/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.FAQsController",
+    "Method": "Update",
+    "RelativePath": "api/FAQs/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.FAQCommands.FAQUpdateCommands.FAQUpdateCommandRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -437,6 +616,11 @@
       {
         "Name": "TypeId",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -525,7 +709,29 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "GetAllByUser",
+    "RelativePath": "api/Hotels/GetAllByUser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -533,6 +739,43 @@
     "Method": "GetById",
     "RelativePath": "api/Hotels/GetById/{id}",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "GetByIdForUpdate",
+    "RelativePath": "api/Hotels/GetByIdForUpdate/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.HotelsController",
+    "Method": "IncrementViewerCount",
+    "RelativePath": "api/Hotels/IncrementViewerCount/{id}",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -549,22 +792,6 @@
     "Method": "RefuseHotel",
     "RelativePath": "api/Hotels/RefuseHotel/{id}",
     "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BookingProject.API.Controllers.HotelsController",
-    "Method": "RemoveFromWishlist",
-    "RelativePath": "api/Hotels/RemoveFromWishlist/{id}",
-    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -606,6 +833,11 @@
         "IsRequired": false
       },
       {
+        "Name": "UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "TypeId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -636,18 +868,23 @@
         "IsRequired": false
       },
       {
-        "Name": "IsDeactive",
-        "Type": "System.Boolean",
+        "Name": "NewImageFiles",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
         "IsRequired": false
       },
       {
-        "Name": "ImageFiles",
-        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "Name": "Images",
+        "Type": "System.Collections.Generic.List\u00601[[BookingProject.Application.Features.DTOs.ImageDto, BookingProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": false
       },
       {
         "Name": "StaffLanguageIds",
         "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "HotelAdvantageNames",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
@@ -671,6 +908,11 @@
         "IsRequired": false
       },
       {
+        "Name": "DeletedAdvantageIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
@@ -679,16 +921,95 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BookingProject.API.Controllers.HotelsController",
-    "Method": "WishlistGetAll",
-    "RelativePath": "api/Hotels/WishlistGetAll/{userId}",
-    "HttpMethod": "GET",
+    "ContainingType": "BookingProject.API.Controllers.MessagesController",
+    "Method": "Create",
+    "RelativePath": "api/Messages/Create",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.MessageCommands.MessageCreateCommands.MessageCreateCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.MessagesController",
+    "Method": "Delete",
+    "RelativePath": "api/Messages/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.MessagesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Messages/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.MessagesController",
+    "Method": "Reply",
+    "RelativePath": "api/Messages/Reply/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.MessageCommands.MessageReplyCommands.MessageReplyCommandRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.OffersController",
+    "Method": "Create",
+    "RelativePath": "api/Offers/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.OfferCommands.OfferCreateCommands.OfferCreateCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.OffersController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Offers/SoftDelete/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -734,6 +1055,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.PaymentMethodsController",
+    "Method": "GetById",
+    "RelativePath": "api/PaymentMethods/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -806,9 +1143,57 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BookingProject.API.Controllers.ReservationsController",
+    "Method": "GetAllByOwner",
+    "RelativePath": "api/Reservations/GetAllByOwner/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ReservationsController",
+    "Method": "GetAllByUser",
+    "RelativePath": "api/Reservations/GetAllByUser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ReservationsController",
+    "Method": "GetById",
+    "RelativePath": "api/Reservations/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BookingProject.API.Controllers.ReviewsController",
     "Method": "Create",
-    "RelativePath": "api/Reviews",
+    "RelativePath": "api/Reviews/Create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -816,6 +1201,11 @@
       {
         "Name": "HotelId",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -829,7 +1219,7 @@
         "IsRequired": false
       },
       {
-        "Name": "ReviewImages",
+        "Name": "ReviewImageFiles",
         "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
         "IsRequired": false
       }
@@ -838,14 +1228,62 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.ReviewsController",
+    "Method": "Delete",
+    "RelativePath": "api/Reviews/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ReviewsController",
     "Method": "GetAll",
-    "RelativePath": "api/Reviews/{hotelId}",
+    "RelativePath": "api/Reviews/GetAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "hotelId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ReviewsController",
+    "Method": "GetAllByOwner",
+    "RelativePath": "api/Reviews/GetAllByOwner/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ReviewsController",
+    "Method": "Report",
+    "RelativePath": "api/Reviews/Report/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -855,7 +1293,7 @@
   {
     "ContainingType": "BookingProject.API.Controllers.ReviewsController",
     "Method": "Update",
-    "RelativePath": "api/Reviews/{id}",
+    "RelativePath": "api/Reviews/Update/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -885,22 +1323,6 @@
         "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BookingProject.API.Controllers.ReviewsController",
-    "Method": "Delete",
-    "RelativePath": "api/Reviews/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
@@ -950,6 +1372,11 @@
       {
         "Name": "PricePerNight",
         "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsDepositNeeded",
+        "Type": "System.Boolean",
         "IsRequired": false
       },
       {
@@ -1083,6 +1510,11 @@
         "IsRequired": false
       },
       {
+        "Name": "IsDepositNeeded",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
         "Name": "Area",
         "Type": "System.Decimal",
         "IsRequired": false
@@ -1155,6 +1587,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.ServicesController",
+    "Method": "GetById",
+    "RelativePath": "api/Services/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -1238,6 +1686,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.StaffLanguagesController",
+    "Method": "GetById",
+    "RelativePath": "api/StaffLanguages/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.StaffLanguagesController",
     "Method": "SoftDelete",
     "RelativePath": "api/StaffLanguages/SoftDelete/{id}",
     "HttpMethod": "PUT",
@@ -1268,6 +1732,32 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.TermsOfServiceController",
+    "Method": "GetById",
+    "RelativePath": "api/TermsOfService/GetById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.TermsOfServiceController",
+    "Method": "Update",
+    "RelativePath": "api/TermsOfService/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.TermsOfServiceCommands.TermsOfServiceUpdateCommandRequest",
         "IsRequired": true
       }
     ],
@@ -1317,6 +1807,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.TypesController",
+    "Method": "GetById",
+    "RelativePath": "api/Types/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.TypesController",
     "Method": "SoftDelete",
     "RelativePath": "api/Types/SoftDelete/{id}",
     "HttpMethod": "PUT",
@@ -1354,6 +1860,22 @@
   },
   {
     "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "AddToWishlist",
+    "RelativePath": "api/Users/AddToWishlist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BookingProject.Application.Features.Commands.WishlistCommands.WishlistAddCommands.WishlistAddCommandRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
     "Method": "AddUserCard",
     "RelativePath": "api/Users/AddUserCard",
     "HttpMethod": "POST",
@@ -1379,6 +1901,64 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "GetAll",
+    "RelativePath": "api/Users/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "GetById",
+    "RelativePath": "api/Users/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "RemoveFromWishlist",
+    "RelativePath": "api/Users/RemoveFromWishlist/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookingProject.API.Controllers.UsersController",
+    "Method": "WishlistGetAll",
+    "RelativePath": "api/Users/WishlistGetAll/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

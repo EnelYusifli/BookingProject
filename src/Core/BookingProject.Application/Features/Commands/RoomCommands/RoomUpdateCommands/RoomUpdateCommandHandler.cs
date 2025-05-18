@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
+using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +15,20 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 	private readonly IRoomRepository _repository;
 	private readonly IMapper _mapper;
 	private readonly IRoomImageRepository _roomImageRepository;
-	private readonly IConfiguration _configuration;
+	//private readonly IConfiguration _configuration;
+	private readonly ICloudinaryService _cloudinaryService;
 
 	public RoomUpdateCommandHandler(IRoomRepository repository,
 		IMapper mapper,
 		IRoomImageRepository roomImageRepository,
-		IConfiguration configuration)
+		/*IConfiguration configuration*/
+		ICloudinaryService cloudinaryService)
 	{
 		_repository = repository;
 		_mapper = mapper;
 		_roomImageRepository = roomImageRepository;
-		_configuration = configuration;
+		//_configuration = configuration;
+		_cloudinaryService	= cloudinaryService;
 	}
 
 	public async Task<RoomUpdateCommandResponse> Handle(RoomUpdateCommandRequest request, CancellationToken cancellationToken)
@@ -41,7 +44,7 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 		Room existRoom = await _repository.Table.FirstOrDefaultAsync(x => x.RoomName == request.RoomName && x.HotelId==room.HotelId);
 		if (existRoom is not null && existRoom.RoomName.ToLower() != room.RoomName.ToLower())
 			throw new BadRequestException("Room name already exist");
-		SaveFileExtension.Initialize(_configuration);
+		//SaveFileExtension.Initialize(_configuration);
 		if(request.ImageFiles is not null)
 		{
 		foreach (var image in request.ImageFiles)
@@ -49,7 +52,8 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 			if (image is null)
 				throw new NotFoundException($"Image not found");
 
-			string url = await SaveFileExtension.SaveFile(image, "rooms");
+			string url = await _cloudinaryService.FileCreateAsync(image);
+			//string url = await SaveFileExtension.SaveFile(image, "rooms");
 			RoomImage roomImg = new()
 			{
 				Room = room,
@@ -68,7 +72,7 @@ public class RoomUpdateCommandHandler : IRequestHandler<RoomUpdateCommandRequest
 				throw new NotFoundException($"Image with ID {id} not found in room");
 
 			_roomImageRepository.Delete(img);
-			await SaveFileExtension.DeleteFileAsync(img.Url);
+			await _cloudinaryService.FileDeleteAsync(img.Url);
 		}
 		}
 		room.ModifiedDate=DateTime.Now;

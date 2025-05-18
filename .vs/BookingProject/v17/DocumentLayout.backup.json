@@ -1,0 +1,503 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\BookingProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\applicationregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\applicationregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\persistenceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\persistenceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\usercommands\\userupdatecommands\\userupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\usercommands\\userupdatecommands\\userupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\reviewcommands\\reviewupdatecommands\\reviewupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\reviewcommands\\reviewupdatecommands\\reviewupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\reviewcommands\\reviewcreatecommands\\reviewcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\reviewcommands\\reviewcreatecommands\\reviewcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\services\\implementations\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\services\\implementations\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.domain\\bookingproject.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|solutionrelative:src\\core\\bookingproject.domain\\bookingproject.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomupdatecommands\\roomupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomupdatecommands\\roomupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomdeletecommands\\roomdeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomdeletecommands\\roomdeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomcreatecommands\\roomcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomcreatecommands\\roomcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\reviewcommands\\reviewdeletecommands\\reviewdeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\reviewcommands\\reviewdeletecommands\\reviewdeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelupdatecommands\\hotelupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelupdatecommands\\hotelupdatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hoteldeletecommands\\hoteldeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hoteldeletecommands\\hoteldeletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelcreatecommands\\hotelcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\hotelcommands\\hotelcreatecommands\\hotelcreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\authregistercommands\\authregistercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\authregistercommands\\authregistercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomdeletecommands\\roomdeletecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\roomcommands\\roomdeletecommands\\roomdeletecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\features\\commands\\messagecommands\\messagecreatecommands\\messagecreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\features\\commands\\messagecommands\\messagecreatecommands\\messagecreatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\helpers\\extensions\\savefileextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\helpers\\extensions\\savefileextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\services\\interfaces\\icloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\services\\interfaces\\icloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\services\\implementations\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\services\\implementations\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\repositories\\hotelservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\repositories\\hotelservicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\repositories\\roomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\repositories\\roomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\infastructure\\bookingproject.persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54189845-717E-44B0-98C0-8C0A04969C3C}|src\\Infastructure\\BookingProject.Persistence\\BookingProject.Persistence.csproj|solutionrelative:src\\infastructure\\bookingproject.persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.domain\\appsettingmodels\\cloudinaryoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{446F4CCA-C3D5-40F2-BE0B-A3FAC5949483}|src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj|solutionrelative:src\\core\\bookingproject.domain\\appsettingmodels\\cloudinaryoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\core\\bookingproject.application\\services\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47061AFB-55CB-459B-9C51-A6A7D9D0FC55}|src\\Core\\BookingProject.Application\\BookingProject.Application.csproj|solutionrelative:src\\core\\bookingproject.application\\services\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1FB2484A-68DF-4070-81F0-B4B792AD6980}|src\\Presentation\\BookingProject.MVC\\BookingProject.MVC.csproj|solutionrelative:src\\presentation\\bookingproject.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|c:\\users\\admin\\source\\repos\\bookingproject\\src\\presentation\\bookingproject.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4DF22BC7-EB53-4799-A78F-17B051C90CE3}|src\\Presentation\\BookingProject.API\\BookingProject.API.csproj|solutionrelative:src\\presentation\\bookingproject.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 379,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\ApplicationRegistration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:37:44.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PersistenceRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\PersistenceRegistration.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwBMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:37:26.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BookingProject.Domain",
+              "DocumentMoniker": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+              "ToolTip": "C:\\Users\\Admin\\Source\\Repos\\BookingProject\\src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+              "RelativeToolTip": "src\\Core\\BookingProject.Domain\\BookingProject.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-18T22:33:12.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Implementations\\RoomService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Services\\Implementations\\RoomService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Implementations\\RoomService.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Services\\Implementations\\RoomService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:33:07.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReviewUpdateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewUpdateCommands\\ReviewUpdateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewUpdateCommands\\ReviewUpdateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewUpdateCommands\\ReviewUpdateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewUpdateCommands\\ReviewUpdateCommandHandler.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwD8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:33:04.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ReviewDeleteCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewDeleteCommands\\ReviewDeleteCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewDeleteCommands\\ReviewDeleteCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewDeleteCommands\\ReviewDeleteCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewDeleteCommands\\ReviewDeleteCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:23:12.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RoomCreateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomCreateCommands\\RoomCreateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomCreateCommands\\RoomCreateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomCreateCommands\\RoomCreateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomCreateCommands\\RoomCreateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:25:22.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReviewCreateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewCreateCommands\\ReviewCreateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewCreateCommands\\ReviewCreateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewCreateCommands\\ReviewCreateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\ReviewCommands\\ReviewCreateCommands\\ReviewCreateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:21:07.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserUpdateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\UserUpdateCommands\\UserUpdateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\UserUpdateCommands\\UserUpdateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\UserUpdateCommands\\UserUpdateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\UserCommands\\UserUpdateCommands\\UserUpdateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:29:57.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HotelUpdateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelUpdateCommands\\HotelUpdateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:17:52.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HotelDeleteCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelDeleteCommands\\HotelDeleteCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:15:45.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RoomDeleteCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:26:59.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RoomUpdateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomUpdateCommands\\RoomUpdateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomUpdateCommands\\RoomUpdateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomUpdateCommands\\RoomUpdateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomUpdateCommands\\RoomUpdateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:28:32.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "HotelCreateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\HotelCommands\\HotelCreateCommands\\HotelCreateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:54:42.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthRegisterCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\AuthRegisterCommands\\AuthRegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\AuthRegisterCommands\\AuthRegisterCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\AuthRegisterCommands\\AuthRegisterCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\AuthRegisterCommands\\AuthRegisterCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:32:30.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RoomDeleteCommandRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandRequest.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandRequest.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\RoomCommands\\RoomDeleteCommands\\RoomDeleteCommandRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:26:57.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MessageCreateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageCreateCommands\\MessageCreateCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageCreateCommands\\MessageCreateCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageCreateCommands\\MessageCreateCommandHandler.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Features\\Commands\\MessageCommands\\MessageCreateCommands\\MessageCreateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:20:52.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SaveFileExtension.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Helpers\\Extensions\\SaveFileExtension.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Helpers\\Extensions\\SaveFileExtension.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Helpers\\Extensions\\SaveFileExtension.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Helpers\\Extensions\\SaveFileExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:55:20.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "HotelServiceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\HotelServiceRepository.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\HotelServiceRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\HotelServiceRepository.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\HotelServiceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:53:21.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RoomRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\RoomRepository.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\RoomRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\RoomRepository.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\RoomRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:52:11.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "src\\Infastructure\\BookingProject.Persistence\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:52:02.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CloudinaryService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Implementations\\CloudinaryService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Services\\Implementations\\CloudinaryService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Implementations\\CloudinaryService.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Services\\Implementations\\CloudinaryService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAqwCIAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:49:51.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CloudinaryOptions.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\AppSettingModels\\CloudinaryOptions.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Domain\\AppSettingModels\\CloudinaryOptions.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Domain\\AppSettingModels\\CloudinaryOptions.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Domain\\AppSettingModels\\CloudinaryOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:47:51.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ICloudinaryService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Interfaces\\ICloudinaryService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Services\\Interfaces\\ICloudinaryService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Interfaces\\ICloudinaryService.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Services\\Interfaces\\ICloudinaryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:46:01.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Interfaces\\IEmailService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\BookingProject.Application\\Services\\Interfaces\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Core\\BookingProject.Application\\Services\\Interfaces\\IEmailService.cs",
+              "RelativeToolTip": "src\\Core\\BookingProject.Application\\Services\\Interfaces\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:46:03.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.API\\appsettings.json",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-18T21:27:51.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\Presentation\\BookingProject.MVC\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\BookingProject\\src\\Presentation\\BookingProject.MVC\\appsettings.json",
+              "RelativeToolTip": "src\\Presentation\\BookingProject.MVC\\appsettings.json",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-18T21:27:33.771Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

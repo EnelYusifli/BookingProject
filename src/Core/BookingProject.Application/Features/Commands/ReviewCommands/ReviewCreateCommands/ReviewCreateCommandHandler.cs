@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
+using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
+using CloudinaryDotNet;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -18,7 +19,8 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 	private readonly IReviewImageRepository _reviewImageRepository;
 	private readonly IHotelRepository _hotelRepository;
 	private readonly UserManager<AppUser> _userManager;
-	private readonly IConfiguration _configuration;
+	//private readonly IConfiguration _configuration;
+	private readonly ICloudinaryService _cloudinaryService;
 	private readonly IHttpContextAccessor _httpContextAccessor;
 	private readonly IReservationRepository _reservationRepository;
 
@@ -27,7 +29,8 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 		,IReviewImageRepository reviewImageRepository
 		,IHotelRepository hotelRepository
 		,UserManager<AppUser> userManager
-		,IConfiguration configuration
+		//,IConfiguration configuration
+		,ICloudinaryService cloudinaryService
 		,IHttpContextAccessor httpContextAccessor
 		,IReservationRepository reservationRepository)
     {
@@ -36,7 +39,8 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 		_reviewImageRepository = reviewImageRepository;
 		_hotelRepository = hotelRepository;
 		_userManager = userManager;
-		_configuration = configuration;
+		//_configuration = configuration;
+		_cloudinaryService = cloudinaryService;
 		_httpContextAccessor = httpContextAccessor;
 		_reservationRepository = reservationRepository;
 	}
@@ -57,14 +61,15 @@ public class ReviewCreateCommandHandler : IRequestHandler<ReviewCreateCommandReq
 
 		CustomerReview review = _mapper.Map<CustomerReview>(request);
 		review.IsDeactive = false;
-		SaveFileExtension.Initialize(_configuration);
+		//SaveFileExtension.Initialize(_configuration);
 		if (request.ReviewImageFiles is not null)
 		{
 			foreach (var image in request.ReviewImageFiles)
 			{
 				if (image is null)
 					throw new NotFoundException($"Image not found");
-				string url = await SaveFileExtension.SaveFile(image, "reviews");
+				string url = await _cloudinaryService.FileCreateAsync(image);
+				//string url = await SaveFileExtension.SaveFile(image, "reviews");
 				ReviewImage img = new()
 				{
 					Review = review,

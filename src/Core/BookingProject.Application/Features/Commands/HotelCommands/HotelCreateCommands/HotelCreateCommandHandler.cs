@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
 using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
@@ -27,7 +26,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
         private readonly IActivityRepository _activityRepository;
         private readonly IHotelActivityRepository _hotelActivityRepository;
         private readonly IHotelImageRepository _hotelImageRepository;
-        private readonly IConfiguration _configuration;
+        //private readonly IConfiguration _configuration;
+        private readonly ICloudinaryService _cloudinaryService;
         private readonly UserManager<AppUser> _userManager;
 		private readonly IRoomService _roomService;
 		private readonly ITypeRepository _typeRepository;
@@ -48,7 +48,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             IHotelPaymentMethodRepository hotelPaymentMethodRepository,
             IActivityRepository activityRepository,
             IHotelActivityRepository hotelActivityRepository,
-            IConfiguration configuration,
+            //IConfiguration configuration,
+            ICloudinaryService cloudinaryService,
             UserManager<AppUser> userManager,
             IRoomService roomService,
             ICountryRepository countryRepository,
@@ -68,7 +69,8 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             _hotelPaymentMethodRepository = hotelPaymentMethodRepository;
             _activityRepository = activityRepository;
             _hotelActivityRepository = hotelActivityRepository;
-            _configuration = configuration;
+            //_configuration = configuration;
+            _cloudinaryService= cloudinaryService;
             _userManager = userManager;
 			_roomService = roomService;
 			_typeRepository = typeRepository;
@@ -98,12 +100,13 @@ namespace BookingProject.Application.Features.Commands.HotelCommands.HotelCreate
             hotel.IsDeactive = true;
             hotel.IsApproved = false;
             hotel.IsRefused = false;
-            SaveFileExtension.Initialize(_configuration);
+            //SaveFileExtension.Initialize(_cloudinaryService);
             foreach (var image in request.ImageFiles)
             {
                 if (image is null)
                     throw new NotFoundException($"Image not found");
-                string url= await SaveFileExtension.SaveFile(image, "hotels");
+                //string url= await SaveFileExtension.SaveFile(image, "hotels");
+                string url = await _cloudinaryService.FileCreateAsync(image);
                 HotelImage hotelImg = new()
                 {
                     Hotel = hotel,

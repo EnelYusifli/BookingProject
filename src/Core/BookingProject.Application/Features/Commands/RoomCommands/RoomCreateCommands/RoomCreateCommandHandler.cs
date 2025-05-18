@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
 using BookingProject.Domain.Entities;
 using MediatR;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using BookingProject.Application.Services.Interfaces;
 
 namespace BookingProject.Application.Features.Commands.RoomCommands.RoomCreateCommands;
 
@@ -17,19 +17,23 @@ public class RoomCreateCommandHandler : IRequestHandler<RoomCreateCommandRequest
     private readonly IMapper _mapper;
     private readonly IRoomImageRepository _roomImageRepository;
     private readonly IHotelRepository _hotelRepository;
-    private readonly IConfiguration _configuration;
+    //private readonly IConfiguration _configuration;
+    private readonly ICloudinaryService _cloudinaryService;
+
 
     public RoomCreateCommandHandler(IRoomRepository repository
         ,IMapper mapper
         ,IRoomImageRepository roomImageRepository 
         ,IHotelRepository hotelRepository
-        ,IConfiguration configuration)
+        /*,IConfiguration configuration*/
+        ,ICloudinaryService cloudinaryService)
     {
         _repository = repository;
         _mapper = mapper;
         _roomImageRepository = roomImageRepository;
         _hotelRepository = hotelRepository;
-        _configuration = configuration;
+        //_configuration = configuration;
+        _cloudinaryService = cloudinaryService;
     }
     public async Task<RoomCreateCommandResponse> Handle(RoomCreateCommandRequest request, CancellationToken cancellationToken)
     {
@@ -49,12 +53,13 @@ public class RoomCreateCommandHandler : IRequestHandler<RoomCreateCommandRequest
         var room = _mapper.Map<Room>(request);
         room.IsReserved = false;
         room.DiscountedPricePerNight = room.PricePerNight;
-        SaveFileExtension.Initialize(_configuration);
+        //SaveFileExtension.Initialize(_configuration);
         foreach (var image in request.ImageFiles)
         {
             if (image is null)
                 throw new NotFoundException($"Image not found");
-            string url = await SaveFileExtension.SaveFile(image, "rooms");
+            string url = await _cloudinaryService.FileCreateAsync(image);
+            //string url = await SaveFileExtension.SaveFile(image, "rooms");
             RoomImage roomImg = new()
             {
                 Room = room,

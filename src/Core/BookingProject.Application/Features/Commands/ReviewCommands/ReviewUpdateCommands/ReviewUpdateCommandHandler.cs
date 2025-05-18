@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BookingProject.Application.CustomExceptions;
-using BookingProject.Application.Helpers.Extensions;
 using BookingProject.Application.Repositories;
+using BookingProject.Application.Services.Interfaces;
 using BookingProject.Domain.Entities;
 using MediatR;
 
@@ -12,12 +12,14 @@ namespace BookingProject.Application.Features.Commands.ReviewCommands.ReviewUpda
 		private readonly IReviewRepository _repository;
 		private readonly IMapper _mapper;
 		private readonly IReviewImageRepository _reviewImageRepository;
+		private readonly ICloudinaryService _cloudinaryService;
 
-		public ReviewUpdateCommandHandler(IReviewRepository repository, IMapper mapper, IReviewImageRepository reviewImageRepository)
+		public ReviewUpdateCommandHandler(IReviewRepository repository, IMapper mapper, IReviewImageRepository reviewImageRepository,ICloudinaryService cloudinaryService)
 		{
 			_repository = repository;
 			_mapper = mapper;
 			_reviewImageRepository = reviewImageRepository;
+			_cloudinaryService = cloudinaryService;
 		}
 
 		public async Task<ReviewUpdateCommandResponse> Handle(ReviewUpdateCommandRequest request, CancellationToken cancellationToken)
@@ -37,7 +39,8 @@ namespace BookingProject.Application.Features.Commands.ReviewCommands.ReviewUpda
 					if (image is null)
 						throw new NotFoundException($"Image not found");
 
-					string url = await SaveFileExtension.SaveFile(image, "reviews");
+					string url = await _cloudinaryService.FileCreateAsync(image);
+					//string url = await SaveFileExtension.SaveFile(image, "reviews");
 					ReviewImage reviewImage = new ReviewImage
 					{
 						Review = review,
@@ -57,7 +60,8 @@ namespace BookingProject.Application.Features.Commands.ReviewCommands.ReviewUpda
 						throw new NotFoundException($"Image with ID {id} not found in review");
 
 					_reviewImageRepository.Delete(image);
-					await SaveFileExtension.DeleteFileAsync(image.Url);
+					//await SaveFileExtension.DeleteFileAsync(image.Url);
+					await _cloudinaryService.FileDeleteAsync(image.Url);
 				}
 			}
 

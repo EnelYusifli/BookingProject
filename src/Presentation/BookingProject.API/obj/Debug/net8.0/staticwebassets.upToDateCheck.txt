@@ -1,0 +1,7 @@
+wwwroot\email\cancelledreservation.html
+wwwroot\email\forgotpassword.html
+wwwroot\email\nonpaidreservation.html
+wwwroot\email\paidreservation.html
+wwwroot\email\requestapproved.html
+wwwroot\email\requestrefused.html
+wwwroot\email\updatedemail.html

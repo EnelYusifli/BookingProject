@@ -1,0 +1,88 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/cancelledreservation.08o52emw24.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\cancelledreservation.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"08o52emw24"},{"Name":"integrity","Value":"sha256-IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu\u002BS7THy8TI="},{"Name":"label","Value":"_content/BookingProject.API/email/cancelledreservation.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2807"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu\u002BS7THy8TI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/cancelledreservation.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\cancelledreservation.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu\u002BS7THy8TI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2807"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022IFwuhbZbzXrWvZswlXs00xNYaPiSUjJDhu\u002BS7THy8TI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/forgotpassword.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\forgotpassword.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-i7I\u002BMZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2694"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022i7I\u002BMZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/forgotpassword.vfx5qs7jij.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\forgotpassword.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vfx5qs7jij"},{"Name":"integrity","Value":"sha256-i7I\u002BMZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4="},{"Name":"label","Value":"_content/BookingProject.API/email/forgotpassword.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2694"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022i7I\u002BMZab1HMemeABHoW7lLQ6G50QOnbOOf/D8mu1UY4=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/nonpaidreservation.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\nonpaidreservation.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-B7l3tEV\u002BLLJ21SfDKZZeNR7rk8rJwOM\u002BWQ7J\u002BZ9eCIU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2954"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022B7l3tEV\u002BLLJ21SfDKZZeNR7rk8rJwOM\u002BWQ7J\u002BZ9eCIU=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/nonpaidreservation.rjsed1qj3j.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\nonpaidreservation.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rjsed1qj3j"},{"Name":"integrity","Value":"sha256-B7l3tEV\u002BLLJ21SfDKZZeNR7rk8rJwOM\u002BWQ7J\u002BZ9eCIU="},{"Name":"label","Value":"_content/BookingProject.API/email/nonpaidreservation.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2954"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022B7l3tEV\u002BLLJ21SfDKZZeNR7rk8rJwOM\u002BWQ7J\u002BZ9eCIU=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/paidreservation.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\paidreservation.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2959"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/paidreservation.w4n6mtjd5d.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\paidreservation.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"w4n6mtjd5d"},{"Name":"integrity","Value":"sha256-oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q="},{"Name":"label","Value":"_content/BookingProject.API/email/paidreservation.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2959"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022oJS9qugP8P4c9EAS3S2Llyume3AgR91ccndIEOul/0Q=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/requestapproved.h55yt769ib.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\requestapproved.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"h55yt769ib"},{"Name":"integrity","Value":"sha256-laeiganGUvt\u002BFliKM0OPMzWF908On7eG/JZTAWrXXoI="},{"Name":"label","Value":"_content/BookingProject.API/email/requestapproved.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2121"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022laeiganGUvt\u002BFliKM0OPMzWF908On7eG/JZTAWrXXoI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/requestapproved.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\requestapproved.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-laeiganGUvt\u002BFliKM0OPMzWF908On7eG/JZTAWrXXoI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2121"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022laeiganGUvt\u002BFliKM0OPMzWF908On7eG/JZTAWrXXoI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/requestrefused.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\requestrefused.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1A4YCoXe6cW\u002BfSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2556"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u00221A4YCoXe6cW\u002BfSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/requestrefused.w7dddkrjn4.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\requestrefused.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"w7dddkrjn4"},{"Name":"integrity","Value":"sha256-1A4YCoXe6cW\u002BfSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc="},{"Name":"label","Value":"_content/BookingProject.API/email/requestrefused.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2556"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u00221A4YCoXe6cW\u002BfSuWF5/Wnuar5ZIJ6opQ0BnIz/ImRpc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/updatedemail.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\updatedemail.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2dzO2bfRuqES0hB84Fy\u002BEmSvSkGmMg4jt87qc2d3Bns="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2529"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u00222dzO2bfRuqES0hB84Fy\u002BEmSvSkGmMg4jt87qc2d3Bns=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/BookingProject.API/email/updatedemail.ldrttgf92h.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\email\updatedemail.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ldrttgf92h"},{"Name":"integrity","Value":"sha256-2dzO2bfRuqES0hB84Fy\u002BEmSvSkGmMg4jt87qc2d3Bns="},{"Name":"label","Value":"_content/BookingProject.API/email/updatedemail.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2529"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u00222dzO2bfRuqES0hB84Fy\u002BEmSvSkGmMg4jt87qc2d3Bns=\u0022"},{"Name":"Last-Modified","Value":"Sun, 18 May 2025 21:22:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>
